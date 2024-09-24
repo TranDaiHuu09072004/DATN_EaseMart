@@ -12,7 +12,7 @@ export default function Header() {
             src="assets/img/logo.png"
             alt=""
             className="img_logo"
-            width={250}
+            // width={250}
           />
           <div className="input_search">
             <input

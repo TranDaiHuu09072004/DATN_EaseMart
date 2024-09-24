@@ -3,7 +3,7 @@ import { Roboto } from "next/font/google";
 import "./globals.css";
 import Footer from "@/app/components/Footer";
 import "@/public/css/home.globals.css";
-import Main from "@/app/components/Main";
+import "@/public/css/CardPopular.globals.css";
 const roboto = Roboto({
   weight: ["400", "700"], // Chọn các độ đậm bạn cần
   subsets: ["latin"], // Chọn các ký tự phụ
@@ -20,7 +20,7 @@ export default function RootLayout({ children }) {
           referrerpolicy="no-referrer"
         />
         <Header />
-        <Main> {children}</Main>
+        {children}
         <Footer />
       </body>
     </html>

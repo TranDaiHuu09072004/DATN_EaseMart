@@ -1,10 +1,10 @@
 import Link from "next/link";
-export default function Banner() {
+export default function BannerDown() {
   return (
     <div>
-      <div className="bg">
+      <div className="banner-down">
         <Link href="#" className="Link">
-          <img src="assets/img/Banner-slider.png" alt="" />
+          <img src="assets/img/Banner_Down-img.svg" alt="" />
         </Link>
       </div>
     </div>
