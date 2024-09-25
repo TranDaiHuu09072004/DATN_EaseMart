@@ -1,5 +1,6 @@
 // CategoryList.js
 "use client";
+import "@/public/css/list_category.globals.css";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import axios from "axios";

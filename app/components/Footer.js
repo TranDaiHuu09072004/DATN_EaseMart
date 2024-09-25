@@ -1,5 +1,5 @@
 import Link from "next/link";
-
+import "@/public/css/footer.globals.css";
 export default function Footer() {
   return (
     <>

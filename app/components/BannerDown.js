@@ -1,4 +1,5 @@
 import Link from "next/link";
+import "@/public/css/banner_down.globals.css";
 export default function BannerDown() {
   return (
     <div>

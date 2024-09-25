@@ -1,4 +1,5 @@
 import Link from "next/link";
+import "@/public/css/banner.globals.css";
 export default function Banner() {
   return (
     <div>

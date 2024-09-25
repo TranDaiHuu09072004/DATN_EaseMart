@@ -1,4 +1,5 @@
 import React from "react";
+import "@/public/css/banner_flashsale.globals.css";
 import Link from "next/link";
 export default function BannerFlashSale() {
   return (

@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-
+import "@/public/css/CardFlashSale.globals.css";
 import BannerFlashSale from "@/app/components/BannerFlashSale";
 import Countdown from "@/app/components/CountDown";
 import axios from "axios";

@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import "@/public/css/header.globals.css";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 export default function Header() {
