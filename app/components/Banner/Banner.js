@@ -1,10 +1,10 @@
 import Link from "next/link";
-import "@/public/css/banner.globals.css";
+import styles from "./banner.module.css";
 export default function Banner() {
   return (
     <div>
-      <div className="bg">
-        <Link href="#" className="Link">
+      <div className={styles.bg}>
+        <Link href="#" className={styles.Link}>
           <img src="assets/img/Banner-slider.png" alt="" />
         </Link>
       </div>

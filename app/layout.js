@@ -1,6 +1,12 @@
-import Header from "@/app/components/Header";
+import Header from "@/app/components/Header/Header";
 import { Roboto } from "next/font/google";
-import Footer from "@/app/components/Footer";
+import Footer from "@/app/components/Footer/Footer";
+import "@/public/css/list_category.globals.css";
+import "@/public/css/CardFlashSale.globals.css";
+import "@/public/css/CardPopular.globals.css";
+import "@/public/css/CardNewhot.globals.css";
+import "@/public/css/pr_product.globals.css";
+import "@/app/globals.css";
 const roboto = Roboto({
   weight: ["400", "700"], // Chọn các độ đậm bạn cần
   subsets: ["latin"], // Chọn các ký tự phụ

@@ -6,15 +6,15 @@
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     justify-content: space-between;
   }
-  .ft-1 .Link img {
+  .ft_1 .a img {
     max-width: 300px;
     object-fit: cover;
   }
   
-  .ft-1 .Link {
+  .ft_1 .a {
     text-decoration: none;
   }
-  .ft-2 .Link {
+  .ft_2 .a {
     text-decoration: none;
   }
   
@@ -25,48 +25,48 @@
     width: 300px;
   }
   
-  .footer-content {
+  .footer_content {
     color: #253d4e;
     font-weight: 600;
     font-size: 15px;
   }
   
-  .footer-content span {
+  .footer_content span {
     color: #3bb77e;
     font-weight: 700;
     font-size: 15px;
   }
   
-  .footer-address {
+  .footer_address {
     color: #253d4e;
     font-size: 15px;
   }
   
-  .footer-hotline {
+  .footer_hotline {
     font-size: 15px;
     color: #253d4e;
     font-weight: 600;
   }
   
-  .footer-hotline span {
+  .footer_hotline span {
     color: #3bb77e;
     font-weight: 700;
     font-size: 15px;
   }
   
-  .footer-email {
+  .footer_email {
     color: #253d4e;
     font-size: 15px;
     font-weight: 600;
   }
   
-  .footer-email span {
+  .footer_email span {
     color: #3bb77e;
     font-weight: 700;
     font-size: 15px;
   }
   
-  .footer-opendoor {
+  .footer_opendoor {
     color: #253d4e;
     font-weight: 600;
     font-size: 15px;
@@ -81,41 +81,41 @@
     padding-top: 5px;
   }
   
-  .footer-item {
+  .footer_item {
     color: #7e7e7e;
   }
   
-  .footer-item:hover {
+  .footer_item:hover {
     color: #253d4e;
   }
   
-  .footer-company {
+  .footer_company {
     color: #253d4e;
     font-weight: 700;
   }
   
-  .media-social {
+  .media_social {
     display: flex;
     gap: 10px;
   }
   
-  .gg-play {
+  .gg_play {
     max-width: 150px;
     object-fit: cover;
   }
   
-  .gg-play:hover {
+  .gg_play:hover {
     transform: scale(1.1);
     z-index: 1;
     transition: all 0.5s ease-in-out;
   }
   
-  .app-store {
+  .app_store {
     max-width: 150px;
     object-fit: cover;
   }
   
-  .app-store:hover {
+  .app_store:hover {
     transform: scale(1.1);
     z-index: 1;
     transition: all 0.3s ease-in-out;
