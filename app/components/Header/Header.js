@@ -29,8 +29,8 @@ export default function Header() {
               </Link>
             </span>
             <span>
-              <Link href="" className={styles.a}>
-                <i class="fa-solid fa-user"></i> Đăng ký hội viên
+              <Link href="/dangky" className={styles.a}>
+              <h2 className={styles.heading}>Đăng ký hội viên</h2>
               </Link>
             </span>
           </div>
