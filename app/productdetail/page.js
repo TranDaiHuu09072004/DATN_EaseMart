@@ -1,7 +1,23 @@
-import React from "react";
+"use client";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import Link from "next/link";
 import styles from "./productdetail.module.css";
 export default function ProductDetail() {
+  const [related_products, setRelated_products] = useState([]);
+  useEffect(() => {
+    axios
+      .get("http://localhost:3000/products")
+      .then((res) => {
+        const ProductRelated = res.data.filter(
+          (item) => item.category === "related_products"
+        );
+        setRelated_products(ProductRelated);
+      })
+      .catch((err) => {
+        console.log("Fetching is Failed", err);
+      });
+  }, []);
   return (
     <div>
       <div className="container">
@@ -29,7 +45,7 @@ export default function ProductDetail() {
         <div className={styles.box_product__detail}>
           <div className={styles.product_detail__img}>
             <img src="assets/img/pr_detail.svg" alt="" className="img_detail" />
-            <div className="image_small">
+            <div className={styles.image_small}>
               <img src="assets/img/pr_detail1.svg" alt="" />
               <img src="assets/img/pr_detail2.svg" alt="" />
               <img src="assets/img/pr_detail3.svg" alt="" />
@@ -96,6 +112,113 @@ export default function ProductDetail() {
                   hoặc nơi có nhiệt độ cao.
                 </li>
               </ul>
+            </div>
+          </div>
+        </div>
+        <section className="related_products">
+          <div className="container">
+            <h3 className="CardRelated_products">Sản Phẩm Gợi Ý</h3>
+            <section className="Product_Related">
+              <div className="list-productRelated">
+                {related_products.map((item) => {
+                  return (
+                    <>
+                      <div className="card_related" key={item.id}>
+                        <img
+                          className="card-image_related"
+                          src={item.img}
+                          alt={item.name}
+                        />
+                        <div className="card-price_related">
+                          <span className="old-price_related">
+                            {item.price.toLocaleString()}đ
+                          </span>
+                          <span
+                            className="new-price_related"
+                            style={{
+                              color: "#FED070",
+                              fontWeight: 700,
+                              fontSize: 35,
+                              marginLeft: 25,
+                            }}
+                          >
+                            {item.sale_price.toLocaleString()}đ
+                          </span>
+                        </div>
+                        <h4 className="card-name_related">{item.name}</h4>
+                        <button className="card-button_related">
+                          <Link href="/productdetail" className="a">
+                            Thêm vào giỏ hàng
+                          </Link>
+                        </button>
+                      </div>
+                    </>
+                  );
+                })}
+              </div>
+              {/* </div> */}
+            </section>
+          </div>
+        </section>
+        <h3 className="comment_product">Bình luận về sản phẩm</h3>
+        <div class="comment-section">
+          <div class="comment-box">
+            <div class="user-input">
+              <div class="user-avatar">
+                <i class="fa-solid fa-circle-user"></i>
+              </div>
+              <div class="comment-input">
+                <textarea placeholder="Viết bình luận..."></textarea>
+                <div class="star-rating">
+                  <span>&#9733;</span>
+                  <span>&#9733;</span>
+                  <span>&#9733;</span>
+                  <span>&#9733;</span>
+                  <span>&#9733;</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="comment-list">
+            <div class="comment-item">
+              <div class="user-avatar">
+                <i class="fa-solid fa-circle-user"></i>
+              </div>
+              <div class="comment-content">
+                <p>
+                  Người dùng A:
+                  .....................................................
+                </p>
+                <div class="star-rating">
+                  <span>&#9733;</span>
+                  <span>&#9733;</span>
+                  <span>&#9733;</span>
+                  <span>&#9733;</span>
+                  <span>&#9734;</span>
+                </div>
+                <span class="comment-time">Thời gian đăng</span>
+              </div>
+            </div>
+
+            <div class="comment-item">
+              <div class="user-avatar">
+                <i class="fa-solid fa-circle-user"></i>
+              </div>
+              <div class="comment-content">
+                <p>
+                  Người dùng A:
+                  .....................................................
+                </p>
+                <div class="star-rating">
+                  <span>&#9733;</span>
+                  <span>&#9733;</span>
+                  <span>&#9733;</span>
+                  <span>&#9733;</span>
+                  <span>&#9734;</span>
+                </div>
+                <span class="comment-time">Thời gian đăng</span>
+              </div>
             </div>
           </div>
         </div>

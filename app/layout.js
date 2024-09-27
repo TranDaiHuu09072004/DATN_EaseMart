@@ -6,6 +6,8 @@ import "@/public/css/CardFlashSale.globals.css";
 import "@/public/css/CardPopular.globals.css";
 import "@/public/css/CardNewhot.globals.css";
 import "@/public/css/pr_product.globals.css";
+import "@/public/css/CardRelated.globals.css";
+import "@/public/css/rating.globals.css";
 import "@/app/globals.css";
 const roboto = Roboto({
   weight: ["400", "700"], // Chọn các độ đậm bạn cần

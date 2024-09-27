@@ -1,9 +1,8 @@
 /* BannerDown */
-
-.banner-down {
+.banner_down {
     margin: 10px;
   }
-  .banner-down > .Link > img {
+  .banner_down > .Link > img {
     object-fit: cover;
     width: 100%;
     height: 400px;
