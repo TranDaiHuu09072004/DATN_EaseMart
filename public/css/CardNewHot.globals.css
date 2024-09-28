@@ -1,0 +1,102 @@
+
+/* Flex CountDown Content */
+.Flex-Content_CountDown {
+    padding: 10px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap:10px;
+  }
+  
+  .CardNewHot {
+    border-left: 4px solid #3bb77e;
+    padding-left: 10px;
+    font-size: 30px;
+  }
+  
+  .Product_Newhot {
+    display: flex;
+    width: max-content;
+  }
+  
+  /* Card */
+  
+  .card_newhot {
+    border: none;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+    max-width: 200px;
+    display: inline-block;
+    height: 360px;
+  }
+  
+  .card_newhot:hover {
+    border: 1px solid #3bb77e;
+  }
+  
+  .card-image_newhot {
+    max-width: 100%;
+    object-fit: cover;
+    height: 160px;
+    margin-left: 10px;
+  }
+  
+  .card-content_newhot {
+    color: #8e8e8e;
+    padding-top: 10px;
+    font-size: 13px;
+  }
+  
+  .card-description_newhot {
+    color: #8e8e8e;
+    font-size: 13px;
+  }
+  
+  .card-name_newhot {
+    font-weight: 550;
+    font-size: 15px;
+    color: #253d4e;
+    padding: 10px;
+  }
+  
+  .card-price_newhot {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 10px;
+  }
+  
+  .old-price_newhot {
+    text-decoration: line-through;
+    padding-bottom: 10px;
+  }
+  
+  .card-button_newhot {
+    border: none;
+    background-color: #3bb77e;
+    padding: 6px;
+    border-radius: 5px;
+    height: 30px;
+    width: 100%;
+  }
+  
+  .card-button_newhot a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 550;
+  }
+  
+  .card-button_newhot:hover {
+    background-color: #29a56c;
+    transition: background-color 0.3s ease-in-out;
+    cursor: pointer;
+  }
+  
+  
+  .list-productNewhot{
+      display: grid;
+      gap: 25px;
+      grid-template-columns: repeat(5, 225px);
+    }
+  
+    

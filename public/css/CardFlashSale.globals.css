@@ -1,27 +1,27 @@
-
 /* Flex CountDown Content */
 .Flex-Content_CountDown {
   padding: 10px;
   display: flex;
   justify-content: left;
   align-items: center;
-  gap:10px;
+  gap: 10px;
 }
 
-.CardPopular {
+.FlashSale {
   border-left: 4px solid #3bb77e;
   padding-left: 10px;
   font-size: 30px;
 }
 
-.Product_Popular {
+.Product_FLashSale {
   display: flex;
   width: max-content;
+  gap: 10px;
 }
 
 /* Card */
 
-.card_popular {
+.card {
   border: none;
   border-radius: 5px;
   margin: 10px;
@@ -31,47 +31,47 @@
   height: 360px;
 }
 
-.card_popular:hover {
+.card:hover {
   border: 1px solid #3bb77e;
 }
 
-.card-image_popular {
+.card-image {
   max-width: 100%;
   object-fit: cover;
   height: 160px;
   margin-left: 10px;
 }
 
-.card-content_popular {
+.card-content {
   color: #8e8e8e;
   padding-top: 10px;
   font-size: 13px;
 }
 
-.card-description_popular {
+.card-description {
   color: #8e8e8e;
   font-size: 13px;
 }
 
-.card-name_popular {
+.card-name {
   font-weight: 550;
   font-size: 15px;
   color: #253d4e;
   padding: 10px;
 }
 
-.card-price_popular {
+.card-price {
   display: flex;
   flex-direction: column;
   padding: 10px 10px;
 }
 
-.old-price_popular {
+.old-price {
   text-decoration: line-through;
   padding-bottom: 10px;
 }
 
-.card-button_popular {
+.card-button {
   border: none;
   background-color: #3bb77e;
   padding: 6px;
@@ -80,23 +80,20 @@
   width: 100%;
 }
 
-.card-button_popular a {
+.card-button a {
   color: #fff;
   text-decoration: none;
   font-weight: 550;
 }
 
-.card-button_popular:hover {
+.card-button:hover {
   background-color: #29a56c;
   transition: background-color 0.3s ease-in-out;
   cursor: pointer;
 }
 
-
-.list-productPopular {
-    display: grid;
-    gap: 25px;
-    grid-template-columns: repeat(5, 225px);
-  }
-
-  
+.list-product {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(4, 220px);
+}

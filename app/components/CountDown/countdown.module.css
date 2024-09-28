@@ -1,4 +1,4 @@
-.countdown-timer {
+.countdown_timer {
     text-align: center;
   }
   
@@ -7,7 +7,7 @@
     gap: 5px;
   }
   
-  .time-box {
+  .time_box {
     background-color: #3bb77e;
     color: #fff;
     padding: 5px;

@@ -1,0 +1,134 @@
+
+/* Footer */
+.list_footer {
+    display: grid;
+    gap: 30px;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    justify-content: space-between;
+  }
+  .ft_1 .a img {
+    max-width: 300px;
+    object-fit: cover;
+  }
+  
+  .ft_1 .a {
+    text-decoration: none;
+  }
+  .ft_2 .a {
+    text-decoration: none;
+  }
+  
+  .footer1 {
+    display: flex;
+    flex-direction: column;
+    gap: 16.3px;
+    width: 300px;
+  }
+  
+  .footer_content {
+    color: #253d4e;
+    font-weight: 600;
+    font-size: 15px;
+  }
+  
+  .footer_content span {
+    color: #3bb77e;
+    font-weight: 700;
+    font-size: 15px;
+  }
+  
+  .footer_address {
+    color: #253d4e;
+    font-size: 15px;
+  }
+  
+  .footer_hotline {
+    font-size: 15px;
+    color: #253d4e;
+    font-weight: 600;
+  }
+  
+  .footer_hotline span {
+    color: #3bb77e;
+    font-weight: 700;
+    font-size: 15px;
+  }
+  
+  .footer_email {
+    color: #253d4e;
+    font-size: 15px;
+    font-weight: 600;
+  }
+  
+  .footer_email span {
+    color: #3bb77e;
+    font-weight: 700;
+    font-size: 15px;
+  }
+  
+  .footer_opendoor {
+    color: #253d4e;
+    font-weight: 600;
+    font-size: 15px;
+  }
+  
+  /* Footer2 */
+  
+  .footer2 {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding-top: 5px;
+  }
+  
+  .footer_item {
+    color: #7e7e7e;
+  }
+  
+  .footer_item:hover {
+    color: #253d4e;
+  }
+  
+  .footer_company {
+    color: #253d4e;
+    font-weight: 700;
+  }
+  
+  .media_social {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .gg_play {
+    max-width: 150px;
+    object-fit: cover;
+  }
+  
+  .gg_play:hover {
+    transform: scale(1.1);
+    z-index: 1;
+    transition: all 0.5s ease-in-out;
+  }
+  
+  .app_store {
+    max-width: 150px;
+    object-fit: cover;
+  }
+  
+  .app_store:hover {
+    transform: scale(1.1);
+    z-index: 1;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .copyright {
+    color: #7e7e7e;
+    text-align: center;
+    padding: 10px;
+    font-size: 20px;
+  }
+  
+  .copyright:hover {
+    color: #253d4e;
+  }
+  

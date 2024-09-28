@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import "@/public/css/countdown.globals.css";
+import style from "./countdown.module.css";
 export default function Countdown({ targetDate }) {
   const calculateTimeLeft = () => {
     const now = new Date();
@@ -48,21 +48,21 @@ export default function Countdown({ targetDate }) {
   }, [mounted, targetDate]);
   return (
     <div>
-      <div className="countdown-timer">
-        <div className="timer">
-          <span className="time-box">
+      <div className={style.countdown_timer}>
+        <div className={style.timer}>
+          <span className={style.time_box}>
             {String(timeLeft.days).padStart(2, "0")}
           </span>
-          <span className="doubledot">:</span>
-          <span className="time-box">
+          <span className={style.doubledot}>:</span>
+          <span className={style.time_box}>
             {String(timeLeft.hours).padStart(2, "0")}
           </span>
-          <span className="doubledot">:</span>
-          <span className="time-box">
+          <span className={style.doubledot}>:</span>
+          <span className={style.time_box}>
             {String(timeLeft.minutes).padStart(2, "0")}
           </span>
-          <span className="doubledot">:</span>
-          <span className="time-box">
+          <span className={style.doubledot}>:</span>
+          <span className={style.time_box}>
             {String(timeLeft.seconds).padStart(2, "0")}
           </span>
         </div>

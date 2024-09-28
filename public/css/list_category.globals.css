@@ -1,0 +1,67 @@
+.category_content {
+    border-left: 4px solid #3bb77e;
+    padding-left: 10px;
+    font-size: 30px;
+  }
+  
+  /* Main Category */
+  
+  .list_category li .a {
+    text-decoration: none;
+    
+  }
+  
+  .list_category li .a h3 {
+    color: #253d4e;
+    font-size: 20px;
+    padding: 5px;
+  }
+  
+  /* styles.css */
+  .list_category {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    overflow-x: auto;
+    scrollbar-color: transparent transparent;
+    scroll-behavior: smooth;
+    user-select: none;
+    -webkit-user-select: none;
+    cursor: grab;
+    padding: 15px;
+  }
+  
+  .list_category::-webkit-scrollbar {
+    width: 0;
+  }
+  
+  .list_category.active {
+    cursor: grabbing;
+    cursor: -webkit-grabbing;
+  }
+  
+  .list_category li {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 150px; /* Điều chỉnh chiều rộng tối thiểu */
+    margin-right: 10px;
+    text-align: center;
+    user-select: none;
+    scroll-snap-align: start;
+    list-style: none;
+  }
+  
+  .list_category img {
+    width: 80px; /* Điều chỉnh kích thước ảnh */
+    height: auto; /* Điều chỉnh kích thước ảnh */
+    object-fit: cover;
+    /* margin-bottom: 10px;  */
+  }
+  
+  .list_category h3 {
+    font-size: 16px; /* Điều chỉnh kích thước chữ */
+    margin: 0;
+  }
+  

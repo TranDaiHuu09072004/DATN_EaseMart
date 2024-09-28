@@ -283,6 +283,56 @@
       "sale_price": 86000,
       "description": "Sản phẩm lẩu được làm sẵn, thích hợp cho những ngày bận rộn",
       "category": "popular"
+    },
+    {
+      "id": "29",
+      "img": "assets/img/product-popular6.svg",
+      "content": "Thực phẩm chế biến sẵn",
+      "name": "Cà phê sữa G7 3in1 336g ",
+      "price": 80000,
+      "sale_price": 72500,
+      "description": "Cà phê sữa G7 3in1 ",
+      "category": "related_products"
+    },
+    {
+      "id": "30",
+      "img": "assets/img/product-popular7.svg",
+      "content": "Đồ uống",
+      "name": "Lốc 4 hộp sữa lúa mạch milo 180ml",
+      "price": 45000,
+      "sale_price": 30000,
+      "description": "Lốc 4 hộp sữa lúa mạch milo 180ml, hàm lượng dinh dưỡng cao",
+      "category": "related_products"
+    },
+    {
+      "id": "31",
+      "img": "assets/img/product-popular8.svg",
+      "content": "Thực phẩm chế biến sẵn",
+      "name": "Muối ớt chanh Dh Foods 200g",
+      "price": 27000,
+      "sale_price": 22000,
+      "description": "Muối ớt chanh Dh Foods 200g, ngon hơn khi chấm với hải sản",
+      "category": "related_products"
+    },
+    {
+      "id": "32",
+      "img": "assets/img/product-popular9.svg",
+      "content": "Thực phẩm tươi sống",
+      "name": "Tôm càng xanh tươi sống 500g, tươi rói",
+      "price": 85000,
+      "sale_price": 69000,
+      "description": "Snack da gà chiên giòn vị Tomyum Dorkbua gói 30g",
+      "category": "related_products"
+    },
+    {
+      "id": "33",
+      "img": "assets/img/product-popular10.svg",
+      "content": "Thực phẩm chế biến sẵn",
+      "name": "Lẩu thái SG Food 500g",
+      "price": 95000,
+      "sale_price": 86000,
+      "description": "Sản phẩm lẩu được làm sẵn, thích hợp cho những ngày bận rộn",
+      "category": "related_products"
     }
   ]
 }

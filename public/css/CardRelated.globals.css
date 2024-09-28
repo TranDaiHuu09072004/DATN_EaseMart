@@ -1,0 +1,102 @@
+
+/* Flex CountDown Content */
+.Flex-related_products {
+    padding: 10px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap:10px;
+  }
+  
+  .CardRelated_products {
+    border-left: 4px solid #3bb77e;
+    padding-left: 10px;
+    font-size: 30px;
+  }
+  
+  .Product_Related {
+    display: flex;
+    width: max-content;
+  }
+  
+  /* Card */
+  
+  .card_related{
+    border: none;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+    max-width: 200px;
+    display: inline-block;
+    height: 360px;
+  }
+  
+  .card_related:hover {
+    border: 1px solid #3bb77e;
+  }
+  
+  .card-image_related{
+    max-width: 100%;
+    object-fit: cover;
+    height: 160px;
+    margin-left: 10px;
+  }
+  
+  .card-content_related {
+    color: #8e8e8e;
+    padding-top: 10px;
+    font-size: 13px;
+  }
+  
+  .card-description_related {
+    color: #8e8e8e;
+    font-size: 13px;
+  }
+  
+  .card-name_related {
+    font-weight: 550;
+    font-size: 15px;
+    color: #253d4e;
+    padding: 10px;
+  }
+  
+  .card-price_related {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 10px;
+  }
+  
+  .old-price_related {
+    text-decoration: line-through;
+    padding-bottom: 10px;
+  }
+  
+  .card-button_related {
+    border: none;
+    background-color: #3bb77e;
+    padding: 6px;
+    border-radius: 5px;
+    height: 30px;
+    width: 100%;
+  }
+  
+  .card-button_related a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 550;
+  }
+  
+  .card-button_related:hover {
+    background-color: #29a56c;
+    transition: background-color 0.3s ease-in-out;
+    cursor: pointer;
+  }
+  
+  
+  .list-productRelated {
+      display: grid;
+      gap: 25px;
+      grid-template-columns: repeat(5, 220px);
+    }
+  
+    
