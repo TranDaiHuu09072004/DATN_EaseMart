@@ -1,5 +1,6 @@
 .sidebar {
   width: 100%;
+
   .box-list-cate {
     list-style: none;
     margin: 0;
@@ -38,13 +39,13 @@
 
       /* Màu của thanh cuộn */
       &::-webkit-scrollbar-thumb {
-        background: #888; /* Màu của thanh cuộn */
+        background: #c3c3c3; /* Màu của thanh cuộn */
         border-radius: 6px; /* Bo góc cho thanh cuộn */
       }
 
       /* Hiệu ứng hover */
       &::-webkit-scrollbar-thumb:hover {
-        background: #555; /* Màu khi hover */
+        background: #979696; /* Màu khi hover */
       }
       .item {
         padding: 10px 5px;
@@ -86,6 +87,58 @@
         cursor: pointer;
       }
     }
+    .list-brand {
+      box-shadow: rgba(27, 31, 35, 0.04) 0px 1px 0px,
+        rgba(255, 255, 255, 0.25) 0px 1px 0px inset;
+      margin-top: 2px;
+      display: flex;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      max-height: 760px;
+      overflow-y: scroll;
+      &::-webkit-scrollbar {
+        width: 4px; /* Chiều rộng thanh cuộn dọc */
+        height: 12px; /* Chiều cao thanh cuộn ngang */
+      }
+
+      /* Màu nền của thanh cuộn */
+      &::-webkit-scrollbar-track {
+        background: #f1f1f1; /* Màu nền của track */
+      }
+
+      /* Màu của thanh cuộn */
+      &::-webkit-scrollbar-thumb {
+        background: #c3c3c3; /* Màu của thanh cuộn */
+        border-radius: 6px; /* Bo góc cho thanh cuộn */
+      }
+
+      /* Hiệu ứng hover */
+      &::-webkit-scrollbar-thumb:hover {
+        background: #979696; /* Màu khi hover */
+      }
+      a {
+        flex-basis: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 76px;
+        border: 1px solid transparent;
+        &:hover {
+          border: 1px solid #fdcd66;
+        }
+        img {
+          width: 70%;
+        }
+      }
+    }
+  }
+  .title-filter {
+    font-size: 20px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    text-align: center;
+    font-weight: 600;
+    color: #3bb77e;
   }
   .price-range-container {
     text-align: center;
