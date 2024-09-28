@@ -1,0 +1,153 @@
+.sidebar {
+  width: 100%;
+  .box-list-cate {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .title {
+      padding: 10px 7px;
+      font-size: 22px;
+      font-weight: 600;
+      color: #fff;
+      background-color: #3bb77e;
+      display: flex;
+      justify-content: space-between;
+      .down {
+        text-align: end;
+        cursor: pointer;
+      }
+    }
+    .list-cate {
+      box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+      padding: 5px;
+      margin-top: 5px;
+      overflow-y: auto;
+      animation: myAnimation 0.2s ease-in-out forwards;
+      &::-webkit-scrollbar {
+        width: 4px; /* Chiều rộng thanh cuộn dọc */
+        height: 12px; /* Chiều cao thanh cuộn ngang */
+      }
+
+      /* Màu nền của thanh cuộn */
+      &::-webkit-scrollbar-track {
+        background: #f1f1f1; /* Màu nền của track */
+      }
+
+      /* Màu của thanh cuộn */
+      &::-webkit-scrollbar-thumb {
+        background: #888; /* Màu của thanh cuộn */
+        border-radius: 6px; /* Bo góc cho thanh cuộn */
+      }
+
+      /* Hiệu ứng hover */
+      &::-webkit-scrollbar-thumb:hover {
+        background: #555; /* Màu khi hover */
+      }
+      .item {
+        padding: 10px 5px;
+        display: flex;
+        align-items: center;
+        img {
+          width: 45px;
+          margin-right: 15px;
+        }
+        a {
+          color: #333;
+          text-decoration: none;
+        }
+        &:not(:last-child) {
+          border-bottom: 1px solid #e6e6e6;
+        }
+      }
+    }
+  }
+  .box-list-brand {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .title {
+      padding: 10px 7px;
+      font-size: 22px;
+      font-weight: 600;
+      color: #fff;
+      background-color: #3bb77e;
+      display: flex;
+      justify-content: space-between;
+      .down {
+        text-align: end;
+        cursor: pointer;
+      }
+    }
+  }
+  .price-range-container {
+    text-align: center;
+    margin: 20px;
+  }
+
+  .price-range-container h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  .box-filter-price {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+    .input-group {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .input-group input {
+      width: 80px;
+      padding: 5px;
+      margin: 0 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      text-align: center;
+      outline: none;
+    }
+
+    .input-group span {
+      margin: 0 5px;
+      font-size: 24px;
+    }
+
+    .apply-button {
+      background-color: #3bb77e;
+      color: white;
+      border: none;
+      padding: 5px 15px;
+      border-radius: 20px;
+      margin: 0 auto;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .apply-button:hover {
+      background-color: #36a370;
+    }
+  }
+}
+
+@keyframes myAnimation {
+  0% {
+    // opacity: 0; /* Bắt đầu với độ trong suốt = 0 */
+    height: 0px;
+  }
+  100% {
+    // opacity: 1; /* Độ trong suốt = 1 (hoàn toàn hiển thị) */
+    height: 370px;
+  }
+}
