@@ -1,6 +1,6 @@
-import React from 'react';
-import Link from 'next/link';
-import styles from './dangky.module.css'; // Import CSS module
+import React from "react";
+import Link from "next/link";
+import styles from "./dangky.module.css";
 
 export default function DangKy() {
   return (
@@ -12,21 +12,49 @@ export default function DangKy() {
         </div>
         <h2 className={styles.heading}>Đăng ký ngay để trở thành hội viên</h2>
         <form>
-          <input type="text" className={styles.inputField} placeholder="Nhập họ và tên" required />
-          <input type="email" className={styles.inputField} placeholder="Nhập email" required />
-          <input type="password" className={styles.inputField} placeholder="Nhập mật khẩu" required />
-          <input type="password" className={styles.inputField} placeholder="Nhập lại mật khẩu" required />
+          <input
+            type="text"
+            className={styles.inputField}
+            placeholder="Nhập họ và tên"
+            required
+          />
+          <input
+            type="email"
+            className={styles.inputField}
+            placeholder="Nhập email"
+            required
+          />
+          <input
+            type="password"
+            className={styles.inputField}
+            placeholder="Nhập mật khẩu"
+            required
+          />
+          <input
+            type="password"
+            className={styles.inputField}
+            placeholder="Nhập lại mật khẩu"
+            required
+          />
           <p className={styles.formText}>
-            Bằng việc chọn vào Đăng Ký, bạn đồng ý với các điều kiện áp dụng của EaseMart để trở thành hội viên của chúng tôi.
+            Bằng việc chọn vào Đăng Ký, bạn đồng ý với các điều kiện áp dụng của
+            EaseMart để trở thành hội viên của chúng tôi.
           </p>
-          <button type="submit" className={styles.signupBtn}>Đăng Ký</button>
+          <button type="submit" className={styles.signupBtn}>
+            Đăng Ký
+          </button>
         </form>
         <div className={styles.socialLogin}>
           <p>hoặc</p>
           <button className={styles.facebookBtn}>Facebook</button>
           <button className={styles.googleBtn}>Google</button>
         </div>
-        <p className={styles.linkContainer}>Đã có tài khoản vui lòng <Link href="#" className={styles.link}>đăng nhập ngay</Link></p>
+        <p className={styles.linkContainer}>
+          Đã có tài khoản vui lòng{" "}
+          <Link href="#" className={styles.link}>
+            đăng nhập ngay
+          </Link>
+        </p>
       </div>
     </div>
   );

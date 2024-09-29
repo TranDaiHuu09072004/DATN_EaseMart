@@ -30,7 +30,7 @@ export default function Header() {
             </span>
             <span>
               <Link href="/dangky" className={styles.a}>
-              <h2 className={styles.heading}>Đăng ký hội viên</h2>
+                <h2 className={styles.heading}>Đăng ký hội viên</h2>
               </Link>
             </span>
           </div>
@@ -45,8 +45,8 @@ export default function Header() {
             <li className={pathname === "/vechungtoi" ? "active" : ""}>
               <Link href="/vechungtoi">Về Chúng Tôi</Link>
             </li>
-            <li className={pathname === "/cuahang" ? "active" : ""}>
-              <Link href="/cuahang">Cửa hàng</Link>
+            <li className={pathname === "/product" ? "active" : ""}>
+              <Link href="/product">Cửa hàng</Link>
             </li>
             <li className={pathname === "/khuyenmai" ? "active" : ""}>
               <Link href="/khuyenmai">Khuyến mãi</Link>
