@@ -9,8 +9,15 @@ import { useState } from "react";
 const cx = classNames.bind(styles);
 const Sidebar = () => {
   const [showCate, setShowCate] = useState(true);
+  const [showBrand, setShowBrand] = useState(true);
   const handleToggleCate = () => {
     setShowCate(!showCate);
+  };
+
+  const handleShowBrand = () => {
+    console.log("check", showBrand);
+
+    setShowBrand(!showBrand);
   };
   return (
     <div className={cx("sidebar")}>
@@ -53,11 +60,46 @@ const Sidebar = () => {
       <div className={cx("box-list-brand")}>
         <div className={cx("title")}>
           Thương hiệu{" "}
-          <span className={cx("down")}>
+          <span className={cx("down")} onClick={handleShowBrand}>
             <FontAwesomeIcon icon={faAngleDown} />
           </span>
         </div>
+        {showBrand && (
+          <div className={cx("list-brand")}>
+            <Link href="#">
+              <img src="assets/img/brands/1.svg" />
+            </Link>
+            <Link href="#">
+              <img src="assets/img/brands/2.png" />
+            </Link>
+            <Link href="#">
+              <img src="assets/img/brands/1.svg" />
+            </Link>
+            <Link href="#">
+              <img src="assets/img/brands/1.svg" />
+            </Link>
+            <Link href="#">
+              <img src="assets/img/brands/2.png" />
+            </Link>
+            <Link href="#">
+              <img src="assets/img/brands/1.svg" />
+            </Link>
+            <Link href="#">
+              <img src="assets/img/brands/1.svg" />
+            </Link>
+            <Link href="#">
+              <img src="assets/img/brands/2.png" />
+            </Link>
+            <Link href="#">
+              <img src="assets/img/brands/1.svg" />
+            </Link>
+            <Link href="#">
+              <img src="assets/img/brands/1.svg" />
+            </Link>
+          </div>
+        )}
       </div>
+      <h3 className={cx("title-filter")}>Khoản giá </h3>
       <div className={cx("box-filter-price")}>
         <div className={cx("input-group")}>
           <input type="text" placeholder="Từ" />
