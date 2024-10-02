@@ -146,7 +146,7 @@
   flex-wrap: wrap;
   gap: 5px;
   .product-item {
-    width: 256px;
+    width: 250px;
     height: 376px;
     background-color: #fff;
     border-radius: 7px;
@@ -215,6 +215,7 @@
 .title {
   font-size: 32px;
   font-weight: 600;
+  margin-bottom: 10px;
 }
 .gap {
   margin-top: 20px;

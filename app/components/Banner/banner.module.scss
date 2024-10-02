@@ -6,11 +6,80 @@
   border-radius: 10px;
   display: flex;
   gap: 5px;
+
   .main {
     display: block;
+    height: 370px;
+    margin: 0 auto;
     width: 79%;
-    img {
+    padding: 25px;
+    padding-top: 0;
+    overflow: hidden;
+    button {
+      // background-color: #3bb77e;
+      border-radius: 50%;
+      display: flex !important;
+      justify-content: center;
+      align-items: center;
+      &::before,
+      &::after {
+        color: #00a659;
+      }
+    }
+    .slick-next {
+      right: 25px !important;
+    }
+    //   // position: absolute; /* Đặt vị trí tuyệt đối để có thể sử dụng left và right */
+    //   // z-index: 3; /* Đảm bảo nút nằm trên các phần tử khác */
+    //   // // transform: translateY(-50%); /* Căn chỉnh nút vào giữa theo chiều dọc */
+    //   background-color: #3bb77e;
+    //   color: #fff;
+    //   width: 40px;
+    //   height: 40px;
+    //   display: flex;
+    //   align-items: center;
+    //   border-radius: 50%;
+    //   border: none;
+    //   outline: none;
+    //   font-size: 16px;
+    //   cursor: pointer;
+    // }
+
+    // .left {
+    //   left: -20px; /* Đặt ở phía trái */
+    //   justify-content: right;
+    // }
+
+    // .right {
+    //   right: -20px; /* Đặt ở phía phải */
+    //   justify-content: left;
+    // }
+    a {
+      display: block;
       width: 100%;
+    }
+    .box-scroll {
+      scroll-behavior: smooth; /* Thêm thuộc tính này để đảm bảo cuộn mượt mà */
+      overflow-x: auto; /* Bảo đảm rằng thanh cuộn ngang hiện ra khi cần */
+      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none;
+      white-space: nowrap;
+      width: 100%;
+      display: flex;
+      // gap: 10px;
+      position: relative;
+
+      img {
+        display: block;
+        width: 100%;
+        margin: 5px;
+        &:first-child {
+          margin-left: 0;
+        }
+        &:last-child {
+          margin-right: 0;
+        }
+      }
     }
   }
   .sub {
