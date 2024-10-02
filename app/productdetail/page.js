@@ -1,166 +1,226 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+// import axios from "axios";
 import Link from "next/link";
 import styles from "./productdetail.module.css";
 export default function ProductDetail() {
-  const [related_products, setRelated_products] = useState([]);
-  useEffect(() => {
-    axios
-      .get("http://localhost:3000/products")
-      .then((res) => {
-        const ProductRelated = res.data.filter(
-          (item) => item.category === "related_products"
-        );
-        setRelated_products(ProductRelated);
-      })
-      .catch((err) => {
-        console.log("Fetching is Failed", err);
-      });
-  }, []);
+  // const [related_products, setRelated_products] = useState([]);
+  // useEffect(() => {
+  //   axios
+  //     .get("http://localhost:3000/products")
+  //     .then((res) => {
+  //       const ProductRelated = res.data.filter(
+  //         (item) => item.category === "related_products"
+  //       );
+  //       setRelated_products(ProductRelated);
+  //     })
+  //     .catch((err) => {
+  //       console.log("Fetching is Failed", err);
+  //     });
+  // }, []);
   return (
     <div>
       <div className="container">
-        <ul className={styles.pr_detail}>
-          <li>
-            <img
-              src="assets/img/icon_pr--detail.svg"
-              alt=""
-              width={30}
-              height={30}
-            />
-          </li>
-          <li>
-            <Link href="/" className="a">
-              Trang Chủ
-            </Link>
-          </li>
-          <li>
-            <i class="fa-solid fa-chevron-right"></i>
-          </li>
-          <li>
-            <span className="name_productdetail">Chi tiết sản phẩm</span>
-          </li>
-        </ul>
-        <div className={styles.box_product__detail}>
-          <div className={styles.product_detail__img}>
-            <img src="assets/img/pr_detail.svg" alt="" className="img_detail" />
-            <div className={styles.image_small}>
+        <section className={styles.product_detail}>
+          <div className={styles.product_img_left}>
+            <img src="assets/img/pr_detail.svg" alt="" />
+            <div className={styles.img_small}>
               <img src="assets/img/pr_detail1.svg" alt="" />
-              <img src="assets/img/pr_detail2.svg" alt="" />
-              <img src="assets/img/pr_detail3.svg" alt="" />
+              <img src="assets/img/pr_detail1.svg" alt="" />
+              <img src="assets/img/pr_detail1.svg" alt="" />
             </div>
           </div>
-
-          <div className={styles.content_product__detail}>
-            <h3 className={styles.name_detail}>
-              24 lon nước tăng lực Redbull 250ml
+          <div className={styles.product_content_right}>
+            <h3 className={styles.product_name_detail}>
+              Gà Giòn Cổ Điển Foster Farms Takeout
             </h3>
-            <div className={styles.price_detail}>
-              <span className={styles.price}>230,000đ</span>
-              <span className={styles.sale_price}>208,000đ</span>
-            </div>
-            <p className={styles.inforproduct}>
-              Nước tăng lực Redbull có thành phần tự nhiên, thơm ngon, sảng
-              khoái. Thùng 24 lon nước tăng lực Redbull 250ml cung cấp nước,
-              năng lượng, vitamin và các khoáng chất cho cơ thể, cho bạn nguồn
-              năng lượng mạnh mẽ, xua tan mệt mỏi. Nước tăng lực không đường hóa
-              học, không hóa chất, đảm bảo an toàn
-            </p>
-            <span>
-              Còn lại:<strong style={{ fontWeight: 550 }}>20</strong>
-            </span>
-            <div className={styles.btn_input}>
-              <input type="number" value={1} className={styles.quantity} />
-              <button className={styles.addCart}>
-                <Link href="" className={styles.a}>
-                  Thêm vào giỏ hàng
-                </Link>
-              </button>
-              <button className={styles.buynow}>
-                <Link href="" className={styles.a}>
-                  Mua ngay
-                </Link>
-              </button>
-            </div>
-            <span className={styles.code_product}>SKU:ESM12B4A</span>
-            <span className={styles.category_product}></span>
-
-            <div className={styles.product_info}>
-              <h3>Thông tin sản phẩm</h3>
-              <p>
-                Nước tăng lực Redbull có thành phần tự nhiên, thơm ngon, sảng
-                khoái. Thùng 24 lon nước tăng lực Redbull 250ml cung cấp nước,
-                năng lượng, vitamin và các khoáng chất cho cơ thể, cho bạn nguồn
-                năng lượng mạnh mẽ, xua tan mệt mỏi. Nước tăng lực không đường
-                hóa học, không hóa chất, đảm bảo an toàn
-              </p>
-              <ul className={styles.detail_infor}>
-                <li>Thương hiệu: Redbull (Thái Lan)</li>
-                <li>Sản xuất tại: Việt Nam</li>
-                <li>
-                  Nguyên liệu chính: Nước, đường, chất điều chỉnh độ axit, hương
-                  liệu trái cây hỗn hợp, vitamin B5, vitamin B6, vitamin B12,...
-                </li>
-                <li>Thể tích: 250ml.</li>
-                <li>
-                  Hướng dẫn sử dụng: Lắc nhẹ trước khi uống, dùng ngay sau khi
-                  mở nắp. Ngon hơn khi uống lạnh.
-                </li>
-                <li>
-                  Bảo quản: Để nơi khô ráo, thoáng mát, tránh ánh sáng trực tiếp
-                  hoặc nơi có nhiệt độ cao.
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <section className="related_products">
-          <div className="container">
-            <h3 className="CardRelated_products">Sản Phẩm Gợi Ý</h3>
-            <section className="Product_Related">
-              <div className="list-productRelated">
-                {related_products.map((item) => {
-                  return (
-                    <>
-                      <div className="card_related" key={item.id}>
-                        <img
-                          className="card-image_related"
-                          src={item.img}
-                          alt={item.name}
-                        />
-                        <div className="card-price_related">
-                          <span className="old-price_related">
-                            {item.price.toLocaleString()}đ
-                          </span>
-                          <span
-                            className="new-price_related"
-                            style={{
-                              color: "#FED070",
-                              fontWeight: 700,
-                              fontSize: 35,
-                              marginLeft: 25,
-                            }}
-                          >
-                            {item.sale_price.toLocaleString()}đ
-                          </span>
-                        </div>
-                        <h4 className="card-name_related">{item.name}</h4>
-                        <button className="card-button_related">
-                          <Link href="/productdetail" className="a">
-                            Thêm vào giỏ hàng
-                          </Link>
-                        </button>
-                      </div>
-                    </>
-                  );
-                })}
+            <div class={styles.product_price}>
+              <div>
+                <span class={styles.price_label}>Giá niêm yết</span>
+                <span class={styles.price_original}>27.000đ</span>
               </div>
-              {/* </div> */}
-            </section>
+              <div>
+                {" "}
+                <span class={styles.price_label}>Giá khuyến mãi</span>
+                <span class={styles.price_discount}>22.000đ</span>
+              </div>
+              <div
+                style={{
+                  paddingBottom: 10,
+                  borderTop: "1px solid rgba(0, 0, 0, .12)",
+                }}
+              >
+                <span class={styles.price_label}>Tình trạng</span>
+                <span class={styles.product_status}>Còn hàng</span>
+              </div>
+            </div>
+            <div
+              className={styles.flex_shipping}
+              style={{
+                paddingBottom: 10,
+                borderBottom: "1px solid rgba(0, 0, 0, .12)",
+              }}
+            >
+              <span class={styles.name}> Vận chuyển</span>
+              <div>
+                <h3 className={styles.free_shipping}>
+                  Miễn phí giao hàng cho đơn hàng từ 300.000đ{" "}
+                </h3>
+                <h3 className={styles.free_shipping}>Giao hàng trong 2 giờ</h3>
+              </div>
+            </div>
+            <div className={styles.sku}>
+              <span className={styles.name}>Mã hàng</span>
+              <span className={styles.code_sku}>ESM12AB30</span>
+            </div>
+            <div className={styles.quantity}>
+              <span className={styles.name}>Số lượng</span>
+              <div className={styles.flex_quantity}>
+                <button className={styles.downcount}>-</button>
+                <button className={styles.updatecount}>1</button>
+                <button className={styles.upcount}>+</button>
+              </div>
+            </div>
+            <button className={styles.btn_addCart}>
+              <i class="fa-solid fa-cart-shopping"></i> Thêm vào giỏ hàng
+            </button>
           </div>
         </section>
-        <h3 className="comment_product">Bình luận về sản phẩm</h3>
+        <div className={styles.content_infor}>
+          <div className={styles.product_description}>
+            <h3>Mô tả</h3>
+            <p>Gà Giòn Cổ Điển Foster Farms Takeout .</p>
+            <ul>
+              <li>Hương vị: Cổ điển, đậm đà.</li>
+              <li>Giá trị dinh dưỡng:</li>
+              <ul>
+                <li>Cung cấp protein từ thịt gà.</li>
+                <li>Không chứa chất bảo quản và màu nhân tạo.</li>
+              </ul>
+              <li>
+                Kích thước: Trọng lượng tịnh: (cần thêm thông tin cụ thể về
+                trọng lượng).
+              </li>
+              <li>Chứng nhận: Đạt tiêu chuẩn an toàn vệ sinh thực phẩm.</li>
+            </ul>
+          </div>
+
+          {/* New Information Section */}
+          <div className={styles.product_info}>
+            <h3>Thông tin</h3>
+            <table>
+              <tbody>
+                <tr>
+                  <td>Xuất Xứ</td>
+                  <td>Việt Nam</td>
+                </tr>
+                <tr>
+                  <td>Thành phần</td>
+                  <td>Thịt gà tươi, lớp bột giòn vàng rụm.</td>
+                </tr>
+                <tr>
+                  <td>Hướng dẫn sử dụng</td>
+                  <td>
+                    Lò nướng: Làm nóng lò trước ở 220°C, nướng 20-25 phút.
+                    <br />
+                    Chảo chiên: Làm nóng dầu, chiên gà đến khi vàng rụm.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <section className={styles.product_related}>
+          <h3 className={styles.product_title_related}>Sản phẩm liên quan</h3>
+          <ul className={styles.list_productrelate}>
+            <li className={styles.item_productrelate}>
+              <Link href="" className={styles.a}>
+                <img src="assets/img/product_hotnew1.svg" alt="" />
+              </Link>
+              <h3 className={styles.name_productrelated}>
+                <Link href="" className={styles.a}>
+                  Sản phẩm 1
+                </Link>
+              </h3>
+              <span className={styles.unitofmeasurement}>ĐVT: Chai</span>
+              <h5 className={styles.price_related}>15.000đ</h5>
+              <button className={styles.btn_addRelated}>
+                <Link href="" className={styles.a}>
+                  <i class="fa-solid fa-cart-shopping"></i> Thêm vào giỏ
+                </Link>
+              </button>
+            </li>
+            <li className={styles.item_productrelate}>
+              <Link href="" className={styles.a}>
+                <img src="assets/img/product_hotnew2.svg" alt="" />
+              </Link>
+              <h3 className={styles.name_productrelated}>
+                <Link href="" className={styles.a}>
+                  Sản phẩm 2
+                </Link>
+              </h3>
+              <span className={styles.unitofmeasurement}>ĐVT: Chai</span>
+              <h5 className={styles.price_related}>15.000đ</h5>
+              <button className={styles.btn_addRelated}>
+                <Link href="" className={styles.a}>
+                  <i class="fa-solid fa-cart-shopping"></i> Thêm vào giỏ
+                </Link>
+              </button>
+            </li>
+            <li className={styles.item_productrelate}>
+              <Link href="" className={styles.a}>
+                <img src="assets/img/product_hotnew3.svg" alt="" />
+              </Link>
+              <h3 className={styles.name_productrelated}>
+                <Link href="" className={styles.a}>
+                  Sản phẩm 3
+                </Link>
+              </h3>
+              <span className={styles.unitofmeasurement}>ĐVT: Chai</span>
+              <h5 className={styles.price_related}>15.000đ</h5>
+              <button className={styles.btn_addRelated}>
+                <Link href="" className={styles.a}>
+                  <i class="fa-solid fa-cart-shopping"></i> Thêm vào giỏ
+                </Link>
+              </button>
+            </li>
+            <li className={styles.item_productrelate}>
+              <Link href="" className={styles.a}>
+                <img src="assets/img/product_hotnew4.svg" alt="" />
+              </Link>
+              <h3 className={styles.name_productrelated}>
+                <Link href="" className={styles.a}>
+                  Sản phẩm 4
+                </Link>
+              </h3>
+              <span className={styles.unitofmeasurement}>ĐVT: Chai</span>
+              <h5 className={styles.price_related}>15.000đ</h5>
+              <button className={styles.btn_addRelated}>
+                <Link href="" className={styles.a}>
+                  <i class="fa-solid fa-cart-shopping"></i> Thêm vào giỏ
+                </Link>
+              </button>
+            </li>
+            <li className={styles.item_productrelate}>
+              <Link href="" className={styles.a}>
+                <img src="assets/img/product_hotnew5.svg" alt="" />
+              </Link>
+              <h3 className={styles.name_productrelated}>
+                <Link href="" className={styles.a}>
+                  Sản phẩm 5
+                </Link>
+              </h3>
+              <span className={styles.unitofmeasurement}>ĐVT: Chai</span>
+              <h5 className={styles.price_related}>15.000đ</h5>
+              <button className={styles.btn_addRelated}>
+                <Link href="" className={styles.a}>
+                  <i class="fa-solid fa-cart-shopping"></i> Thêm vào giỏ
+                </Link>
+              </button>
+            </li>
+          </ul>
+        </section>
+        <h3 className={styles.comment_product}>Bình luận về sản phẩm</h3>
         <div class="comment-section">
           <div class="comment-box">
             <div class="user-input">
