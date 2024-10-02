@@ -1,23 +1,8 @@
 "use client";
-import React, { useState, useEffect } from "react";
-// import axios from "axios";
+import React from "react";
 import Link from "next/link";
 import styles from "./productdetail.module.css";
 export default function ProductDetail() {
-  // const [related_products, setRelated_products] = useState([]);
-  // useEffect(() => {
-  //   axios
-  //     .get("http://localhost:3000/products")
-  //     .then((res) => {
-  //       const ProductRelated = res.data.filter(
-  //         (item) => item.category === "related_products"
-  //       );
-  //       setRelated_products(ProductRelated);
-  //     })
-  //     .catch((err) => {
-  //       console.log("Fetching is Failed", err);
-  //     });
-  // }, []);
   return (
     <div>
       <div className="container">
@@ -220,7 +205,7 @@ export default function ProductDetail() {
             </li>
           </ul>
         </section>
-        <h3 className={styles.comment_product}>Bình luận về sản phẩm</h3>
+        <h3 className="comment-product">Bình luận về sản phẩm</h3>
         <div class="comment-section">
           <div class="comment-box">
             <div class="user-input">

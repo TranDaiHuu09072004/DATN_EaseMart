@@ -239,16 +239,16 @@
 }
 
 .item_productrelate {
-  width: 236px;
+  width: 256px;
   border-radius: 5px;
   border: 1px solid #ddd;
-  padding: 10px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 10px;
   background-color: #fff;
   margin: 10px 0;
-  height: auto;
+  height: 376px;
 }
 
 .item_productrelate img {
@@ -299,26 +299,4 @@
   font-weight: 550;
 }
 
-.comment_product {
-  font-size: 20px;
-  font-weight: 550;
-  margin-left: 20px;
-  margin-bottom: 10px;
-}
 
-.comment_section {
-  margin: 20px 0; /* Khoảng cách trên và dưới cho phần bình luận */
-  padding: 15px; /* Padding cho phần bình luận */
-  border: 1px solid #ddd; /* Đường viền cho phần bình luận */
-  border-radius: 8px; /* Bo góc cho phần bình luận */
-  background-color: #f9f9f9; /* Màu nền cho phần bình luận */
-}
-
-.comment_product {
-  font-size: 20px; /* Kích thước chữ cho tiêu đề bình luận */
-  font-weight: 550; /* Độ đậm của chữ */
-  margin-left: 20px; /* Khoảng cách bên trái */
-  margin-bottom: 10px; /* Khoảng cách bên dưới */
-  color: #333; /* Màu chữ cho bình luận */
-  line-height: 1.5; /* Chiều cao dòng để dễ đọc */
-}

@@ -4,11 +4,16 @@
     padding: 15px;
     border-radius: 5px;
     background-color: #f9f9f9;
+    margin-bottom: 10px;
   }
   
-  .comment_product {
-    font-size: 25px;
-    margin-bottom: 15px;
+  .comment-product {
+    font-size: 20px; /* Kích thước chữ cho tiêu đề bình luận */
+    font-weight: 550; /* Độ đậm của chữ */
+    margin-left: 20px; /* Khoảng cách bên trái */
+    margin-bottom: 10px; /* Khoảng cách bên dưới */
+    color: #333; /* Màu chữ cho bình luận */
+    line-height: 1.5; /* Chiều cao dòng để dễ đọc */
   }
   
   .comment-box {
