@@ -1,65 +1,86 @@
-"use client";
+import classNames from "classnames/bind";
 import React from "react";
-import styles from "./header.module.css";
+import styles from "./header.module.scss";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCartShopping, faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faUser } from "@fortawesome/free-regular-svg-icons";
+// import { usePathname } from "next/navigation";
+import HeaderScroll from "./components/HeaderScroll";
+
+const cx = classNames.bind(styles);
 export default function Header() {
-  const pathname = usePathname();
   return (
-    <div className="header">
-      <div className={styles.header_top}>
-        <div className={styles.container}>
-          <img
-            src="assets/img/logo.png"
-            alt=""
-            className={styles.img_logo}
-            // width={250}
-          />
-          <div className={styles.input_search}>
-            <input
-              type="text"
-              placeholder="Giao đơn nhanh chóng, Giảm 10k cho khách hàng đăng ký đầu tiên"
-            />
-            <button>Tìm kiếm</button>
+    <div className={cx("box-header")}>
+      <div className="container">
+        <div className={cx("header")}>
+          <div className={cx("header-top")}>
+            <div className={cx("logo")}>
+              <img src="assets/img/home/logo.png" />
+            </div>
+            <div className={cx("search-box")}>
+              <input type="text" placeholder="Bạn muốn mua gì ..." />
+              <button>
+                <FontAwesomeIcon
+                  className={cx("icon-search")}
+                  icon={faSearch}
+                />
+              </button>
+            </div>
+            <div className={cx("cart-info")}>
+              <Link href="#" className={cx("cart")}>
+                <div className={cx("box-icon-cart")}>
+                  <FontAwesomeIcon
+                    className={cx("icon-cart")}
+                    icon={faCartShopping}
+                  />
+                  <span className={cx("count")}>0</span>
+                </div>
+                <div className={cx("title")}> Giỏ hàng</div>
+              </Link>
+              <Link href="#" className={cx("account")}>
+                <div className={cx("box-icon-account")}>
+                  <FontAwesomeIcon
+                    className={cx("icon-account")}
+                    icon={faUser}
+                  />
+                </div>
+                <div className={cx("title")}> Giỏ hàng</div>
+              </Link>
+            </div>
           </div>
-          <div className={styles.icon}>
-            <span>
-              <Link href="" className={styles.a}>
-                <i class="fa-solid fa-cart-shopping"></i> Giỏ hàng (0)
-              </Link>
-            </span>
-            <span>
-              <Link href="" className={styles.a}>
-                <i class="fa-solid fa-user"></i> Đăng ký hội viên
-              </Link>
-            </span>
+          <div className={cx("header-bot")}>
+            <ul className={cx("nav")}>
+              <li className={cx("item")}>
+                <Link href="#" className={cx("link")}>
+                  Trang chủ
+                </Link>
+              </li>
+              <li className={cx("item")}>
+                <Link href="#" className={cx("link")}>
+                  Trang chủ
+                </Link>
+              </li>
+              <li className={cx("item")}>
+                <Link href="#" className={cx("link")}>
+                  Trang chủ
+                </Link>
+              </li>
+              <li className={cx("item")}>
+                <Link href="#" className={cx("link")}>
+                  Trang chủ
+                </Link>
+              </li>
+              <li className={cx("item")}>
+                <Link href="#" className={cx("link")}>
+                  Trang chủ
+                </Link>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
-      <div className={styles.header_navbar}>
-        <div className={styles.container}>
-          <ul className={styles.listNavbar}>
-            <li className={pathname === "/" ? "active" : ""}>
-              <Link href="/">Trang Chủ</Link>
-            </li>
-            <li className={pathname === "/vechungtoi" ? "active" : ""}>
-              <Link href="/vechungtoi">Về Chúng Tôi</Link>
-            </li>
-            <li className={pathname === "/cuahang" ? "active" : ""}>
-              <Link href="/cuahang">Cửa hàng</Link>
-            </li>
-            <li className={pathname === "/khuyenmai" ? "active" : ""}>
-              <Link href="/khuyenmai">Khuyến mãi</Link>
-            </li>
-            <li className={pathname === "/page" ? "active" : ""}>
-              <Link href="/page">Trang</Link>
-            </li>
-            <li className={pathname === "/contact" ? "active" : ""}>
-              <Link href="/contact">Liên hệ</Link>
-            </li>
-          </ul>
-        </div>
-      </div>
+      <HeaderScroll />
     </div>
   );
 }
