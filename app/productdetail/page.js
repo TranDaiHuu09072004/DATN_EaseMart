@@ -6,6 +6,19 @@ export default function ProductDetail() {
   return (
     <div>
       <div className="container">
+        <div className={styles.link_home_news}>
+          <ul className={styles.list_link}>
+            <li>
+              <a href="#">Trang Chủ</a>
+            </li>
+            <li>
+              <i className="fa-solid fa-chevron-right"></i>
+            </li>
+            <li>
+              <a href="#">Gà Giòn Cổ Điển Foster Farms Takeout</a>
+            </li>
+          </ul>
+        </div>
         <section className={styles.product_detail}>
           <div className={styles.product_img_left}>
             <img src="assets/img/pr_detail.svg" alt="" />
@@ -74,7 +87,7 @@ export default function ProductDetail() {
         <div className={styles.content_infor}>
           <div className={styles.product_description}>
             <h3>Mô tả</h3>
-            <p>Gà Giòn Cổ Điển Foster Farms Takeout .</p>
+            <p>Gà Giòn Cổ Điển Foster Farms Takeout.</p>
             <ul>
               <li>Hương vị: Cổ điển, đậm đà.</li>
               <li>Giá trị dinh dưỡng:</li>
