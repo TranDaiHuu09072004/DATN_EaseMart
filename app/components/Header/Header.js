@@ -5,7 +5,6 @@ import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping, faSearch } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
-// import { usePathname } from "next/navigation";
 import HeaderScroll from "./components/HeaderScroll";
 
 const cx = classNames.bind(styles);
@@ -49,46 +48,20 @@ export default function Header() {
               </Link>
             </div>
           </div>
-<<<<<<< HEAD
+
           <div className={styles.icon}>
             <span>
               <Link href="" className={styles.a}>
-                <i class="fa-solid fa-cart-shopping"></i> Giỏ hàng (0)
+                <i className="fa-solid fa-cart-shopping"></i> Giỏ hàng (0)
               </Link>
             </span>
             <span>
               <Link href="/dangky" className={styles.a}>
-              <h2 className={styles.heading}>Đăng ký hội viên</h2>
+                <h2 className={styles.heading}>Đăng ký hội viên</h2>
               </Link>
             </span>
           </div>
-        </div>
-      </div>
-      <div className={styles.header_navbar}>
-        <div className={styles.container}>
-          <ul className={styles.listNavbar}>
-            <li className={pathname === "/" ? "active" : ""}>
-              <Link href="/">Trang Chủ</Link>
-            </li>
-            <li className={pathname === "/vechungtoi" ? "active" : ""}>
-              <Link href="/vechungtoi">Về Chúng Tôi</Link>
-            </li>
-            <li className={pathname === "/cuahang" ? "active" : ""}>
-              <Link href="/cuahang">Cửa hàng</Link>
-            </li>
-            <li className={pathname === "/khuyenmai" ? "active" : ""}>
-              <Link href="/khuyenmai">Khuyến mãi</Link>
-            </li>
-            <li className={pathname === "/page" ? "active" : ""}>
-              <Link href="/page">Trang</Link>
-            </li>
-            <li className={pathname === "/contact" ? "active" : ""}>
-              <Link href="/lienhe">Liên hệ</Link>
-            </li>
-          </ul>
-        </div>
-      </div>
-=======
+
           <div className={cx("header-bot")}>
             <ul className={cx("nav")}>
               <li className={cx("item")}>
@@ -98,22 +71,22 @@ export default function Header() {
               </li>
               <li className={cx("item")}>
                 <Link href="#" className={cx("link")}>
-                  Trang chủ
+                  Cửa hàng
                 </Link>
               </li>
               <li className={cx("item")}>
                 <Link href="#" className={cx("link")}>
-                  Trang chủ
+                  Khuyến mãi
                 </Link>
               </li>
               <li className={cx("item")}>
                 <Link href="#" className={cx("link")}>
-                  Trang chủ
+                  Về Chúng Tôi
                 </Link>
               </li>
               <li className={cx("item")}>
                 <Link href="#" className={cx("link")}>
-                  Trang chủ
+                  Liên hệ
                 </Link>
               </li>
             </ul>
@@ -121,7 +94,6 @@ export default function Header() {
         </div>
       </div>
       <HeaderScroll />
->>>>>>> origin/leducanh
     </div>
   );
 }
