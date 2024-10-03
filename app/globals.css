@@ -127,8 +127,12 @@ table {
   border-spacing: 0;
 }
 
+body{
+  background-color: #f1f1f1;
+}
 .container {
-  width: 1200px;
-  margin: 0 auto;
+  width: 1280px;
+  margin: 0px auto;
+  height: 100%;
 }
 
