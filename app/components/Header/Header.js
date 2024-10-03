@@ -55,7 +55,7 @@ export default function Header() {
               <Link href="/page">Trang</Link>
             </li>
             <li className={pathname === "/contact" ? "active" : ""}>
-              <Link href="/contact">Liên hệ</Link>
+              <Link href="/lienhe">Liên hệ</Link>
             </li>
           </ul>
         </div>

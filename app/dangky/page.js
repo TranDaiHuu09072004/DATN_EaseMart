@@ -26,7 +26,7 @@ export default function DangKy() {
           <button className={styles.facebookBtn}>Facebook</button>
           <button className={styles.googleBtn}>Google</button>
         </div>
-        <p className={styles.linkContainer}>Đã có tài khoản vui lòng <Link href="#" className={styles.link}>đăng nhập ngay</Link></p>
+        <p className={styles.linkContainer}>Đã có tài khoản vui lòng <Link href="/dangnhap" className={styles.link}>đăng nhập ngay</Link></p>
       </div>
     </div>
   );
