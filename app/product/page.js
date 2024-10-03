@@ -36,7 +36,29 @@ const Product = async () => {
             <Sidebar></Sidebar>
           </div>
           <div className={cx("content")}>
-            <div className={cx("title")}>Rau, Củ, Quả</div>
+            <div className={cx("title")}>
+              Rau, Củ, Quả
+              <div className={cx("filter")}>
+                <button className={cx("btn-filter")}>
+                  Sắp xếp theo{" "}
+                  <span>
+                    {" "}
+                    <FontAwesomeIcon icon={faAngleDown} />
+                  </span>
+                  <ul className={cx("list-filter")}>
+                    <li className={cx("item")}>
+                      <Link href="#">Theo tên</Link>
+                    </li>
+                    <li className={cx("item")}>
+                      <Link href="#">Theo tên</Link>
+                    </li>
+                    <li className={cx("item")}>
+                      <Link href="#">Theo tên</Link>
+                    </li>
+                  </ul>
+                </button>
+              </div>
+            </div>
             <div className={cx("type")}>
               <ul className={cx("menu-type")}>
                 <li className={cx("item")}>
@@ -68,30 +90,10 @@ const Product = async () => {
                     <img src="assets/img/products/image 321.png" />
                   </div>
                   <Link className={cx("item-name")} href="#">
-                    Rau lá
+                    Rau lá Rau lá Rau láRau lá
                   </Link>
                 </li>
               </ul>
-              <div className={cx("filter")}>
-                <button className={cx("btn-filter")}>
-                  Sắp xếp theo{" "}
-                  <span>
-                    {" "}
-                    <FontAwesomeIcon icon={faAngleDown} />
-                  </span>
-                  <ul className={cx("list-filter")}>
-                    <li className={cx("item")}>
-                      <Link href="#">Theo tên</Link>
-                    </li>
-                    <li className={cx("item")}>
-                      <Link href="#">Theo tên</Link>
-                    </li>
-                    <li className={cx("item")}>
-                      <Link href="#">Theo tên</Link>
-                    </li>
-                  </ul>
-                </button>
-              </div>
             </div>
             <div className={cx("product-list")}>
               <div className={cx("box-product")}>
@@ -110,12 +112,24 @@ const Product = async () => {
                     <button className={cx("btn", "addtocart")}>
                       Thêm vào giỏ hàng
                     </button>
-                    <button className={cx("btn", "buynow")}>
-                      <span>
-                        {" "}
-                        <FontAwesomeIcon icon={faCartShopping} />
-                      </span>
-                      Mua
+                  </div>
+                </div>
+              </div>
+              <div className={cx("box-product")}>
+                <div className={cx("product")}>
+                  <div className={cx("thumb")}>
+                    <img src="assets/img/products/1.svg" />
+                  </div>
+                  <Link href="#" className={cx("name")}>
+                    Lê Đức Anh
+                  </Link>
+                  <div className={cx("price")}>
+                    <div className={cx("price-reduction")}>70,000đ</div>
+                    <div className={cx("original-price")}>100,000đ</div>
+                  </div>
+                  <div className={cx("btn-action")}>
+                    <button className={cx("btn", "addtocart")}>
+                      Thêm vào giỏ hàng
                     </button>
                   </div>
                 </div>
@@ -136,12 +150,24 @@ const Product = async () => {
                     <button className={cx("btn", "addtocart")}>
                       Thêm vào giỏ hàng
                     </button>
-                    <button className={cx("btn", "buynow")}>
-                      <span>
-                        {" "}
-                        <FontAwesomeIcon icon={faCartShopping} />
-                      </span>
-                      Mua
+                  </div>
+                </div>
+              </div>
+              <div className={cx("box-product")}>
+                <div className={cx("product")}>
+                  <div className={cx("thumb")}>
+                    <img src="assets/img/products/1.svg" />
+                  </div>
+                  <Link href="#" className={cx("name")}>
+                    Lê Đức Anh
+                  </Link>
+                  <div className={cx("price")}>
+                    <div className={cx("price-reduction")}>70,000đ</div>
+                    <div className={cx("original-price")}>100,000đ</div>
+                  </div>
+                  <div className={cx("btn-action")}>
+                    <button className={cx("btn", "addtocart")}>
+                      Thêm vào giỏ hàng
                     </button>
                   </div>
                 </div>
@@ -162,12 +188,24 @@ const Product = async () => {
                     <button className={cx("btn", "addtocart")}>
                       Thêm vào giỏ hàng
                     </button>
-                    <button className={cx("btn", "buynow")}>
-                      <span>
-                        {" "}
-                        <FontAwesomeIcon icon={faCartShopping} />
-                      </span>
-                      Mua
+                  </div>
+                </div>
+              </div>
+              <div className={cx("box-product")}>
+                <div className={cx("product")}>
+                  <div className={cx("thumb")}>
+                    <img src="assets/img/products/1.svg" />
+                  </div>
+                  <Link href="#" className={cx("name")}>
+                    Lê Đức Anh
+                  </Link>
+                  <div className={cx("price")}>
+                    <div className={cx("price-reduction")}>70,000đ</div>
+                    <div className={cx("original-price")}>100,000đ</div>
+                  </div>
+                  <div className={cx("btn-action")}>
+                    <button className={cx("btn", "addtocart")}>
+                      Thêm vào giỏ hàng
                     </button>
                   </div>
                 </div>
@@ -188,13 +226,6 @@ const Product = async () => {
                     <button className={cx("btn", "addtocart")}>
                       Thêm vào giỏ hàng
                     </button>
-                    <button className={cx("btn", "buynow")}>
-                      <span>
-                        {" "}
-                        <FontAwesomeIcon icon={faCartShopping} />
-                      </span>
-                      Mua
-                    </button>
                   </div>
                 </div>
               </div>
@@ -214,13 +245,6 @@ const Product = async () => {
                     <button className={cx("btn", "addtocart")}>
                       Thêm vào giỏ hàng
                     </button>
-                    <button className={cx("btn", "buynow")}>
-                      <span>
-                        {" "}
-                        <FontAwesomeIcon icon={faCartShopping} />
-                      </span>
-                      Mua
-                    </button>
                   </div>
                 </div>
               </div>
@@ -239,91 +263,6 @@ const Product = async () => {
                   <div className={cx("btn-action")}>
                     <button className={cx("btn", "addtocart")}>
                       Thêm vào giỏ hàng
-                    </button>
-                    <button className={cx("btn", "buynow")}>
-                      <span>
-                        {" "}
-                        <FontAwesomeIcon icon={faCartShopping} />
-                      </span>
-                      Mua
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div className={cx("box-product")}>
-                <div className={cx("product")}>
-                  <div className={cx("thumb")}>
-                    <img src="assets/img/products/1.svg" />
-                  </div>
-                  <Link href="#" className={cx("name")}>
-                    Lê Đức Anh
-                  </Link>
-                  <div className={cx("price")}>
-                    <div className={cx("price-reduction")}>70,000đ</div>
-                    <div className={cx("original-price")}>100,000đ</div>
-                  </div>
-                  <div className={cx("btn-action")}>
-                    <button className={cx("btn", "addtocart")}>
-                      Thêm vào giỏ hàng
-                    </button>
-                    <button className={cx("btn", "buynow")}>
-                      <span>
-                        {" "}
-                        <FontAwesomeIcon icon={faCartShopping} />
-                      </span>
-                      Mua
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div className={cx("box-product")}>
-                <div className={cx("product")}>
-                  <div className={cx("thumb")}>
-                    <img src="assets/img/products/1.svg" />
-                  </div>
-                  <Link href="#" className={cx("name")}>
-                    Lê Đức Anh
-                  </Link>
-                  <div className={cx("price")}>
-                    <div className={cx("price-reduction")}>70,000đ</div>
-                    <div className={cx("original-price")}>100,000đ</div>
-                  </div>
-                  <div className={cx("btn-action")}>
-                    <button className={cx("btn", "addtocart")}>
-                      Thêm vào giỏ hàng
-                    </button>
-                    <button className={cx("btn", "buynow")}>
-                      <span>
-                        {" "}
-                        <FontAwesomeIcon icon={faCartShopping} />
-                      </span>
-                      Mua
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div className={cx("box-product")}>
-                <div className={cx("product")}>
-                  <div className={cx("thumb")}>
-                    <img src="assets/img/products/1.svg" />
-                  </div>
-                  <Link href="#" className={cx("name")}>
-                    Lê Đức Anh
-                  </Link>
-                  <div className={cx("price")}>
-                    <div className={cx("price-reduction")}>70,000đ</div>
-                    <div className={cx("original-price")}>100,000đ</div>
-                  </div>
-                  <div className={cx("btn-action")}>
-                    <button className={cx("btn", "addtocart")}>
-                      Thêm vào giỏ hàng
-                    </button>
-                    <button className={cx("btn", "buynow")}>
-                      <span>
-                        {" "}
-                        <FontAwesomeIcon icon={faCartShopping} />
-                      </span>
-                      Mua
                     </button>
                   </div>
                 </div>
