@@ -1,0 +1,89 @@
+.update_information {
+    background-color: #fff;
+    padding: 15px;
+    margin-top: 15px;
+    border-radius: 10px;
+}
+
+.information {
+    width: 60%;
+}
+
+.title_information {
+    font-size: 25px;
+    color:#253D4E;
+    font-weight: 550;
+}
+
+.fullname_input {
+    margin-top: 50px;
+    display: flex;
+    gap:69px;
+    align-items: center;
+}
+
+.ip_fullname {
+    width: 500px;
+    height: 35px;
+    border:1px solid #CCCCCC;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.email_input {
+    margin-top: 32px;
+    display: flex;
+    gap:76px;
+    align-items: center;
+}
+
+.ip_email {
+    width: 500px;
+    height: 35px;
+    border:1px solid #CCCCCC;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.phone_input {
+    margin-top: 32px;
+    display: flex;
+    gap:23px;
+    align-items: center;
+}
+
+.ip_phone {
+    width: 500px;
+    height: 35px;
+    border:1px solid #CCCCCC;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.birthday_input {
+    margin-top: 32px;
+    display: flex;
+    gap:48px;
+    align-items: center;
+}
+
+.ip_birthday {
+    width: 500px;
+    height: 35px;
+    border:1px solid #CCCCCC;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.red {
+    color:red;
+}
+
+.update {
+    background-color: #3BB77E;
+    border-radius: 5px;
+    padding: 10px;
+    color:#fff;
+    border: none;
+    margin-top: 15px;
+}
