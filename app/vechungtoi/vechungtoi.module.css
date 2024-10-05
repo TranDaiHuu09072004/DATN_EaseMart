@@ -3,6 +3,7 @@
   font-size: 14px;
   color: #666;
   margin-bottom: 20px;
+  text-align: left; /* Căn trái cho breadcrumb */
 }
 
 .breadcrumb a {
@@ -18,12 +19,13 @@
   color: #333;
 }
 
-
 /* Container chính */
 .container {
   width: 100%;
+  max-width: 1200px; /* Giới hạn độ rộng tối đa cho nội dung */
+  margin: 0 auto; /* Căn giữa nội dung */
   padding: 20px;
-  background-color: #f8f8f8;
+  
 }
 
 /* Phần giới thiệu */
@@ -31,30 +33,30 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 10px; /* Giảm khoảng cách giữa phần hình ảnh và phần văn bản */
+  gap: 20px; /* Giảm khoảng cách giữa phần hình ảnh và phần văn bản */
   margin-bottom: 40px;
 }
 
 /* Phần ảnh chính */
 .imageContainer {
-  width: 41%; /* Resize to make it smaller */
+  width: 40%; /* Điều chỉnh kích thước hình ảnh cho hài hòa */
 }
 
 .mainImage {
   width: 100%;
-  height: 700px;
+  height: auto; /* Điều chỉnh chiều cao ảnh tự động */
   border-radius: 10px;
 }
 
 /* Phần văn bản và ảnh phụ */
 .textContainer {
-  width: 56%; /* Adjust width for better balance */
-  padding-left: 0px; /* Giảm padding bên trái */
+  width: 56%;
+  padding-left: 20px; /* Tăng padding cho phần văn bản */
 }
 
 .title {
   font-size: 36px;
-  color: #253d4e; /* Apply correct color code */
+  color: #253d4e;
   margin-bottom: 20px;
 }
 
@@ -65,7 +67,6 @@
   margin-bottom: 20px;
 }
 
-
 /* Nhóm ảnh phụ */
 .imageGroup {
   display: flex;
@@ -74,10 +75,9 @@
 
 .subImage {
   width: 32%;
-  height: 360px;
+  height: auto;
   border-radius: 10px;
 }
-
 
 /* Phần dịch vụ */
 .servicesSection {
@@ -97,7 +97,6 @@
   gap: 30px;
   justify-items: center;
   align-items: start;
-  
 }
 
 .service {
@@ -122,18 +121,18 @@
 }
 
 .performanceImage {
-  width: 52%;
+  width: 48%; /* Giảm chiều rộng ảnh để cân đối hơn */
 }
 
 .performanceImage img {
-  width: 90%;
-  height: 600px;
+  width: 100%;
+  height: auto;
   border-radius: 10px;
 }
 
 .performanceText {
   width: 48%;
-  padding-left: 0px;
+  padding-left: 20px;
 }
 
 .performanceText h2 {

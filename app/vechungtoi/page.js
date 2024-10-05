@@ -3,6 +3,7 @@ import styles from './vechungtoi.module.css'; // Import CSS module
 
 export default function VeChungToi() {
   return (
+    <div className="container">
     <div className={styles.container}>
       {/* Breadcrumb - Đường dẫn */}
       <div className={styles.breadcrumb}>
@@ -76,6 +77,7 @@ export default function VeChungToi() {
           </p>
         </div>
       </div>
+    </div>
     </div>
   );
 }

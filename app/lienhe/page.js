@@ -4,6 +4,7 @@ import styles from './lienhe.module.css'; // Import CSS module
 
 export default function LienHe() {
   return (
+    <div className="container">
     <div className={styles.container}>
         {/* Breadcrumb - Đường dẫn */}
         <div className={styles.breadcrumbContainer}>
@@ -37,9 +38,10 @@ export default function LienHe() {
         <div className={styles.contactForm}>
           <form>
             <div className={styles.nameFields}>
-              <input type="text" placeholder="Họ" required />
-              <input type="text" placeholder="Tên" required />
+              
             </div>
+            <input type="text" placeholder="Họ" required />
+              <input type="text" placeholder="Tên" required />
             <input type="email" placeholder="Email" required />
             <input type="tel" placeholder="Số điện thoại" required />
             <textarea placeholder="Lời nhắn" rows="4"></textarea>
@@ -47,6 +49,7 @@ export default function LienHe() {
           </form>
         </div>
       </div>
+    </div>
     </div>
   );
 }
