@@ -11,9 +11,7 @@ export default function ProductDetail() {
             <li>
               <a href="#">Trang Chủ</a>
             </li>
-            <li>
-              <i className="fa-solid fa-chevron-right"></i>
-            </li>
+            <li>/</li>
             <li>
               <a href="#">Gà Giòn Cổ Điển Foster Farms Takeout</a>
             </li>

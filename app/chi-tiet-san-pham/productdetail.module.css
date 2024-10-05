@@ -308,24 +308,15 @@
 .list_link {
   display: flex;
   justify-content: left;
-  gap: 15px;
+  gap: 10px;
 }
-
-.list_link > li > i {
-  color: #3bb77e;
-  margin-right: 5px;
-}
-
 
 .list_link > li > a {
-  color: #253d4e;
+  color: #585757;
   text-decoration: none;
-  font-size: 20px;
+  font-size: 18px;
 }
-
-.link_link > li > a:hover {
-  color: #3bb77e;
-}
+/*  */
 
 .content_new {
   font-size: 35px;

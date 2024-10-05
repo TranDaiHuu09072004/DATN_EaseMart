@@ -51,6 +51,10 @@ export default function CustomerProfile() {
               <button className={styles.update}>Cập Nhật</button>
             </form>
           </div>
+          <div className={styles.upload_img}>
+            <i class="fa-solid fa-circle-user"></i>
+            <button className={styles.upload_file}>Tải ảnh lên</button>
+          </div>
         </div>
       </div>
     </div>
