@@ -10,7 +10,7 @@ export default function DangKy() {
           <h1>EaseMart</h1>
           <p>Your Daily Essentials, Delivered</p>
         </div>
-        <h2 className={styles.heading}>Đăng ký ngay để trở thành hội viên</h2>
+        <h2 className={styles.heading}>Đăng ký hội viên</h2>
         <form>
           <input type="text" className={styles.inputField} placeholder="Nhập họ và tên" required />
           <input type="email" className={styles.inputField} placeholder="Nhập email" required />
@@ -26,7 +26,7 @@ export default function DangKy() {
           <button className={styles.facebookBtn}>Facebook</button>
           <button className={styles.googleBtn}>Google</button>
         </div>
-        <p className={styles.linkContainer}>Đã có tài khoản vui lòng <Link href="/dangnhap" className={styles.link}>đăng nhập ngay</Link></p>
+        <p className={styles.linkContainer}>Đã có tài khoản? <Link href="/dangnhap" className={styles.link}>Đăng nhập ngay</Link></p>
       </div>
     </div>
   );

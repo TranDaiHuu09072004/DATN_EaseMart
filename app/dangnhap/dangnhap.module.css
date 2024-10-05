@@ -4,7 +4,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f0f0f0;
+    background-color: #f9f9f9;
 }
 
 /* Form đăng nhập chính */
@@ -13,34 +13,37 @@
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+    padding: 40px;
     text-align: center;
 }
 
 /* Logo và slogan */
 .logo h1 {
     color: #2BA84A;
-    font-size: 36px;
+    font-size: 28px;
     margin-bottom: 5px;
+    font-weight: bold;
 }
 
 .logo p {
     color: #666;
     font-size: 14px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 /* Tiêu đề form */
 .heading {
-    font-size: 20px;
-    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    color: #333;
 }
 
 /* Các trường input trong form */
 .inputField {
     width: 100%;
-    padding: 12px;
-    margin-bottom: 15px;
+    padding: 15px;
+    margin-bottom: 20px;
     border-radius: 5px;
     border: 1px solid #ccc;
     font-size: 16px;
@@ -55,6 +58,7 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    width: 100%;
     margin-bottom: 20px;
 }
 
@@ -62,16 +66,15 @@
     background-color: #24983e;
 }
 
-/* Quên mật khẩu */
-.forgotPassword {
-    color: red;
-    margin-bottom: 15px;
+/* Phần quên mật khẩu */
+.forgotPassword a {
     font-size: 14px;
+    color: #2BA84A;
+    text-decoration: none;
 }
 
-.forgotPassword a {
-    text-decoration: none;
-    color: red;
+.forgotPassword a:hover {
+    text-decoration: underline;
 }
 
 /* Phần đăng nhập qua mạng xã hội */
@@ -84,8 +87,8 @@
 .socialLogin button {
     display: block;
     width: 100%;
-    padding: 12px;
-    margin-bottom: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
     font-size: 16px;
     border-radius: 5px;
     border: none;
@@ -109,12 +112,6 @@
 }
 
 /* Liên kết điều hướng */
-.linkContainer {
-    font-size: 14px;
-    color: #555;
-    margin-bottom: 15px;
-}
-
 .linkContainer a {
     color: #2BA84A;
     text-decoration: none;
