@@ -1,4 +1,4 @@
-/* Container chính cho form đăng ký */
+/* Container chính cho form đăng nhập */
 .container {
     display: flex;
     justify-content: center;
@@ -7,7 +7,7 @@
     background-color: #f9f9f9;
 }
 
-/* Form đăng ký chính */
+/* Form đăng nhập chính */
 .formContainer {
     width: 480px;
     background-color: #fff;
@@ -49,15 +49,8 @@
     font-size: 16px;
 }
 
-/* Đoạn văn bản điều khoản */
-.formText {
-    font-size: 14px;
-    color: #777;
-    margin-bottom: 25px;
-}
-
-/* Nút đăng ký */
-.signupBtn {
+/* Nút đăng nhập */
+.loginBtn {
     background-color: #2BA84A;
     color: white;
     padding: 15px;
@@ -66,10 +59,22 @@
     border-radius: 5px;
     cursor: pointer;
     width: 100%;
+    margin-bottom: 20px;
 }
 
-.signupBtn:hover {
+.loginBtn:hover {
     background-color: #24983e;
+}
+
+/* Phần quên mật khẩu */
+.forgotPassword a {
+    font-size: 14px;
+    color: #2BA84A;
+    text-decoration: none;
+}
+
+.forgotPassword a:hover {
+    text-decoration: underline;
 }
 
 /* Phần đăng nhập qua mạng xã hội */

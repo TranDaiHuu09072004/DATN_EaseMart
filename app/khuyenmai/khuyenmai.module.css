@@ -1,0 +1,97 @@
+/* Container chính */
+.container {
+    width: 90%; /* Make the layout wider */
+    max-width: 1200px; /* Max width */
+    margin: 0 auto;
+    padding: 20px;
+    
+  }
+  
+  /* Breadcrumb styling */
+  .breadcrumb {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+  }
+  
+  .breadcrumb a {
+    color: #666;
+    text-decoration: none;
+  }
+  
+  .breadcrumb a:hover {
+    text-decoration: underline;
+  }
+  
+  .breadcrumb span {
+    color: #333;
+  }
+  
+  /* Title styling */
+  .title {
+    font-size: 32px; /* Reduce the font size */
+    color: #253d4e;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  /* Image container styling */
+  .imageContainer {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .mainImage {
+    max-width: 100%;
+    border-radius: 10px;
+    height: auto;
+  }
+  
+  /* Description and text styling */
+  .description {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: justify;
+  }
+  
+  /* Promotion list styling */
+  .promotionList {
+    list-style: none;
+    padding: 0;
+    margin-left: 20px;
+  }
+  
+  .promotionList li {
+    margin-bottom: 15px;
+    font-size: 18px;
+    color: #555;
+  }
+  
+  .promotionList strong {
+    color: #253d4e;
+  }
+  
+  @media (max-width: 768px) {
+    .container {
+      width: 100%;
+      padding: 10px;
+    }
+  
+    .title {
+      font-size: 24px; /* Smaller title for mobile */
+    }
+  
+    .description,
+    .promotionList {
+      font-size: 14px;
+    }
+  
+    .mainImage {
+      max-width: 100%;
+    }
+  }
+  
