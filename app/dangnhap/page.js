@@ -1,7 +1,7 @@
-"use client";
-import React from 'react';
-import Link from 'next/link';
-import styles from './dangnhap.module.css'; // Import CSS module
+"use client"; // Declare this at the top to ensure it's client-side
+import React from "react";
+import Link from "next/link";
+import styles from "./dangnhap.module.css"; // Import CSS module
 
 export default function DangNhap() {
   return (
@@ -13,11 +13,26 @@ export default function DangNhap() {
         </div>
         <h2 className={styles.heading}>Đăng nhập hội viên</h2>
         <form>
-          <input type="email" className={styles.inputField} placeholder="Nhập Email" required />
-          <input type="password" className={styles.inputField} placeholder="Nhập mật khẩu" required />
-          <button type="submit" className={styles.loginBtn}>Đăng nhập</button>
+          <input
+            type="email"
+            className={styles.inputField}
+            placeholder="Nhập Email"
+            required
+          />
+          <input
+            type="password"
+            className={styles.inputField}
+            placeholder="Nhập mật khẩu"
+            required
+            autoComplete="current-password" // Correct autocomplete attribute
+          />
+          <button type="submit" className={styles.loginBtn}>
+            Đăng nhập
+          </button>
         </form>
-        <p className={styles.forgotPassword}><Link href="#">Quên mật khẩu?</Link></p>
+        <p className={styles.forgotPassword}>
+          <Link href="#">Quên mật khẩu?</Link>
+        </p>
         <div className={styles.socialLogin}>
           <p>Hoặc</p>
           <button className={styles.facebookBtn}>Facebook</button>
