@@ -3,6 +3,7 @@ import styles from './orderHistory.module.css'; // Import CSS module
 
 export default function OrderHistory() {
   return (
+    <div className="container">
     <div className={styles.container}>
     <div className={styles.breadcrumb}>
       <a href="/">Trang chủ</a> / <span>Lịch sử đơn hàng</span>
@@ -54,6 +55,6 @@ export default function OrderHistory() {
       </table>
     </div>
   </div>
-  
+  </div>
   );
 }

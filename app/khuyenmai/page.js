@@ -3,6 +3,7 @@ import styles from './khuyenmai.module.css'; // Ensure the path and filename are
 
 export default function Promotion() {
   return (
+    <div className="container">
     <div className={styles.container}>
       {/* Breadcrumb */}
       <div className={styles.breadcrumb}>
@@ -50,6 +51,7 @@ export default function Promotion() {
           Còn chần chừ gì nữa? Hãy tham gia ngay cùng chúng tôi để tận hưởng những ưu đãi khổng lồ ngay hôm nay!
         </p>
       </div>
+    </div>
     </div>
   );
 }
