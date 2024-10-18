@@ -5,7 +5,6 @@
   box-sizing: border-box;
   .header {
     padding: 10px 7px;
-    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -28,7 +27,6 @@
         padding: 5px 3px;
         border-radius: 10px;
         background-color: #f8fafc;
-        display: flex;
         align-items: center;
         gap: 3px;
         input {
@@ -61,26 +59,26 @@
         }
       }
       .cart-info {
-        width: 287px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 10px;
+        // width: 287px;
+        // display: flex;
+        // align-items: center;
+        // justify-content: space-between;
+        // gap: 10px;
         .cart {
           color: #fff;
           text-decoration: none;
           display: flex;
           align-items: center;
           fill: #fff;
-          width: 139px;
+          max-width: 139px;
           justify-content: space-around;
           .box-icon-cart {
             position: relative;
-            .icon-cart {
-              width: 30px;
-              height: 30px;
-              margin-left: 5px;
-            }
+            // .icon-cart {
+            //   width: 30px;
+            //   height: 30px;
+            //   margin-left: 5px;
+            // }
             .count {
               display: flex;
               position: absolute;
@@ -96,9 +94,9 @@
               border-radius: 50%;
             }
           }
-          .title {
-            font-size: 20px;
-          }
+          // .title {
+          //   font-size: 20px;
+          // }
         }
         .account {
           color: #fff;
@@ -106,7 +104,9 @@
           display: flex;
           align-items: center;
           fill: #fff;
-          width: 130px;
+          // width: 130px;
+          max-width: 139px;
+
           justify-content: space-around;
           .box-icon-account {
             position: relative;
@@ -130,9 +130,9 @@
               border-radius: 50%;
             }
           }
-          .title {
-            font-size: 20px;
-          }
+          // .title {
+          //   font-size: 20px;
+          // }
         }
       }
     }

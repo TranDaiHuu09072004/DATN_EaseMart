@@ -1,7 +1,6 @@
 .header-scroll {
   width: 100%;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  padding: 9px 70px;
   background-color: #fff;
   position: fixed;
   top: 0;
@@ -23,7 +22,6 @@
       }
     }
     .nav {
-      display: flex;
       width: 600px;
       justify-content: space-between;
       height: 100%;
@@ -48,24 +46,20 @@
       }
     }
     .cart-info {
-      width: 287px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 10px;
       .cart {
         color: #3bb77e;
         text-decoration: none;
         display: flex;
         align-items: center;
         fill: #fff;
-        width: 119px;
         justify-content: space-around;
         .box-icon-cart {
           position: relative;
           .icon-cart {
-            width: 30px;
-            height: 30px;
+            // width: 30px;
+            // height: 30px;
             margin-left: 5px;
           }
           .count {
@@ -93,14 +87,11 @@
         display: flex;
         align-items: center;
         fill: #fff;
-        width: 119px;
 
         justify-content: space-around;
         .box-icon-account {
           position: relative;
           .icon-account {
-            width: 25px;
-            height: 25px;
             margin-left: 5px;
           }
           .count {
