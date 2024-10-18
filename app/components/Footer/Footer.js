@@ -7,7 +7,7 @@ export default function Footer() {
   return (
     <>
       <div className={cx("footer")}>
-        <div className="container">
+        <div className={cx("max-w-screen-xl", "mx-auto", "p-4")}>
           <div className={styles.Footer}>
             <ul className={styles.list_footer}>
               <li className={styles.ft_1}>
