@@ -1,0 +1,343 @@
+.link_home_news {
+    margin-top: 10px;
+  }
+  
+  .list_link {
+    display: flex;
+    justify-content: left;
+    gap: 15px;
+  }
+  
+  .list_link > li > i {
+    color: #3bb77e;
+    margin-right: 5px;
+    font-size: 20px;
+  }
+  
+  
+  .list_link > li > a {
+    color: #253d4e;
+    text-decoration: none;
+    font-size: 20px;
+  }
+  
+  .link_link > li > a:hover {
+    color: #3bb77e;
+  }
+  
+  .content_new {
+    font-size: 35px;
+    font-weight: 650;
+    text-align: center;
+  }
+  
+  .list_news {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap:30px;
+  }
+  
+  .list_news li a {
+    text-decoration: none;
+  }
+  
+  .item_news {
+    border:1px solid hsla(0, 0%, 59%, 0.5);
+    padding: 10px;
+    width: 320px;
+    border-radius: 5px;
+    margin-top: 15px;
+    box-shadow: 1px 1px 5px 5px hsla(0, 0%, 59%, 0.5);
+  }
+  .item_news img {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .Title_news {
+    width: 320px;
+    color:#253d4e;
+    margin-top: 10px;
+  }
+  
+  .read_add {
+    color: #253d4e;
+    font-weight: 700;
+    border-bottom: 3px solid #253d4e;
+  }
+  
+  .content_news {
+    width: 300px;
+    font-size: 15px;
+    color:#253d4e
+  }
+
+  .steps {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.step {
+    display: flex;
+    align-items: center;
+}
+
+.step_number {
+    background-color: #3bb77e;
+    color: white;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.step_text {
+    margin-left: 10px;
+    font-weight: normal;
+}
+
+.separator {
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+.active .step_text {
+   color: #3bb77e;
+   font-weight: 550; /* Màu cho bước đang hoạt động */
+}
+
+.flex_pm {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* inforpayment */
+
+.required {
+    color:red;
+}
+.flex_nameform {
+    display: flex;
+    justify-content: space-between;
+    gap:20px;
+    margin-top: 28px;
+}
+.name_form {
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+}
+
+.name_form input {
+    width: 350px;
+    height: 40px;
+    border-radius: 5px;
+    padding: 10px;
+    border: 1px solid #CCCCCC;
+}
+
+.nation,.city{
+    margin-top: 19px;
+}
+
+.phone,.email {
+    margin-top: 19px;
+}
+
+.nation select {
+    width: 100%;
+    height: 40px;
+    border-radius: 5px;
+    padding: 10px;
+    border: 1px solid #CCCCCC;
+    margin: 10px 0;
+}
+
+.city input {
+    width: 100%;
+    height: 40px;
+    border-radius: 5px;
+    padding: 10px;
+    border: 1px solid #CCCCCC;
+    margin: 10px 0;
+}
+
+.phone input {
+    width: 100%;
+    height: 40px;
+    border-radius: 5px;
+    padding: 10px;
+    border: 1px solid #CCCCCC;
+    margin: 10px 0;
+}
+
+.email input{
+    width: 100%;
+    height: 40px;
+    border-radius: 5px;
+    padding: 10px;
+    border: 1px solid #CCCCCC;
+    margin: 10px 0;
+}
+
+.shippingaddress input {
+    width: 15px;
+    height: 15px;
+    align-items: center;
+}
+
+.text_note h5 {
+    margin: 10px 0;
+}
+
+.text_note .description_oders {
+  height: 100px;
+}
+
+.payment {
+    display: flex; /* Side-by-side layout */
+    background-color: #fff;
+    padding: 20px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+}
+
+.title_payment {
+  color:#000;
+  margin-top: 20px;
+  font-size: 20px;
+}
+
+.inforpayment {
+    width: 60%; /* Payment info width */
+    padding-right: 20px; /* Space between form and order summary */
+}
+
+.title_oders {
+  color:#000;
+  margin-top: 20px;
+  font-size: 20px;
+}
+
+.order_summary {
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap:10px;
+}
+
+.order_item {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 530;
+  border-bottom: 1px solid #CCCCCC;
+  padding-bottom: 10px;
+}
+
+.price_payment {
+  color:#F8A800;
+  font-weight: 550;
+}
+
+.code_vouchers {
+  font-weight: 530;
+}
+
+.product {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  gap:10px;
+  border-bottom: 1px solid #CCCCCC;
+  padding-bottom: 10px;
+}
+
+.product p {
+  max-width: 250px;
+}
+
+.order_total,
+.order_voucher,
+.order_discount {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.voucher_link {
+  color: #3bb77e;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 530;
+}
+
+.payment_method {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.payment_description {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #666;
+}
+
+.bank_transfer {
+  width: 100%;
+  padding: 5px;
+  display: inline-block;
+  border-radius: 5px;
+}
+
+.active_border {
+  border: 1px solid #3bb77e;
+  color:#3bb77e;
+}
+
+.bank_transfer input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+  background-color:#3bb77e;
+  margin-top: 15px;
+}
+
+.text_payment_method {
+  font-size: 18px;
+}
+
+
+.agree_terms input {
+  margin-right: 10px;
+}
+
+.submit_button {
+  width: 100%;
+  text-align: center;
+  background-color: #3bb77e;
+  color: white;
+  padding: 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.submit_button:hover {
+  background-color: #2a9d5a;
+}
+
+.order_discount {
+  font-weight: 520;
+    border-bottom: 1px solid #CCCCCC;
+  padding-bottom: 10px;
+}
+

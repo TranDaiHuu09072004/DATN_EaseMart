@@ -28,7 +28,7 @@ export default function Banner() {
   return (
     <div>
       <div
-        className={cx("max-w-screen-xl", "mx-auto", "p-4")}
+        className={cx("max-w-screen-xl", "mx-auto")}
         style={{ marginTop: "15px" }}
       >
         <div className={cx("bg", "flex", "gap-1")}>

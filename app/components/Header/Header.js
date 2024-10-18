@@ -5,7 +5,6 @@ import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping, faSearch } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
-// import { usePathname } from "next/navigation";
 import HeaderScroll from "./components/HeaderScroll";
 import { Icon } from "@iconify/react";
 
@@ -75,7 +74,7 @@ export default function Header() {
                   Giỏ hàng
                 </div>
               </Link>
-              <Link href="#" className={cx("account")}>
+              <Link href="/dangky" className={cx("account")}>
                 <div className={cx("box-icon-account")}>
                   <FontAwesomeIcon
                     className={cx(
@@ -108,28 +107,28 @@ export default function Header() {
           <div className={cx("header-bot", "lg:block", "hidden")}>
             <ul className={cx("nav")}>
               <li className={cx("item")}>
-                <Link href="#" className={cx("link")}>
+                <Link href="/" className={cx("link")}>
                   Trang chủ
                 </Link>
               </li>
               <li className={cx("item")}>
-                <Link href="#" className={cx("link")}>
-                  Trang chủ
+                <Link href="/product" className={cx("link")}>
+                  Cửa hàng
                 </Link>
               </li>
               <li className={cx("item")}>
-                <Link href="#" className={cx("link")}>
-                  Trang chủ
+                <Link href="/khuyenmai" className={cx("link")}>
+                  Khuyến mãi
                 </Link>
               </li>
               <li className={cx("item")}>
-                <Link href="#" className={cx("link")}>
-                  Trang chủ
+                <Link href="/vechungtoi" className={cx("link")}>
+                  Về Chúng Tôi
                 </Link>
               </li>
               <li className={cx("item")}>
-                <Link href="#" className={cx("link")}>
-                  Trang chủ
+                <Link href="/lienhe" className={cx("link")}>
+                  Liên hệ
                 </Link>
               </li>
             </ul>

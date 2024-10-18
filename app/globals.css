@@ -130,9 +130,10 @@ table {
   border-spacing: 0;
 }
 
-body{
+body {
   background-color: #f1f1f1;
 }
+
 .container {
   width: 1280px;
   margin: 0px auto;

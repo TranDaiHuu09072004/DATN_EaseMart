@@ -1,0 +1,92 @@
+.comment-section {
+    width: 100%;
+    border: 1px solid #e5e5e5;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    margin-bottom: 10px;
+  }
+  
+  .comment-product {
+    font-size: 20px; /* Kích thước chữ cho tiêu đề bình luận */
+    font-weight: 550; /* Độ đậm của chữ */
+    margin-left: 20px; /* Khoảng cách bên trái */
+    margin-bottom: 10px; /* Khoảng cách bên dưới */
+    color: #333; /* Màu chữ cho bình luận */
+    line-height: 1.5; /* Chiều cao dòng để dễ đọc */
+  }
+  
+  .comment-box {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
+  
+  .user-input {
+    display: flex;
+    width: 100%;
+  }
+  
+  .user-avatar i {
+   font-size: 40px;
+    border-radius: 50%;
+    margin-right: 15px;
+  }
+  
+  .comment-input {
+    width: 100%;
+  }
+  
+  textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none;
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  
+  .star-rating span {
+    font-size: 24px;
+    color: #ff9800;
+    cursor: pointer;
+  }
+  
+  .comment-list {
+    border-top: 1px solid #e5e5e5;
+    padding-top: 15px;
+  }
+  
+  .comment-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 15px;
+  }
+  
+  .comment-content {
+    width: 100%;
+  }
+  
+  .comment-content p {
+    margin: 0 0 5px;
+    font-size: 14px;
+  }
+  
+  .comment-time {
+    font-size: 12px;
+    color: #777;
+  }
+  
+  .star-rating {
+    display: inline-block;
+  }
+  
+  .star-rating span {
+    color: #ff9800;
+  }
+  
+  .star-rating span:last-child {
+    color: #ccc; /* Empty star color */
+  }
+  

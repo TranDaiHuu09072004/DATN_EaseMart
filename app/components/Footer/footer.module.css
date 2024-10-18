@@ -21,11 +21,13 @@
 
   @media (max-width: 768px) {
     .list_footer {
-      grid-template-columns: 1fr 1fr; /* Khi màn hình nhỏ hơn 768px, chỉ có 1 cột */
+      grid-template-columns: 1fr ; /* Khi màn hình nhỏ hơn 768px, chỉ có 1 cột */
     justify-content: center;
 
     }
   }
+
+
   
   .ft_1 .a img {
     max-width: 300px;

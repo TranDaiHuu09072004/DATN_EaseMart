@@ -15,6 +15,22 @@ import { Icon } from "@iconify/react";
 const cx = classNames.bind(styles);
 const HeaderScroll = () => {
   const [showHeader, setShowHeader] = useState(false);
+  const [showHeaderScroll, setShowHeaderScroll] = useState(false);
+
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      const width = window.innerWidth;
+      if (width > 768) {
+        console.log(`Chiều rộng của browser thay đổi thành: ${width}px`);
+        setShowHeaderScroll(true);
+      }
+      if (width < 768) {
+        console.log(`Chiều rộng của browser thay đổi thành: ${width}px`);
+        setShowHeaderScroll(false);
+      }
+    });
+  }, []);
+
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 150) {
@@ -30,7 +46,7 @@ const HeaderScroll = () => {
   }, []);
   return (
     <>
-      {showHeader && (
+      {showHeader && showHeaderScroll && (
         <div className={cx("header-scroll", "py-2", "px-2", "lg:px-16")}>
           <div className={cx("header")}>
             <div className={cx("pr-3", "block", "lg:hidden")}>

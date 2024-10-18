@@ -1,0 +1,370 @@
+.product_detail {
+  background-color: #fff;
+  border-radius: 10px;
+  margin-top: 15px;
+  display: flex;
+  gap: 30px;
+}
+
+.product_img_left {
+  padding: 20px;
+  width: 40%;
+}
+
+.img_small {
+  display: flex;
+  margin-left: 30px;
+}
+
+.img_small img:hover {
+  border: 1px solid #3bb77e;
+  z-index: 100;
+}
+
+.product_name_detail {
+  font-size: 30px;
+  padding-top: 70px;
+}
+
+.product_price {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  background-image: url("/assets/img/bg-product-1fb6a3ec6319488c0e5d03e99a3500c4.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-family: Arial, sans-serif;
+  margin-top: 15px;
+  width: 650px;
+}
+
+.price_label {
+  width: 25%;
+  font-family: Roboto, sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: rgb(102, 102, 102);
+  line-height: 2;
+}
+
+.price_original {
+  text-decoration: line-through;
+  color: rgb(102, 102, 102);
+  margin-left: 50px;
+}
+
+.price_discount {
+  width: 75%;
+  font-weight: 600;
+  line-height: 2;
+  color: #3bb77e;
+  margin-left: 30px;
+  font-size: 18px;
+}
+
+.product_status {
+  margin-top: 10px;
+  margin-left: 60px;
+  color: rgb(102, 102, 102);
+  font-size: 15px;
+}
+
+.flex_shipping {
+  display: flex;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.shipping {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.free_shipping {
+  font-size: 15px;
+  color: rgb(102, 102, 102);
+  line-height: 1.5;
+  margin-left: 50px;
+}
+
+.sku {
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.code_sku {
+  margin-left: 70px;
+  color: #3bb77e;
+}
+
+.name {
+  font-family: Roboto, sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: rgb(102, 102, 102);
+  line-height: 2;
+}
+
+.quantity {
+  display: flex;
+  margin-left: 10px;
+}
+
+.flex_quantity {
+  margin-left: 65px;
+}
+
+.downcount,
+.updatecount,
+.upcount {
+  width: 32px;
+  min-width: 32px;
+  height: 32px;
+  background: rgb(255, 255, 255);
+  border: 1px solid rgb(232, 232, 232);
+  border-radius: 2px;
+  padding: 0px;
+  margin: 0px;
+}
+
+.btn_addCart {
+  margin-top: 50px;
+  margin-left: 10px;
+  height: 40px;
+  background-color: #3bb77e;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 5px;
+}
+
+.btn_addCart i {
+  font-size: 15px;
+  color: #fff;
+}
+
+.content_infor {
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.product_description {
+  margin: 20px 0;
+  padding: 15px;
+  border-radius: 8px;
+  width: 30%;
+}
+
+.product_description h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.product_info {
+  margin: 20px 0;
+  padding: 15px;
+  border-radius: 8px;
+  width: 70%;
+}
+
+.product_info h3 {
+  font-size: 18px; /* Adjust heading size */
+  margin-bottom: 10px; /* Space below the heading */
+  font-weight: 550;
+}
+
+.product_info table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.product_info td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.product_info td:first-child {
+  font-weight: bold;
+}
+
+.content_infor {
+  display: flex;
+  margin-top: 15px;
+}
+
+.product_description {
+  font-family: Arial, sans-serif; /* Change font family if needed */
+  margin: 20px 0; /* Add margin for spacing */
+}
+
+.product_description h3 {
+  font-size: 18px; /* Adjust heading size */
+  margin-bottom: 10px; /* Space below the heading */
+  font-weight: 550;
+}
+
+.product_description p {
+  font-size: 1rem; /* Adjust paragraph size */
+  line-height: 1.5; /* Increase line height for readability */
+  margin-bottom: 10px; /* Space below the paragraph */
+  font-weight: 550;
+}
+
+.product_description ul {
+  list-style-type: disc; /* Use disc for list items */
+  margin-left: 20px; /* Indent the list */
+}
+
+.product_description li {
+  margin-bottom: 5px;
+  line-height: 1.5; /* Space between list items */
+}
+
+.product_related {
+  margin-top: 15px;
+}
+
+.product_title_related {
+  font-size: 20px;
+  font-weight: 550;
+  margin-left: 20px;
+}
+
+.list_productrelate {
+  display: flex;
+  gap: 5px;
+}
+
+.item_productrelate {
+  width: 256px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: #fff;
+  margin: 10px 0;
+  height: 376px;
+}
+
+.item_productrelate img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.name_productrelated {
+  font-size: 18px;
+  display: -webkit-box;
+  display: box; /* Added standard property for compatibility */
+  -webkit-line-clamp: 2; /* Số dòng tối đa là 2 */
+  line-clamp: 2; /* Added standard property for compatibility */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.name_productrelated .a {
+  color: #000;
+}
+
+.price_related {
+  color: #3bb77e;
+  font-size: 20px;
+  font-weight: 550;
+}
+
+.unitofmeasurement {
+  font-size: 13px;
+  color: #a5a5a5;
+}
+
+.a {
+  text-decoration: none;
+}
+
+.btn_addRelated {
+  height: 30px;
+  border-radius: 5px;
+  border: 1px solid #3bb77e;
+  background-color: #fff;
+}
+
+.btn_addRelated .a {
+  color: #3bb77e;
+  font-weight: 550;
+}
+
+/*  */
+
+.link_home_news {
+  margin-top: 10px;
+}
+
+.list_link {
+  display: flex;
+  justify-content: left;
+  gap: 10px;
+}
+
+.list_link > li > a {
+  color: #585757;
+  text-decoration: none;
+  font-size: 18px;
+}
+/*  */
+
+.content_new {
+  font-size: 35px;
+  font-weight: 650;
+  text-align: center;
+}
+
+.list_news {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap:30px;
+}
+
+.list_news li a {
+  text-decoration: none;
+}
+
+.item_news {
+  border:1px solid hsla(0, 0%, 59%, 0.5);
+  padding: 10px;
+  width: 320px;
+  border-radius: 5px;
+  margin-top: 15px;
+  box-shadow: 1px 1px 5px 5px hsla(0, 0%, 59%, 0.5);
+}
+.item_news img {
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+}
+
+.Title_news {
+  width: 320px;
+  color:#253d4e;
+  margin-top: 10px;
+}
+
+.read_add {
+  color: #253d4e;
+  font-weight: 700;
+  border-bottom: 3px solid #253d4e;
+}
+
+.content_news {
+  width: 300px;
+  font-size: 15px;
+  color:#253d4e
+}
+
+
+

@@ -1,0 +1,148 @@
+/* Breadcrumb */
+.breadcrumb {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 20px;
+  text-align: left; /* Căn trái cho breadcrumb */
+}
+
+.breadcrumb a {
+  color: #666;
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb span {
+  color: #333;
+}
+
+/* Container chính */
+.container {
+  width: 100%;
+  max-width: 1200px; /* Giới hạn độ rộng tối đa cho nội dung */
+  margin: 0 auto; /* Căn giữa nội dung */
+  padding: 20px;
+  
+}
+
+/* Phần giới thiệu */
+.introSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px; /* Giảm khoảng cách giữa phần hình ảnh và phần văn bản */
+  margin-bottom: 40px;
+}
+
+/* Phần ảnh chính */
+.imageContainer {
+  width: 40%; /* Điều chỉnh kích thước hình ảnh cho hài hòa */
+}
+
+.mainImage {
+  width: 100%;
+  height: auto; /* Điều chỉnh chiều cao ảnh tự động */
+  border-radius: 10px;
+}
+
+/* Phần văn bản và ảnh phụ */
+.textContainer {
+  width: 56%;
+  padding-left: 20px; /* Tăng padding cho phần văn bản */
+}
+
+.title {
+  font-size: 36px;
+  color: #253d4e;
+  margin-bottom: 20px;
+}
+
+.description {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Nhóm ảnh phụ */
+.imageGroup {
+  display: flex;
+  gap: 10px;
+}
+
+.subImage {
+  width: 32%;
+  height: auto;
+  border-radius: 10px;
+}
+
+/* Phần dịch vụ */
+.servicesSection {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.subHeading {
+  font-size: 28px;
+  color: #2BA84A;
+  margin-bottom: 30px;
+}
+
+.services {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  justify-items: center;
+  align-items: start;
+}
+
+.service {
+  text-align: center;
+  max-width: 300px;
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+
+.icon {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 20px;
+}
+
+/* Phần hiệu suất */
+.performanceSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.performanceImage {
+  width: 48%; /* Giảm chiều rộng ảnh để cân đối hơn */
+}
+
+.performanceImage img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.performanceText {
+  width: 48%;
+  padding-left: 20px;
+}
+
+.performanceText h2 {
+  font-size: 28px;
+  color: #2BA84A;
+  margin-bottom: 20px;
+}
+
+.performanceText p {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #333;
+}

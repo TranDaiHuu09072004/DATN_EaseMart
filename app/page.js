@@ -4,13 +4,15 @@ import Banner from "./components/Banner/Banner";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCopy } from "@fortawesome/free-regular-svg-icons";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import Countdown from "./components/CountDown/CountDown";
 
 const cx = classNames.bind(styles);
 export default function Home() {
+  const targetDate = new Date("2024-10-31T00:00:00");
   return (
     <>
       <Banner />
-      <div className={cx("max-w-screen-xl", " mx-auto")}>
+      <div className={cx("max-w-screen-xl", " mx-auto", "p-4")}>
         <div
           className={cx(
             "list-voucher",
@@ -107,12 +109,13 @@ export default function Home() {
       >
         <div className={cx("flash-sale")}>
           <h4>Flash Sale - Giá Sốc</h4>
-          <div className={cx("time")}>
+          {/* <div className={cx("time")}>
             <div className={cx("detail-time")}>11</div>
             <div className={cx("detail-time")}>01</div>
             <div className={cx("detail-time")}>59</div>
             <div className={cx("detail-time")}>33</div>
-          </div>
+          </div> */}
+          <Countdown targetDate={targetDate} />
         </div>
         <div className={cx("box-list-product", "flex", "justify-center")}>
           <div
