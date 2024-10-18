@@ -41,11 +41,11 @@ export default function Banner() {
             )}
           >
             <Slider {...settings}>
-              <img src="assets/img/Banner-slider.png" alt="" />
               <img src="assets/img/banner/3.png" alt="" />
-              <img src="assets/img/Banner-slider.png" alt="" />
-              <img src="assets/img/Banner-slider.png" alt="" />
-              <img src="assets/img/Banner-slider.png" alt="" />
+              <img src="assets/img/banner/slider_banner2.svg" alt="" />
+              <img src="assets/img/banner/slider_banner3.svg" alt="" />
+              {/* <img src="assets/img/Banner-slider.png" alt="" />
+              <img src="assets/img/Banner-slider.png" alt="" /> */}
             </Slider>
           </div>
 
