@@ -4,13 +4,14 @@
   
   .timer {
     display: flex;
+    align-items: center;
     gap: 5px;
   }
   
   .time_box {
     background-color: #3bb77e;
     color: #fff;
-    padding: 5px;
+    padding: 8px 5px;
     border-radius: 5px;
     font-size: 18px;
     width: 45px;
@@ -22,4 +23,5 @@
     margin-top: 5px;
     color:#000;
     font-weight: 550;
+    color: #fff;
   }

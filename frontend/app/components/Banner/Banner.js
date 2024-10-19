@@ -24,37 +24,22 @@ export default function Banner() {
   const boxScroll = useRef(null);
   const btnLeft = useRef(null);
   const btnRight = useRef(null);
-  // useEffect(() => {
-  //   function smoothScrollBy(element, distance, duration) {
-  //     const start = element.scrollLeft; // Vị trí ban đầu của cuộn
-  //     const startTime = performance.now(); // Thời gian bắt đầu
-
-  //     // Hàm này sẽ được gọi mỗi khi trình duyệt chuẩn bị vẽ lại màn hình
-  //     function animation(currentTime) {
-  //       const timeElapsed = currentTime - startTime; // Thời gian đã trôi qua
-  //       const progress = Math.min(timeElapsed / duration, 1); // Tính tiến độ dựa trên thời gian trôi qua
-  //       element.scrollLeft = start + distance * progress; // Cập nhật vị trí cuộn
-
-  //       if (timeElapsed < duration) {
-  //         requestAnimationFrame(animation); // Gọi lại cho lần tiếp theo
-  //       }
-  //     }
-
-  //     requestAnimationFrame(animation); // Bắt đầu hiệu ứng cuộn
-  //   }
-  //   btnLeft.current.addEventListener("click", () => {
-  //     smoothScrollBy(boxScroll.current, -1035, 300);
-  //   });
-  //   btnRight.current.addEventListener("click", () => {
-  //     smoothScrollBy(boxScroll.current, 1035, 300);
-  //   });
-  // }, []);
 
   return (
     <div>
-      <div className={cx("container")} style={{ marginTop: "15px" }}>
-        <div className={cx("bg")}>
-          <div className={cx("main")}>
+      <div
+        className={cx("max-w-screen-xl", "mx-auto")}
+        style={{ marginTop: "15px" }}
+      >
+        <div className={cx("bg", "flex", "gap-1")}>
+          <div
+            className={cx(
+              "main",
+              "max-h-[370px]",
+              "basis-full",
+              "xl:basis-4/5"
+            )}
+          >
             <Slider {...settings}>
               <img src="assets/img/banner/3.png" alt="" />
               <img src="assets/img/banner/slider_banner2.svg" alt="" />
@@ -64,7 +49,10 @@ export default function Banner() {
             </Slider>
           </div>
 
-          <Link href="#" className={cx("link", "sub")}>
+          <Link
+            href="#"
+            className={cx("link", "sub", "xl:flex", "hidden", "basis-1/5")}
+          >
             <img src="assets/img/banner/1.png" alt="" />
             <img src="assets/img/banner/2.png" alt="" />
           </Link>
