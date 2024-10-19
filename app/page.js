@@ -109,12 +109,6 @@ export default function Home() {
       >
         <div className={cx("flash-sale")}>
           <h4>Flash Sale - Giá Sốc</h4>
-          {/* <div className={cx("time")}>
-            <div className={cx("detail-time")}>11</div>
-            <div className={cx("detail-time")}>01</div>
-            <div className={cx("detail-time")}>59</div>
-            <div className={cx("detail-time")}>33</div>
-          </div> */}
           <Countdown targetDate={targetDate} />
         </div>
         <div className={cx("box-list-product", "flex", "justify-center")}>
