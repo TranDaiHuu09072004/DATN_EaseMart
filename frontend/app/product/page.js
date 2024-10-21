@@ -15,22 +15,55 @@ const Product = async () => {
   return (
     <div className={cx("container")}>
       <div className={cx("page-product")}>
-        <ul className={cx("nav")}>
-          <li>
-            <FontAwesomeIcon
-              className={cx("icon")}
-              icon={faHouse}
-            ></FontAwesomeIcon>
-            <Link className={cx("item")} href="#">
-              Trang chủ
-            </Link>
-          </li>
-          <li>
-            <Link className={cx("item")} href="#">
-              Sản phẩm
-            </Link>
-          </li>
-        </ul>
+        <div className={cx("link_home_news", "max-md:px-3", "max-md:p-1")}>
+          <ul className={cx("list_link", "py-2")}>
+            <li>
+              <a
+                href="#"
+                className={cx(
+                  "link_item",
+                  "lg:text-[18px]",
+                  "lg:text-[#585757]",
+                  "lg:no-underline",
+                  "md:text-[18px]",
+                  "sm:text-[12px]"
+                )}
+              >
+                Trang Chủ
+              </a>
+            </li>
+            <li className={cx("separator")}>
+              <a
+                href=""
+                className={cx(
+                  "link_item",
+                  "lg:text-[18px]",
+                  "lg:text-[#585757]",
+                  "lg:no-underline",
+                  "md:text-[18px]",
+                  "sm:text-[12px]"
+                )}
+              >
+                /
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                className={cx(
+                  "link_item",
+                  "lg:text-[18px]",
+                  "lg:text-[#585757]",
+                  "lg:no-underline",
+                  "md:text-[18px]",
+                  "sm:text-[12px]"
+                )}
+              >
+                Cửa hàng
+              </a>
+            </li>
+          </ul>
+        </div>
         <div className={cx("product-content")}>
           <div className={cx("sidebar")}>
             <Sidebar></Sidebar>

@@ -1,0 +1,3 @@
+{ "product": [
+    {"id":1, "name_product": "Sản Phẩm 1", "price_old": 35000, "price": 50000 }
+]}

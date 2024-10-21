@@ -4,16 +4,11 @@
   margin-top: 15px;
   display: flex;
   gap: 30px;
+  width: 100%;
 }
 
 .product_img_left {
   padding: 20px;
-  width: 40%;
-}
-
-.img_small {
-  display: flex;
-  margin-left: 30px;
 }
 
 .img_small img:hover {
@@ -35,7 +30,7 @@
   background-repeat: no-repeat;
   font-family: Arial, sans-serif;
   margin-top: 15px;
-  width: 650px;
+  width: 100%;
 }
 
 .price_label {
@@ -130,8 +125,22 @@
 }
 
 .btn_addCart {
-  margin-top: 50px;
-  margin-left: 10px;
+  height: 40px;
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+  color: #3bb77e;
+  padding: 10px 15px;
+  border-radius: 5px;
+  border: 1px solid #3bb77e;
+}
+
+.btn_addCart i {
+  font-size: 15px;
+  color: #3bb77e;
+}
+
+.btn_buynow {
   height: 40px;
   background-color: #3bb77e;
   border: none;
@@ -141,7 +150,7 @@
   border-radius: 5px;
 }
 
-.btn_addCart i {
+.btn_buynow i {
   font-size: 15px;
   color: #fff;
 }
@@ -149,13 +158,14 @@
 .content_infor {
   background-color: #fff;
   border-radius: 10px;
+  width: 100%;
 }
 
 .product_description {
   margin: 20px 0;
   padding: 15px;
   border-radius: 8px;
-  width: 30%;
+  width: 100%;
 }
 
 .product_description h3 {
@@ -167,7 +177,7 @@
   margin: 20px 0;
   padding: 15px;
   border-radius: 8px;
-  width: 70%;
+  width: 60%;
 }
 
 .product_info h3 {
@@ -233,13 +243,8 @@
   margin-left: 20px;
 }
 
-.list_productrelate {
-  display: flex;
-  gap: 5px;
-}
-
 .item_productrelate {
-  width: 256px;
+  width: 100%;
   border-radius: 5px;
   border: 1px solid #ddd;
   padding: 20px;
@@ -248,7 +253,7 @@
   gap: 10px;
   background-color: #fff;
   margin: 10px 0;
-  height: 376px;
+  height: 100%;
 }
 
 .item_productrelate img {
@@ -302,7 +307,7 @@
 /*  */
 
 .link_home_news {
-  margin-top: 10px;
+  margin: 10px 0;
 }
 
 .list_link {
@@ -312,9 +317,7 @@
 }
 
 .list_link > li > a {
-  color: #585757;
   text-decoration: none;
-  font-size: 18px;
 }
 /*  */
 
@@ -327,7 +330,7 @@
 .list_news {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap:30px;
+  gap: 30px;
 }
 
 .list_news li a {
@@ -335,7 +338,7 @@
 }
 
 .item_news {
-  border:1px solid hsla(0, 0%, 59%, 0.5);
+  border: 1px solid hsla(0, 0%, 59%, 0.5);
   padding: 10px;
   width: 320px;
   border-radius: 5px;
@@ -350,7 +353,7 @@
 
 .Title_news {
   width: 320px;
-  color:#253d4e;
+  color: #253d4e;
   margin-top: 10px;
 }
 
@@ -363,8 +366,136 @@
 .content_news {
   width: 300px;
   font-size: 15px;
-  color:#253d4e
+  color: #253d4e;
 }
 
+@media screen and (max-width: 768px) {
+  .product_img_left {
+    width: 100%;
+  }
 
+  .product_content_right {
+    width: 100%;
+  }
 
+  .product_detail {
+    padding: 4px;
+    gap: 0;
+  }
+
+  .product_name_detail {
+    font-size: 20px;
+    padding-top: 0;
+    padding: 4px;
+  }
+
+  .price_label,
+  .product_status {
+    font-size: 15px;
+  }
+
+  .name {
+    font-size: 14px;
+  }
+
+  .product_price {
+    width: 100%;
+  }
+
+  .product_status {
+    margin-left: 65px;
+  }
+
+  .btn_buynow {
+    margin-top: 0px;
+    font-size: 18px;
+    margin-left: 0;
+  }
+
+  .btn_addCart i {
+    font-size: 18px;
+  }
+
+  .btn_buynow i {
+    font-size: 18px;
+  }
+
+  .btn_addCart {
+    margin-top: 10px;
+    font-size: 18px;
+  }
+
+  .product_description {
+    width: 100%;
+  }
+
+  .product_info {
+    width: 100%;
+  }
+}
+
+/* Mobile: width < 740px */
+@media only screen and (max-width: 46.1875em) {
+  .product_img_left {
+    width: 100%;
+  }
+
+  .product_content_right {
+    width: 100%;
+  }
+
+  .product_detail {
+    gap: 0;
+  }
+
+  .product_name_detail {
+    font-size: 20px;
+    padding-top: 0;
+  }
+
+  .price_label,
+  .product_status {
+    font-size: 15px;
+  }
+
+  .name {
+    font-size: 14px;
+  }
+
+  .product_price {
+    width: 100%;
+  }
+
+  .product_status {
+    margin-left: 65px;
+  }
+
+  .btn_buynow {
+    margin-top: 0px;
+    font-size: 18px;
+  }
+
+  .btn_addCart i {
+    font-size: 18px;
+  }
+
+  .btn_buynow i {
+    font-size: 18px;
+  }
+
+  .btn_addCart {
+    margin-top: 10px;
+    font-size: 18px;
+  }
+
+  .product_description {
+    width: 100%;
+  }
+
+  .product_info {
+    width: 100%;
+  }
+}
+/* Tablet witdth >= 740px and width < 1024px */
+@media only screen and (min-width: 46.25em) and (max-width: 63.9375em) {
+}

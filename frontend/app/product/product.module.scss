@@ -1,52 +1,14 @@
 .page-product {
   width: 100%;
   margin-top: 10px;
-  .nav {
+  .list_link {
     display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    margin-bottom: 10px;
-    gap: 15px;
-    li {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 15px;
-      cursor: pointer;
-      &:first-child {
-        &::after {
-          content: "\f054"; /* Mã unicode cho icon */
-          font-family: "Font Awesome 5 Free"; /* Đảm bảo font được nhập */
-          font-weight: 900; /* Font-weight nếu cần */
-          display: inline-block; /* Hiển thị như inline-block */
-          margin-left: 5px;
-          font-size: 12px;
-          display: flex;
-          align-items: center;
-          color: #3bb77e;
-
-          /* Khoảng cách với text chính */
-        }
-      }
-      &:first-child {
-        .item {
-          text-decoration: none;
-          color: #3bb77e;
-          font-size: 16px;
-          font-weight: 600;
-        }
-      }
-      .icon {
-        // width: 21px;
-        color: #3bb77e;
-        font-size: 24px;
-      }
-      .item {
-        text-decoration: none;
-        color: black;
-        font-size: 16px;
-      }
-    }
+    justify-content: left;
+    gap: 10px;
+  }
+  
+  .list_link > li > a {
+    text-decoration: none;
   }
 
   .product-content {

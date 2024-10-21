@@ -47,292 +47,305 @@
     {
       "id": "1",
       "img": "assets/img/product-bestseller1.svg",
-      "content": "Thực phẩm chế biến sẵn",
       "name": "Thùng 30 gói mì hảo hảo 100 tôm chua cay",
-      "price": 95000,
       "sale_price": 55000,
+      "price": 95000,
+      "unit_of_caculation": "Thùng",
       "description": "Sợi mì vàng dai ngon hòa nguyện trong nước sup tôm chua cay thơm lừng kích thích vị giác",
       "category": "FlashSale"
     },
     {
       "id": "2",
       "img": "assets/img/product-bestseller2.svg",
-      "content": "Thực phẩm chế biến",
       "name": "Thịt bò xay PTV hàng mới về tháng 7/2024",
-      "price": 85000,
       "sale_price": 55000,
+      "price": 85000,
+      "unit_of_caculation": "500g",
       "description": "Thịt bò xay PTV ngon mềm mịn và ngon hơn khi xào, là một nguồn cung cấp dinh dưỡng lớn",
       "category": "FlashSale"
     },
     {
       "id": "3",
       "img": "assets/img/product-bestseller3.svg",
-      "content": "Đồ uống",
       "name": "Bia tiger bạc lon 330ml hàng mới về 2024",
-      "price": 25000,
       "sale_price": 17000,
+      "price": 25000,
+      "unit_of_caculation": "Lon",
       "description": "Bia tiger bạc lon 330ml ngon hơn khi uống với lạnh, bia tiger bạc, ngon hết xảy nhậu hết số",
       "category": "FlashSale"
     },
     {
       "id": "4",
       "img": "assets/img/product-bestseller4.svg",
-      "content": "Thực phẩm tươi",
       "name": "Chuối già giống Nam Mỹ hàng new 2024",
-      "price": 35000,
       "sale_price": 25000,
+      "price": 35000,
+      "unit_of_caculation": "1 Nải",
       "description": "Chuối già giống Nam Mỹ hàng new 2024, ăn bao ngon, dinh dưỡng cho buổi sáng tốt lành",
       "category": "FlashSale"
     },
     {
       "id": "5",
       "img": "assets/img/product-bestseller5.jpg",
-      "content": "Thực phẩm chế biến sẵn",
-      "name": "Bánh bao nhân khoai môn C.P 270g",
-      "price": 35000,
+      "name": "Bánh bao nhân khoai môn C.P",
       "sale_price": 23000,
+      "price": 35000,
+      "unit_of_caculation": "270g",
       "description": "Bánh bao nhân khoai môn thơm lừng, béo ngậy, kích thích vị giác, thích hợp với người ăn chay",
-      "category": "newhot"
+      "category": "FlashSale"
     },
     {
       "id": "6",
       "img": "assets/img/product-bestseller6.jpg",
-      "content": "Thực phẩm chế biến sẵn",
-      "name": "Snack vị sườn cay BBQ Lay's 150g",
-      "price": 85000,
+      "name": "Snack vị sườn cay BBQ Lay's",
       "sale_price": 55000,
+      "price": 85000,
+      "unit_of_caculation": "150g/Ống",
       "description": "Snack khoai tây vị sườn BBQ Lay's Stax lon 150g được chế biến từ những lát khoai tây chọn lọc",
-      "category": "newhot"
+      "category": "FlashSale"
     },
     {
       "id": "7",
       "img": "assets/img/product-bestseller7.jpg",
-      "content": "Thực phẩm chế biến",
-      "name": "Bạch tuộc Oman hấp 600g - 700g tươi sống",
-      "price": 325000,
+      "name": "Bạch tuộc Oman hấp 600g - tươi sống",
       "sale_price": 285000,
+      "price": 325000,
+      "unit_of_caculation": "700g/Con",
       "description": "Bạch tuộc Oman hấp 600g - 700g tươi sống, mới được bắt từ biển, sản phẩm tươi sống, ăn không ngon 1 đổi 1",
-      "category": "newhot"
+      "category": "FlashSale"
     },
     {
       "id": "8",
       "img": "assets/img/product-bestseller8.jpg",
-      "content": "Thực phẩm chế biến",
       "name": "Nước mắm cá cơm Hưng Thịnh 620ml",
       "price": 65000,
       "sale_price": 55000,
+      "unit_of_caculation": "620ml/chai",
       "description": "Nước mắm cá cơm Hưng Thịnh là thương hiệu nước mắm lâu đời trên thị trường Việt Nam trong hàng chục năm qua",
-      "category": "newhot"
+      "category": "FlashSale"
     },
     {
       "id": "9",
       "img": "assets/img/product_hotnew1.svg",
-      "content": "Thực phẩm chế biến",
       "name": "Nước tương Maggi thanh dịu 700ml",
-      "price": 35000,
       "sale_price": 27000,
+      "price": 35000,
+      "unit_of_caculation": "700ml/chai",
       "description": "Nước tương maggi được pha chế đậm đà, sẽ ngon hơn khi chấm",
-      "category": "newhot"
+      "category": "FlashSale"
     },
     {
       "id": "10",
       "img": "assets/img/product_hotnew2.svg",
-      "content": "Thực phẩm chế biến sẵn",
       "name": "Snack socola vị hazelnut Oishi Pillows",
       "price": 25000,
       "sale_price": 12000,
+      "unit_of_caculation": "700ml/bịch",
       "description": "Snack socola vị hazelnut thơm ngon, giòn rụm",
-      "category": "newhot"
+      "category": "FlashSale"
     },
     {
       "id": "11",
       "img": "assets/img/product_hotnew3.svg",
-      "content": "Thực phẩm chế biến",
       "name": "Nấm kim châm Việt Nam hàng giảm giá",
       "price": 12000,
       "sale_price": 9000,
+      "unit_of_caculation": "700ml/bịch",
       "description": "Mua 3 gói nấm kim chi trở lên giảm 3000/gói",
-      "category": "newhot"
+      "category": "Product_OutStanding"
     },
     {
       "id": "12",
       "img": "assets/img/product_hotnew4.svg",
-      "content": "Thực phẩm tươi sống",
       "name": "Chuối già giống Nam Mỹ hàng new 2024",
-      "price": 35000,
       "sale_price": 25000,
+      "price": 35000,
+      "unit_of_caculation": "nải",
       "description": "Chuối già giống Nam Mỹ hàng new 2024, dinh dưỡng",
-      "category": "newhot"
+      "category": "Product_OutStanding"
     },
     {
       "id": "13",
       "img": "assets/img/product_hotnew5.svg",
-      "content": "Thực phẩm tươi sống",
       "name": "Rau má tươi sống trong ngày, đã rửa sạch",
-      "price": 19000,
       "sale_price": 9000,
+      "price": 19000,
+      "unit_of_caculation": "400g/bịch",
       "description": "Phù hợp hơn với món canh rau má, có thể xay để làm nước rất tốt cho sức khỏe",
-      "category": "newhot"
+      "category": "Product_OutStanding"
     },
     {
       "id": "14",
       "img": "assets/img/product_hotnew6.svg",
-      "content": "Thực phẩm chế biến",
       "name": "Gạo thơm neptune ST25 extra túi 5kg",
-      "price": 190000,
       "sale_price": 139000,
+      "price": 190000,
+      "unit_of_caculation": "5kg/túi",
       "description": "Gạo thơm Neptune ST25 Extra túi 5kg hương vị thơm ngon",
-      "category": "newhot"
+      "category": "Product_OutStanding"
     },
     {
-      "id": "19",
+      "id": "15",
       "img": "assets/img/product-popular1.svg",
-      "content": "Thực phẩm tươi sống",
       "name": "Thùng quýt giống Úc nhập khẩu từ TQ",
-      "price": 395000,
       "sale_price": 285000,
+      "price": 395000,
+      "unit_of_caculation": "1 thùng",
       "description": "Thùng quýt giống Úc nhập khẩu từ Trung Quốc, ăn không ngon 1 đổi 1",
-      "category": "popular"
+      "category": "Product_OutStanding"
     },
     {
-      "id": "20",
+      "id": "16",
       "img": "assets/img/product-popular2.svg",
       "content": "Thực phẩm chế biến sẵn",
       "name": "Snack vị táo biển O'star 32g, thơm ngon",
-      "price": 10000,
       "sale_price": 6500,
+      "price": 10000,
+      "unit_of_caculation": "32g/bịch",
       "description": "Snack vị táo biển thơm ngon, giòn rụm, bắt mắc",
-      "category": "popular"
+      "category": "Product_OutStanding"
+    },
+    {
+      "id": "17",
+      "img": "assets/img/product-popular3.svg",
+      "name": "Nấm kim châm Trung Quốc hàng giảm giá",
+      "sale_price": 9000,
+      "price": 12000,
+      "unit_of_caculation": "gói",
+      "description": "Mua 3 gói nấm kim chi trở lên giảm 3000/gói",
+      "category": "Product_OutStanding"
+    },
+    {
+      "id": "18",
+      "img": "assets/img/product-popular4.svg",
+      "name": "Nguyên bao túi hành tây, bao 10kg",
+      "sale_price": 165000,
+      "price": 285000,
+      "unit_of_caculation": "10kg/bao",
+      "description": "Bao 10kg túi hành tây hàng mới về, rẻ hơn 19000đ khi mua 1kg",
+      "category": "Product_OutStanding"
+    },
+    {
+      "id": "19",
+      "img": "assets/img/product-popular5.svg",
+      "name": "Lốc 6 lon nước ngọt coca 320ml",
+      "sale_price": 47000,
+      "price": 61000,
+      "unit_of_caculation": "1 lốc",
+      "description": "Lốc 6 lon nuosc ngọt coca 320ml, mua 2 lốc giảm 5.000đ",
+      "category": "Product_OutStanding"
+    },
+    {
+      "id": "20",
+      "img": "assets/img/product-popular6.svg",
+      "name": "Cà phê sữa G7 3in1 336g ",
+      "sale_price": 72500,
+      "price": 80000,
+      "unit_of_caculation": "336g",
+      "description": "Cà phê sữa G7 3in1 ",
+      "category": "Product_OutStanding"
     },
     {
       "id": "21",
-      "img": "assets/img/product-popular3.svg",
-      "content": "Thực phẩm chế biến",
-      "name": "Nấm kim châm Trung Quốc hàng giảm giá",
-      "price": 12000,
-      "sale_price": 9000,
-      "description": "Mua 3 gói nấm kim chi trở lên giảm 3000/gói",
-      "category": "popular"
+      "img": "assets/img/product-popular7.svg",
+      "name": "Lốc 4 hộp sữa lúa mạch milo 180ml",
+      "sale_price": 30000,
+      "price": 45000,
+      "unit_of_caculation": "1 Lốc",
+      "description": "Lốc 4 hộp sữa lúa mạch milo 180ml, hàm lượng dinh dưỡng cao",
+      "category": "Product_Popular"
     },
     {
       "id": "22",
-      "img": "assets/img/product-popular4.svg",
-      "content": "Thực phẩm chế biến",
-      "name": "Nguyên bao túi hành tây, bao 10kg",
-      "price": 285000,
-      "sale_price": 165000,
-      "description": "Bao 10kg túi hành tây hàng mới về, rẻ hơn 19000đ khi mua 1kg",
-      "category": "popular"
+      "img": "assets/img/product-popular8.svg",
+      "content": "Thực phẩm chế biến sẵn",
+      "name": "Muối ớt chanh Dh Foods 200g",
+      "sale_price": 22000,
+      "price": 27000,
+      "unit_of_caculation": "200g",
+      "description": "Muối ớt chanh Dh Foods 200g, ngon hơn khi chấm với hải sản",
+      "category": "Product_Popular"
     },
     {
       "id": "23",
-      "img": "assets/img/product-popular5.svg",
-      "content": "Đồ uống",
-      "name": "Lốc 6 lon nước ngọt coca 320ml",
-      "price": 61000,
-      "sale_price": 47000,
-      "description": "Lốc 6 lon nuosc ngọt coca 320ml, mua 2 lốc giảm 5.000đ",
-      "category": "popular"
+      "img": "assets/img/product-popular9.svg",
+      "name": "Tôm càng xanh tươi sống 500g, tươi rói",
+      "sale_price": 69000,
+      "price": 85000,
+      "unit_of_caculation": "500g",
+      "description": "Snack da gà chiên giòn vị Tomyum Dorkbua gói 30g",
+      "category": "Product_Popular"
     },
     {
       "id": "24",
-      "img": "assets/img/product-popular6.svg",
-      "content": "Thực phẩm chế biến sẵn",
-      "name": "Cà phê sữa G7 3in1 336g ",
-      "price": 80000,
-      "sale_price": 72500,
-      "description": "Cà phê sữa G7 3in1 ",
-      "category": "popular"
+      "img": "assets/img/product-popular10.svg",
+      "name": "Lẩu thái SG Food 500g",
+      "sale_price": 86000,
+      "price": 95000,
+      "unit_of_caculation": "500g",
+      "description": "Sản phẩm lẩu được làm sẵn, thích hợp cho những ngày bận rộn",
+      "category": "Product_Popular"
     },
     {
       "id": "25",
-      "img": "assets/img/product-popular7.svg",
-      "content": "Đồ uống",
-      "name": "Lốc 4 hộp sữa lúa mạch milo 180ml",
-      "price": 45000,
-      "sale_price": 30000,
-      "description": "Lốc 4 hộp sữa lúa mạch milo 180ml, hàm lượng dinh dưỡng cao",
-      "category": "popular"
+      "img": "assets/img/product-popular6.svg",
+      "name": "Cà phê sữa G7 3in1 336g ",
+      "sale_price": 72500,
+      "price": 80000,
+      "unit_of_caculation": "336g",
+      "description": "Cà phê sữa G7 3in1 ",
+      "category": "Product_Popular"
     },
     {
       "id": "26",
-      "img": "assets/img/product-popular8.svg",
-      "content": "Thực phẩm chế biến sẵn",
-      "name": "Muối ớt chanh Dh Foods 200g",
-      "price": 27000,
-      "sale_price": 22000,
-      "description": "Muối ớt chanh Dh Foods 200g, ngon hơn khi chấm với hải sản",
-      "category": "popular"
+      "img": "assets/img/product-popular7.svg",
+      "name": "Lốc 4 hộp sữa lúa mạch milo 180ml",
+      "sale_price": 30000,
+      "price": 45000,
+      "unit_of_caculation": "1 Lốc",
+      "description": "Lốc 4 hộp sữa lúa mạch milo 180ml, hàm lượng dinh dưỡng cao",
+      "category": "Product_Popular"
     },
     {
       "id": "27",
-      "img": "assets/img/product-popular9.svg",
-      "content": "Thực phẩm tươi sống",
-      "name": "Tôm càng xanh tươi sống 500g, tươi rói",
-      "price": 85000,
-      "sale_price": 69000,
-      "description": "Snack da gà chiên giòn vị Tomyum Dorkbua gói 30g",
-      "category": "popular"
+      "img": "assets/img/product-popular8.svg",
+      "name": "Muối ớt chanh Dh Foods 200g",
+      "sale_price": 22000,
+      "price": 27000,
+      "unit_of_caculation": "200g/hủ",
+      "description": "Muối ớt chanh Dh Foods 200g, ngon hơn khi chấm với hải sản",
+      "category": "Product_Popular"
     },
     {
       "id": "28",
-      "img": "assets/img/product-popular10.svg",
-      "content": "Thực phẩm chế biến sẵn",
-      "name": "Lẩu thái SG Food 500g",
-      "price": 95000,
-      "sale_price": 86000,
-      "description": "Sản phẩm lẩu được làm sẵn, thích hợp cho những ngày bận rộn",
-      "category": "popular"
+      "img": "assets/img/product-popular9.svg",
+      "name": "Tôm càng xanh tươi sống 500g, tươi rói",
+      "sale_price": 69000,
+      "price": 85000,
+      "unit_of_caculation": "500g",
+      "description": "Snack da gà chiên giòn vị Tomyum Dorkbua gói 30g",
+      "category": "Product_Popular"
     },
     {
       "id": "29",
-      "img": "assets/img/product-popular6.svg",
-      "content": "Thực phẩm chế biến sẵn",
-      "name": "Cà phê sữa G7 3in1 336g ",
-      "price": 80000,
-      "sale_price": 72500,
-      "description": "Cà phê sữa G7 3in1 ",
-      "category": "related_products"
-    },
-    {
-      "id": "30",
-      "img": "assets/img/product-popular7.svg",
-      "content": "Đồ uống",
-      "name": "Lốc 4 hộp sữa lúa mạch milo 180ml",
-      "price": 45000,
-      "sale_price": 30000,
-      "description": "Lốc 4 hộp sữa lúa mạch milo 180ml, hàm lượng dinh dưỡng cao",
-      "category": "related_products"
-    },
-    {
-      "id": "31",
-      "img": "assets/img/product-popular8.svg",
-      "content": "Thực phẩm chế biến sẵn",
-      "name": "Muối ớt chanh Dh Foods 200g",
-      "price": 27000,
-      "sale_price": 22000,
-      "description": "Muối ớt chanh Dh Foods 200g, ngon hơn khi chấm với hải sản",
-      "category": "related_products"
-    },
-    {
-      "id": "32",
-      "img": "assets/img/product-popular9.svg",
-      "content": "Thực phẩm tươi sống",
-      "name": "Tôm càng xanh tươi sống 500g, tươi rói",
-      "price": 85000,
-      "sale_price": 69000,
-      "description": "Snack da gà chiên giòn vị Tomyum Dorkbua gói 30g",
-      "category": "related_products"
-    },
-    {
-      "id": "33",
       "img": "assets/img/product-popular10.svg",
       "content": "Thực phẩm chế biến sẵn",
       "name": "Lẩu thái SG Food 500g",
-      "price": 95000,
       "sale_price": 86000,
+      "price": 95000,
+      "unit_of_caculation": "500g",
       "description": "Sản phẩm lẩu được làm sẵn, thích hợp cho những ngày bận rộn",
-      "category": "related_products"
+      "category": "Product_Popular"
+    },
+    {
+      "id": "30",
+      "img": "assets/img/product-popular9.svg",
+      "name": "Tôm càng xanh tươi sống 2, tươi rói",
+      "sale_price": 69000,
+      "price": 85000,
+      "unit_of_caculation": "500g",
+      "description": "Snack da gà chiên giòn vị Tomyum Dorkbua gói 30g",
+      "category": "Product_Popular"
     }
   ]
 }
