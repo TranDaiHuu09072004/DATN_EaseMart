@@ -9,7 +9,6 @@ import {
   faHouse,
 } from "@fortawesome/free-solid-svg-icons";
 import Sidebar from "./components/sidebar/sidebar";
-
 const cx = classNames.bind(styles);
 const Product = async () => {
   return (

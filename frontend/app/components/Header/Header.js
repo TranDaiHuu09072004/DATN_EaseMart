@@ -24,15 +24,16 @@ export default function Header() {
             <div className={cx("logo")}>
               <img src="assets/img/home/logo.png" />
             </div>
-            <div className={cx("search-box", "lg:flex", "hidden")}>
+
+            <form action="" className={cx("search-box", "lg:flex", "hidden")}>
               <input type="text" placeholder="Bạn muốn mua gì ..." />
-              <button>
+              <button type="submit">
                 <FontAwesomeIcon
                   className={cx("icon-search")}
                   icon={faSearch}
                 />
               </button>
-            </div>
+            </form>
             <div
               className={cx(
                 "cart-info",
