@@ -2,7 +2,7 @@
   flex-wrap: wrap;
   gap: 20px;
   .voucher-item {
-    width: 620px;
+    width: 600px;
     height: 140px;
     background-color: red;
     position: relative;
@@ -92,9 +92,8 @@
     }
   }
 
-  @media (max-width:1028px) {
-
-    .voucher-item{
+  @media (max-width: 1028px) {
+    .voucher-item {
       width: 100%;
     }
   }
@@ -141,6 +140,14 @@
         }
       }
     }
+  }
+}
+@media (max-width: 768px) {
+  .flash-sale {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
   }
 }
 

@@ -5,8 +5,9 @@ import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping, faSearch } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
-import HeaderScroll from "./components/HeaderScroll";
+import HeaderScroll from "./components/HeaderScroll/HeaderScroll";
 import { Icon } from "@iconify/react";
+import MenuMobile from "./components/MenuMobile";
 
 const cx = classNames.bind(styles);
 export default function Header() {
@@ -15,12 +16,8 @@ export default function Header() {
       <div className="max-w-screen-xl mx-auto px-4">
         <div className={cx("header")}>
           <div className={cx("header-top")}>
-            <div className={cx("pr-3", "block", "lg:hidden")}>
-              <Icon
-                icon="ic:round-menu"
-                className={cx("w-10", "h-10", "text-white")}
-              />
-            </div>
+            <MenuMobile></MenuMobile>
+
             <div className={cx("logo")}>
               <img src="assets/img/home/logo.png" />
             </div>
@@ -36,6 +33,7 @@ export default function Header() {
             <div
               className={cx(
                 "cart-info",
+
                 "items-center",
                 "lg:justify-between",
                 "justify-end",
@@ -45,7 +43,7 @@ export default function Header() {
                 "lg:w-72"
               )}
             >
-              <Link href="#" className={cx("cart", "flex", "gap-2")}>
+              <Link href="#" className={cx("cart", "flex", "py-3", "gap-2")}>
                 <div className={cx("box-icon-cart")}>
                   <FontAwesomeIcon
                     className={cx(
@@ -74,7 +72,10 @@ export default function Header() {
                   Giỏ hàng
                 </div>
               </Link>
-              <Link href="/dangky" className={cx("account")}>
+              <Link
+                href="/dangky"
+                className={cx("account", "relative", "group", "py-3")}
+              >
                 <div className={cx("box-icon-account")}>
                   <FontAwesomeIcon
                     className={cx(
@@ -101,6 +102,51 @@ export default function Header() {
                   {" "}
                   Giỏ hàng
                 </div>
+                <ul
+                  className={cx(
+                    "hidden",
+                    "menu-child",
+                    "w-48",
+                    "absolute",
+                    "-top-full",
+                    "right-0",
+                    "flex",
+                    "flex-col",
+                    "opacity-0",
+                    "group-hover:flex",
+                    "group-hover:opacity-100",
+                    "group-hover:top-full",
+                    "transition-all",
+                    "ease-in-out-300",
+                    "bg-white"
+                  )}
+                >
+                  <li className={cx("text-black", "px-3", "py-4")}>
+                    <Link href="#">Cập nhật tài khoản</Link>
+                  </li>
+                  <li className={cx("text-black", "px-3", "py-4")}>
+                    <Link href="#">Cập nhật tài khoản</Link>
+                  </li>
+                  <li className={cx("text-black", "px-3", "py-4")}>
+                    <Link href="#">Cập nhật tài khoản</Link>
+                  </li>
+                  <li
+                    className={cx(
+                      "text-black",
+                      "px-3",
+                      "py-4",
+                      "flex",
+                      "items-center",
+                      "gap-2"
+                    )}
+                  >
+                    <Icon
+                      icon="material-symbols:logout-sharp"
+                      className={cx("w-5", "h-5")}
+                    />
+                    <Link href="#">Đăng xuất</Link>
+                  </li>
+                </ul>
               </Link>
             </div>
           </div>

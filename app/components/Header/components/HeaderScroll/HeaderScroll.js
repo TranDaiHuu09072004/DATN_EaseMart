@@ -11,6 +11,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import { Icon } from "@iconify/react";
+import MenuMobile from "../MenuMobile";
 
 const cx = classNames.bind(styles);
 const HeaderScroll = () => {
@@ -49,13 +50,7 @@ const HeaderScroll = () => {
       {showHeader && showHeaderScroll && (
         <div className={cx("header-scroll", "py-2", "px-2", "lg:px-16")}>
           <div className={cx("header")}>
-            <div className={cx("pr-3", "block", "lg:hidden")}>
-              <Icon
-                icon="ic:round-menu"
-                className={cx("w-10", "h-10")}
-                style={{ color: "3bb77e" }}
-              />
-            </div>
+            <MenuMobile color={true}></MenuMobile>
             <div className={cx("logo", "lg:w-48", "w-fit")}>
               <img src="assets/img/logo.png" />
             </div>

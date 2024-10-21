@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCopy } from "@fortawesome/free-regular-svg-icons";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import Countdown from "./components/CountDown/CountDown";
+import { Icon } from "@iconify/react";
 
 const cx = classNames.bind(styles);
 export default function Home() {
@@ -21,82 +22,35 @@ export default function Home() {
             "justify-center"
           )}
         >
-          <div className={cx("voucher-item")}>
-            <div className={cx("voucher-item-top")}>
-              <div className={cx("info-left")}>
-                <p>
-                  Giảm 50.000đ cho đơn từ 1.500.000đ (không áp dụng với đơn COD,
-                  Trả góp, Thanh toán Payme)
-                </p>
-              </div>
-              <div className={cx("info-right")}>
-                Giảm 50.000đ cho đơn từ 1.500.000đ
-              </div>
-            </div>
-            <div className={cx("voucher-item-bottom")}>
-              <h4>2NZ42HJB</h4>
-              <button className={cx("button-copy")}>
-                <FontAwesomeIcon icon={faCopy} /> Copy
-              </button>
-            </div>
-          </div>
-          <div className={cx("voucher-item")}>
-            <div className={cx("voucher-item-top")}>
-              <div className={cx("info-left")}>
-                <p>
-                  Giảm 50.000đ cho đơn từ 1.500.000đ (không áp dụng với đơn COD,
-                  Trả góp, Thanh toán Payme)
-                </p>
-              </div>
-              <div className={cx("info-right")}>
-                Giảm 50.000đ cho đơn từ 1.500.000đ
-              </div>
-            </div>
-            <div className={cx("voucher-item-bottom")}>
-              <h4>2NZ42HJB</h4>
-              <button className={cx("button-copy")}>
-                <FontAwesomeIcon icon={faCopy} /> Copy
-              </button>
-            </div>
-          </div>
-          <div className={cx("voucher-item")}>
-            <div className={cx("voucher-item-top")}>
-              <div className={cx("info-left")}>
-                <p>
-                  Giảm 50.000đ cho đơn từ 1.500.000đ (không áp dụng với đơn COD,
-                  Trả góp, Thanh toán Payme)
-                </p>
-              </div>
-              <div className={cx("info-right")}>
-                Giảm 50.000đ cho đơn từ 1.500.000đ
-              </div>
-            </div>
-            <div className={cx("voucher-item-bottom")}>
-              <h4>2NZ42HJB</h4>
-              <button className={cx("button-copy")}>
-                <FontAwesomeIcon icon={faCopy} /> Copy
-              </button>
-            </div>
-          </div>
-          <div className={cx("voucher-item")}>
-            <div className={cx("voucher-item-top")}>
-              <div className={cx("info-left")}>
-                <p>
-                  Giảm 50.000đ cho đơn từ 1.500.000đ (không áp dụng với đơn COD,
-                  Trả góp, Thanh toán Payme)
-                </p>
-              </div>
-              <div className={cx("info-right")}>
-                Giảm 50.000đ cho đơn từ 1.500.000đ
-              </div>
-            </div>
-            <div className={cx("voucher-item-bottom")}>
-              <h4>2NZ42HJB</h4>
-              <button className={cx("button-copy")}>
-                <FontAwesomeIcon icon={faCopy} /> Copy
-              </button>
-            </div>
-          </div>
+          {Array(4)
+            .fill()
+            .map(() => {
+              return (
+                <div className={cx("voucher-item")}>
+                  <div className={cx("voucher-item-top")}>
+                    <div className={cx("info-left")}>
+                      <p>
+                        Giảm 50.000đ cho đơn từ 1.500.000đ (không áp dụng với
+                        đơn COD, Trả góp, Thanh toán Payme)
+                      </p>
+                    </div>
+                    <div className={cx("info-right")}>
+                      Giảm 50.000đ cho đơn từ 1.500.000đ
+                    </div>
+                  </div>
+                  <div className={cx("voucher-item-bottom")}>
+                    <h4>2NZ42HJB</h4>
+                    <button className={cx("button-copy", "flex", "gap-1")}>
+                      <Icon
+                        icon="solar:copy-broken"
+                        className={cx("w-4", "h-4")}
+                      />{" "}
+                      Copy
+                    </button>
+                  </div>
+                </div>
+              );
+            })}
         </div>
       </div>
       <div
@@ -155,8 +109,11 @@ export default function Home() {
                         "items-center"
                       )}
                     >
-                      <span className={cx("lg:block", "hidden")}>
-                        <FontAwesomeIcon icon={faCartShopping} />
+                      <span className={cx("lg:flex", "items-center", "hidden")}>
+                        <Icon
+                          icon="humbleicons:cart"
+                          className={cx("w-6", "h-7")}
+                        />
                       </span>
                       Thêm giỏ hàng
                     </button>
@@ -212,8 +169,11 @@ export default function Home() {
                         "items-center"
                       )}
                     >
-                      <span className={cx("lg:block", "hidden")}>
-                        <FontAwesomeIcon icon={faCartShopping} />
+                      <span className={cx("lg:flex", "items-center", "hidden")}>
+                        <Icon
+                          icon="humbleicons:cart"
+                          className={cx("w-6", "h-7")}
+                        />
                       </span>
                       Thêm giỏ hàng
                     </button>
@@ -269,8 +229,11 @@ export default function Home() {
                         "items-center"
                       )}
                     >
-                      <span className={cx("lg:block", "hidden")}>
-                        <FontAwesomeIcon icon={faCartShopping} />
+                      <span className={cx("lg:flex", "items-center", "hidden")}>
+                        <Icon
+                          icon="humbleicons:cart"
+                          className={cx("w-6", "h-7")}
+                        />
                       </span>
                       Thêm giỏ hàng
                     </button>
