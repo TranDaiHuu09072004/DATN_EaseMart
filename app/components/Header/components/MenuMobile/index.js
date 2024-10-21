@@ -209,7 +209,7 @@ const MenuMobile = ({ color = false }) => {
               </p>
 
               <div className={cx("box-social", "")}>
-                <h2 className={cx("", "mb-6")}>Contact Us</h2>
+                <h2 className={cx("text-lg", "mb-6")}>Contact Us</h2>
                 <div
                   className={cx(
                     "social-item",
