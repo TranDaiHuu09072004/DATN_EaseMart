@@ -3,6 +3,7 @@
   background-color: #3bb77e;
   padding-top: 10px;
 }
+
 .list_footer {
   display: grid;
   gap: 30px;
@@ -38,6 +39,155 @@
 
 .ft_2 {
   margin-bottom: 15px;
+}
+
+.footer1 {
+  display: flex;
+  flex-direction: column;
+  gap: 16.3px;
+  width: 300px;
+}
+
+.footer_content {
+  color: #fff;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.footer_content span {
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.footer_address {
+  color: #fff;
+  font-size: 15px;
+}
+
+.footer_hotline {
+  font-size: 15px;
+  color: #fff;
+  font-weight: 600;
+}
+
+.footer_hotline span {
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.footer_email {
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.footer_email span {
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.footer_opendoor {
+  color: #fff;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+/* Footer2 */
+
+.footer2 {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding-top: 5px;
+}
+
+.footer_item {
+  color: #fff;
+}
+
+.footer_item:hover {
+  color: #fff;
+}
+
+.footer_company {
+  color: #fff;
+  font-weight: 700;
+}
+
+.media_social {
+  display: flex;
+  gap: 10px;
+}
+
+.gg_play {
+  max-width: 150px;
+  object-fit: cover;
+}
+
+.gg_play:hover {
+  transform: scale(1.1);
+  z-index: 1;
+  transition: all 0.5s ease-in-out;
+}
+
+.app_store {
+  max-width: 150px;
+  object-fit: cover;
+}
+
+.app_store:hover {
+  transform: scale(1.1);
+  z-index: 1;
+  transition: all 0.3s ease-in-out;
+}
+
+.copyright {
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+  font-size: 20px;
+}
+
+.copyright:hover {
+  color: #fff;
+}
+
+@media (min-width: 1024px) {
+  .list_footer {
+    display: grid;
+    gap: 30px;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 1024px) {
+  .list_footer {
+    grid-template-columns: 1fr 1fr 1fr; /* Khi màn hình nhỏ hơn 768px, chỉ có 1 cột */
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .list_footer {
+    grid-template-columns: 1fr; /* Khi màn hình nhỏ hơn 768px, chỉ có 1 cột */
+    justify-content: center;
+  }
+}
+
+.ft_1 .a img {
+  max-width: 300px;
+  object-fit: cover;
+}
+
+.ft_1 .a {
+  text-decoration: none;
+}
+.ft_2 .a {
+  text-decoration: none;
 }
 
 .footer1 {

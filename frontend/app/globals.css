@@ -2,10 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 * {
-    box-sizing: border-box;
-  }
+  box-sizing: border-box;
+}
 
-  html,
+html,
 body,
 div,
 span,
@@ -136,8 +136,7 @@ body {
 
 .container {
   width: 1280px;
-  margin: 0px auto;
-  height: 100%;
+  margin: 0 auto;
 }
 
 .slick-next {
@@ -149,4 +148,3 @@ body {
   z-index: 50;
   /* background-color: transparent !important ; */
 }
-

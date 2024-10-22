@@ -9,6 +9,12 @@
 
 .product_img_left {
   padding: 20px;
+  width: 40%;
+}
+
+.img_small {
+  display: flex;
+  margin: 0 30px;
 }
 
 .img_small img:hover {
@@ -445,7 +451,6 @@
   }
 
   .product_detail {
-    gap: 0;
   }
 
   .product_name_detail {

@@ -1,48 +1,4 @@
 {
-  "categories": [
-    {
-      "id": 1,
-      "name": "Rau củ quả",
-      "img": "assets/img/category_raucuqua.svg"
-    },
-    {
-      "id": 2,
-      "name": "Thịt, trứng, hải sản",
-      "img": "assets/img/category_thit-trung-haisan.svg"
-    },
-    { "id": 3, "name": "Trái cây", "img": "assets/img/category_traicay.svg" },
-    {
-      "id": 4,
-      "name": "Sản phẩm từ sữa ",
-      "img": "assets/img/category_product-milk.svg"
-    },
-    {
-      "id": 5,
-      "name": "Nước giải khát ",
-      "img": "assets/img/category_nuocgiaikhat.svg"
-    },
-    {
-      "id": 6,
-      "name": "Sốt, gia vị",
-      "img": "assets/img/category_nuoccham_giavi.svg"
-    },
-    {
-      "id": 7,
-      "name": "Mì gói, đồ hộp",
-      "img": "assets/img/category_migoi-dohop.svg"
-    },
-    { "id": 8, "name": "Đồ chay", "img": "assets/img/category_dochay.svg" },
-    {
-      "id": 9,
-      "name": "Hóa mỹ phẩm",
-      "img": "assets/img/category_hoamypham.svg"
-    },
-    {
-      "id": 10,
-      "name": "Gạo, ngũ cốc",
-      "img": "assets/img/category_gao-ngucoc.svg"
-    }
-  ],
   "products": [
     {
       "id": "1",
@@ -52,7 +8,29 @@
       "price": 95000,
       "unit_of_caculation": "Thùng",
       "description": "Sợi mì vàng dai ngon hòa nguyện trong nước sup tôm chua cay thơm lừng kích thích vị giác",
-      "category": "FlashSale"
+      "category": {
+        "id": "1",
+        "name": "Mì Gói,Đồ hộp",
+        "image": "assets/img/category-rau-cu-qua.png",
+        "subcategories": [
+          {
+            "id": "1",
+            "name": "Mì ăn liền",
+            "image": "assets/img/category-rau-cu-qua.png"
+          },
+          {
+            "id": "2",
+            "name": "Đồ chay ăn liền",
+            "image": "assets/img/category-rau-cu-qua.png"
+          }
+        ]
+      },
+      "brand": {
+        "id": "1",
+        "name": "Hảo Hảo",
+        "logo": "assets/img/brand-coca.png"
+      },
+      "type": "FlashSale"
     },
     {
       "id": "2",
@@ -62,7 +40,34 @@
       "price": 85000,
       "unit_of_caculation": "500g",
       "description": "Thịt bò xay PTV ngon mềm mịn và ngon hơn khi xào, là một nguồn cung cấp dinh dưỡng lớn",
-      "category": "FlashSale"
+      "category": {
+        "id": "2",
+        "name": "Thịt, Cá, Trứng, Hải Sản",
+        "image": "assets/img/category-rau-cu-qua.png",
+        "subcategories": [
+          {
+            "id": "1",
+            "name": "Đùi Bò",
+            "image": "assets/img/category-rau-cu-qua.png"
+          },
+          {
+            "id": "2",
+            "name": "Thịt vụn bò",
+            "image": "assets/img/category-rau-cu-qua.png"
+          },
+          {
+            "id": "2",
+            "name": "Nạc bò",
+            "image": "assets/img/category-rau-cu-qua.png"
+          }
+        ]
+      },
+      "brand": {
+        "id": "1",
+        "name": "FOHLA",
+        "logo": "assets/img/brand-coca.png"
+      },
+      "type": "FlashSale"
     },
     {
       "id": "3",
@@ -72,7 +77,29 @@
       "price": 25000,
       "unit_of_caculation": "Lon",
       "description": "Bia tiger bạc lon 330ml ngon hơn khi uống với lạnh, bia tiger bạc, ngon hết xảy nhậu hết số",
-      "category": "FlashSale"
+      "category": {
+        "id": "1",
+        "name": "Thức uống",
+        "image": "assets/img/category-rau-cu-qua.png",
+        "subcategories": [
+          {
+            "id": "1",
+            "name": "Bia Tiger crystal lon 330ml",
+            "image": "assets/img/category-rau-cu-qua.png"
+          },
+          {
+            "id": "2",
+            "name": "TIGER Bia crystal lon 330ml",
+            "image": "assets/img/category-rau-cu-qua.png"
+          }
+        ]
+      },
+      "brand": {
+        "id": "1",
+        "name": "Tiger",
+        "logo": "assets/img/brand-coca.png"
+      },
+      "type": "FlashSale"
     },
     {
       "id": "4",
@@ -82,7 +109,29 @@
       "price": 35000,
       "unit_of_caculation": "1 Nải",
       "description": "Chuối già giống Nam Mỹ hàng new 2024, ăn bao ngon, dinh dưỡng cho buổi sáng tốt lành",
-      "category": "FlashSale"
+      "category": {
+        "id": "1",
+        "name": "Trái cây",
+        "image": "assets/img/category-rau-cu-qua.png",
+        "subcategories": [
+          {
+            "id": "1",
+            "name": "Chuối cau",
+            "image": "assets/img/category-rau-cu-qua.png"
+          },
+          {
+            "id": "2",
+            "name": "Chuối sấy",
+            "image": "assets/img/category-rau-cu-qua.png"
+          }
+        ]
+      },
+      "brand": {
+        "id": "1",
+        "name": "Đỉnh Nam",
+        "logo": "assets/img/brand-coca.png"
+      },
+      "type": "FlashSale"
     },
     {
       "id": "5",
@@ -92,7 +141,29 @@
       "price": 35000,
       "unit_of_caculation": "270g",
       "description": "Bánh bao nhân khoai môn thơm lừng, béo ngậy, kích thích vị giác, thích hợp với người ăn chay",
-      "category": "FlashSale"
+      "category": {
+        "id": "1",
+        "name": "Rau, Củ, Quả",
+        "image": "assets/img/category-rau-cu-qua.png",
+        "subcategories": [
+          {
+            "id": "1",
+            "name": "Rau lá",
+            "image": "assets/img/category-rau-cu-qua.png"
+          },
+          {
+            "id": "2",
+            "name": "Rau củ",
+            "image": "assets/img/category-rau-cu-qua.png"
+          }
+        ]
+      },
+      "brand": {
+        "id": "1",
+        "name": "Coca-Cola",
+        "logo": "assets/img/brand-coca.png"
+      },
+      "type": "FlashSale"
     },
     {
       "id": "6",
@@ -102,7 +173,29 @@
       "price": 85000,
       "unit_of_caculation": "150g/Ống",
       "description": "Snack khoai tây vị sườn BBQ Lay's Stax lon 150g được chế biến từ những lát khoai tây chọn lọc",
-      "category": "FlashSale"
+      "category": {
+        "id": "1",
+        "name": "Rau, Củ, Quả",
+        "image": "assets/img/category-rau-cu-qua.png",
+        "subcategories": [
+          {
+            "id": "1",
+            "name": "Rau lá",
+            "image": "assets/img/category-rau-cu-qua.png"
+          },
+          {
+            "id": "2",
+            "name": "Rau củ",
+            "image": "assets/img/category-rau-cu-qua.png"
+          }
+        ]
+      },
+      "brand": {
+        "id": "1",
+        "name": "Coca-Cola",
+        "logo": "assets/img/brand-coca.png"
+      },
+      "type": "FlashSale"
     },
     {
       "id": "7",
@@ -112,7 +205,29 @@
       "price": 325000,
       "unit_of_caculation": "700g/Con",
       "description": "Bạch tuộc Oman hấp 600g - 700g tươi sống, mới được bắt từ biển, sản phẩm tươi sống, ăn không ngon 1 đổi 1",
-      "category": "FlashSale"
+      "category": {
+        "id": "1",
+        "name": "Rau, Củ, Quả",
+        "image": "assets/img/category-rau-cu-qua.png",
+        "subcategories": [
+          {
+            "id": "1",
+            "name": "Rau lá",
+            "image": "assets/img/category-rau-cu-qua.png"
+          },
+          {
+            "id": "2",
+            "name": "Rau củ",
+            "image": "assets/img/category-rau-cu-qua.png"
+          }
+        ]
+      },
+      "brand": {
+        "id": "1",
+        "name": "Coca-Cola",
+        "logo": "assets/img/brand-coca.png"
+      },
+      "type": "FlashSale"
     },
     {
       "id": "8",
@@ -122,7 +237,29 @@
       "sale_price": 55000,
       "unit_of_caculation": "620ml/chai",
       "description": "Nước mắm cá cơm Hưng Thịnh là thương hiệu nước mắm lâu đời trên thị trường Việt Nam trong hàng chục năm qua",
-      "category": "FlashSale"
+      "category": {
+        "id": "1",
+        "name": "Rau, Củ, Quả",
+        "image": "assets/img/category-rau-cu-qua.png",
+        "subcategories": [
+          {
+            "id": "1",
+            "name": "Rau lá",
+            "image": "assets/img/category-rau-cu-qua.png"
+          },
+          {
+            "id": "2",
+            "name": "Rau củ",
+            "image": "assets/img/category-rau-cu-qua.png"
+          }
+        ]
+      },
+      "brand": {
+        "id": "1",
+        "name": "Coca-Cola",
+        "logo": "assets/img/brand-coca.png"
+      },
+      "type": "FlashSale"
     },
     {
       "id": "9",
@@ -132,7 +269,29 @@
       "price": 35000,
       "unit_of_caculation": "700ml/chai",
       "description": "Nước tương maggi được pha chế đậm đà, sẽ ngon hơn khi chấm",
-      "category": "FlashSale"
+      "category": {
+        "id": "1",
+        "name": "Rau, Củ, Quả",
+        "image": "assets/img/category-rau-cu-qua.png",
+        "subcategories": [
+          {
+            "id": "1",
+            "name": "Rau lá",
+            "image": "assets/img/category-rau-cu-qua.png"
+          },
+          {
+            "id": "2",
+            "name": "Rau củ",
+            "image": "assets/img/category-rau-cu-qua.png"
+          }
+        ]
+      },
+      "brand": {
+        "id": "1",
+        "name": "Coca-Cola",
+        "logo": "assets/img/brand-coca.png"
+      },
+      "type": "FlashSale"
     },
     {
       "id": "10",
@@ -142,7 +301,29 @@
       "sale_price": 12000,
       "unit_of_caculation": "700ml/bịch",
       "description": "Snack socola vị hazelnut thơm ngon, giòn rụm",
-      "category": "FlashSale"
+      "category": {
+        "id": "1",
+        "name": "Rau, Củ, Quả",
+        "image": "assets/img/category-rau-cu-qua.png",
+        "subcategories": [
+          {
+            "id": "1",
+            "name": "Rau lá",
+            "image": "assets/img/category-rau-cu-qua.png"
+          },
+          {
+            "id": "2",
+            "name": "Rau củ",
+            "image": "assets/img/category-rau-cu-qua.png"
+          }
+        ]
+      },
+      "brand": {
+        "id": "1",
+        "name": "Coca-Cola",
+        "logo": "assets/img/brand-coca.png"
+      },
+      "type": "FlashSale"
     },
     {
       "id": "11",
@@ -152,7 +333,29 @@
       "sale_price": 9000,
       "unit_of_caculation": "700ml/bịch",
       "description": "Mua 3 gói nấm kim chi trở lên giảm 3000/gói",
-      "category": "Product_OutStanding"
+      "category": {
+        "id": "1",
+        "name": "Rau, Củ, Quả",
+        "image": "assets/img/category-rau-cu-qua.png",
+        "subcategories": [
+          {
+            "id": "1",
+            "name": "Rau lá",
+            "image": "assets/img/category-rau-cu-qua.png"
+          },
+          {
+            "id": "2",
+            "name": "Rau củ",
+            "image": "assets/img/category-rau-cu-qua.png"
+          }
+        ]
+      },
+      "brand": {
+        "id": "1",
+        "name": "Coca-Cola",
+        "logo": "assets/img/brand-coca.png"
+      },
+      "type": "Product_OutStanding"
     },
     {
       "id": "12",
@@ -162,7 +365,29 @@
       "price": 35000,
       "unit_of_caculation": "nải",
       "description": "Chuối già giống Nam Mỹ hàng new 2024, dinh dưỡng",
-      "category": "Product_OutStanding"
+      "category": {
+        "id": "1",
+        "name": "Rau, Củ, Quả",
+        "image": "assets/img/category-rau-cu-qua.png",
+        "subcategories": [
+          {
+            "id": "1",
+            "name": "Rau lá",
+            "image": "assets/img/category-rau-cu-qua.png"
+          },
+          {
+            "id": "2",
+            "name": "Rau củ",
+            "image": "assets/img/category-rau-cu-qua.png"
+          }
+        ]
+      },
+      "brand": {
+        "id": "1",
+        "name": "Coca-Cola",
+        "logo": "assets/img/brand-coca.png"
+      },
+      "type": "Product_OutStanding"
     },
     {
       "id": "13",
@@ -172,7 +397,29 @@
       "price": 19000,
       "unit_of_caculation": "400g/bịch",
       "description": "Phù hợp hơn với món canh rau má, có thể xay để làm nước rất tốt cho sức khỏe",
-      "category": "Product_OutStanding"
+      "category": {
+        "id": "1",
+        "name": "Rau, Củ, Quả",
+        "image": "assets/img/category-rau-cu-qua.png",
+        "subcategories": [
+          {
+            "id": "1",
+            "name": "Rau lá",
+            "image": "assets/img/category-rau-cu-qua.png"
+          },
+          {
+            "id": "2",
+            "name": "Rau củ",
+            "image": "assets/img/category-rau-cu-qua.png"
+          }
+        ]
+      },
+      "brand": {
+        "id": "1",
+        "name": "Coca-Cola",
+        "logo": "assets/img/brand-coca.png"
+      },
+      "type": "Product_OutStanding"
     },
     {
       "id": "14",
@@ -182,7 +429,29 @@
       "price": 190000,
       "unit_of_caculation": "5kg/túi",
       "description": "Gạo thơm Neptune ST25 Extra túi 5kg hương vị thơm ngon",
-      "category": "Product_OutStanding"
+      "category": {
+        "id": "1",
+        "name": "Rau, Củ, Quả",
+        "image": "assets/img/category-rau-cu-qua.png",
+        "subcategories": [
+          {
+            "id": "1",
+            "name": "Rau lá",
+            "image": "assets/img/category-rau-cu-qua.png"
+          },
+          {
+            "id": "2",
+            "name": "Rau củ",
+            "image": "assets/img/category-rau-cu-qua.png"
+          }
+        ]
+      },
+      "brand": {
+        "id": "1",
+        "name": "Coca-Cola",
+        "logo": "assets/img/brand-coca.png"
+      },
+      "type": "Product_OutStanding"
     },
     {
       "id": "15",
@@ -192,7 +461,29 @@
       "price": 395000,
       "unit_of_caculation": "1 thùng",
       "description": "Thùng quýt giống Úc nhập khẩu từ Trung Quốc, ăn không ngon 1 đổi 1",
-      "category": "Product_OutStanding"
+      "category": {
+        "id": "1",
+        "name": "Rau, Củ, Quả",
+        "image": "assets/img/category-rau-cu-qua.png",
+        "subcategories": [
+          {
+            "id": "1",
+            "name": "Rau lá",
+            "image": "assets/img/category-rau-cu-qua.png"
+          },
+          {
+            "id": "2",
+            "name": "Rau củ",
+            "image": "assets/img/category-rau-cu-qua.png"
+          }
+        ]
+      },
+      "brand": {
+        "id": "1",
+        "name": "Coca-Cola",
+        "logo": "assets/img/brand-coca.png"
+      },
+      "type": "Product_OutStanding"
     },
     {
       "id": "16",
@@ -203,7 +494,29 @@
       "price": 10000,
       "unit_of_caculation": "32g/bịch",
       "description": "Snack vị táo biển thơm ngon, giòn rụm, bắt mắc",
-      "category": "Product_OutStanding"
+      "category": {
+        "id": "1",
+        "name": "Rau, Củ, Quả",
+        "image": "assets/img/category-rau-cu-qua.png",
+        "subcategories": [
+          {
+            "id": "1",
+            "name": "Rau lá",
+            "image": "assets/img/category-rau-cu-qua.png"
+          },
+          {
+            "id": "2",
+            "name": "Rau củ",
+            "image": "assets/img/category-rau-cu-qua.png"
+          }
+        ]
+      },
+      "brand": {
+        "id": "1",
+        "name": "Coca-Cola",
+        "logo": "assets/img/brand-coca.png"
+      },
+      "type": "Product_OutStanding"
     },
     {
       "id": "17",
@@ -213,7 +526,29 @@
       "price": 12000,
       "unit_of_caculation": "gói",
       "description": "Mua 3 gói nấm kim chi trở lên giảm 3000/gói",
-      "category": "Product_OutStanding"
+      "category": {
+        "id": "1",
+        "name": "Rau, Củ, Quả",
+        "image": "assets/img/category-rau-cu-qua.png",
+        "subcategories": [
+          {
+            "id": "1",
+            "name": "Rau lá",
+            "image": "assets/img/category-rau-cu-qua.png"
+          },
+          {
+            "id": "2",
+            "name": "Rau củ",
+            "image": "assets/img/category-rau-cu-qua.png"
+          }
+        ]
+      },
+      "brand": {
+        "id": "1",
+        "name": "Coca-Cola",
+        "logo": "assets/img/brand-coca.png"
+      },
+      "type": "Product_OutStanding"
     },
     {
       "id": "18",
@@ -223,7 +558,29 @@
       "price": 285000,
       "unit_of_caculation": "10kg/bao",
       "description": "Bao 10kg túi hành tây hàng mới về, rẻ hơn 19000đ khi mua 1kg",
-      "category": "Product_OutStanding"
+      "category": {
+        "id": "1",
+        "name": "Rau, Củ, Quả",
+        "image": "assets/img/category-rau-cu-qua.png",
+        "subcategories": [
+          {
+            "id": "1",
+            "name": "Rau lá",
+            "image": "assets/img/category-rau-cu-qua.png"
+          },
+          {
+            "id": "2",
+            "name": "Rau củ",
+            "image": "assets/img/category-rau-cu-qua.png"
+          }
+        ]
+      },
+      "brand": {
+        "id": "1",
+        "name": "Coca-Cola",
+        "logo": "assets/img/brand-coca.png"
+      },
+      "type": "Product_OutStanding"
     },
     {
       "id": "19",
@@ -233,7 +590,29 @@
       "price": 61000,
       "unit_of_caculation": "1 lốc",
       "description": "Lốc 6 lon nuosc ngọt coca 320ml, mua 2 lốc giảm 5.000đ",
-      "category": "Product_OutStanding"
+      "category": {
+        "id": "1",
+        "name": "Rau, Củ, Quả",
+        "image": "assets/img/category-rau-cu-qua.png",
+        "subcategories": [
+          {
+            "id": "1",
+            "name": "Rau lá",
+            "image": "assets/img/category-rau-cu-qua.png"
+          },
+          {
+            "id": "2",
+            "name": "Rau củ",
+            "image": "assets/img/category-rau-cu-qua.png"
+          }
+        ]
+      },
+      "brand": {
+        "id": "1",
+        "name": "Coca-Cola",
+        "logo": "assets/img/brand-coca.png"
+      },
+      "type": "Product_OutStanding"
     },
     {
       "id": "20",
@@ -243,7 +622,29 @@
       "price": 80000,
       "unit_of_caculation": "336g",
       "description": "Cà phê sữa G7 3in1 ",
-      "category": "Product_OutStanding"
+      "category": {
+        "id": "1",
+        "name": "Rau, Củ, Quả",
+        "image": "assets/img/category-rau-cu-qua.png",
+        "subcategories": [
+          {
+            "id": "1",
+            "name": "Rau lá",
+            "image": "assets/img/category-rau-cu-qua.png"
+          },
+          {
+            "id": "2",
+            "name": "Rau củ",
+            "image": "assets/img/category-rau-cu-qua.png"
+          }
+        ]
+      },
+      "brand": {
+        "id": "1",
+        "name": "Coca-Cola",
+        "logo": "assets/img/brand-coca.png"
+      },
+      "type": "Product_OutStanding"
     },
     {
       "id": "21",
@@ -253,7 +654,29 @@
       "price": 45000,
       "unit_of_caculation": "1 Lốc",
       "description": "Lốc 4 hộp sữa lúa mạch milo 180ml, hàm lượng dinh dưỡng cao",
-      "category": "Product_Popular"
+      "category": {
+        "id": "1",
+        "name": "Rau, Củ, Quả",
+        "image": "assets/img/category-rau-cu-qua.png",
+        "subcategories": [
+          {
+            "id": "1",
+            "name": "Rau lá",
+            "image": "assets/img/category-rau-cu-qua.png"
+          },
+          {
+            "id": "2",
+            "name": "Rau củ",
+            "image": "assets/img/category-rau-cu-qua.png"
+          }
+        ]
+      },
+      "brand": {
+        "id": "1",
+        "name": "Coca-Cola",
+        "logo": "assets/img/brand-coca.png"
+      },
+      "type": "Product_Popular"
     },
     {
       "id": "22",
@@ -264,7 +687,29 @@
       "price": 27000,
       "unit_of_caculation": "200g",
       "description": "Muối ớt chanh Dh Foods 200g, ngon hơn khi chấm với hải sản",
-      "category": "Product_Popular"
+      "category": {
+        "id": "1",
+        "name": "Rau, Củ, Quả",
+        "image": "assets/img/category-rau-cu-qua.png",
+        "subcategories": [
+          {
+            "id": "1",
+            "name": "Rau lá",
+            "image": "assets/img/category-rau-cu-qua.png"
+          },
+          {
+            "id": "2",
+            "name": "Rau củ",
+            "image": "assets/img/category-rau-cu-qua.png"
+          }
+        ]
+      },
+      "brand": {
+        "id": "1",
+        "name": "Coca-Cola",
+        "logo": "assets/img/brand-coca.png"
+      },
+      "type": "Product_Popular"
     },
     {
       "id": "23",
@@ -274,7 +719,29 @@
       "price": 85000,
       "unit_of_caculation": "500g",
       "description": "Snack da gà chiên giòn vị Tomyum Dorkbua gói 30g",
-      "category": "Product_Popular"
+      "category": {
+        "id": "1",
+        "name": "Rau, Củ, Quả",
+        "image": "assets/img/category-rau-cu-qua.png",
+        "subcategories": [
+          {
+            "id": "1",
+            "name": "Rau lá",
+            "image": "assets/img/category-rau-cu-qua.png"
+          },
+          {
+            "id": "2",
+            "name": "Rau củ",
+            "image": "assets/img/category-rau-cu-qua.png"
+          }
+        ]
+      },
+      "brand": {
+        "id": "1",
+        "name": "Coca-Cola",
+        "logo": "assets/img/brand-coca.png"
+      },
+      "type": "Product_Popular"
     },
     {
       "id": "24",
@@ -284,7 +751,29 @@
       "price": 95000,
       "unit_of_caculation": "500g",
       "description": "Sản phẩm lẩu được làm sẵn, thích hợp cho những ngày bận rộn",
-      "category": "Product_Popular"
+      "category": {
+        "id": "1",
+        "name": "Rau, Củ, Quả",
+        "image": "assets/img/category-rau-cu-qua.png",
+        "subcategories": [
+          {
+            "id": "1",
+            "name": "Rau lá",
+            "image": "assets/img/category-rau-cu-qua.png"
+          },
+          {
+            "id": "2",
+            "name": "Rau củ",
+            "image": "assets/img/category-rau-cu-qua.png"
+          }
+        ]
+      },
+      "brand": {
+        "id": "1",
+        "name": "Coca-Cola",
+        "logo": "assets/img/brand-coca.png"
+      },
+      "type": "Product_Popular"
     },
     {
       "id": "25",
@@ -294,7 +783,29 @@
       "price": 80000,
       "unit_of_caculation": "336g",
       "description": "Cà phê sữa G7 3in1 ",
-      "category": "Product_Popular"
+      "category": {
+        "id": "1",
+        "name": "Rau, Củ, Quả",
+        "image": "assets/img/category-rau-cu-qua.png",
+        "subcategories": [
+          {
+            "id": "1",
+            "name": "Rau lá",
+            "image": "assets/img/category-rau-cu-qua.png"
+          },
+          {
+            "id": "2",
+            "name": "Rau củ",
+            "image": "assets/img/category-rau-cu-qua.png"
+          }
+        ]
+      },
+      "brand": {
+        "id": "1",
+        "name": "Coca-Cola",
+        "logo": "assets/img/brand-coca.png"
+      },
+      "type": "Product_Popular"
     },
     {
       "id": "26",
@@ -304,7 +815,29 @@
       "price": 45000,
       "unit_of_caculation": "1 Lốc",
       "description": "Lốc 4 hộp sữa lúa mạch milo 180ml, hàm lượng dinh dưỡng cao",
-      "category": "Product_Popular"
+      "category": {
+        "id": "1",
+        "name": "Rau, Củ, Quả",
+        "image": "assets/img/category-rau-cu-qua.png",
+        "subcategories": [
+          {
+            "id": "1",
+            "name": "Rau lá",
+            "image": "assets/img/category-rau-cu-qua.png"
+          },
+          {
+            "id": "2",
+            "name": "Rau củ",
+            "image": "assets/img/category-rau-cu-qua.png"
+          }
+        ]
+      },
+      "brand": {
+        "id": "1",
+        "name": "Coca-Cola",
+        "logo": "assets/img/brand-coca.png"
+      },
+      "type": "Product_Popular"
     },
     {
       "id": "27",
@@ -314,7 +847,29 @@
       "price": 27000,
       "unit_of_caculation": "200g/hủ",
       "description": "Muối ớt chanh Dh Foods 200g, ngon hơn khi chấm với hải sản",
-      "category": "Product_Popular"
+      "category": {
+        "id": "1",
+        "name": "Rau, Củ, Quả",
+        "image": "assets/img/category-rau-cu-qua.png",
+        "subcategories": [
+          {
+            "id": "1",
+            "name": "Rau lá",
+            "image": "assets/img/category-rau-cu-qua.png"
+          },
+          {
+            "id": "2",
+            "name": "Rau củ",
+            "image": "assets/img/category-rau-cu-qua.png"
+          }
+        ]
+      },
+      "brand": {
+        "id": "1",
+        "name": "Coca-Cola",
+        "logo": "assets/img/brand-coca.png"
+      },
+      "type": "Product_Popular"
     },
     {
       "id": "28",
@@ -324,7 +879,29 @@
       "price": 85000,
       "unit_of_caculation": "500g",
       "description": "Snack da gà chiên giòn vị Tomyum Dorkbua gói 30g",
-      "category": "Product_Popular"
+      "category": {
+        "id": "1",
+        "name": "Rau, Củ, Quả",
+        "image": "assets/img/category-rau-cu-qua.png",
+        "subcategories": [
+          {
+            "id": "1",
+            "name": "Rau lá",
+            "image": "assets/img/category-rau-cu-qua.png"
+          },
+          {
+            "id": "2",
+            "name": "Rau củ",
+            "image": "assets/img/category-rau-cu-qua.png"
+          }
+        ]
+      },
+      "brand": {
+        "id": "1",
+        "name": "Coca-Cola",
+        "logo": "assets/img/brand-coca.png"
+      },
+      "type": "Product_Popular"
     },
     {
       "id": "29",
@@ -335,7 +912,29 @@
       "price": 95000,
       "unit_of_caculation": "500g",
       "description": "Sản phẩm lẩu được làm sẵn, thích hợp cho những ngày bận rộn",
-      "category": "Product_Popular"
+      "category": {
+        "id": "1",
+        "name": "Rau, Củ, Quả",
+        "image": "assets/img/category-rau-cu-qua.png",
+        "subcategories": [
+          {
+            "id": "1",
+            "name": "Rau lá",
+            "image": "assets/img/category-rau-cu-qua.png"
+          },
+          {
+            "id": "2",
+            "name": "Rau củ",
+            "image": "assets/img/category-rau-cu-qua.png"
+          }
+        ]
+      },
+      "brand": {
+        "id": "1",
+        "name": "Coca-Cola",
+        "logo": "assets/img/brand-coca.png"
+      },
+      "type": "Product_Popular"
     },
     {
       "id": "30",
@@ -345,7 +944,60 @@
       "price": 85000,
       "unit_of_caculation": "500g",
       "description": "Snack da gà chiên giòn vị Tomyum Dorkbua gói 30g",
-      "category": "Product_Popular"
+      "category": {
+        "id": "1",
+        "name": "Rau, Củ, Quả",
+        "image": "assets/img/category-rau-cu-qua.png",
+        "subcategories": [
+          {
+            "id": "1",
+            "name": "Rau lá",
+            "image": "assets/img/category-rau-cu-qua.png"
+          },
+          {
+            "id": "2",
+            "name": "Rau củ",
+            "image": "assets/img/category-rau-cu-qua.png"
+          }
+        ]
+      },
+      "brand": {
+        "id": "1",
+        "name": "Coca-Cola",
+        "logo": "assets/img/brand-coca.png"
+      },
+      "type": "Product_Popular"
+    },
+    {
+      "id": "31",
+      "img": "assets/img/product-bestseller1.svg",
+      "name": "Thùng 30 gói mì hảo hảo 100 tôm chua cay",
+      "sale_price": 55000,
+      "price": 95000,
+      "unit_of_caculation": "Thùng",
+      "description": "Sợi mì vàng dai ngon hòa nguyện trong nước sup tôm chua cay thơm lừng kích thích vị giác",
+      "category": {
+        "id": "1",
+        "name": "Rau, Củ, Quả",
+        "image": "assets/img/category-rau-cu-qua.png",
+        "subcategories": [
+          {
+            "id": "1",
+            "name": "Rau lá",
+            "image": "assets/img/category-rau-cu-qua.png"
+          },
+          {
+            "id": "2",
+            "name": "Rau củ",
+            "image": "assets/img/category-rau-cu-qua.png"
+          }
+        ]
+      },
+      "brand": {
+        "id": "1",
+        "name": "Coca-Cola",
+        "logo": "assets/img/brand-coca.png"
+      }
     }
   ]
 }

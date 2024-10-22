@@ -9,13 +9,22 @@ import {
   faHouse,
 } from "@fortawesome/free-solid-svg-icons";
 import Sidebar from "./components/sidebar/sidebar";
+import { Icon } from "@iconify/react";
+
 const cx = classNames.bind(styles);
 const Product = async () => {
   return (
-    <div className={cx("container")}>
+    <div className={cx("max-w-screen-xl", " mx-auto", "px-4")}>
       <div className={cx("page-product")}>
-        <div className={cx("link_home_news", "max-md:px-3", "max-md:p-1")}>
-          <ul className={cx("list_link", "py-2")}>
+        <div
+          className={cx(
+            "link_home_news",
+            "max-md:px-3",
+            "max-md:p-1",
+            "md:px-3"
+          )}
+        >
+          <ul className={cx("list_link")}>
             <li>
               <a
                 href="#"
@@ -64,7 +73,7 @@ const Product = async () => {
           </ul>
         </div>
         <div className={cx("product-content")}>
-          <div className={cx("sidebar")}>
+          <div className={cx("sidebar", "hidden", "lg:block")}>
             <Sidebar></Sidebar>
           </div>
           <div className={cx("content")}>
@@ -122,183 +131,68 @@ const Product = async () => {
                     <img src="assets/img/products/image 321.png" />
                   </div>
                   <Link className={cx("item-name")} href="#">
-                    Rau lá Rau lá Rau láRau lá
+                    Rau lá Rau lá Rau lá Rau lá
                   </Link>
                 </li>
               </ul>
             </div>
             <div className={cx("product-list")}>
-              <div className={cx("box-product")}>
-                <div className={cx("product")}>
-                  <div className={cx("thumb")}>
-                    <img src="assets/img/products/1.svg" />
-                  </div>
-                  <Link href="#" className={cx("name")}>
-                    Lê Đức Anh
-                  </Link>
-                  <div className={cx("price")}>
-                    <div className={cx("price-reduction")}>70,000đ</div>
-                    <div className={cx("original-price")}>100,000đ</div>
-                  </div>
-                  <div className={cx("btn-action")}>
-                    <button className={cx("btn", "addtocart")}>
-                      Thêm vào giỏ hàng
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div className={cx("box-product")}>
-                <div className={cx("product")}>
-                  <div className={cx("thumb")}>
-                    <img src="assets/img/products/1.svg" />
-                  </div>
-                  <Link href="#" className={cx("name")}>
-                    Lê Đức Anh
-                  </Link>
-                  <div className={cx("price")}>
-                    <div className={cx("price-reduction")}>70,000đ</div>
-                    <div className={cx("original-price")}>100,000đ</div>
-                  </div>
-                  <div className={cx("btn-action")}>
-                    <button className={cx("btn", "addtocart")}>
-                      Thêm vào giỏ hàng
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div className={cx("box-product")}>
-                <div className={cx("product")}>
-                  <div className={cx("thumb")}>
-                    <img src="assets/img/products/1.svg" />
-                  </div>
-                  <Link href="#" className={cx("name")}>
-                    Lê Đức Anh
-                  </Link>
-                  <div className={cx("price")}>
-                    <div className={cx("price-reduction")}>70,000đ</div>
-                    <div className={cx("original-price")}>100,000đ</div>
-                  </div>
-                  <div className={cx("btn-action")}>
-                    <button className={cx("btn", "addtocart")}>
-                      Thêm vào giỏ hàng
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div className={cx("box-product")}>
-                <div className={cx("product")}>
-                  <div className={cx("thumb")}>
-                    <img src="assets/img/products/1.svg" />
-                  </div>
-                  <Link href="#" className={cx("name")}>
-                    Lê Đức Anh
-                  </Link>
-                  <div className={cx("price")}>
-                    <div className={cx("price-reduction")}>70,000đ</div>
-                    <div className={cx("original-price")}>100,000đ</div>
-                  </div>
-                  <div className={cx("btn-action")}>
-                    <button className={cx("btn", "addtocart")}>
-                      Thêm vào giỏ hàng
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div className={cx("box-product")}>
-                <div className={cx("product")}>
-                  <div className={cx("thumb")}>
-                    <img src="assets/img/products/1.svg" />
-                  </div>
-                  <Link href="#" className={cx("name")}>
-                    Lê Đức Anh
-                  </Link>
-                  <div className={cx("price")}>
-                    <div className={cx("price-reduction")}>70,000đ</div>
-                    <div className={cx("original-price")}>100,000đ</div>
-                  </div>
-                  <div className={cx("btn-action")}>
-                    <button className={cx("btn", "addtocart")}>
-                      Thêm vào giỏ hàng
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div className={cx("box-product")}>
-                <div className={cx("product")}>
-                  <div className={cx("thumb")}>
-                    <img src="assets/img/products/1.svg" />
-                  </div>
-                  <Link href="#" className={cx("name")}>
-                    Lê Đức Anh
-                  </Link>
-                  <div className={cx("price")}>
-                    <div className={cx("price-reduction")}>70,000đ</div>
-                    <div className={cx("original-price")}>100,000đ</div>
-                  </div>
-                  <div className={cx("btn-action")}>
-                    <button className={cx("btn", "addtocart")}>
-                      Thêm vào giỏ hàng
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div className={cx("box-product")}>
-                <div className={cx("product")}>
-                  <div className={cx("thumb")}>
-                    <img src="assets/img/products/1.svg" />
-                  </div>
-                  <Link href="#" className={cx("name")}>
-                    Lê Đức Anh
-                  </Link>
-                  <div className={cx("price")}>
-                    <div className={cx("price-reduction")}>70,000đ</div>
-                    <div className={cx("original-price")}>100,000đ</div>
-                  </div>
-                  <div className={cx("btn-action")}>
-                    <button className={cx("btn", "addtocart")}>
-                      Thêm vào giỏ hàng
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div className={cx("box-product")}>
-                <div className={cx("product")}>
-                  <div className={cx("thumb")}>
-                    <img src="assets/img/products/1.svg" />
-                  </div>
-                  <Link href="#" className={cx("name")}>
-                    Lê Đức Anh
-                  </Link>
-                  <div className={cx("price")}>
-                    <div className={cx("price-reduction")}>70,000đ</div>
-                    <div className={cx("original-price")}>100,000đ</div>
-                  </div>
-                  <div className={cx("btn-action")}>
-                    <button className={cx("btn", "addtocart")}>
-                      Thêm vào giỏ hàng
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div className={cx("box-product")}>
-                <div className={cx("product")}>
-                  <div className={cx("thumb")}>
-                    <img src="assets/img/products/1.svg" />
-                  </div>
-                  <Link href="#" className={cx("name")}>
-                    Lê Đức Anh
-                  </Link>
-                  <div className={cx("price")}>
-                    <div className={cx("price-reduction")}>70,000đ</div>
-                    <div className={cx("original-price")}>100,000đ</div>
-                  </div>
-                  <div className={cx("btn-action")}>
-                    <button className={cx("btn", "addtocart")}>
-                      Thêm vào giỏ hàng
-                    </button>
-                  </div>
-                </div>
-              </div>
+              {Array(9)
+                .fill()
+                .map(() => {
+                  return (
+                    <div
+                      className={cx(
+                        "lg:basis-1/5",
+                        "sm:basis-1/3",
+                        "basis-1/2",
+                        "p-[2px]"
+                      )}
+                    >
+                      <div className={cx("box-product")}>
+                        <div className={cx("product")}>
+                          <div className={cx("thumb")}>
+                            <img src="assets/img/products/1.svg" />
+                          </div>
+                          <Link href="#" className={cx("name")}>
+                            Lê Đức Anh
+                          </Link>
+                          <div
+                            className={cx("unit", "text-sm", "text-gray-400")}
+                          >
+                            ĐVT: <span className={cx()}>Bó</span>
+                          </div>
+                          <div className={cx("price")}>
+                            <div className={cx("price-reduction")}>70,000đ</div>
+                            <div className={cx("original-price")}>100,000đ</div>
+                          </div>
+                          <div className={cx("btn-action")}>
+                            <button
+                              className={cx(
+                                "btn",
+                                "addtocart",
+                                "flex",
+                                "items-center",
+                                "justify-center",
+                                "gap-1",
+                                "text-base",
+                                "basis-full"
+                              )}
+                            >
+                              <span>
+                                <Icon
+                                  icon="humbleicons:cart"
+                                  className={cx("w-5", "h-6")}
+                                />
+                              </span>
+                              Thêm vào giỏ
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
             </div>
             <div className={cx("pagination")}>
               <div className={cx("page-number", "active")}>1</div>

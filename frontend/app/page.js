@@ -8,6 +8,7 @@ import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import Countdown from "./components/CountDown/CountDown";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { Icon } from "@iconify/react";
 
 const cx = classNames.bind(styles);
 export default function Home() {

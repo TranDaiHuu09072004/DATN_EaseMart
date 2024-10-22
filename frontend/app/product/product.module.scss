@@ -1,6 +1,10 @@
 .page-product {
   width: 100%;
-  margin-top: 10px;
+  margin-top: 5px;
+  .link_home_news {
+    margin: 10px 0;
+  }
+  
   .list_link {
     display: flex;
     justify-content: left;
@@ -48,6 +52,7 @@
             display: flex;
             align-items: center;
             gap: 5px;
+            font-size: 16px;
             span {
               display: flex;
               align-items: center;
@@ -101,6 +106,7 @@
       .type {
         border-radius: 5px;
         box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        background-color: #fff;
         .menu-type {
           display: flex;
           gap: 15px;
@@ -131,6 +137,8 @@
               -webkit-line-clamp: 1; /* Giới hạn số dòng hiển thị */
               -webkit-box-orient: vertical;
               overflow: hidden;
+              // Thêm thuộc tính mới
+              font-weight: 500; /* Thay đổi độ đậm của chữ */
             }
           }
         }
@@ -139,18 +147,14 @@
         display: flex;
         justify-content: flex-start;
         flex-wrap: wrap;
-        gap: 5px;
         margin-top: 10px;
         .box-product {
-          flex-basis: 19.5%;
           box-sizing: border-box;
           padding: 15px;
-          // background-color: blue;
-          border: 1px solid #dcdcdc;
+          background-color: #fff;
           border-radius: 5px;
-          box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+          box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 4px;
           .product {
-            width: 100%;
             height: fit-content;
             // justify-content: space-between;
             display: flex;
@@ -190,7 +194,7 @@
               .price-reduction {
                 font-size: 20px;
                 font-weight: 600;
-                color: #ff7a00;
+                color: #3bb77e;
               }
             }
             .btn-action {
@@ -208,10 +212,16 @@
               .addtocart {
                 font-size: 14px;
                 font-weight: 600;
-                color: #494949;
-                border: 1px solid #aaaaaa;
-                background-color: #fff;
+                border: 1px solid #3bb77e;
+                background-color: #3bb77e;
+                color: #fff;
+                transition: all 0.2s ease-in-out;
+                &:hover {
+                  background-color: #399f6f;
+                  color: #fff;
+                }
               }
+
               .buynow {
                 font-size: 17px;
                 font-weight: 600;
