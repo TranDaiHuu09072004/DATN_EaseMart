@@ -72,36 +72,35 @@ export default function Header() {
                   Giỏ hàng
                 </div>
               </Link>
-              <Link
-                href="/dangky"
-                className={cx("account", "relative", "group", "py-3")}
-              >
-                <div className={cx("box-icon-account")}>
-                  <FontAwesomeIcon
+              <div className={cx("account", "relative", "group", "py-3")}>
+                <Link href="/dangky" className={cx("flex")}>
+                  <div className={cx("box-icon-account")}>
+                    <FontAwesomeIcon
+                      className={cx(
+                        "icon-cart",
+                        "lg:w-7",
+                        "lg:h-7",
+                        "w-9",
+                        "h-9"
+                      )}
+                      icon={faUser}
+                    />
+                  </div>
+                  <div
                     className={cx(
-                      "icon-cart",
-                      "lg:w-7",
-                      "lg:h-7",
-                      "w-9",
-                      "h-9"
+                      "title",
+                      "xl:text-xl",
+                      "lg:text-base",
+                      "text-sm",
+                      "w-20",
+                      "lg:block",
+                      "hidden"
                     )}
-                    icon={faUser}
-                  />
-                </div>
-                <div
-                  className={cx(
-                    "title",
-                    "xl:text-xl",
-                    "lg:text-base",
-                    "text-sm",
-                    "w-20",
-                    "lg:block",
-                    "hidden"
-                  )}
-                >
-                  {" "}
-                  Giỏ hàng
-                </div>
+                  >
+                    {" "}
+                    Giỏ hàng
+                  </div>
+                </Link>
                 <ul
                   className={cx(
                     "hidden",
@@ -147,7 +146,7 @@ export default function Header() {
                     <Link href="#">Đăng xuất</Link>
                   </li>
                 </ul>
-              </Link>
+              </div>
             </div>
           </div>
           <div className={cx("header-bot", "lg:block", "hidden")}>

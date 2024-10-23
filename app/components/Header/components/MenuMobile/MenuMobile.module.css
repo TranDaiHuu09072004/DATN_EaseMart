@@ -3,6 +3,7 @@
   overflow-y: scroll ;
   width: 33rem;
   animation: showSibar 0.2s ease-in-out forwards;
+  z-index: 99 !important;
 }
 
 .mobile-size-menu::-webkit-scrollbar {

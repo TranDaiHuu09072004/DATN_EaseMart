@@ -1,3 +1,4 @@
+"use client";
 import classNames from "classnames/bind";
 import styles from "./home.module.scss";
 import Banner from "./components/Banner/Banner";
