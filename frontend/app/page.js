@@ -24,13 +24,13 @@ export default function Home() {
         const response = await axios.get("http://localhost:3000/products");
         console.log("Fetched products:", response.data); // Log sản phẩm
         const popularProducts = response.data.filter(
-          (product) => product.category === "Product_Popular"
+          (product) => product.type === "Product_Popular"
         );
         const outstandingProducts = response.data.filter(
-          (product) => product.category === "Product_OutStanding"
+          (product) => product.type === "Product_OutStanding"
         );
         const flashSaleProducts = response.data.filter(
-          (product) => product.category === "FlashSale"
+          (product) => product.type === "FlashSale"
         );
         setProducts_Popular(popularProducts);
         setProducts_Products_FlashSale(flashSaleProducts);
