@@ -1,9 +1,17 @@
+/* Container chính */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
 /* Breadcrumb */
 .breadcrumb {
   font-size: 14px;
   color: #666;
   margin-bottom: 20px;
-  text-align: left; /* Căn trái cho breadcrumb */
+  text-align: left;
 }
 
 .breadcrumb a {
@@ -19,39 +27,42 @@
   color: #333;
 }
 
-/* Container chính */
-.container {
-  width: 100%;
-  max-width: 1200px; /* Giới hạn độ rộng tối đa cho nội dung */
-  margin: 0 auto; /* Căn giữa nội dung */
-  padding: 20px;
-  
-}
-
 /* Phần giới thiệu */
 .introSection {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  gap: 20px; /* Giảm khoảng cách giữa phần hình ảnh và phần văn bản */
+  gap: 20px;
   margin-bottom: 40px;
 }
 
-/* Phần ảnh chính */
 .imageContainer {
-  width: 40%; /* Điều chỉnh kích thước hình ảnh cho hài hòa */
+  width: 40%;
+}
+
+@media (max-width: 768px) {
+  .imageContainer {
+    width: 100%;
+  }
 }
 
 .mainImage {
   width: 100%;
-  height: auto; /* Điều chỉnh chiều cao ảnh tự động */
+  height: auto;
   border-radius: 10px;
 }
 
-/* Phần văn bản và ảnh phụ */
 .textContainer {
   width: 56%;
-  padding-left: 20px; /* Tăng padding cho phần văn bản */
+  text-align: left;
+}
+
+@media (max-width: 768px) {
+  .textContainer {
+    width: 100%;
+    text-align: center;
+  }
 }
 
 .title {
@@ -67,7 +78,6 @@
   margin-bottom: 20px;
 }
 
-/* Nhóm ảnh phụ */
 .imageGroup {
   display: flex;
   gap: 10px;
@@ -79,49 +89,139 @@
   border-radius: 10px;
 }
 
+@media (max-width: 768px) {
+  .imageGroup {
+    flex-direction: column;
+  }
+
+  .subImage {
+    width: 100%;
+  }
+}
+
+/* Phần dịch vụ */
 /* Phần dịch vụ */
 .servicesSection {
-  margin-bottom: 40px;
+  padding: 60px 20px;
+  background-color: #f9f9f9;
   text-align: center;
 }
 
 .subHeading {
-  font-size: 28px;
-  color: #2BA84A;
-  margin-bottom: 30px;
+  font-size: 36px;
+  font-weight: bold;
+  color: #253d4e;
+  margin-bottom: 50px;
+  position: relative;
+}
+
+.subHeading::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 5px;
+  background-color: #2BA84A;
+  margin: 10px auto 0;
 }
 
 .services {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 30px;
   justify-items: center;
-  align-items: start;
 }
 
-.service {
+.serviceCard {
+  background-color: white;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  padding: 40px 30px;
   text-align: center;
-  max-width: 300px;
-  margin-top: 50px;
-  margin-bottom: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  max-width: 350px;
+  height: 320px; /* Chiều cao cố định */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Căn giữa theo chiều dọc */
+  align-items: center; /* Căn giữa theo chiều ngang */
+}
+
+.serviceCard:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
 }
 
 .icon {
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   margin-bottom: 20px;
+  display: block; /* Đảm bảo icon là một block element */
 }
+
+.serviceTitle {
+  font-size: 22px;
+  font-weight: bold;
+  color: #253d4e;
+  margin-bottom: 15px;
+}
+
+.serviceDescription {
+  font-size: 16px;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 0;
+  flex-grow: 1; /* Đẩy nội dung để căn đều */
+}
+
+/* Responsive cho phần dịch vụ */
+@media (max-width: 768px) {
+  .services {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .serviceCard {
+    padding: 30px;
+    height: auto; /* Điều chỉnh chiều cao tự động trên thiết bị nhỏ */
+  }
+
+  .icon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .serviceTitle {
+    font-size: 20px;
+  }
+
+  .serviceDescription {
+    font-size: 14px;
+  }
+}
+
 
 /* Phần hiệu suất */
 .performanceSection {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 50px;
+  margin-top: 50px;
+}
+
+@media (max-width: 768px) {
+  .performanceSection {
+    flex-direction: column;
+  }
 }
 
 .performanceImage {
-  width: 48%; /* Giảm chiều rộng ảnh để cân đối hơn */
+  width: 48%;
+}
+
+@media (max-width: 768px) {
+  .performanceImage {
+    width: 100%;
+  }
 }
 
 .performanceImage img {
@@ -133,6 +233,14 @@
 .performanceText {
   width: 48%;
   padding-left: 20px;
+}
+
+@media (max-width: 768px) {
+  .performanceText {
+    width: 100%;
+    padding-left: 0;
+    text-align: center;
+  }
 }
 
 .performanceText h2 {
