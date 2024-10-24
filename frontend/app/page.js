@@ -44,10 +44,6 @@ export default function Home() {
         return newoutStanding;
       });
     });
-
-    // setProducts_Popular(popular);
-    // setProducts_Products_FlashSale(flashsale);
-    // setProducts_Products_OutStanding(outStanding);
   }, []);
 
   return (
