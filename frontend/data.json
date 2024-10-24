@@ -1,4 +1,655 @@
 {
+  "brand": [
+    {
+      "id": "1",
+      "name": "Dalatgap",
+      "logo": "assets/img/FakeAPI/Rau_cu_qua/Rau_la/brand_dalatgap.svg"
+    },
+    {
+      "id": "2",
+      "name": "TonyFruit",
+      "logo": "assets/img/FakeAPI/Rau_cu_qua/Rau_nem/brand_tonyFruit.png"
+    },
+    {
+      "id": "3",
+      "name": "Biovegi",
+      "logo": "assets/img/FakeAPI/Trai_cay/Rau_la/brand_biovegi.png"
+    },
+    {
+      "id": "4",
+      "name": "Vissan",
+      "logo": "assets/img/FakeAPI/Thit_ca_trung_haisan/brand_vissan.png"
+    },
+    {
+      "id": "5",
+      "name": "GODACO_SEA FOOD",
+      "logo": "assets/img/FakeAPI/Thit_ca_trung_haisan/brand_godaco_seafood.png"
+    },
+    {
+      "id": "6",
+      "name": "Ba Huân",
+      "logo": "assets/img/FakeAPI/Thit_ca_trung_haisan/brand_ba_huan.png"
+    },
+    {
+      "id": "7",
+      "name": "Neptune",
+      "logo": "assets/img/FakeAPI/Gao_ngucoc_hat/brand_Neptune.png"
+    },
+    {
+      "id": "8",
+      "name": "Nestle",
+      "logo": "assets/img/FakeAPI/Gao_ngucoc_hat/brand_Nestle.png"
+    },
+    {
+      "id": "9",
+      "name": "VietFresh",
+      "logo": "assets/img/FakeAPI/Gao_ngucoc_hat/brand_VietFresh.png"
+    },
+    {
+      "id": "10",
+      "name": "Meizan",
+      "logo": "assets/img/FakeAPI/Gao_ngucoc_hat/brand_Meizan.png"
+    },
+    {
+      "id": "11",
+      "name": "Vinamilk",
+      "logo": "assets/img/FakeAPI/Sua_cac_loai/brand_vinamilk.png"
+    },
+    {
+      "id": "12",
+      "name": "Abbott",
+      "logo": "assets/img/FakeAPI/Sua_cac_loai/brand_Abbott.png"
+    },
+    {
+      "id": "13",
+      "name": "Ngôi sao Phương Nam",
+      "logo": "assets/img/FakeAPI/Sua_cac_loai/brand_Ngoisaophuongnam.png"
+    },
+    {
+      "id": "14",
+      "name": "Lavachequirit",
+      "logo": "assets/img/FakeAPI/Sua_cac_loai/brand_Lavachequirit.png"
+    },
+    {
+      "id": "15",
+      "name": "Milo",
+      "logo": "assets/img/FakeAPI/Sua_cac_loai/brand_milo.png"
+    },
+    {
+      "id": "16",
+      "name": "Lavie",
+      "logo": "assets/img/FakeAPI/Do_uong/brand_lavie.jpg"
+    },
+    {
+      "id": "17",
+      "name": "Cocacola",
+      "logo": "assets/img/FakeAPI/Do_uong/brand_Cocacola.jpg"
+    },
+    {
+      "id": "18",
+      "name": "Redbull",
+      "logo": "assets/img/FakeAPI/Do_uong/brand_redbull.jpg"
+    },
+    {
+      "id": "19",
+      "name": "Cozy",
+      "logo": "assets/img/FakeAPI/Do_uong/brand_Cozy.jpg"
+    },
+    {
+      "id": "20",
+      "name": "Teppy",
+      "logo": "assets/img/FakeAPI/Do_uong/brand_teppy.png"
+    },
+    {
+      "id": "21",
+      "name": "ChungHa",
+      "logo": "assets/img/FakeAPI/Do_uong/brand_Chungha.png"
+    },
+    {
+      "id": "22",
+      "name": "Budweiser",
+      "logo": "assets/img/FakeAPI/Do_uong/brand_budweiser.jpg"
+    },
+    {
+      "id": "23",
+      "name": "Sanest Khánh Hòa",
+      "logo": "assets/img/FakeAPI/Do_uong/brand_SanestKhanhHoa.jpg"
+    },
+    {
+      "id": "24",
+      "name": "SimPly",
+      "logo": "assets/img/FakeAPI/Sot_giavi/brand_simply.png"
+    },
+    {
+      "id": "25",
+      "name": "Maggi",
+      "logo": "assets/img/FakeAPI/Sot_giavi/brand_maggi.jpg"
+    },
+    {
+      "id": "26",
+      "name": "Chin-su",
+      "logo": "assets/img/FakeAPI/Sot_giavi/brand_chinsu.jpeg"
+    },
+    {
+      "id": "27",
+      "name": "Masan Consumer",
+      "logo": "assets/img/FakeAPI/Sot_giavi/brand_masan-consumer.png"
+    },
+    {
+      "id": "28",
+      "name": "DH Foods",
+      "logo": "assets/img/FakeAPI/Sot_giavi/brand_dhfoods.png"
+    },
+    {
+      "id": "29",
+      "name": "Nam ngư",
+      "logo": "assets/img/FakeAPI/Sot_giavi/brand_namngu.png"
+    },
+    {
+      "id": "30",
+      "name": "Mom Cooks",
+      "logo": "assets/img/FakeAPI/Sot_giavi/brand_momcooks.jpg"
+    },
+    {
+      "id": "31",
+      "name": "3 Miền",
+      "logo": "assets/img/FakeAPI/Migoi_dohop/brand_3mien.jpg"
+    },
+    {
+      "id": "32",
+      "name": "Đệ nhất",
+      "logo": "assets/img/FakeAPI/Migoi_dohop/brand_Denhat.jpg"
+    },
+    {
+      "id": "33",
+      "name": "Vinaly",
+      "logo": "assets/img/FakeAPI/Migoi_dohop/brand_Vinaly.jpg"
+    },
+    {
+      "id": "34",
+      "name": "3 Cô gái",
+      "logo": "assets/img/FakeAPI/Migoi_dohop/brand_3cogai.jpg"
+    },
+    {
+      "id": "35",
+      "name": "Ponnie",
+      "logo": "assets/img/FakeAPI/Migoi_dohop/brand_Ponnie.jpg"
+    },
+    {
+      "id": "36",
+      "name": "An Nhiên",
+      "logo": "assets/img/FakeAPI/Sot_giavi/brand_annhien.jpg"
+    },
+    {
+      "id": "37",
+      "name": "Lays",
+      "logo": "assets/img/FakeAPI/Banh_Keo/brand_Lays.png"
+    },
+    {
+      "id": "38",
+      "name": "CP",
+      "logo": "assets/img/FakeAPI/Banh_Keo/brand_Cb.png"
+    },
+    {
+      "id": "39",
+      "name": "Choi Gang",
+      "logo": "assets/img/FakeAPI/Banh_Keo/brand_ChoiGang.jpg"
+    },
+    {
+      "id": "40",
+      "name": "Chupa Chups",
+      "logo": "assets/img/FakeAPI/Banh_Keo/brand_Chuppachups.jpg"
+    },
+    {
+      "id": "41",
+      "name": "M&M'",
+      "logo": "assets/img/FakeAPI/Banh_Keo/brand_M&M.jpg"
+    },
+    {
+      "id": "42",
+      "name": "Vitapro",
+      "logo": "assets/img/FakeAPI/Banh_Keo/brand_Vitapro.jpg"
+    },
+    {
+      "id": "43",
+      "name": "KHOM FAI",
+      "logo": "assets/img/FakeAPI/Banh_Keo/brand_Khomfai.jpg"
+    },
+    {
+      "id": "44",
+      "name": "LOTHAMILK",
+      "logo": "assets/img/FakeAPI/Banh_Keo/brand_Lothamilk.jpg"
+    },
+    {
+      "id": "45",
+      "name": "MaxKleen",
+      "logo": "assets/img/FakeAPI/Hoa_Mi_Pham/brand_maxkleen.jpg"
+    },
+    {
+      "id": "46",
+      "name": "Sun light",
+      "logo": "assets/img/FakeAPI/Hoa_Mi_Pham/brand_Sunlight.jpg"
+    },
+    {
+      "id": "47",
+      "name": "Lix",
+      "logo": "assets/img/FakeAPI/Hoa_Mi_Pham/brand_Lix.jpg"
+    },
+    {
+      "id": "48",
+      "name": "Oasis",
+      "logo": "assets/img/FakeAPI/Hoa_Mi_Pham/brand_Oasis.jpg"
+    },
+    {
+      "id": "49",
+      "name": "ARS Normal",
+      "logo": "assets/img/FakeAPI/Hoa_Mi_Pham/brand_ARS.jpg"
+    },
+    {
+      "id": "50",
+      "name": "Closeup",
+      "logo": "assets/img/FakeAPI/Hoa_Mi_Pham/brand_Closeup.jpg"
+    }
+  ],
+  "category": [
+    {
+      "id": "1",
+      "name": "Rau, Củ, Quả",
+      "image": "assets/img/FakeAPI/Rau_cu_qua/category_raucuqua.svg",
+      "subcategories": [
+        {
+          "id": "1",
+          "name": "Rau lá",
+          "image": "assets/img/FakeAPI/Rau_cu_qua/Rau_la/category_con_raula.jpg"
+        },
+        {
+          "id": "2",
+          "name": "Nấm",
+          "image": "assets/img/FakeAPI/Rau_cu_qua/Nam/category_nam.jpg"
+        },
+        {
+          "id": "3",
+          "name": "Rau củ sơ chế",
+          "image": "assets/img/FakeAPI/Rau_cu_qua/Rau_cu_so_che/cate_rau_cu_so_che.jpg"
+        },
+        {
+          "id": "4",
+          "name": "Rau củ đông lạnh",
+          "image": "assets/img/FakeAPI/Rau_cu_qua/Rau_cu_dong_lanh/cate_donglanh.jpg"
+        },
+        {
+          "id": "5",
+          "name": "Rau nêm",
+          "image": "assets/img/FakeAPI/Rau_cu_qua/Rau_nem/cate_raunem.jpg"
+        },
+        {
+          "id": "6",
+          "name": "Rau, củ, bông",
+          "image": "assets/img/FakeAPI/Rau_cu_qua/Rau_cu_bong/cate_rau_cu_bong.jpg"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "name": "Trái Cây",
+      "image": "assets/img/FakeAPI/Trai_cay/category_traicay.svg",
+      "subcategories": [
+        {
+          "id": "1",
+          "name": "Trái cây ngoại nhập",
+          "image": "assets/img/FakeAPI/Trai_cay/Trai_cay_ngoai_nhap/cate_trai-cay-ngoai-nhap.jpg"
+        },
+        {
+          "id": "2",
+          "name": "Trái cây nội địa",
+          "image": "assets/img/FakeAPI/Trai_cay/Trai_cay_noi_dia/cate_trai-cay-noi-nhap.jpg"
+        },
+        {
+          "id": "3",
+          "name": "Giỏ trái cây",
+          "image": "assets/img/FakeAPI/Trai_cay/Gio_trai_cay/cate_gio-trai-cay.jpg"
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "name": "Thịt, cá, trứng, hải sản",
+      "image": "assets/img/FakeAPI/Thit_ca_trung_haisan/category_thit_ca_trung_haisan.svg",
+      "subcategories": [
+        {
+          "id": "1",
+          "name": "Thịt bò",
+          "image": "assets/img/FakeAPI/Thit_ca_trung_haisan/Thit_bo/cate_thit-bo.png"
+        },
+        {
+          "id": "2",
+          "name": "Thịt heo",
+          "image": "assets/img/FakeAPI/Thit_ca_trung_haisan/Thit_heo/cate_thit-heo.png"
+        },
+        {
+          "id": "3",
+          "name": "Thịt gà, vịt",
+          "image": "assets/img/FakeAPI/Thit_ca_trung_haisan/Thit_ga_vit/cate_thit-ga-vit.png"
+        },
+        {
+          "id": "4",
+          "name": "Cá, hải sản tươi",
+          "image": "assets/img/FakeAPI/Thit_ca_trung_haisan/Ca_hai_san_tuoi/cate_ca-hai-san.png"
+        },
+        {
+          "id": "5",
+          "name": "Trứng vịt, gà, cút",
+          "image": "assets/img/FakeAPI/Thit_ca_trung_haisan/Trung_ga_vit_trung_cut/cate_trung-ga-vit-cut.png"
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "name": "Gạo, ngũ cốc, hạt",
+      "image": "assets/img/FakeAPI/Gao_ngucoc_hat/category_gao_ngucoc.svg",
+      "subcategories": [
+        {
+          "id": "1",
+          "name": "Gạo",
+          "image": "assets/img/FakeAPI/Gao_ngucoc_hat/Gao/category_gao.png"
+        },
+        {
+          "id": "2",
+          "name": "Ngũ cốc, yến mạch",
+          "image": "assets/img/FakeAPI/Gao_ngucoc_hat/Ngucoc_hat/cate_ngucoc.png"
+        },
+        {
+          "id": "3",
+          "name": "Các loại đậu",
+          "image": "assets/img/FakeAPI/Gao_ngucoc_hat/Cac_loai_dau/cate_dau.jpg"
+        },
+        {
+          "id": "4",
+          "name": "Bột làm bánh",
+          "image": "assets/img/FakeAPI/Gao_ngucoc_hat/Bot_lam_banh/cate_bot_lam_banh.png"
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "name": "Sữa Các Loại",
+      "image": "assets/img/FakeAPI/Sua_cac_loai/category_product-milk.svg",
+      "subcategories": [
+        {
+          "id": "1",
+          "name": "Sữa tươi",
+          "image": "assets/img/FakeAPI/Sua_cac_loai/Sua_tuoi/cate_suatuoi.png"
+        },
+        {
+          "id": "2",
+          "name": "Sữa bột dinh dưỡng",
+          "image": "assets/img/FakeAPI/Sua_cac_loai/Sua_bot_dinh_duong/cate_suabot.png"
+        },
+        {
+          "id": "3",
+          "name": "Sữa chua",
+          "image": "assets/img/FakeAPI/Sua_cac_loai/Sua_chua/cate_suachua.png"
+        },
+        {
+          "id": "4",
+          "name": "Sữa đặc",
+          "image": "assets/img/FakeAPI/Sua_cac_loai/Sua_dac/cate_suadac.png"
+        },
+        {
+          "id": "5",
+          "name": "Bơ, phô mai",
+          "image": "assets/img/FakeAPI/Sua_cac_loai/Bo_pho_mai/cate_bo_phomai.png"
+        },
+        {
+          "id": "6",
+          "name": "Sữa Cacao",
+          "image": "assets/img/FakeAPI/Sua_cac_loai/Sua_cacao_lua_mach/cate_cacao.png"
+        },
+        {
+          "id": "7",
+          "name": "Sữa hạt",
+          "image": "assets/img/FakeAPI/Sua_cac_loai/Sua_hat/cate_suahat.png"
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "name": "Đồ uống",
+      "image": "assets/img/FakeAPI/Do_uong/category_nuocgiaikhat.svg",
+      "subcategories": [
+        {
+          "id": "1",
+          "name": "Nước suối",
+          "image": "assets/img/FakeAPI/Do_uong/Nuoc_suoi/cate_lavie.png"
+        },
+        {
+          "id": "2",
+          "name": "Nước ngọt",
+          "image": "assets/img/FakeAPI/Do_uong/Nuoc_ngot/cate_Cocacola.png"
+        },
+        {
+          "id": "3",
+          "name": "Nước tăng lực, bù khoáng",
+          "image": "assets/img/FakeAPI/Do_uong/Nuoc_tang_luc_bu_khoang/cate_RedBull.png"
+        },
+        {
+          "id": "4",
+          "name": "Trà, cà phê",
+          "image": "assets/img/FakeAPI/Do_uong/Tra_ca_phe/cate_tra_caphe.png"
+        },
+        {
+          "id": "5",
+          "name": "Nước ép trái cây",
+          "image": "assets/img/FakeAPI/Do_uong/Nuoc_ep_trai_cay/cate_nuoc-ep-trai-cay.png"
+        },
+        {
+          "id": "6",
+          "name": "Rượu, Soju",
+          "image": "assets/img/FakeAPI/Do_uong/Ruou_Soju/cate_ruou_soju.png"
+        },
+        {
+          "id": "7",
+          "name": "Bia, nước trái cây lên men",
+          "image": "assets/img/FakeAPI/Do_uong/Bia_nuoc_trai_cay_len_men/cate_bia-nuoc-trai-cay-len-men.png"
+        },
+        {
+          "id": "8",
+          "name": "Nước yến",
+          "image": "assets/img/FakeAPI/Do_uong/Nuoc_yen/cate_nuoc-yen.png"
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "name": "Sốt, gia vị",
+      "image": "assets/img/FakeAPI/Sot_giavi/category_nuoccham_giavi.svg",
+      "subcategories": [
+        {
+          "id": "1",
+          "name": "Dầu ăn",
+          "image": "assets/img/FakeAPI/Sot_giavi/Dau_an/cate_dauan.png"
+        },
+        {
+          "id": "2",
+          "name": "Nước tương, nước mắm",
+          "image": "assets/img/FakeAPI/Sot_giavi/Nuoc_tuong_nuoc_mam/cate_nuoctuong_nuocmam.png"
+        },
+        {
+          "id": "3",
+          "name": "Tương ớt, cà , đen",
+          "image": "assets/img/FakeAPI/Sot_giavi/Tuong_ot_ca_tuong_den/cate_tuongot-ca-den.png"
+        },
+        {
+          "id": "4",
+          "name": "Giấm",
+          "image": "assets/img/FakeAPI/Sot_giavi/Giam/cate_giam.png"
+        },
+        {
+          "id": "5",
+          "name": "Muối, đường, bột ngọt, hạt nêm",
+          "image": "assets/img/FakeAPI/Sot_giavi/Muoi_duong_bot_ngot_hat_nem/cate_Muoi-duong-bot-ngot-hat-nem.png"
+        },
+        {
+          "id": "6",
+          "name": "Gia vị",
+          "image": "assets/img/FakeAPI/Sot_giavi/Gia_vi/cate_giavi.png"
+        },
+        {
+          "id": "7",
+          "name": "Gia vị nêm sẵn",
+          "image": "assets/img/FakeAPI/Sot_giavi/Gia_vi_nem_san/cate_gia-vi-nem-san.png"
+        },
+        {
+          "id": "8",
+          "name": "Nước cốt dừa",
+          "image": "assets/img/FakeAPI/Sot_giavi/Nuoc_cot_dua/cate_nuoc-cot-dua.png"
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "name": "Mì gói, đồ hộp",
+      "image": "assets/img/FakeAPI/Migoi_dohop/category_migoi-dohop.svg",
+      "subcategories": [
+        {
+          "id": "1",
+          "name": "Mì ăn liền",
+          "image": "assets/img/FakeAPI/Migoi_dohop/Mi_an_lien/cate_migoi.png"
+        },
+        {
+          "id": "2",
+          "name": "Mì khô, phở, bún",
+          "image": "assets/img/FakeAPI/Migoi_dohop/Mi_kho_pho_bun/cate_mi_pho_bun.png"
+        },
+        {
+          "id": "3",
+          "name": "Nui, miến",
+          "image": "assets/img/FakeAPI/Migoi_dohop/Nui_mien/cate_nui-mien.png"
+        },
+        {
+          "id": "4",
+          "name": "Cá hộp",
+          "image": "assets/img/FakeAPI/Migoi_dohop/ca_hop/cate_cahop.png"
+        },
+        {
+          "id": "5",
+          "name": "Thịt hộp, pate",
+          "image": "assets/img/FakeAPI/Migoi_dohop/Thit_hop_pate/cate_thithop-pate.png"
+        }
+      ]
+    },
+    {
+      "id": "9",
+      "name": "Đồ chay",
+      "image": "assets/img/FakeAPI/thuc_an_chay/category_dochay.svg",
+      "subcategories": [
+        {
+          "id": "1",
+          "name": "Đậu hủ chay",
+          "image": "assets/img/FakeAPI/thuc_an_chay/Dau_hu/cate_dau_hu_chay.png"
+        },
+        {
+          "id": "2",
+          "name": "Thịt chay",
+          "image": "assets/img/FakeAPI/thuc_an_chay/Thit_chay/cate_thitchay.jpg"
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "name": "Bánh, Kẹo",
+      "image": "assets/img/FakeAPI/Banh_Keo/category_banh-keo.png",
+      "subcategories": [
+        {
+          "id": "1",
+          "name": "Snack",
+          "image": "assets/img/FakeAPI/Banh_Keo/Snack/cate_snack.png"
+        },
+        {
+          "id": "2",
+          "name": "Bánh các loại",
+          "image": "assets/img/FakeAPI/Banh_Keo/banh_cac_loai/cate_banhcacloai.jpg"
+        },
+        {
+          "id": "3",
+          "name": "Rong biển, khô ăn liền",
+          "image": "assets/img/FakeAPI/Banh_Keo/Rong_bien_kho_an_lien/cate_rongbien.png"
+        },
+        {
+          "id": "4",
+          "name": "Kẹo các loại",
+          "image": "assets/img/FakeAPI/Banh_Keo/Keo_cac_loai/cate_keocacloai.jpg"
+        },
+        {
+          "id": "5",
+          "name": "Socola",
+          "image": "assets/img/FakeAPI/Banh_Keo/Socola/cate_socola.png"
+        },
+        {
+          "id": "6",
+          "name": "Ngũ cốc ăn sáng",
+          "image": "assets/img/FakeAPI/Banh_Keo/Ngu_coc_an_sang/cate_ngucoc.png"
+        },
+        {
+          "id": "7",
+          "name": "Mức trái cây, bơ đậu phộng",
+          "image": "assets/img/FakeAPI/Banh_Keo/Mut_trai_cay_bo_dau_phong/cate_muc-trai-cay-bo-dau-phong.jpg"
+        },
+        {
+          "id": "8",
+          "name": "Thạch rau câu",
+          "image": "assets/img/FakeAPI/Banh_Keo/Thach_rau_cau/cate_raucau.png"
+        }
+      ]
+    },
+    {
+      "id": "11",
+      "name": "Hóa Mỹ Phẩm",
+      "image": "assets/img/FakeAPI/Hoa_Mi_Pham/category_hoamypham.svg",
+      "subcategories": [
+        {
+          "id": "1",
+          "name": "Giặt, xả",
+          "image": "assets/img/FakeAPI/Hoa_Mi_Pham/giat_xa/cate_giatxa.png"
+        },
+        {
+          "id": "2",
+          "name": "Nước rửa chén",
+          "image": "assets/img/FakeAPI/Hoa_Mi_Pham/Nuoc_rua_chen/cate_nuoc-rua-chen.png"
+        },
+        {
+          "id": "3",
+          "name": "Nước lau sàn",
+          "image": "assets/img/FakeAPI/Hoa_Mi_Pham/Nuoc_lau_san/cate_nuoclausan.png"
+        },
+        {
+          "id": "4",
+          "name": "Tẩy rửa bồn tắm",
+          "image": "assets/img/FakeAPI/Hoa_Mi_Pham/Tay_rua_nha_tam/cate_tay-rua-bon-tam.png"
+        },
+        {
+          "id": "5",
+          "name": "Xịt phòng, sáp thơm",
+          "image": "assets/img/FakeAPI/Hoa_Mi_Pham/Xit_phong_sap_thom/cate_xitphong-sapthom.png"
+        },
+        {
+          "id": "6",
+          "name": "Đuổi Côn Trùng",
+          "image": "assets/img/FakeAPI/Hoa_Mi_Pham/duoi_con_trung/cate_duoi-contrung.png"
+        },
+        {
+          "id": "7",
+          "name": "Nước lau kính",
+          "image": "assets/img/FakeAPI/Hoa_Mi_Pham/Nuoc_lau_kinh/cate_laukinh.png"
+        },
+        {
+          "id": "8",
+          "name": "Chăm sóc cá nhân",
+          "image": "assets/img/FakeAPI/Hoa_Mi_Pham/Cham_soc_ca_nhan/cate_daugoi.png"
+        }
+      ]
+    }
+  ],
   "products": [
     {
       "id": "1",
@@ -22,7 +673,7 @@
     },
     {
       "id": "3",
-      "img": "assets/img/product-bestseller3.svg",
+      "img": "assets/img/product-bestseller3.jpg",
       "name": "Bia tiger bạc lon 330ml hàng mới về 2024",
       "sale_price": 17000,
       "price": 25000,
@@ -305,36 +956,6 @@
     },
     {
       "id": "31",
-      "img": "assets/img/product-popular7.svg",
-      "name": "Lốc 4 hộp sữa lúa mạch milo 180ml",
-      "sale_price": 30000,
-      "price": 45000,
-      "unit_of_caculation": "1 Lốc",
-      "description": "Lốc 4 hộp sữa lúa mạch milo 180ml, hàm lượng dinh dưỡng cao",
-      "type": "Product_Popular"
-    },
-    {
-      "id": "32",
-      "img": "assets/img/product-popular8.svg",
-      "name": "Muối ớt chanh Dh Foods 200g",
-      "sale_price": 22000,
-      "price": 27000,
-      "unit_of_caculation": "200g/hủ",
-      "description": "Muối ớt chanh Dh Foods 200g, ngon hơn khi chấm với hải sản",
-      "type": "Product_Popular"
-    },
-    {
-      "id": "33",
-      "img": "assets/img/product-popular9.svg",
-      "name": "Tôm càng xanh tươi sống 500g, tươi rói",
-      "sale_price": 69000,
-      "price": 85000,
-      "unit_of_caculation": "500g",
-      "description": "Snack da gà chiên giòn vị Tomyum Dorkbua gói 30g",
-      "type": "Product_Popular"
-    },
-    {
-      "id": "34",
       "img": "assets/img/product-popular10.svg",
       "content": "Thực phẩm chế biến sẵn",
       "name": "Lẩu thái SG Food 500g",
@@ -342,17 +963,47 @@
       "price": 95000,
       "unit_of_caculation": "500g",
       "description": "Sản phẩm lẩu được làm sẵn, thích hợp cho những ngày bận rộn",
-      "type": "Product_Popular"
+      "type": "Product_Related"
     },
     {
-      "id": "35",
+      "id": "32",
       "img": "assets/img/product-popular9.svg",
       "name": "Tôm càng xanh tươi sống 2, tươi rói",
       "sale_price": 69000,
       "price": 85000,
       "unit_of_caculation": "500g",
       "description": "Snack da gà chiên giòn vị Tomyum Dorkbua gói 30g",
-      "type": "Product_Popular"
+      "type": "Product_Related"
+    },
+    {
+      "id": "33",
+      "img": "assets/img/product-popular7.svg",
+      "name": "Lốc 4 hộp sữa lúa mạch milo 180ml",
+      "sale_price": 30000,
+      "price": 45000,
+      "unit_of_caculation": "1 Lốc",
+      "description": "Lốc 4 hộp sữa lúa mạch milo 180ml, hàm lượng dinh dưỡng cao",
+      "type": "Product_Related"
+    },
+    {
+      "id": "34",
+      "img": "assets/img/product-popular8.svg",
+      "name": "Muối ớt chanh Dh Foods 200g",
+      "sale_price": 22000,
+      "price": 27000,
+      "unit_of_caculation": "200g/hủ",
+      "description": "Muối ớt chanh Dh Foods 200g, ngon hơn khi chấm với hải sản",
+      "type": "Product_Related"
+    },
+    {
+      "id": "35",
+      "img": "assets/img/product-popular9.svg",
+      "name": "Tôm càng xanh tươi sống 500g, tươi rói",
+      "sale_price": 69000,
+      "price": 85000,
+      "unit_of_caculation": "500g",
+      "description": "Snack da gà chiên giòn vị Tomyum Dorkbua gói 30g",
+      "type": "Product_Related"
     },
     {
       "id": "36",
@@ -362,48 +1013,9 @@
       "price": 5000,
       "unit_of_caculation": "Bó/400g",
       "description": "",
-      "category": {
-        "id": "1",
-        "name": "Rau, Củ, Quả",
-        "image": "assets/img/FakeAPI/Rau_cu_qua/category_raucuqua.svg",
-        "subcategories": [
-          {
-            "id": "1",
-            "name": "Rau lá",
-            "image": "assets/img/FakeAPI/Rau_cu_qua/Rau_la/category_con_raula.jpg"
-          },
-          {
-            "id": "2",
-            "name": "Nấm",
-            "image": "assets/img/FakeAPI/Rau_cu_qua/Nam/category_nam.jpg"
-          },
-          {
-            "id": "3",
-            "name": "Rau củ sơ chế",
-            "image": "assets/img/FakeAPI/Rau_cu_qua/Rau_cu_so_che/cate_rau_cu_so_che.jpg"
-          },
-          {
-            "id": "4",
-            "name": "Rau củ đông lạnh",
-            "image": "assets/img/FakeAPI/Rau_cu_qua/Rau_cu_dong_lanh/cate_donglanh.jpg"
-          },
-          {
-            "id": "5",
-            "name": "Rau nêm",
-            "image": "assets/img/FakeAPI/Rau_cu_qua/Rau_nem/cate_raunem.jpg"
-          },
-          {
-            "id": "6",
-            "name": "Rau, củ, bông",
-            "image": "assets/img/FakeAPI/Rau_cu_qua/Rau_cu_bong/cate_rau_cu_bong.jpg"
-          }
-        ]
-      },
-      "brand": {
-        "id": "1",
-        "name": "Dalatgap",
-        "logo": "assets/img/FakeAPI/Rau_cu_qua/Rau_la/brand_dalatgap.svg"
-      }
+      "category_id": "1",
+      "subcategory_id": "1",
+      "brand_id": "1"
     },
     {
       "id": "37",
@@ -413,579 +1025,141 @@
       "price": 9000,
       "unit_of_caculation": "Bó/400g",
       "description": "",
-      "category": {
-        "id": "1",
-        "name": "Rau, Củ, Quả",
-        "image": "assets/img/FakeAPI/Rau_cu_qua/category_raucuqua.svg",
-        "subcategories": [
-          {
-            "id": "1",
-            "name": "Rau lá",
-            "image": "assets/img/FakeAPI/Rau_cu_qua/Rau_la/category_con_raula.jpg"
-          },
-          {
-            "id": "2",
-            "name": "Nấm",
-            "image": "assets/img/FakeAPI/Rau_cu_qua/Nam/category_nam.jpg"
-          },
-          {
-            "id": "3",
-            "name": "Rau củ sơ chế",
-            "image": "assets/img/FakeAPI/Rau_cu_qua/Rau_cu_so_che/cate_rau_cu_so_che.jpg"
-          },
-          {
-            "id": "4",
-            "name": "Rau củ đông lạnh",
-            "image": "assets/img/FakeAPI/Rau_cu_qua/Rau_cu_dong_lanh/cate_donglanh.jpg"
-          },
-          {
-            "id": "5",
-            "name": "Rau nêm",
-            "image": "assets/img/FakeAPI/Rau_cu_qua/Rau_nem/cate_raunem.jpg"
-          },
-          {
-            "id": "6",
-            "name": "Rau, củ, bông",
-            "image": "assets/img/FakeAPI/Rau_cu_qua/Rau_cu_bong/cate_rau_cu_bong.jpg"
-          }
-        ]
-      },
-      "brand": {
-        "id": "1",
-        "name": "Dalatgap",
-        "logo": "assets/img/FakeAPI/Rau_cu_qua/Rau_la/brand_dalatgap.svg"
-      }
+      "category_id": "1",
+      "subcategory_id": "1",
+      "brand_id": "1"
     },
     {
-      "id": "37",
+      "id": "38",
       "img": "assets/img/FakeAPI/Rau_cu_qua/Nam/nam_dui_ga.jpg",
       "name": "Nấm đùi gà",
       "sale_price": 30000,
       "price": 25000,
       "unit_of_caculation": "1 Vỉ",
       "description": "",
-      "category": {
-        "id": "1",
-        "name": "Rau, Củ, Quả",
-        "image": "assets/img/FakeAPI/Rau_cu_qua/category_raucuqua.svg",
-        "subcategories": [
-          {
-            "id": "1",
-            "name": "Rau lá",
-            "image": "assets/img/FakeAPI/Rau_cu_qua/Rau_la/category_con_raula.jpg"
-          },
-          {
-            "id": "2",
-            "name": "Nấm",
-            "image": "assets/img/FakeAPI/Rau_cu_qua/Nam/category_nam.jpg"
-          },
-          {
-            "id": "3",
-            "name": "Rau củ sơ chế",
-            "image": "assets/img/FakeAPI/Rau_cu_qua/Rau_cu_so_che/cate_rau_cu_so_che.jpg"
-          },
-          {
-            "id": "4",
-            "name": "Rau củ đông lạnh",
-            "image": "assets/img/FakeAPI/Rau_cu_qua/Rau_cu_dong_lanh/cate_donglanh.jpg"
-          },
-          {
-            "id": "5",
-            "name": "Rau nêm",
-            "image": "assets/img/FakeAPI/Rau_cu_qua/Rau_nem/cate_raunem.jpg"
-          },
-          {
-            "id": "6",
-            "name": "Rau, củ, bông",
-            "image": "assets/img/FakeAPI/Rau_cu_qua/Rau_cu_bong/cate_rau_cu_bong.jpg"
-          }
-        ]
-      },
-      "brand": {
-        "id": "1",
-        "name": "Dalatgap",
-        "logo": "assets/img/FakeAPI/Rau_cu_qua/Rau_la/brand_dalatgap.svg"
-      }
+      "category_id": "1",
+      "subcategory_id": "2",
+      "brand_id": "1"
     },
     {
-      "id": "38",
+      "id": "39",
       "img": "assets/img/FakeAPI/Rau_cu_qua/Nam/nam_kim_cham.jpg",
       "name": "Nấm kim châm trung quốc",
       "sale_price": 9000,
       "price": 6000,
       "unit_of_caculation": "150g",
       "description": "",
-      "category": {
-        "id": "1",
-        "name": "Rau, Củ, Quả",
-        "image": "assets/img/FakeAPI/Rau_cu_qua/category_raucuqua.svg",
-        "subcategories": [
-          {
-            "id": "1",
-            "name": "Rau lá",
-            "image": "assets/img/FakeAPI/Rau_cu_qua/Rau_la/category_con_raula.jpg"
-          },
-          {
-            "id": "2",
-            "name": "Nấm",
-            "image": "assets/img/FakeAPI/Rau_cu_qua/Nam/category_nam.jpg"
-          },
-          {
-            "id": "3",
-            "name": "Rau củ sơ chế",
-            "image": "assets/img/FakeAPI/Rau_cu_qua/Rau_cu_so_che/cate_rau_cu_so_che.jpg"
-          },
-          {
-            "id": "4",
-            "name": "Rau củ đông lạnh",
-            "image": "assets/img/FakeAPI/Rau_cu_qua/Rau_cu_dong_lanh/cate_donglanh.jpg"
-          },
-          {
-            "id": "5",
-            "name": "Rau nêm",
-            "image": "assets/img/FakeAPI/Rau_cu_qua/Rau_nem/cate_raunem.jpg"
-          },
-          {
-            "id": "6",
-            "name": "Rau, củ, bông",
-            "image": "assets/img/FakeAPI/Rau_cu_qua/Rau_cu_bong/cate_rau_cu_bong.jpg"
-          }
-        ]
-      },
-      "brand": {
-        "id": "1",
-        "name": "Dalatgap",
-        "logo": "assets/img/FakeAPI/Rau_cu_qua/Rau_la/brand_dalatgap.svg"
-      }
+      "category_id": "1",
+      "subcategory_id": "2",
+      "brand_id": "1"
     },
     {
-      "id": "39",
+      "id": "40",
       "img": "assets/img/FakeAPI/Rau_cu_qua/Nam/nam_kim_cham.jpg",
       "name": "Kim chi cải thảo cắt lát",
       "sale_price": 28000,
       "price": 22000,
       "unit_of_caculation": "gói 300g",
       "description": "",
-      "category": {
-        "id": "1",
-        "name": "Rau, Củ, Quả",
-        "image": "assets/img/FakeAPI/Rau_cu_qua/category_raucuqua.svg",
-        "subcategories": [
-          {
-            "id": "1",
-            "name": "Rau lá",
-            "image": "assets/img/FakeAPI/Rau_cu_qua/Rau_la/category_con_raula.jpg"
-          },
-          {
-            "id": "2",
-            "name": "Nấm",
-            "image": "assets/img/FakeAPI/Rau_cu_qua/Nam/category_nam.jpg"
-          },
-          {
-            "id": "3",
-            "name": "Rau củ sơ chế",
-            "image": "assets/img/FakeAPI/Rau_cu_qua/Rau_cu_so_che/cate_rau_cu_so_che.jpg"
-          },
-          {
-            "id": "4",
-            "name": "Rau củ đông lạnh",
-            "image": "assets/img/FakeAPI/Rau_cu_qua/Rau_cu_dong_lanh/cate_donglanh.jpg"
-          },
-          {
-            "id": "5",
-            "name": "Rau nêm",
-            "image": "assets/img/FakeAPI/Rau_cu_qua/Rau_nem/cate_raunem.jpg"
-          },
-          {
-            "id": "6",
-            "name": "Rau, củ, bông",
-            "image": "assets/img/FakeAPI/Rau_cu_qua/Rau_cu_bong/cate_rau_cu_bong.jpg"
-          }
-        ]
-      },
-      "brand": {
-        "id": "1",
-        "name": "Dalatgap",
-        "logo": "assets/img/FakeAPI/Rau_cu_qua/Rau_la/brand_dalatgap.svg"
-      }
+      "category_id": "1",
+      "subcategory_id": "3",
+      "brand_id": "1"
     },
     {
-      "id": "40",
+      "id": "41",
       "img": "assets/img/FakeAPI/Rau_cu_qua/Nam/nam_kim_cham.jpg",
       "name": "Măng khô luộc",
       "sale_price": 55000,
       "price": 44000,
       "unit_of_caculation": "gói 500g",
       "description": "",
-      "category": {
-        "id": "1",
-        "name": "Rau, Củ, Quả",
-        "image": "assets/img/FakeAPI/Rau_cu_qua/category_raucuqua.svg",
-        "subcategories": [
-          {
-            "id": "1",
-            "name": "Rau lá",
-            "image": "assets/img/FakeAPI/Rau_cu_qua/Rau_la/category_con_raula.jpg"
-          },
-          {
-            "id": "2",
-            "name": "Nấm",
-            "image": "assets/img/FakeAPI/Rau_cu_qua/Nam/category_nam.jpg"
-          },
-          {
-            "id": "3",
-            "name": "Rau củ sơ chế",
-            "image": "assets/img/FakeAPI/Rau_cu_qua/Rau_cu_so_che/cate_rau_cu_so_che.jpg"
-          },
-          {
-            "id": "4",
-            "name": "Rau củ đông lạnh",
-            "image": "assets/img/FakeAPI/Rau_cu_qua/Rau_cu_dong_lanh/cate_donglanh.jpg"
-          },
-          {
-            "id": "5",
-            "name": "Rau nêm",
-            "image": "assets/img/FakeAPI/Rau_cu_qua/Rau_nem/cate_raunem.jpg"
-          },
-          {
-            "id": "6",
-            "name": "Rau, củ, bông",
-            "image": "assets/img/FakeAPI/Rau_cu_qua/Rau_cu_bong/cate_rau_cu_bong.jpg"
-          }
-        ]
-      },
-      "brand": {
-        "id": "1",
-        "name": "Dalatgap",
-        "logo": "assets/img/FakeAPI/Rau_cu_qua/Rau_la/brand_dalatgap.svg"
-      }
+      "category_id": "1",
+      "subcategory_id": "3",
+      "brand_id": "1"
     },
     {
-      "id": "41",
+      "id": "42",
       "img": "assets/img/FakeAPI/Rau_cu_qua/Nam/nam_dui_ga.jpg",
       "name": "Rau quả hỗn hợp trần gia 500g",
       "sale_price": 45000,
       "price": 35000,
       "unit_of_caculation": "500g",
       "description": "",
-      "category": {
-        "id": "1",
-        "name": "Rau, Củ, Quả",
-        "image": "assets/img/FakeAPI/Rau_cu_qua/category_raucuqua.svg",
-        "subcategories": [
-          {
-            "id": "1",
-            "name": "Rau lá",
-            "image": "assets/img/FakeAPI/Rau_cu_qua/Rau_la/category_con_raula.jpg"
-          },
-          {
-            "id": "2",
-            "name": "Nấm",
-            "image": "assets/img/FakeAPI/Rau_cu_qua/Nam/category_nam.jpg"
-          },
-          {
-            "id": "3",
-            "name": "Rau củ sơ chế",
-            "image": "assets/img/FakeAPI/Rau_cu_qua/Rau_cu_so_che/cate_rau_cu_so_che.jpg"
-          },
-          {
-            "id": "4",
-            "name": "Rau củ đông lạnh",
-            "image": "assets/img/FakeAPI/Rau_cu_qua/Rau_cu_dong_lanh/cate_donglanh.jpg"
-          },
-          {
-            "id": "5",
-            "name": "Rau nêm",
-            "image": "assets/img/FakeAPI/Rau_cu_qua/Rau_nem/cate_raunem.jpg"
-          },
-          {
-            "id": "6",
-            "name": "Rau, củ, bông",
-            "image": "assets/img/FakeAPI/Rau_cu_qua/Rau_cu_bong/cate_rau_cu_bong.jpg"
-          }
-        ]
-      },
-      "brand": {
-        "id": "1",
-        "name": "Dalatgap",
-        "logo": "assets/img/FakeAPI/Rau_cu_qua/Rau_la/brand_dalatgap.svg"
-      }
+      "category_id": "1",
+      "subcategory_id": "4",
+      "brand_id": "1"
     },
     {
-      "id": "42",
+      "id": "43",
       "img": "assets/img/FakeAPI/Rau_cu_qua/Nam/nam_kim_cham.jpg",
       "name": "Khoai tây Trần Gia/Mama Food 500g",
       "sale_price": 55000,
       "price": 45000,
       "unit_of_caculation": "500g",
       "description": "",
-      "category": {
-        "id": "1",
-        "name": "Rau, Củ, Quả",
-        "image": "assets/img/FakeAPI/Rau_cu_qua/category_raucuqua.svg",
-        "subcategories": [
-          {
-            "id": "1",
-            "name": "Rau lá",
-            "image": "assets/img/FakeAPI/Rau_cu_qua/Rau_la/category_con_raula.jpg"
-          },
-          {
-            "id": "2",
-            "name": "Nấm",
-            "image": "assets/img/FakeAPI/Rau_cu_qua/Nam/category_nam.jpg"
-          },
-          {
-            "id": "3",
-            "name": "Rau củ sơ chế",
-            "image": "assets/img/FakeAPI/Rau_cu_qua/Rau_cu_so_che/cate_rau_cu_so_che.jpg"
-          },
-          {
-            "id": "4",
-            "name": "Rau củ đông lạnh",
-            "image": "assets/img/FakeAPI/Rau_cu_qua/Rau_cu_dong_lanh/cate_donglanh.jpg"
-          },
-          {
-            "id": "5",
-            "name": "Rau nêm",
-            "image": "assets/img/FakeAPI/Rau_cu_qua/Rau_nem/cate_raunem.jpg"
-          },
-          {
-            "id": "6",
-            "name": "Rau, củ, bông",
-            "image": "assets/img/FakeAPI/Rau_cu_qua/Rau_cu_bong/cate_rau_cu_bong.jpg"
-          }
-        ]
-      },
-      "brand": {
-        "id": "1",
-        "name": "Dalatgap",
-        "logo": "assets/img/FakeAPI/Rau_cu_qua/Rau_la/brand_dalatgap.svg"
-      }
+      "category_id": "1",
+      "subcategory_id": "4",
+      "brand_id": "1"
     },
     {
-      "id": "43",
+      "id": "44",
       "img": "assets/img/FakeAPI/Rau_cu_qua/Nam/nam_kim_cham.jpg",
       "name": "Hành lá, ngò rí 100g",
       "sale_price": 10000,
       "price": 7000,
       "unit_of_caculation": "gói 300g",
       "description": "",
-      "category": {
-        "id": "1",
-        "name": "Rau, Củ, Quả",
-        "image": "assets/img/FakeAPI/Rau_cu_qua/category_raucuqua.svg",
-        "subcategories": [
-          {
-            "id": "1",
-            "name": "Rau lá",
-            "image": "assets/img/FakeAPI/Rau_cu_qua/Rau_la/category_con_raula.jpg"
-          },
-          {
-            "id": "2",
-            "name": "Nấm",
-            "image": "assets/img/FakeAPI/Rau_cu_qua/Nam/category_nam.jpg"
-          },
-          {
-            "id": "3",
-            "name": "Rau củ sơ chế",
-            "image": "assets/img/FakeAPI/Rau_cu_qua/Rau_cu_so_che/cate_rau_cu_so_che.jpg"
-          },
-          {
-            "id": "4",
-            "name": "Rau củ đông lạnh",
-            "image": "assets/img/FakeAPI/Rau_cu_qua/Rau_cu_dong_lanh/cate_donglanh.jpg"
-          },
-          {
-            "id": "5",
-            "name": "Rau nêm",
-            "image": "assets/img/FakeAPI/Rau_cu_qua/Rau_nem/cate_raunem.jpg"
-          },
-          {
-            "id": "6",
-            "name": "Rau, củ, bông",
-            "image": "assets/img/FakeAPI/Rau_cu_qua/Rau_cu_bong/cate_rau_cu_bong.jpg"
-          }
-        ]
-      },
-      "brand": {
-        "id": "2",
-        "name": "TonyFruit",
-        "logo": "assets/img/FakeAPI/Rau_cu_qua/Rau_nem/brand_tonyFruit.png"
-      }
+      "category_id": "1",
+      "subcategory_id": "5",
+      "brand_id": "2"
     },
     {
-      "id": "44",
+      "id": "45",
       "img": "assets/img/FakeAPI/Rau_cu_qua/Rau_nem/rau-hung-que-khoang-100g.jpg",
       "name": "Rau húng quế",
       "sale_price": 9000,
       "price": 7000,
       "unit_of_caculation": "100g",
       "description": "",
-      "category": {
-        "id": "1",
-        "name": "Rau, Củ, Quả",
-        "image": "assets/img/FakeAPI/Rau_cu_qua/category_raucuqua.svg",
-        "subcategories": [
-          {
-            "id": "1",
-            "name": "Rau lá",
-            "image": "assets/img/FakeAPI/Rau_cu_qua/Rau_la/category_con_raula.jpg"
-          },
-          {
-            "id": "2",
-            "name": "Nấm",
-            "image": "assets/img/FakeAPI/Rau_cu_qua/Nam/category_nam.jpg"
-          },
-          {
-            "id": "3",
-            "name": "Rau củ sơ chế",
-            "image": "assets/img/FakeAPI/Rau_cu_qua/Rau_cu_so_che/cate_rau_cu_so_che.jpg"
-          },
-          {
-            "id": "4",
-            "name": "Rau củ đông lạnh",
-            "image": "assets/img/FakeAPI/Rau_cu_qua/Rau_cu_dong_lanh/cate_donglanh.jpg"
-          },
-          {
-            "id": "5",
-            "name": "Rau nêm",
-            "image": "assets/img/FakeAPI/Rau_cu_qua/Rau_nem/cate_raunem.jpg"
-          },
-          {
-            "id": "6",
-            "name": "Rau, củ, bông",
-            "image": "assets/img/FakeAPI/Rau_cu_qua/Rau_cu_bong/cate_rau_cu_bong.jpg"
-          }
-        ]
-      },
-      "brand": {
-        "id": "2",
-        "name": "TonyFruit",
-        "logo": "assets/img/FakeAPI/Rau_cu_qua/Rau_nem/brand_tonyFruit.png"
-      }
+      "category_id": "1",
+      "subcategory_id": "6",
+      "brand_id": "2"
     },
     {
-      "id": "45",
+      "id": "46",
       "img": "assets/img/FakeAPI/Rau_cu_qua/Rau_cu_bong/bi-do-ho-lo.jpg",
       "name": "Bí đỏ hồ lô",
       "sale_price": 25000,
       "price": 22000,
       "unit_of_caculation": "1kg",
       "description": "",
-      "category": {
-        "id": "1",
-        "name": "Rau, Củ, Quả",
-        "image": "assets/img/FakeAPI/Rau_cu_qua/category_raucuqua.svg",
-        "subcategories": [
-          {
-            "id": "1",
-            "name": "Rau lá",
-            "image": "assets/img/FakeAPI/Rau_cu_qua/Rau_la/category_con_raula.jpg"
-          },
-          {
-            "id": "2",
-            "name": "Nấm",
-            "image": "assets/img/FakeAPI/Rau_cu_qua/Nam/category_nam.jpg"
-          },
-          {
-            "id": "3",
-            "name": "Rau củ sơ chế",
-            "image": "assets/img/FakeAPI/Rau_cu_qua/Rau_cu_so_che/cate_rau_cu_so_che.jpg"
-          },
-          {
-            "id": "4",
-            "name": "Rau củ đông lạnh",
-            "image": "assets/img/FakeAPI/Rau_cu_qua/Rau_cu_dong_lanh/cate_donglanh.jpg"
-          },
-          {
-            "id": "5",
-            "name": "Rau nêm",
-            "image": "assets/img/FakeAPI/Rau_cu_qua/Rau_nem/cate_raunem.jpg"
-          },
-          {
-            "id": "6",
-            "name": "Rau, củ, bông",
-            "image": "assets/img/FakeAPI/Rau_cu_qua/Rau_cu_bong/cate_rau_cu_bong.jpg"
-          }
-        ]
-      },
-      "brand": {
-        "id": "2",
-        "name": "TonyFruit",
-        "logo": "assets/img/FakeAPI/Rau_cu_qua/Rau_nem/brand_tonyFruit.png"
-      }
+      "category_id": "1",
+      "subcategory_id": "6",
+      "brand_id": "2"
     },
     {
-      "id": "46",
+      "id": "47",
       "img": "assets/img/FakeAPI/Trai_cay/Trai_cay_ngoai_nhap/tao_cherry_trung_quoc.jpg",
       "name": "Táo Chery nhập khẩu trung quốc",
       "sale_price": 55000,
       "price": 45000,
       "unit_of_caculation": "500g",
       "description": "",
-      "category": {
-        "id": "2",
-        "name": "Trai_cay",
-        "image": "assets/img/FakeAPI/Trai_cay/category_traicay.svg",
-        "subcategories": [
-          {
-            "id": "1",
-            "name": "Trái cây ngoại nhập",
-            "image": "assets/img/FakeAPI/Trai_cay/Trai_cay_ngoai_nhap/cate_trai-cay-ngoai-nhap.jpg"
-          },
-          {
-            "id": "2",
-            "name": "Trái cây nội địa",
-            "image": "assets/img/FakeAPI/Trai_cay/Trai_cay_noi_dia/cate_trai-cay-noi-nhap.jpg"
-          },
-          {
-            "id": "3",
-            "name": "Giỏ trái cây",
-            "image": "assets/img/FakeAPI/Trai_cay/Gio_trai_cay/cate_gio-trai-cay.jpg"
-          }
-        ]
-      },
-      "brand": {
-        "id": "3",
-        "name": "Biovegi",
-        "logo": "assets/img/FakeAPI/Trai_cay/Rau_la/brand_biovegi.png"
-      }
+      "category_id": "2",
+      "subcategory_id": "1",
+      "brand_id": "3"
     },
     {
-      "id": "47",
+      "id": "48",
       "img": "assets/img/FakeAPI/Trai_cay/Trai_cay_ngoai_nhap/cam_sanh.jpg",
       "name": "Cam sành",
       "sale_price": 65000,
       "price": 45000,
       "unit_of_caculation": "5kg",
       "description": "",
-      "category": {
-        "id": "2",
-        "name": "Trai_cay",
-        "image": "assets/img/FakeAPI/Trai_cay/category_traicay.svg",
-        "subcategories": [
-          {
-            "id": "1",
-            "name": "Trái cây ngoại nhập",
-            "image": "assets/img/FakeAPI/Trai_cay/Trai_cay_ngoai_nhap/cate_trai-cay-ngoai-nhap.jpg"
-          },
-          {
-            "id": "2",
-            "name": "Trái cây nội địa",
-            "image": "assets/img/FakeAPI/Trai_cay/Trai_cay_noi_dia/cate_trai-cay-noi-nhap.jpg"
-          },
-          {
-            "id": "3",
-            "name": "Giỏ trái cây",
-            "image": "assets/img/FakeAPI/Trai_cay/Gio_trai_cay/cate_gio-trai-cay.jpg"
-          }
-        ]
-      },
-      "brand": {
-        "id": "3",
-        "name": "Biovegi",
-        "logo": "assets/img/FakeAPI/Trai_cay/Rau_la/brand_biovegi.png"
-      }
+      "category_id": "2",
+      "subcategory_id": "2",
+      "brand_id": "3"
     },
     {
       "id": "48",
@@ -995,33 +1169,9 @@
       "price": 549000,
       "unit_of_caculation": "1 hộp",
       "description": "",
-      "category": {
-        "id": "2",
-        "name": "Trai_cay",
-        "image": "assets/img/FakeAPI/Trai_cay/category_traicay.svg",
-        "subcategories": [
-          {
-            "id": "1",
-            "name": "Trái cây ngoại nhập",
-            "image": "assets/img/FakeAPI/Trai_cay/Trai_cay_ngoai_nhap/cate_trai-cay-ngoai-nhap.jpg"
-          },
-          {
-            "id": "2",
-            "name": "Trái cây nội địa",
-            "image": "assets/img/FakeAPI/Trai_cay/Trai_cay_noi_dia/cate_trai-cay-noi-nhap.jpg"
-          },
-          {
-            "id": "3",
-            "name": "Giỏ trái cây",
-            "image": "assets/img/FakeAPI/Trai_cay/Gio_trai_cay/cate_gio-trai-cay.jpg"
-          }
-        ]
-      },
-      "brand": {
-        "id": "3",
-        "name": "Biovegi",
-        "logo": "assets/img/FakeAPI/Trai_cay/Rau_la/brand_biovegi.png"
-      }
+      "category_id": "2",
+      "subcategory_id": "3",
+      "brand_id": "3"
     },
     {
       "id": "49",
@@ -1031,43 +1181,9 @@
       "price": 69000,
       "unit_of_caculation": "Khay 200g",
       "description": "",
-      "category": {
-        "id": "3",
-        "name": "Thịt, cá, trứng, hải sản",
-        "image": "assets/img/FakeAPI/Thit_ca_trung_haisan/category_thit_ca_trung_haisan.svg",
-        "subcategories": [
-          {
-            "id": "1",
-            "name": "Thịt bò",
-            "image": "assets/img/FakeAPI/Thit_ca_trung_haisan/Thit_bo/cate_thit-bo.png"
-          },
-          {
-            "id": "2",
-            "name": "Thịt heo",
-            "image": "assets/img/FakeAPI/Thit_ca_trung_haisan/Thit_heo/cate_thit-heo.png"
-          },
-          {
-            "id": "3",
-            "name": "Thịt gà, vịt",
-            "image": "assets/img/FakeAPI/Thit_ca_trung_haisan/Thit_ga_vit/cate_thit-ga-vit.png"
-          },
-          {
-            "id": "4",
-            "name": "Cá, hải sản tươi",
-            "image": "assets/img/FakeAPI/Thit_ca_trung_haisan/Ca_hai_san_tuoi/cate_ca-hai-san.png"
-          },
-          {
-            "id": "5",
-            "name": "Trứng vịt, gà, cút",
-            "image": "assets/img/FakeAPI/Thit_ca_trung_haisan/Trung_ga_vit_trung_cut/cate_trung-ga-vit-cut.png"
-          }
-        ]
-      },
-      "brand": {
-        "id": "4",
-        "name": "Vissan",
-        "logo": "assets/img/FakeAPI/Thit_ca_trung_haisan/brand_vissan.png"
-      }
+      "category_id": "3",
+      "subcategory_id": "1",
+      "brand_id": "4"
     },
     {
       "id": "50",
@@ -1077,43 +1193,9 @@
       "price": 119000,
       "unit_of_caculation": "1kg",
       "description": "",
-      "category": {
-        "id": "3",
-        "name": "Thịt, cá, trứng, hải sản",
-        "image": "assets/img/FakeAPI/Thit_ca_trung_haisan/category_thit_ca_trung_haisan.svg",
-        "subcategories": [
-          {
-            "id": "1",
-            "name": "Thịt bò",
-            "image": "assets/img/FakeAPI/Thit_ca_trung_haisan/Thit_bo/cate_thit-bo.png"
-          },
-          {
-            "id": "2",
-            "name": "Thịt heo",
-            "image": "assets/img/FakeAPI/Thit_ca_trung_haisan/Thit_hei/cate_thit-heo.png"
-          },
-          {
-            "id": "3",
-            "name": "Thịt gà, vịt",
-            "image": "assets/img/FakeAPI/Thit_ca_trung_haisan/Thit_ga_vit/cate_thit-ga-vit.png"
-          },
-          {
-            "id": "4",
-            "name": "Cá, hải sản tươi",
-            "image": "assets/img/FakeAPI/Thit_ca_trung_haisan/Ca_hai_san_tuoi/cate_ca-hai-san.png"
-          },
-          {
-            "id": "5",
-            "name": "Trứng vịt, gà, cút",
-            "image": "assets/img/FakeAPI/Thit_ca_trung_haisan/Trung_ga_vit_trung_cut/cate_trung-ga-vit-cut.png"
-          }
-        ]
-      },
-      "brand": {
-        "id": "4",
-        "name": "Vissan",
-        "logo": "assets/img/FakeAPI/Thit_ca_trung_haisan/brand_vissan.png"
-      }
+      "category_id": "3",
+      "subcategory_id": "2",
+      "brand_id": "4"
     },
     {
       "id": "51",
@@ -1123,43 +1205,9 @@
       "price": 79000,
       "unit_of_caculation": "1.3 - 1.4kg",
       "description": "",
-      "category": {
-        "id": "3",
-        "name": "Thịt, cá, trứng, hải sản",
-        "image": "assets/img/FakeAPI/Thit_ca_trung_haisan/category_thit_ca_trung_haisan.svg",
-        "subcategories": [
-          {
-            "id": "1",
-            "name": "Thịt bò",
-            "image": "assets/img/FakeAPI/Thit_ca_trung_haisan/Thit_bo/cate_thit-bo.png"
-          },
-          {
-            "id": "2",
-            "name": "Thịt heo",
-            "image": "assets/img/FakeAPI/Thit_ca_trung_haisan/Thit_hei/cate_thit-heo.png"
-          },
-          {
-            "id": "3",
-            "name": "Thịt gà, vịt",
-            "image": "assets/img/FakeAPI/Thit_ca_trung_haisan/Thit_ga_vit/cate_thit-ga-vit.png"
-          },
-          {
-            "id": "4",
-            "name": "Cá, hải sản tươi",
-            "image": "assets/img/FakeAPI/Thit_ca_trung_haisan/Ca_hai_san_tuoi/cate_ca-hai-san.png"
-          },
-          {
-            "id": "5",
-            "name": "Trứng vịt, gà, cút",
-            "image": "assets/img/FakeAPI/Thit_ca_trung_haisan/Trung_ga_vit_trung_cut/cate_trung-ga-vit-cut.png"
-          }
-        ]
-      },
-      "brand": {
-        "id": "4",
-        "name": "Vissan",
-        "logo": "assets/img/FakeAPI/Thit_ca_trung_haisan/brand_vissan.png"
-      }
+      "category_id": "3",
+      "subcategory_id": "3",
+      "brand_id": "4"
     },
     {
       "id": "52",
@@ -1169,43 +1217,9 @@
       "price": 31000,
       "unit_of_caculation": "500g",
       "description": "",
-      "category": {
-        "id": "3",
-        "name": "Thịt, cá, trứng, hải sản",
-        "image": "assets/img/FakeAPI/Thit_ca_trung_haisan/category_thit_ca_trung_haisan.svg",
-        "subcategories": [
-          {
-            "id": "1",
-            "name": "Thịt bò",
-            "image": "assets/img/FakeAPI/Thit_ca_trung_haisan/Thit_bo/cate_thit-bo.png"
-          },
-          {
-            "id": "2",
-            "name": "Thịt heo",
-            "image": "assets/img/FakeAPI/Thit_ca_trung_haisan/Thit_hei/cate_thit-heo.png"
-          },
-          {
-            "id": "3",
-            "name": "Thịt gà, vịt",
-            "image": "assets/img/FakeAPI/Thit_ca_trung_haisan/Thit_ga_vit/cate_thit-ga-vit.png"
-          },
-          {
-            "id": "4",
-            "name": "Cá, hải sản tươi",
-            "image": "assets/img/FakeAPI/Thit_ca_trung_haisan/Ca_hai_san_tuoi/cate_ca-hai-san.png"
-          },
-          {
-            "id": "5",
-            "name": "Trứng vịt, gà, cút",
-            "image": "assets/img/FakeAPI/Thit_ca_trung_haisan/Trung_ga_vit_trung_cut/cate_trung-ga-vit-cut.png"
-          }
-        ]
-      },
-      "brand": {
-        "id": "5",
-        "name": "GODACO_SEA FOOD",
-        "logo": "assets/img/FakeAPI/Thit_ca_trung_haisan/brand_godaco_seafood.png"
-      }
+      "category_id": "3",
+      "subcategory_id": "4",
+      "brand_id": "5"
     },
     {
       "id": "53",
@@ -1215,43 +1229,9 @@
       "price": 45000,
       "unit_of_caculation": "500g",
       "description": "",
-      "category": {
-        "id": "3",
-        "name": "Thịt, cá, trứng, hải sản",
-        "image": "assets/img/FakeAPI/Thit_ca_trung_haisan/category_thit_ca_trung_haisan.svg",
-        "subcategories": [
-          {
-            "id": "1",
-            "name": "Thịt bò",
-            "image": "assets/img/FakeAPI/Thit_ca_trung_haisan/Thit_bo/cate_thit-bo.png"
-          },
-          {
-            "id": "2",
-            "name": "Thịt heo",
-            "image": "assets/img/FakeAPI/Thit_ca_trung_haisan/Thit_hei/cate_thit-heo.png"
-          },
-          {
-            "id": "3",
-            "name": "Thịt gà, vịt",
-            "image": "assets/img/FakeAPI/Thit_ca_trung_haisan/Thit_ga_vit/cate_thit-ga-vit.png"
-          },
-          {
-            "id": "4",
-            "name": "Cá, hải sản tươi",
-            "image": "assets/img/FakeAPI/Thit_ca_trung_haisan/Ca_hai_san_tuoi/cate_ca-hai-san.png"
-          },
-          {
-            "id": "5",
-            "name": "Trứng vịt, gà, cút",
-            "image": "assets/img/FakeAPI/Thit_ca_trung_haisan/Trung_ga_vit_trung_cut/cate_trung-ga-vit-cut.png"
-          }
-        ]
-      },
-      "brand": {
-        "id": "6",
-        "name": "Ba Huân",
-        "logo": "assets/img/FakeAPI/Thit_ca_trung_haisan/brand_ba_huan.png"
-      }
+      "category_id": "3",
+      "subcategory_id": "5",
+      "brand_id": "6"
     },
     {
       "id": "54",
@@ -1261,38 +1241,9 @@
       "price": 140000,
       "unit_of_caculation": "5kg",
       "description": "",
-      "category": {
-        "id": "4",
-        "name": "Gạo, ngũ cốc, hạt",
-        "image": "assets/img/FakeAPI/Gao_ngucoc_hat/category_gao_ngucoc.svg",
-        "subcategories": [
-          {
-            "id": "1",
-            "name": "Gạo",
-            "image": "assets/img/FakeAPI/Gao_ngucoc_hat/Gao/category_gao.png"
-          },
-          {
-            "id": "2",
-            "name": "Ngũ cốc, yến mạch",
-            "image": "assets/img/FakeAPI/Gao_ngucoc_hat/Ngucoc_hat/cate_ngucoc.png"
-          },
-          {
-            "id": "3",
-            "name": "Các loại đậu",
-            "image": "assets/img/FakeAPI/Gao_ngucoc_hat/Cac_loai_dau/cate_dau.jpg"
-          },
-          {
-            "id": "4",
-            "name": "Bột làm bánh",
-            "image": "assets/img/FakeAPI/Gao_ngucoc_hat/Bot_lam_banh/cate_bot_lam_banh.png"
-          }
-        ]
-      },
-      "brand": {
-        "id": "7",
-        "name": "Neptune",
-        "logo": "assets/img/FakeAPI/Gao_ngucoc_hat/brand_Neptune.png"
-      }
+      "category_id": "4",
+      "subcategory_id": "1",
+      "brand_id": "7"
     },
     {
       "id": "55",
@@ -1302,38 +1253,9 @@
       "price": 60000,
       "unit_of_caculation": "560g",
       "description": "",
-      "category": {
-        "id": "4",
-        "name": "Gạo, ngũ cốc, hạt",
-        "image": "assets/img/FakeAPI/Gao_ngucoc_hat/category_gao_ngucoc.svg",
-        "subcategories": [
-          {
-            "id": "1",
-            "name": "Gạo",
-            "image": "assets/img/FakeAPI/Gao_ngucoc_hat/Gao/category_gao.png"
-          },
-          {
-            "id": "2",
-            "name": "Ngũ cốc, yến mạch",
-            "image": "assets/img/FakeAPI/Gao_ngucoc_hat/Ngucoc_hat/cate_ngucoc.png"
-          },
-          {
-            "id": "3",
-            "name": "Các loại đậu",
-            "image": "assets/img/FakeAPI/Gao_ngucoc_hat/Cac_loai_dau/cate_dau.jpg"
-          },
-          {
-            "id": "4",
-            "name": "Bột làm bánh",
-            "image": "assets/img/FakeAPI/Gao_ngucoc_hat/Bot_lam_banh/cate_bot_lam_banh.png"
-          }
-        ]
-      },
-      "brand": {
-        "id": "8",
-        "name": "Nestle",
-        "logo": "assets/img/FakeAPI/Gao_ngucoc_hat/brand_Nestle.png"
-      }
+      "category_id": "4",
+      "subcategory_id": "2",
+      "brand_id": "8"
     },
     {
       "id": "56",
@@ -1343,38 +1265,9 @@
       "price": 22000,
       "unit_of_caculation": "500g",
       "description": "",
-      "category": {
-        "id": "4",
-        "name": "Gạo, ngũ cốc, hạt",
-        "image": "assets/img/FakeAPI/Gao_ngucoc_hat/category_gao_ngucoc.svg",
-        "subcategories": [
-          {
-            "id": "1",
-            "name": "Gạo",
-            "image": "assets/img/FakeAPI/Gao_ngucoc_hat/Gao/category_gao.png"
-          },
-          {
-            "id": "2",
-            "name": "Ngũ cốc, yến mạch",
-            "image": "assets/img/FakeAPI/Gao_ngucoc_hat/Ngucoc_hat/cate_ngucoc.png"
-          },
-          {
-            "id": "3",
-            "name": "Các loại đậu",
-            "image": "assets/img/FakeAPI/Gao_ngucoc_hat/Cac_loai_dau/cate_dau.jpg"
-          },
-          {
-            "id": "4",
-            "name": "Bột làm bánh",
-            "image": "assets/img/FakeAPI/Gao_ngucoc_hat/Bot_lam_banh/cate_bot_lam_banh.png"
-          }
-        ]
-      },
-      "brand": {
-        "id": "9",
-        "name": "VietFresh",
-        "logo": "assets/img/FakeAPI/Gao_ngucoc_hat/brand_VietFresh.png"
-      }
+      "category_id": "4",
+      "subcategory_id": "3",
+      "brand_id": "9"
     },
     {
       "id": "57",
@@ -1384,38 +1277,9 @@
       "price": 16000,
       "unit_of_caculation": "50g",
       "description": "",
-      "category": {
-        "id": "4",
-        "name": "Gạo, ngũ cốc, hạt",
-        "image": "assets/img/FakeAPI/Gao_ngucoc_hat/category_gao_ngucoc.svg",
-        "subcategories": [
-          {
-            "id": "1",
-            "name": "Gạo",
-            "image": "assets/img/FakeAPI/Gao_ngucoc_hat/Gao/category_gao.png"
-          },
-          {
-            "id": "2",
-            "name": "Ngũ cốc, yến mạch",
-            "image": "assets/img/FakeAPI/Gao_ngucoc_hat/Ngucoc_hat/cate_ngucoc.png"
-          },
-          {
-            "id": "3",
-            "name": "Các loại đậu",
-            "image": "assets/img/FakeAPI/Gao_ngucoc_hat/Cac_loai_dau/cate_dau.jpg"
-          },
-          {
-            "id": "4",
-            "name": "Bột làm bánh",
-            "image": "assets/img/FakeAPI/Gao_ngucoc_hat/Bot_lam_banh/cate_bot_lam_banh.png"
-          }
-        ]
-      },
-      "brand": {
-        "id": "10",
-        "name": "Meizan",
-        "logo": "assets/img/FakeAPI/Gao_ngucoc_hat/brand_Meizan.png"
-      }
+      "category_id": "4",
+      "subcategory_id": "4",
+      "brand_id": "10"
     },
     {
       "id": "58",
@@ -1425,53 +1289,9 @@
       "price": 235000,
       "unit_of_caculation": "1 Thùng",
       "description": "",
-      "category": {
-        "id": "5",
-        "name": "Sữa Các Loại",
-        "image": "assets/img/FakeAPI/Sua_cac_loai/category_product-milk.svg",
-        "subcategories": [
-          {
-            "id": "1",
-            "name": "Sữa tươi",
-            "image": "assets/img/FakeAPI/Sua_cac_loai/Sua_tuoi/cate_suatuoi.png"
-          },
-          {
-            "id": "2",
-            "name": "Sữa bột dinh dưỡng",
-            "image": "assets/img/FakeAPI/Sua_cac_loai/Sua_bot_dinh_duong/cate_suabot.png"
-          },
-          {
-            "id": "3",
-            "name": "Sữa chua",
-            "image": "assets/img/FakeAPI/Sua_cac_loai/Sua_chua/cate_suachua.png"
-          },
-          {
-            "id": "4",
-            "name": "Sữa đặc",
-            "image": "assets/img/FakeAPI/Sua_cac_loai/Sua_dac/cate_suadac.png"
-          },
-          {
-            "id": "5",
-            "name": "Bơ, phô mai",
-            "image": "assets/img/FakeAPI/Sua_cac_loai/Bo_pho_mai/cate_bo_phomai.png"
-          },
-          {
-            "id": "6",
-            "name": "Sữa Cacao",
-            "image": "assets/img/FakeAPI/Sua_cac_loai/Sua_cacao_lua_mach/cate_cacao.png"
-          },
-          {
-            "id": "7",
-            "name": "Sữa hạt",
-            "image": "assets/img/FakeAPI/Sua_cac_loai/Sua_hat/cate_suahat.png"
-          }
-        ]
-      },
-      "brand": {
-        "id": "11",
-        "name": "Vinamilk",
-        "logo": "assets/img/FakeAPI/Sua_cac_loai/brand_vinamilk.png"
-      }
+      "category_id": "5",
+      "subcategory_id": "1",
+      "brand_id": "11"
     },
     {
       "id": "59",
@@ -1481,53 +1301,9 @@
       "price": 664000,
       "unit_of_caculation": "1 lon 850g",
       "description": "",
-      "category": {
-        "id": "5",
-        "name": "Sữa Các Loại",
-        "image": "assets/img/FakeAPI/Sua_cac_loai/category_product-milk.svg",
-        "subcategories": [
-          {
-            "id": "1",
-            "name": "Sữa tươi",
-            "image": "assets/img/FakeAPI/Sua_cac_loai/Sua_tuoi/cate_suatuoi.png"
-          },
-          {
-            "id": "2",
-            "name": "Sữa bột dinh dưỡng",
-            "image": "assets/img/FakeAPI/Sua_cac_loai/Sua_bot_dinh_duong/cate_suabot.png"
-          },
-          {
-            "id": "3",
-            "name": "Sữa chua",
-            "image": "assets/img/FakeAPI/Sua_cac_loai/Sua_chua/cate_suachua.png"
-          },
-          {
-            "id": "4",
-            "name": "Sữa đặc",
-            "image": "assets/img/FakeAPI/Sua_cac_loai/Sua_dac/cate_suadac.png"
-          },
-          {
-            "id": "5",
-            "name": "Bơ, phô mai",
-            "image": "assets/img/FakeAPI/Sua_cac_loai/Bo_pho_mai/cate_bo_phomai.png"
-          },
-          {
-            "id": "6",
-            "name": "Sữa Cacao",
-            "image": "assets/img/FakeAPI/Sua_cac_loai/Sua_cacao_lua_mach/cate_cacao.png"
-          },
-          {
-            "id": "7",
-            "name": "Sữa hạt",
-            "image": "assets/img/FakeAPI/Sua_cac_loai/Sua_hat/cate_suahat.png"
-          }
-        ]
-      },
-      "brand": {
-        "id": "12",
-        "name": "Abbott",
-        "logo": "assets/img/FakeAPI/Sua_cac_loai/brand_Abbott.png"
-      }
+      "category_id": "5",
+      "subcategory_id": "2",
+      "brand_id": "12"
     },
     {
       "id": "60",
@@ -1537,53 +1313,9 @@
       "price": 23000,
       "unit_of_caculation": "Hũ 100g",
       "description": "",
-      "category": {
-        "id": "5",
-        "name": "Sữa Các Loại",
-        "image": "assets/img/FakeAPI/Sua_cac_loai/category_product-milk.svg",
-        "subcategories": [
-          {
-            "id": "1",
-            "name": "Sữa tươi",
-            "image": "assets/img/FakeAPI/Sua_cac_loai/Sua_tuoi/cate_suatuoi.png"
-          },
-          {
-            "id": "2",
-            "name": "Sữa bột dinh dưỡng",
-            "image": "assets/img/FakeAPI/Sua_cac_loai/Sua_bot_dinh_duong/cate_suabot.png"
-          },
-          {
-            "id": "3",
-            "name": "Sữa chua",
-            "image": "assets/img/FakeAPI/Sua_cac_loai/Sua_chua/cate_suachua.png"
-          },
-          {
-            "id": "4",
-            "name": "Sữa đặc",
-            "image": "assets/img/FakeAPI/Sua_cac_loai/Sua_dac/cate_suadac.png"
-          },
-          {
-            "id": "5",
-            "name": "Bơ, phô mai",
-            "image": "assets/img/FakeAPI/Sua_cac_loai/Bo_pho_mai/cate_bo_phomai.png"
-          },
-          {
-            "id": "6",
-            "name": "Sữa Cacao",
-            "image": "assets/img/FakeAPI/Sua_cac_loai/Sua_cacao_lua_mach/cate_cacao.png"
-          },
-          {
-            "id": "7",
-            "name": "Sữa hạt",
-            "image": "assets/img/FakeAPI/Sua_cac_loai/Sua_hat/cate_suahat.png"
-          }
-        ]
-      },
-      "brand": {
-        "id": "10",
-        "name": "Vinamilk",
-        "logo": "assets/img/FakeAPI/Sua_cac_loai/brand_vinamilk.png"
-      }
+      "category_id": "5",
+      "subcategory_id": "3",
+      "brand_id": "13"
     },
     {
       "id": "61",
@@ -1593,53 +1325,9 @@
       "price": 65000,
       "unit_of_caculation": "1 hộp 1.284kg",
       "description": "",
-      "category": {
-        "id": "5",
-        "name": "Sữa Các Loại",
-        "image": "assets/img/FakeAPI/Sua_cac_loai/category_product-milk.svg",
-        "subcategories": [
-          {
-            "id": "1",
-            "name": "Sữa tươi",
-            "image": "assets/img/FakeAPI/Sua_cac_loai/Sua_tuoi/cate_suatuoi.png"
-          },
-          {
-            "id": "2",
-            "name": "Sữa bột dinh dưỡng",
-            "image": "assets/img/FakeAPI/Sua_cac_loai/Sua_bot_dinh_duong/cate_suabot.png"
-          },
-          {
-            "id": "3",
-            "name": "Sữa chua",
-            "image": "assets/img/FakeAPI/Sua_cac_loai/Sua_chua/cate_suachua.png"
-          },
-          {
-            "id": "4",
-            "name": "Sữa đặc",
-            "image": "assets/img/FakeAPI/Sua_cac_loai/Sua_dac/cate_suadac.png"
-          },
-          {
-            "id": "5",
-            "name": "Bơ, phô mai",
-            "image": "assets/img/FakeAPI/Sua_cac_loai/Bo_pho_mai/cate_bo_phomai.png"
-          },
-          {
-            "id": "6",
-            "name": "Sữa Cacao",
-            "image": "assets/img/FakeAPI/Sua_cac_loai/Sua_cacao_lua_mach/cate_cacao.png"
-          },
-          {
-            "id": "7",
-            "name": "Sữa hạt",
-            "image": "assets/img/FakeAPI/Sua_cac_loai/Sua_hat/cate_suahat.png"
-          }
-        ]
-      },
-      "brand": {
-        "id": "13",
-        "name": "Ngôi sao Phương Nam",
-        "logo": "assets/img/FakeAPI/Sua_cac_loai/brand_Ngoisaophuongnam.png"
-      }
+      "category_id": "5",
+      "subcategory_id": "4",
+      "brand_id": "13"
     },
     {
       "id": "62",
@@ -1649,53 +1337,9 @@
       "price": 60000,
       "unit_of_caculation": "560g",
       "description": "",
-      "category": {
-        "id": "5",
-        "name": "Sữa Các Loại",
-        "image": "assets/img/FakeAPI/Sua_cac_loai/category_product-milk.svg",
-        "subcategories": [
-          {
-            "id": "1",
-            "name": "Sữa tươi",
-            "image": "assets/img/FakeAPI/Sua_cac_loai/Sua_tuoi/cate_suatuoi.png"
-          },
-          {
-            "id": "2",
-            "name": "Sữa bột dinh dưỡng",
-            "image": "assets/img/FakeAPI/Sua_cac_loai/Sua_bot_dinh_duong/cate_suabot.png"
-          },
-          {
-            "id": "3",
-            "name": "Sữa chua",
-            "image": "assets/img/FakeAPI/Sua_cac_loai/Sua_chua/cate_suachua.png"
-          },
-          {
-            "id": "4",
-            "name": "Sữa đặc",
-            "image": "assets/img/FakeAPI/Sua_cac_loai/Sua_dac/cate_suadac.png"
-          },
-          {
-            "id": "5",
-            "name": "Bơ, phô mai",
-            "image": "assets/img/FakeAPI/Sua_cac_loai/Bo_pho_mai/cate_bo_phomai.png"
-          },
-          {
-            "id": "6",
-            "name": "Sữa Cacao",
-            "image": "assets/img/FakeAPI/Sua_cac_loai/Sua_cacao_lua_mach/cate_cacao.png"
-          },
-          {
-            "id": "7",
-            "name": "Sữa hạt",
-            "image": "assets/img/FakeAPI/Sua_cac_loai/Sua_hat/cate_suahat.png"
-          }
-        ]
-      },
-      "brand": {
-        "id": "14",
-        "name": "Lavachequirit",
-        "logo": "assets/img/FakeAPI/Sua_cac_loai/brand_Lavachequirit.png"
-      }
+      "category_id": "5",
+      "subcategory_id": "5",
+      "brand_id": "14"
     },
     {
       "id": "63",
@@ -1705,53 +1349,9 @@
       "price": 331000,
       "unit_of_caculation": "1 Thùng",
       "description": "",
-      "category": {
-        "id": "5",
-        "name": "Sữa Các Loại",
-        "image": "assets/img/FakeAPI/Sua_cac_loai/category_product-milk.svg",
-        "subcategories": [
-          {
-            "id": "1",
-            "name": "Sữa tươi",
-            "image": "assets/img/FakeAPI/Sua_cac_loai/Sua_tuoi/cate_suatuoi.png"
-          },
-          {
-            "id": "2",
-            "name": "Sữa bột dinh dưỡng",
-            "image": "assets/img/FakeAPI/Sua_cac_loai/Sua_bot_dinh_duong/cate_suabot.png"
-          },
-          {
-            "id": "3",
-            "name": "Sữa chua",
-            "image": "assets/img/FakeAPI/Sua_cac_loai/Sua_chua/cate_suachua.png"
-          },
-          {
-            "id": "4",
-            "name": "Sữa đặc",
-            "image": "assets/img/FakeAPI/Sua_cac_loai/Sua_dac/cate_suadac.png"
-          },
-          {
-            "id": "5",
-            "name": "Bơ, phô mai",
-            "image": "assets/img/FakeAPI/Sua_cac_loai/Bo_pho_mai/cate_bo_phomai.png"
-          },
-          {
-            "id": "6",
-            "name": "Sữa Cacao",
-            "image": "assets/img/FakeAPI/Sua_cac_loai/Sua_cacao_lua_mach/cate_cacao.png"
-          },
-          {
-            "id": "7",
-            "name": "Sữa hạt",
-            "image": "assets/img/FakeAPI/Sua_cac_loai/Sua_hat/cate_suahat.png"
-          }
-        ]
-      },
-      "brand": {
-        "id": "16",
-        "name": "Milo",
-        "logo": "assets/img/FakeAPI/Sua_cac_loai/brand_milo.png"
-      }
+      "category_id": "5",
+      "subcategory_id": "6",
+      "brand_id": "15"
     },
     {
       "id": "64",
@@ -1761,53 +1361,9 @@
       "price": 47000,
       "unit_of_caculation": "1 Lốc",
       "description": "",
-      "category": {
-        "id": "5",
-        "name": "Sữa Các Loại",
-        "image": "assets/img/FakeAPI/Sua_cac_loai/category_product-milk.svg",
-        "subcategories": [
-          {
-            "id": "1",
-            "name": "Sữa tươi",
-            "image": "assets/img/FakeAPI/Sua_cac_loai/Sua_tuoi/cate_suatuoi.png"
-          },
-          {
-            "id": "2",
-            "name": "Sữa bột dinh dưỡng",
-            "image": "assets/img/FakeAPI/Sua_cac_loai/Sua_bot_dinh_duong/cate_suabot.png"
-          },
-          {
-            "id": "3",
-            "name": "Sữa chua",
-            "image": "assets/img/FakeAPI/Sua_cac_loai/Sua_chua/cate_suachua.png"
-          },
-          {
-            "id": "4",
-            "name": "Sữa đặc",
-            "image": "assets/img/FakeAPI/Sua_cac_loai/Sua_dac/cate_suadac.png"
-          },
-          {
-            "id": "5",
-            "name": "Bơ, phô mai",
-            "image": "assets/img/FakeAPI/Sua_cac_loai/Bo_pho_mai/cate_bo_phomai.png"
-          },
-          {
-            "id": "6",
-            "name": "Sữa Cacao",
-            "image": "assets/img/FakeAPI/Sua_cac_loai/Sua_cacao_lua_mach/cate_cacao.png"
-          },
-          {
-            "id": "7",
-            "name": "Sữa hạt",
-            "image": "assets/img/FakeAPI/Sua_cac_loai/Sua_hat/cate_suahat.png"
-          }
-        ]
-      },
-      "brand": {
-        "id": "11",
-        "name": "Vinamilk",
-        "logo": "assets/img/FakeAPI/Sua_cac_loai/brand_vinamilk.png"
-      }
+      "category_id": "5",
+      "subcategory_id": "7",
+      "brand_id": "11"
     },
     {
       "id": "65",
@@ -1817,58 +1373,9 @@
       "price": 95000,
       "unit_of_caculation": "1 thùng 500ml",
       "description": "",
-      "category": {
-        "id": "6",
-        "name": "Đồ uống",
-        "image": "assets/img/FakeAPI/Do_uong/category_nuocgiaikhat.svg",
-        "subcategories": [
-          {
-            "id": "1",
-            "name": "Nước suối",
-            "image": "assets/img/FakeAPI/Do_uong/Nuoc_suoi/cate_lavie.png"
-          },
-          {
-            "id": "2",
-            "name": "Nước ngọt",
-            "image": "assets/img/FakeAPI/Do_uong/Nuoc_ngot/cate_Cocacola.png"
-          },
-          {
-            "id": "3",
-            "name": "Nước tăng lực, bù khoáng",
-            "image": "assets/img/FakeAPI/Do_uong/Nuoc_tang_luc_bu_khoang/cate_RedBull.png"
-          },
-          {
-            "id": "4",
-            "name": "Trà, cà phê",
-            "image": "assets/img/FakeAPI/Do_uong/Tra_ca_phe/cate_tra_caphe.png"
-          },
-          {
-            "id": "5",
-            "name": "Nước ép trái cây",
-            "image": "assets/img/FakeAPI/Do_uong/Nuoc_ep_trai_cay/cate_nuoc-ep-trai-cay.png"
-          },
-          {
-            "id": "6",
-            "name": "Rượu, Soju",
-            "image": "assets/img/FakeAPI/Do_uong/Ruou_Soju/cate_ruou_soju.png"
-          },
-          {
-            "id": "7",
-            "name": "Bia, nước trái cây lên men",
-            "image": "assets/img/FakeAPI/Do_uong/Bia_nuoc_trai_cay_len_men/cate_bia-nuoc-trai-cay-len-men.png"
-          },
-          {
-            "id": "8",
-            "name": "Nước yến",
-            "image": "assets/img/FakeAPI/Do_uong/Nuoc_yen/cate_nuoc-yen.png"
-          }
-        ]
-      },
-      "brand": {
-        "id": "17",
-        "name": "Lavie",
-        "logo": "assets/img/FakeAPI/Do_uong/brand_lavie.jpg"
-      }
+      "category_id": "6",
+      "subcategory_id": "1",
+      "brand_id": "16"
     },
     {
       "id": "66",
@@ -1878,58 +1385,9 @@
       "price": 45000,
       "unit_of_caculation": "1 Lốc 320ml",
       "description": "",
-      "category": {
-        "id": "6",
-        "name": "Đồ uống",
-        "image": "assets/img/FakeAPI/Do_uong/category_nuocgiaikhat.svg",
-        "subcategories": [
-          {
-            "id": "1",
-            "name": "Nước suối",
-            "image": "assets/img/FakeAPI/Do_uong/Nuoc_suoi/cate_lavie.png"
-          },
-          {
-            "id": "2",
-            "name": "Nước ngọt",
-            "image": "assets/img/FakeAPI/Do_uong/Nuoc_ngot/cate_Cocacola.png"
-          },
-          {
-            "id": "3",
-            "name": "Nước tăng lực, bù khoáng",
-            "image": "assets/img/FakeAPI/Do_uong/Nuoc_tang_luc_bu_khoang/cate_RedBull.png"
-          },
-          {
-            "id": "4",
-            "name": "Trà, cà phê",
-            "image": "assets/img/FakeAPI/Do_uong/Tra_ca_phe/cate_tra_caphe.png"
-          },
-          {
-            "id": "5",
-            "name": "Nước ép trái cây",
-            "image": "assets/img/FakeAPI/Do_uong/Nuoc_ep_trai_cay/cate_nuoc-ep-trai-cay.png"
-          },
-          {
-            "id": "6",
-            "name": "Rượu, Soju",
-            "image": "assets/img/FakeAPI/Do_uong/Ruou_Soju/cate_ruou_soju.png"
-          },
-          {
-            "id": "7",
-            "name": "Bia, nước trái cây lên men",
-            "image": "assets/img/FakeAPI/Do_uong/Bia_nuoc_trai_cay_len_men/cate_bia-nuoc-trai-cay-len-men.png"
-          },
-          {
-            "id": "8",
-            "name": "Nước yến",
-            "image": "assets/img/FakeAPI/Do_uong/Nuoc_yen/cate_nuoc-yen.png"
-          }
-        ]
-      },
-      "brand": {
-        "id": "18",
-        "name": "Cocacola",
-        "logo": "assets/img/FakeAPI/Do_uong/brand_Cocacola.jpg"
-      }
+      "category_id": "6",
+      "subcategory_id": "2",
+      "brand_id": "17"
     },
     {
       "id": "67",
@@ -1939,58 +1397,9 @@
       "price": 208000,
       "unit_of_caculation": "1 thùng 250ml",
       "description": "",
-      "category": {
-        "id": "6",
-        "name": "Đồ uống",
-        "image": "assets/img/FakeAPI/Do_uong/category_nuocgiaikhat.svg",
-        "subcategories": [
-          {
-            "id": "1",
-            "name": "Nước suối",
-            "image": "assets/img/FakeAPI/Do_uong/Nuoc_suoi/cate_lavie.png"
-          },
-          {
-            "id": "2",
-            "name": "Nước ngọt",
-            "image": "assets/img/FakeAPI/Do_uong/Nuoc_ngot/cate_Cocacola.png"
-          },
-          {
-            "id": "3",
-            "name": "Nước tăng lực, bù khoáng",
-            "image": "assets/img/FakeAPI/Do_uong/Nuoc_tang_luc_bu_khoang/cate_RedBull.png"
-          },
-          {
-            "id": "4",
-            "name": "Trà, cà phê",
-            "image": "assets/img/FakeAPI/Do_uong/Tra_ca_phe/cate_tra_caphe.png"
-          },
-          {
-            "id": "5",
-            "name": "Nước ép trái cây",
-            "image": "assets/img/FakeAPI/Do_uong/Nuoc_ep_trai_cay/cate_nuoc-ep-trai-cay.png"
-          },
-          {
-            "id": "6",
-            "name": "Rượu, Soju",
-            "image": "assets/img/FakeAPI/Do_uong/Ruou_Soju/cate_ruou_soju.png"
-          },
-          {
-            "id": "7",
-            "name": "Bia, nước trái cây lên men",
-            "image": "assets/img/FakeAPI/Do_uong/Bia_nuoc_trai_cay_len_men/cate_bia-nuoc-trai-cay-len-men.png"
-          },
-          {
-            "id": "8",
-            "name": "Nước yến",
-            "image": "assets/img/FakeAPI/Do_uong/Nuoc_yen/cate_nuoc-yen.png"
-          }
-        ]
-      },
-      "brand": {
-        "id": "19",
-        "name": "Redbull",
-        "logo": "assets/img/FakeAPI/Do_uong/brand_redbull.jpg"
-      }
+      "category_id": "6",
+      "subcategory_id": "3",
+      "brand_id": "18"
     },
     {
       "id": "68",
@@ -2000,58 +1409,9 @@
       "price": 37000,
       "unit_of_caculation": "1 Hộp",
       "description": "",
-      "category": {
-        "id": "6",
-        "name": "Đồ uống",
-        "image": "assets/img/FakeAPI/Do_uong/category_nuocgiaikhat.svg",
-        "subcategories": [
-          {
-            "id": "1",
-            "name": "Nước suối",
-            "image": "assets/img/FakeAPI/Do_uong/Nuoc_suoi/cate_lavie.png"
-          },
-          {
-            "id": "2",
-            "name": "Nước ngọt",
-            "image": "assets/img/FakeAPI/Do_uong/Nuoc_ngot/cate_Cocacola.png"
-          },
-          {
-            "id": "3",
-            "name": "Nước tăng lực, bù khoáng",
-            "image": "assets/img/FakeAPI/Do_uong/Nuoc_tang_luc_bu_khoang/cate_RedBull.png"
-          },
-          {
-            "id": "4",
-            "name": "Trà, cà phê",
-            "image": "assets/img/FakeAPI/Do_uong/Tra_ca_phe/cate_tra_caphe.png"
-          },
-          {
-            "id": "5",
-            "name": "Nước ép trái cây",
-            "image": "assets/img/FakeAPI/Do_uong/Nuoc_ep_trai_cay/cate_nuoc-ep-trai-cay.png"
-          },
-          {
-            "id": "6",
-            "name": "Rượu, Soju",
-            "image": "assets/img/FakeAPI/Do_uong/Ruou_Soju/cate_ruou_soju.png"
-          },
-          {
-            "id": "7",
-            "name": "Bia, nước trái cây lên men",
-            "image": "assets/img/FakeAPI/Do_uong/Bia_nuoc_trai_cay_len_men/cate_bia-nuoc-trai-cay-len-men.png"
-          },
-          {
-            "id": "8",
-            "name": "Nước yến",
-            "image": "assets/img/FakeAPI/Do_uong/Nuoc_yen/cate_nuoc-yen.png"
-          }
-        ]
-      },
-      "brand": {
-        "id": "20",
-        "name": "Cozy",
-        "logo": "assets/img/FakeAPI/Do_uong/brand_Cozy.jpg"
-      }
+      "category_id": "6",
+      "subcategory_id": "4",
+      "brand_id": "19"
     },
     {
       "id": "69",
@@ -2061,58 +1421,9 @@
       "price": 20000,
       "unit_of_caculation": "chai",
       "description": "",
-      "category": {
-        "id": "6",
-        "name": "Đồ uống",
-        "image": "assets/img/FakeAPI/Do_uong/category_nuocgiaikhat.svg",
-        "subcategories": [
-          {
-            "id": "1",
-            "name": "Nước suối",
-            "image": "assets/img/FakeAPI/Do_uong/Nuoc_suoi/cate_lavie.png"
-          },
-          {
-            "id": "2",
-            "name": "Nước ngọt",
-            "image": "assets/img/FakeAPI/Do_uong/Nuoc_ngot/cate_Cocacola.png"
-          },
-          {
-            "id": "3",
-            "name": "Nước tăng lực, bù khoáng",
-            "image": "assets/img/FakeAPI/Do_uong/Nuoc_tang_luc_bu_khoang/cate_RedBull.png"
-          },
-          {
-            "id": "4",
-            "name": "Trà, cà phê",
-            "image": "assets/img/FakeAPI/Do_uong/Tra_ca_phe/cate_tra_caphe.png"
-          },
-          {
-            "id": "5",
-            "name": "Nước ép trái cây",
-            "image": "assets/img/FakeAPI/Do_uong/Nuoc_ep_trai_cay/cate_nuoc-ep-trai-cay.png"
-          },
-          {
-            "id": "6",
-            "name": "Rượu, Soju",
-            "image": "assets/img/FakeAPI/Do_uong/Ruou_Soju/cate_ruou_soju.png"
-          },
-          {
-            "id": "7",
-            "name": "Bia, nước trái cây lên men",
-            "image": "assets/img/FakeAPI/Do_uong/Bia_nuoc_trai_cay_len_men/cate_bia-nuoc-trai-cay-len-men.png"
-          },
-          {
-            "id": "8",
-            "name": "Nước yến",
-            "image": "assets/img/FakeAPI/Do_uong/Nuoc_yen/cate_nuoc-yen.png"
-          }
-        ]
-      },
-      "brand": {
-        "id": "21",
-        "name": "Teppy",
-        "logo": "assets/img/FakeAPI/Do_uong/brand_teppy.png"
-      }
+      "category_id": "6",
+      "subcategory_id": "5",
+      "brand_id": "20"
     },
     {
       "id": "70",
@@ -2122,58 +1433,9 @@
       "price": 120000,
       "unit_of_caculation": "chai",
       "description": "",
-      "category": {
-        "id": "6",
-        "name": "Đồ uống",
-        "image": "assets/img/FakeAPI/Do_uong/category_nuocgiaikhat.svg",
-        "subcategories": [
-          {
-            "id": "1",
-            "name": "Nước suối",
-            "image": "assets/img/FakeAPI/Do_uong/Nuoc_suoi/cate_lavie.png"
-          },
-          {
-            "id": "2",
-            "name": "Nước ngọt",
-            "image": "assets/img/FakeAPI/Do_uong/Nuoc_ngot/cate_Cocacola.png"
-          },
-          {
-            "id": "3",
-            "name": "Nước tăng lực, bù khoáng",
-            "image": "assets/img/FakeAPI/Do_uong/Nuoc_tang_luc_bu_khoang/cate_RedBull.png"
-          },
-          {
-            "id": "4",
-            "name": "Trà, cà phê",
-            "image": "assets/img/FakeAPI/Do_uong/Tra_ca_phe/cate_tra_caphe.png"
-          },
-          {
-            "id": "5",
-            "name": "Nước ép trái cây",
-            "image": "assets/img/FakeAPI/Do_uong/Nuoc_ep_trai_cay/cate_nuoc-ep-trai-cay.png"
-          },
-          {
-            "id": "6",
-            "name": "Rượu, Soju",
-            "image": "assets/img/FakeAPI/Do_uong/Ruou_Soju/cate_ruou_soju.png"
-          },
-          {
-            "id": "7",
-            "name": "Bia, nước trái cây lên men",
-            "image": "assets/img/FakeAPI/Do_uong/Bia_nuoc_trai_cay_len_men/cate_bia-nuoc-trai-cay-len-men.png"
-          },
-          {
-            "id": "8",
-            "name": "Nước yến",
-            "image": "assets/img/FakeAPI/Do_uong/Nuoc_yen/cate_nuoc-yen.png"
-          }
-        ]
-      },
-      "brand": {
-        "id": "22",
-        "name": "ChungHa",
-        "logo": "assets/img/FakeAPI/Do_uong/brand_Chungha.png"
-      }
+      "category_id": "6",
+      "subcategory_id": "6",
+      "brand_id": "21"
     },
     {
       "id": "71",
@@ -2183,58 +1445,9 @@
       "price": 292000,
       "unit_of_caculation": "1 Thùng",
       "description": "",
-      "category": {
-        "id": "6",
-        "name": "Đồ uống",
-        "image": "assets/img/FakeAPI/Do_uong/category_nuocgiaikhat.svg",
-        "subcategories": [
-          {
-            "id": "1",
-            "name": "Nước suối",
-            "image": "assets/img/FakeAPI/Do_uong/Nuoc_suoi/cate_lavie.png"
-          },
-          {
-            "id": "2",
-            "name": "Nước ngọt",
-            "image": "assets/img/FakeAPI/Do_uong/Nuoc_ngot/cate_Cocacola.png"
-          },
-          {
-            "id": "3",
-            "name": "Nước tăng lực, bù khoáng",
-            "image": "assets/img/FakeAPI/Do_uong/Nuoc_tang_luc_bu_khoang/cate_RedBull.png"
-          },
-          {
-            "id": "4",
-            "name": "Trà, cà phê",
-            "image": "assets/img/FakeAPI/Do_uong/Tra_ca_phe/cate_tra_caphe.png"
-          },
-          {
-            "id": "5",
-            "name": "Nước ép trái cây",
-            "image": "assets/img/FakeAPI/Do_uong/Nuoc_ep_trai_cay/cate_nuoc-ep-trai-cay.png"
-          },
-          {
-            "id": "6",
-            "name": "Rượu, Soju",
-            "image": "assets/img/FakeAPI/Do_uong/Ruou_Soju/cate_ruou_soju.png"
-          },
-          {
-            "id": "7",
-            "name": "Bia, nước trái cây lên men",
-            "image": "assets/img/FakeAPI/Do_uong/Bia_nuoc_trai_cay_len_men/cate_bia-nuoc-trai-cay-len-men.png"
-          },
-          {
-            "id": "8",
-            "name": "Nước yến",
-            "image": "assets/img/FakeAPI/Do_uong/Nuoc_yen/cate_nuoc-yen.png"
-          }
-        ]
-      },
-      "brand": {
-        "id": "23",
-        "name": "Budweiser",
-        "logo": "assets/img/FakeAPI/Do_uong/brand_budweiser.jpg"
-      }
+      "category_id": "6",
+      "subcategory_id": "7",
+      "brand_id": "22"
     },
     {
       "id": "72",
@@ -2244,58 +1457,9 @@
       "price": 47000,
       "unit_of_caculation": "Chai 180ml",
       "description": "",
-      "category": {
-        "id": "6",
-        "name": "Đồ uống",
-        "image": "assets/img/FakeAPI/Do_uong/category_nuocgiaikhat.svg",
-        "subcategories": [
-          {
-            "id": "1",
-            "name": "Nước suối",
-            "image": "assets/img/FakeAPI/Do_uong/Nuoc_suoi/cate_lavie.png"
-          },
-          {
-            "id": "2",
-            "name": "Nước ngọt",
-            "image": "assets/img/FakeAPI/Do_uong/Nuoc_ngot/cate_Cocacola.png"
-          },
-          {
-            "id": "3",
-            "name": "Nước tăng lực, bù khoáng",
-            "image": "assets/img/FakeAPI/Do_uong/Nuoc_tang_luc_bu_khoang/cate_RedBull.png"
-          },
-          {
-            "id": "4",
-            "name": "Trà, cà phê",
-            "image": "assets/img/FakeAPI/Do_uong/Tra_ca_phe/cate_tra_caphe.png"
-          },
-          {
-            "id": "5",
-            "name": "Nước ép trái cây",
-            "image": "assets/img/FakeAPI/Do_uong/Nuoc_ep_trai_cay/cate_nuoc-ep-trai-cay.png"
-          },
-          {
-            "id": "6",
-            "name": "Rượu, Soju",
-            "image": "assets/img/FakeAPI/Do_uong/Ruou_Soju/cate_ruou_soju.png"
-          },
-          {
-            "id": "7",
-            "name": "Bia, nước trái cây lên men",
-            "image": "assets/img/FakeAPI/Do_uong/Bia_nuoc_trai_cay_len_men/cate_bia-nuoc-trai-cay-len-men.png"
-          },
-          {
-            "id": "8",
-            "name": "Nước yến",
-            "image": "assets/img/FakeAPI/Do_uong/Nuoc_yen/cate_nuoc-yen.png"
-          }
-        ]
-      },
-      "brand": {
-        "id": "24",
-        "name": "Sanest Khánh Hòa",
-        "logo": "assets/img/FakeAPI/Do_uong/brand_SanestKhanhHoa.jpg"
-      }
+      "category_id": "6",
+      "subcategory_id": "8",
+      "brand_id": "23"
     },
     {
       "id": "73",
@@ -2305,58 +1469,9 @@
       "price": 56000,
       "unit_of_caculation": "Chai 1 Lít",
       "description": "",
-      "category": {
-        "id": "7",
-        "name": "Sốt, gia vị",
-        "image": "assets/img/FakeAPI/Sot_giavi/category_nuoccham_giavi.svg",
-        "subcategories": [
-          {
-            "id": "1",
-            "name": "Dầu ăn",
-            "image": "assets/img/FakeAPI/Sot_giavi/Dau_an/cate_dauan.png"
-          },
-          {
-            "id": "2",
-            "name": "Nước tương, nước mắm",
-            "image": "assets/img/FakeAPI/Sot_giavi/Nuoc_tuong_nuoc_mam/cate_nuoctuong_nuocmam.png"
-          },
-          {
-            "id": "3",
-            "name": "Tương ớt, cà , đen",
-            "image": "assets/img/FakeAPI/Sot_giavi/Tuong_ot_ca_tuong_den/cate_tuongot-ca-den.png"
-          },
-          {
-            "id": "4",
-            "name": "Giấm",
-            "image": "assets/img/FakeAPI/Sot_giavi/Giam/cate_giam.png"
-          },
-          {
-            "id": "5",
-            "name": "Muối, đường, bột ngọt, hạt nêm",
-            "image": "assets/img/FakeAPI/Sot_giavi/Muoi_duong_bot_ngot_hat_nem/cate_Muoi-duong-bot-ngot-hat-nem.png"
-          },
-          {
-            "id": "6",
-            "name": "Gia vị",
-            "image": "assets/img/FakeAPI/Sot_giavi/Gia_vi/cate_giavi.png"
-          },
-          {
-            "id": "7",
-            "name": "Gia vị nêm sẵn",
-            "image": "assets/img/FakeAPI/Sot_giavi/Gia_vi_nem_san/cate_gia-vi-nem-san.png"
-          },
-          {
-            "id": "8",
-            "name": "Nước cốt dừa",
-            "image": "assets/img/FakeAPI/Sot_giavi/Nuoc_cot_dua/cate_nuoc-cot-dua.png"
-          }
-        ]
-      },
-      "brand": {
-        "id": "25",
-        "name": "SimPly",
-        "logo": "assets/img/FakeAPI/Sot_giavi/brand_simply.png"
-      }
+      "category_id": "7",
+      "subcategory_id": "1",
+      "brand_id": "24"
     },
     {
       "id": "74",
@@ -2366,58 +1481,9 @@
       "price": 29000,
       "unit_of_caculation": "Chai 700ml",
       "description": "",
-      "category": {
-        "id": "7",
-        "name": "Sốt, gia vị",
-        "image": "assets/img/FakeAPI/Sot_giavi/category_nuoccham_giavi.svg",
-        "subcategories": [
-          {
-            "id": "1",
-            "name": "Dầu ăn",
-            "image": "assets/img/FakeAPI/Sot_giavi/Dau_an/cate_dauan.png"
-          },
-          {
-            "id": "2",
-            "name": "Nước tương, nước mắm",
-            "image": "assets/img/FakeAPI/Sot_giavi/Nuoc_tuong_nuoc_mam/cate_nuoctuong_nuocmam.png"
-          },
-          {
-            "id": "3",
-            "name": "Tương ớt, cà , đen",
-            "image": "assets/img/FakeAPI/Sot_giavi/Tuong_ot_ca_tuong_den/cate_tuongot-ca-den.png"
-          },
-          {
-            "id": "4",
-            "name": "Giấm",
-            "image": "assets/img/FakeAPI/Sot_giavi/Giam/cate_giam.png"
-          },
-          {
-            "id": "5",
-            "name": "Muối, đường, bột ngọt, hạt nêm",
-            "image": "assets/img/FakeAPI/Sot_giavi/Muoi_duong_bot_ngot_hat_nem/cate_Muoi-duong-bot-ngot-hat-nem.png"
-          },
-          {
-            "id": "6",
-            "name": "Gia vị",
-            "image": "assets/img/FakeAPI/Sot_giavi/Gia_vi/cate_giavi.png"
-          },
-          {
-            "id": "7",
-            "name": "Gia vị nêm sẵn",
-            "image": "assets/img/FakeAPI/Sot_giavi/Gia_vi_nem_san/cate_gia-vi-nem-san.png"
-          },
-          {
-            "id": "8",
-            "name": "Nước cốt dừa",
-            "image": "assets/img/FakeAPI/Sot_giavi/Nuoc_cot_dua/cate_nuoc-cot-dua.png"
-          }
-        ]
-      },
-      "brand": {
-        "id": "26",
-        "name": "Maggi",
-        "logo": "assets/img/FakeAPI/Sot_giavi/brand_maggi.jpg"
-      }
+      "category_id": "7",
+      "subcategory_id": "2",
+      "brand_id": "25"
     },
     {
       "id": "75",
@@ -2427,58 +1493,9 @@
       "price": 55000,
       "unit_of_caculation": "1 kg",
       "description": "",
-      "category": {
-        "id": "7",
-        "name": "Sốt, gia vị",
-        "image": "assets/img/FakeAPI/Sot_giavi/category_nuoccham_giavi.svg",
-        "subcategories": [
-          {
-            "id": "1",
-            "name": "Dầu ăn",
-            "image": "assets/img/FakeAPI/Sot_giavi/Dau_an/cate_dauan.png"
-          },
-          {
-            "id": "2",
-            "name": "Nước tương, nước mắm",
-            "image": "assets/img/FakeAPI/Sot_giavi/Nuoc_tuong_nuoc_mam/cate_nuoctuong_nuocmam.png"
-          },
-          {
-            "id": "3",
-            "name": "Tương ớt, cà , đen",
-            "image": "assets/img/FakeAPI/Sot_giavi/Tuong_ot_ca_tuong_den/cate_tuongot-ca-den.png"
-          },
-          {
-            "id": "4",
-            "name": "Giấm",
-            "image": "assets/img/FakeAPI/Sot_giavi/Giam/cate_giam.png"
-          },
-          {
-            "id": "5",
-            "name": "Muối, đường, bột ngọt, hạt nêm",
-            "image": "assets/img/FakeAPI/Sot_giavi/Muoi_duong_bot_ngot_hat_nem/cate_Muoi-duong-bot-ngot-hat-nem.png"
-          },
-          {
-            "id": "6",
-            "name": "Gia vị",
-            "image": "assets/img/FakeAPI/Sot_giavi/Gia_vi/cate_giavi.png"
-          },
-          {
-            "id": "7",
-            "name": "Gia vị nêm sẵn",
-            "image": "assets/img/FakeAPI/Sot_giavi/Gia_vi_nem_san/cate_gia-vi-nem-san.png"
-          },
-          {
-            "id": "8",
-            "name": "Nước cốt dừa",
-            "image": "assets/img/FakeAPI/Sot_giavi/Nuoc_cot_dua/cate_nuoc-cot-dua.png"
-          }
-        ]
-      },
-      "brand": {
-        "id": "26",
-        "name": "Chin-su",
-        "logo": "assets/img/FakeAPI/Sot_giavi/brand_chinsu.jpeg"
-      }
+      "category_id": "7",
+      "subcategory_id": "3",
+      "brand_id": "26"
     },
     {
       "id": "76",
@@ -2488,58 +1505,9 @@
       "price": 17000,
       "unit_of_caculation": "900ml",
       "description": "",
-      "category": {
-        "id": "7",
-        "name": "Sốt, gia vị",
-        "image": "assets/img/FakeAPI/Sot_giavi/category_nuoccham_giavi.svg",
-        "subcategories": [
-          {
-            "id": "1",
-            "name": "Dầu ăn",
-            "image": "assets/img/FakeAPI/Sot_giavi/Dau_an/cate_dauan.png"
-          },
-          {
-            "id": "2",
-            "name": "Nước tương, nước mắm",
-            "image": "assets/img/FakeAPI/Sot_giavi/Nuoc_tuong_nuoc_mam/cate_nuoctuong_nuocmam.png"
-          },
-          {
-            "id": "3",
-            "name": "Tương ớt, cà , đen",
-            "image": "assets/img/FakeAPI/Sot_giavi/Tuong_ot_ca_tuong_den/cate_tuongot-ca-den.png"
-          },
-          {
-            "id": "4",
-            "name": "Giấm",
-            "image": "assets/img/FakeAPI/Sot_giavi/Giam/cate_giam.png"
-          },
-          {
-            "id": "5",
-            "name": "Muối, đường, bột ngọt, hạt nêm",
-            "image": "assets/img/FakeAPI/Sot_giavi/Muoi_duong_bot_ngot_hat_nem/cate_Muoi-duong-bot-ngot-hat-nem.png"
-          },
-          {
-            "id": "6",
-            "name": "Gia vị",
-            "image": "assets/img/FakeAPI/Sot_giavi/Gia_vi/cate_giavi.png"
-          },
-          {
-            "id": "7",
-            "name": "Gia vị nêm sẵn",
-            "image": "assets/img/FakeAPI/Sot_giavi/Gia_vi_nem_san/cate_gia-vi-nem-san.png"
-          },
-          {
-            "id": "8",
-            "name": "Nước cốt dừa",
-            "image": "assets/img/FakeAPI/Sot_giavi/Nuoc_cot_dua/cate_nuoc-cot-dua.png"
-          }
-        ]
-      },
-      "brand": {
-        "id": "27",
-        "name": "Masan Consumer",
-        "logo": "assets/img/FakeAPI/Sot_giavi/brand_masan-consumer.png"
-      }
+      "category_id": "7",
+      "subcategory_id": "4",
+      "brand_id": "27"
     },
     {
       "id": "76",
@@ -2549,58 +1517,9 @@
       "price": 9500,
       "unit_of_caculation": "1 bịch",
       "description": "",
-      "category": {
-        "id": "7",
-        "name": "Sốt, gia vị",
-        "image": "assets/img/FakeAPI/Sot_giavi/category_nuoccham_giavi.svg",
-        "subcategories": [
-          {
-            "id": "1",
-            "name": "Dầu ăn",
-            "image": "assets/img/FakeAPI/Sot_giavi/Dau_an/cate_dauan.png"
-          },
-          {
-            "id": "2",
-            "name": "Nước tương, nước mắm",
-            "image": "assets/img/FakeAPI/Sot_giavi/Nuoc_tuong_nuoc_mam/cate_nuoctuong_nuocmam.png"
-          },
-          {
-            "id": "3",
-            "name": "Tương ớt, cà , đen",
-            "image": "assets/img/FakeAPI/Sot_giavi/Tuong_ot_ca_tuong_den/cate_tuongot-ca-den.png"
-          },
-          {
-            "id": "4",
-            "name": "Giấm",
-            "image": "assets/img/FakeAPI/Sot_giavi/Giam/cate_giam.png"
-          },
-          {
-            "id": "5",
-            "name": "Muối, đường, bột ngọt, hạt nêm",
-            "image": "assets/img/FakeAPI/Sot_giavi/Muoi_duong_bot_ngot_hat_nem/cate_Muoi-duong-bot-ngot-hat-nem.png"
-          },
-          {
-            "id": "6",
-            "name": "Gia vị",
-            "image": "assets/img/FakeAPI/Sot_giavi/Gia_vi/cate_giavi.png"
-          },
-          {
-            "id": "7",
-            "name": "Gia vị nêm sẵn",
-            "image": "assets/img/FakeAPI/Sot_giavi/Gia_vi_nem_san/cate_gia-vi-nem-san.png"
-          },
-          {
-            "id": "8",
-            "name": "Nước cốt dừa",
-            "image": "assets/img/FakeAPI/Sot_giavi/Nuoc_cot_dua/cate_nuoc-cot-dua.png"
-          }
-        ]
-      },
-      "brand": {
-        "id": "28",
-        "name": "DH Foods",
-        "logo": "assets/img/FakeAPI/Sot_giavi/brand_dhfoods.png"
-      }
+      "category_id": "7",
+      "subcategory_id": "5",
+      "brand_id": "28"
     },
     {
       "id": "78",
@@ -2610,58 +1529,9 @@
       "price": 27000,
       "unit_of_caculation": "1 hũ",
       "description": "",
-      "category": {
-        "id": "7",
-        "name": "Sốt, gia vị",
-        "image": "assets/img/FakeAPI/Sot_giavi/category_nuoccham_giavi.svg",
-        "subcategories": [
-          {
-            "id": "1",
-            "name": "Dầu ăn",
-            "image": "assets/img/FakeAPI/Sot_giavi/Dau_an/cate_dauan.png"
-          },
-          {
-            "id": "2",
-            "name": "Nước tương, nước mắm",
-            "image": "assets/img/FakeAPI/Sot_giavi/Nuoc_tuong_nuoc_mam/cate_nuoctuong_nuocmam.png"
-          },
-          {
-            "id": "3",
-            "name": "Tương ớt, cà , đen",
-            "image": "assets/img/FakeAPI/Sot_giavi/Tuong_ot_ca_tuong_den/cate_tuongot-ca-den.png"
-          },
-          {
-            "id": "4",
-            "name": "Giấm",
-            "image": "assets/img/FakeAPI/Sot_giavi/Giam/cate_giam.png"
-          },
-          {
-            "id": "5",
-            "name": "Muối, đường, bột ngọt, hạt nêm",
-            "image": "assets/img/FakeAPI/Sot_giavi/Muoi_duong_bot_ngot_hat_nem/cate_Muoi-duong-bot-ngot-hat-nem.png"
-          },
-          {
-            "id": "6",
-            "name": "Gia vị",
-            "image": "assets/img/FakeAPI/Sot_giavi/Gia_vi/cate_giavi.png"
-          },
-          {
-            "id": "7",
-            "name": "Gia vị nêm sẵn",
-            "image": "assets/img/FakeAPI/Sot_giavi/Gia_vi_nem_san/cate_gia-vi-nem-san.png"
-          },
-          {
-            "id": "8",
-            "name": "Nước cốt dừa",
-            "image": "assets/img/FakeAPI/Sot_giavi/Nuoc_cot_dua/cate_nuoc-cot-dua.png"
-          }
-        ]
-      },
-      "brand": {
-        "id": "28",
-        "name": "DH Foods",
-        "logo": "assets/img/FakeAPI/Sot_giavi/brand_dhfoods.png"
-      }
+      "category_id": "7",
+      "subcategory_id": "6",
+      "brand_id": "28"
     },
     {
       "id": "79",
@@ -2671,58 +1541,9 @@
       "price": 36000,
       "unit_of_caculation": "1 hũ",
       "description": "",
-      "category": {
-        "id": "7",
-        "name": "Sốt, gia vị",
-        "image": "assets/img/FakeAPI/Sot_giavi/category_nuoccham_giavi.svg",
-        "subcategories": [
-          {
-            "id": "1",
-            "name": "Dầu ăn",
-            "image": "assets/img/FakeAPI/Sot_giavi/Dau_an/cate_dauan.png"
-          },
-          {
-            "id": "2",
-            "name": "Nước tương, nước mắm",
-            "image": "assets/img/FakeAPI/Sot_giavi/Nuoc_tuong_nuoc_mam/cate_nuoctuong_nuocmam.png"
-          },
-          {
-            "id": "3",
-            "name": "Tương ớt, cà , đen",
-            "image": "assets/img/FakeAPI/Sot_giavi/Tuong_ot_ca_tuong_den/cate_tuongot-ca-den.png"
-          },
-          {
-            "id": "4",
-            "name": "Giấm",
-            "image": "assets/img/FakeAPI/Sot_giavi/Giam/cate_giam.png"
-          },
-          {
-            "id": "5",
-            "name": "Muối, đường, bột ngọt, hạt nêm",
-            "image": "assets/img/FakeAPI/Sot_giavi/Muoi_duong_bot_ngot_hat_nem/cate_Muoi-duong-bot-ngot-hat-nem.png"
-          },
-          {
-            "id": "6",
-            "name": "Gia vị",
-            "image": "assets/img/FakeAPI/Sot_giavi/Gia_vi/cate_giavi.png"
-          },
-          {
-            "id": "7",
-            "name": "Gia vị nêm sẵn",
-            "image": "assets/img/FakeAPI/Sot_giavi/Gia_vi_nem_san/cate_gia-vi-nem-san.png"
-          },
-          {
-            "id": "8",
-            "name": "Nước cốt dừa",
-            "image": "assets/img/FakeAPI/Sot_giavi/Nuoc_cot_dua/cate_nuoc-cot-dua.png"
-          }
-        ]
-      },
-      "brand": {
-        "id": "29",
-        "name": "Nam ngư",
-        "logo": "assets/img/FakeAPI/Sot_giavi/brand_namngu.png"
-      }
+      "category_id": "7",
+      "subcategory_id": "7",
+      "brand_id": "29"
     },
     {
       "id": "80",
@@ -2732,1346 +1553,273 @@
       "price": 39000,
       "unit_of_caculation": "1 lon",
       "description": "",
-      "category": {
-        "id": "7",
-        "name": "Sốt, gia vị",
-        "image": "assets/img/FakeAPI/Sot_giavi/category_nuoccham_giavi.svg",
-        "subcategories": [
-          {
-            "id": "1",
-            "name": "Dầu ăn",
-            "image": "assets/img/FakeAPI/Sot_giavi/Dau_an/cate_dauan.png"
-          },
-          {
-            "id": "2",
-            "name": "Nước tương, nước mắm",
-            "image": "assets/img/FakeAPI/Sot_giavi/Nuoc_tuong_nuoc_mam/cate_nuoctuong_nuocmam.png"
-          },
-          {
-            "id": "3",
-            "name": "Tương ớt, cà , đen",
-            "image": "assets/img/FakeAPI/Sot_giavi/Tuong_ot_ca_tuong_den/cate_tuongot-ca-den.png"
-          },
-          {
-            "id": "4",
-            "name": "Giấm",
-            "image": "assets/img/FakeAPI/Sot_giavi/Giam/cate_giam.png"
-          },
-          {
-            "id": "5",
-            "name": "Muối, đường, bột ngọt, hạt nêm",
-            "image": "assets/img/FakeAPI/Sot_giavi/Muoi_duong_bot_ngot_hat_nem/cate_Muoi-duong-bot-ngot-hat-nem.png"
-          },
-          {
-            "id": "6",
-            "name": "Gia vị",
-            "image": "assets/img/FakeAPI/Sot_giavi/Gia_vi/cate_giavi.png"
-          },
-          {
-            "id": "7",
-            "name": "Gia vị nêm sẵn",
-            "image": "assets/img/FakeAPI/Sot_giavi/Gia_vi_nem_san/cate_gia-vi-nem-san.png"
-          },
-          {
-            "id": "8",
-            "name": "Nước cốt dừa",
-            "image": "assets/img/FakeAPI/Sot_giavi/Nuoc_cot_dua/cate_nuoc-cot-dua.png"
-          }
-        ]
-      },
-      "brand": {
-        "id": "25",
-        "name": "Mom Cooks",
-        "logo": "assets/img/FakeAPI/Sot_giavi/brand_momcooks.jpg"
-      }
+      "category_id": "7",
+      "subcategory_id": "8",
+      "brand_id": "30"
     },
     {
       "id": "81",
-      "img": "assets/img/FakeAPI/thuc_an_chay/Thit_chay/suon-non-chay-an-nhien-goi-150g.jpg",
-      "name": "Sườn non chay an nhiên",
-      "sale_price": 58000,
-      "price": 50000,
-      "unit_of_caculation": "1 bịch",
-      "description": "",
-      "category": {
-        "id": "8",
-        "name": "Đồ chay",
-        "image": "assets/img/FakeAPI/thuc_an_chay/category_dochay.svg",
-        "subcategories": [
-          {
-            "id": "1",
-            "name": "Đậu hủ chay",
-            "image": "assets/img/FakeAPI/thuc_an_chay/Dau_hu/cate_dau_hu_chay.png"
-          },
-          {
-            "id": "2",
-            "name": "Thịt chay",
-            "image": "assets/img/FakeAPI/thuc_an_chay/Thit_chay/cate_thitchay.jpg"
-          }
-        ]
-      },
-      "brand": {
-        "id": "30",
-        "name": "An Nhiên",
-        "logo": "assets/img/FakeAPI/Sot_giavi/brand_annhien.jpg"
-      }
-    },
-    {
-      "id": "82",
-      "img": "assets/img/FakeAPI/Banh_Keo/Snack/snack-khoai-tay-vi-tao-bien-kieu-nhat-ban-lays-max-goi-75g.jpg",
-      "name": "Snack vị tảo biển nhật bản",
-      "sale_price": 24000,
-      "price": 22000,
-      "unit_of_caculation": "1 bịch",
-      "description": "",
-      "category": {
-        "id": "9",
-        "name": "Bánh, Kẹo",
-        "image": "assets/img/FakeAPI/Banh_Keo/category_banh-keo.png",
-        "subcategories": [
-          {
-            "id": "1",
-            "name": "Snack",
-            "image": "assets/img/FakeAPI/Banh_Keo/Snack/cate_snack.png"
-          },
-          {
-            "id": "2",
-            "name": "Bánh các loại",
-            "image": "assets/img/FakeAPI/Banh_Keo/banh_cac_loai/cate_banhcacloai.jpg"
-          },
-          {
-            "id": "3",
-            "name": "Rong biển, khô ăn liền",
-            "image": "assets/img/FakeAPI/Banh_Keo/Rong_bien_kho_an_lien/cate_rongbien.png"
-          },
-          {
-            "id": "4",
-            "name": "Kẹo các loại",
-            "image": "assets/img/FakeAPI/Banh_Keo/Keo_cac_loai/cate_keocacloai.jpg"
-          },
-          {
-            "id": "5",
-            "name": "Socola",
-            "image": "assets/img/FakeAPI/Banh_Keo/Socola/cate_socola.png"
-          },
-          {
-            "id": "6",
-            "name": "Ngũ cốc ăn sáng",
-            "image": "assets/img/FakeAPI/Banh_Keo/Ngu_coc_an_sang/cate_ngucoc.png"
-          },
-          {
-            "id": "7",
-            "name": "Mức trái cây, bơ đậu phộng",
-            "image": "assets/img/FakeAPI/Banh_Keo/Mut_trai_cay_bo_dau_phong/cate_muc-trai-cay-bo-dau-phong.jpg"
-          },
-          {
-            "id": "8",
-            "name": "Thạch rau câu",
-            "image": "assets/img/FakeAPI/Banh_Keo/Thach_rau_cau/cate_raucau.png"
-          }
-        ]
-      },
-      "brand": {
-        "id": "31",
-        "name": "Lays",
-        "logo": "assets/img/FakeAPI/Banh_Keo/brand_Lays.png"
-      }
-    },
-    {
-      "id": "83",
-      "img": "assets/img/FakeAPI/Banh_Keo/banh_cac_loai/banh-bao-nhan-khoai-mon-cp-270g.jpg",
-      "name": "Bánh bao nhân khoai môn C.P 270g",
-      "sale_price": 25000,
-      "price": 23000,
-      "unit_of_caculation": "1 bịch",
-      "description": "",
-      "category": {
-        "id": "9",
-        "name": "Bánh, Kẹo",
-        "image": "assets/img/FakeAPI/Banh_Keo/category_banh-keo.png",
-        "subcategories": [
-          {
-            "id": "1",
-            "name": "Snack",
-            "image": "assets/img/FakeAPI/Banh_Keo/Snack/cate_snack.png"
-          },
-          {
-            "id": "2",
-            "name": "Bánh các loại",
-            "image": "assets/img/FakeAPI/Banh_Keo/banh_cac_loai/cate_banhcacloai.jpg"
-          },
-          {
-            "id": "3",
-            "name": "Rong biển, khô ăn liền",
-            "image": "assets/img/FakeAPI/Banh_Keo/Rong_bien_kho_an_lien/cate_rongbien.png"
-          },
-          {
-            "id": "4",
-            "name": "Kẹo các loại",
-            "image": "assets/img/FakeAPI/Banh_Keo/Keo_cac_loai/cate_keocacloai.jpg"
-          },
-          {
-            "id": "5",
-            "name": "Socola",
-            "image": "assets/img/FakeAPI/Banh_Keo/Socola/cate_socola.png"
-          },
-          {
-            "id": "6",
-            "name": "Ngũ cốc ăn sáng",
-            "image": "assets/img/FakeAPI/Banh_Keo/Ngu_coc_an_sang/cate_ngucoc.png"
-          },
-          {
-            "id": "7",
-            "name": "Mức trái cây, bơ đậu phộng",
-            "image": "assets/img/FakeAPI/Banh_Keo/Mut_trai_cay_bo_dau_phong/cate_muc-trai-cay-bo-dau-phong.jpg"
-          },
-          {
-            "id": "8",
-            "name": "Thạch rau câu",
-            "image": "assets/img/FakeAPI/Banh_Keo/Thach_rau_cau/cate_raucau.png"
-          }
-        ]
-      },
-      "brand": {
-        "id": "32",
-        "name": "CP",
-        "logo": "assets/img/FakeAPI/Banh_Keo/brand_Cb.png"
-      }
-    },
-    {
-      "id": "84",
-      "img": "assets/img/FakeAPI/Banh_Keo/Rong_bien_kho_an_lien/rong_bien.jpg",
-      "name": "Rong biển trộn cơm captain lee Choi",
-      "sale_price": 40000,
-      "price": 37000,
-      "unit_of_caculation": "1 bịch",
-      "description": "",
-      "category": {
-        "id": "9",
-        "name": "Bánh, Kẹo",
-        "image": "assets/img/FakeAPI/Banh_Keo/category_banh-keo.png",
-        "subcategories": [
-          {
-            "id": "1",
-            "name": "Snack",
-            "image": "assets/img/FakeAPI/Banh_Keo/Snack/cate_snack.png"
-          },
-          {
-            "id": "2",
-            "name": "Bánh các loại",
-            "image": "assets/img/FakeAPI/Banh_Keo/banh_cac_loai/cate_banhcacloai.jpg"
-          },
-          {
-            "id": "3",
-            "name": "Rong biển, khô ăn liền",
-            "image": "assets/img/FakeAPI/Banh_Keo/Rong_bien_kho_an_lien/cate_rongbien.png"
-          },
-          {
-            "id": "4",
-            "name": "Kẹo các loại",
-            "image": "assets/img/FakeAPI/Banh_Keo/Keo_cac_loai/cate_keocacloai.jpg"
-          },
-          {
-            "id": "5",
-            "name": "Socola",
-            "image": "assets/img/FakeAPI/Banh_Keo/Socola/cate_socola.png"
-          },
-          {
-            "id": "6",
-            "name": "Ngũ cốc ăn sáng",
-            "image": "assets/img/FakeAPI/Banh_Keo/Ngu_coc_an_sang/cate_ngucoc.png"
-          },
-          {
-            "id": "7",
-            "name": "Mức trái cây, bơ đậu phộng",
-            "image": "assets/img/FakeAPI/Banh_Keo/Mut_trai_cay_bo_dau_phong/cate_muc-trai-cay-bo-dau-phong.jpg"
-          },
-          {
-            "id": "8",
-            "name": "Thạch rau câu",
-            "image": "assets/img/FakeAPI/Banh_Keo/Thach_rau_cau/cate_raucau.png"
-          }
-        ]
-      },
-      "brand": {
-        "id": "33",
-        "name": "Choi Gang",
-        "logo": "assets/img/FakeAPI/Banh_Keo/brand_ChoiGang.jpg"
-      }
-    },
-    {
-      "id": "85",
-      "img": "assets/img/FakeAPI/Banh_Keo/Keo_cac_loai/keo-deo-huong-trai-cay-chupa-chups.jpg",
-      "name": "Kẹo dẻo Chupa Chups Sour Belts",
-      "sale_price": 15000,
-      "price": 13000,
-      "unit_of_caculation": "1 bịch",
-      "description": "",
-      "category": {
-        "id": "9",
-        "name": "Bánh, Kẹo",
-        "image": "assets/img/FakeAPI/Banh_Keo/category_banh-keo.png",
-        "subcategories": [
-          {
-            "id": "1",
-            "name": "Snack",
-            "image": "assets/img/FakeAPI/Banh_Keo/Snack/cate_snack.png"
-          },
-          {
-            "id": "2",
-            "name": "Bánh các loại",
-            "image": "assets/img/FakeAPI/Banh_Keo/banh_cac_loai/cate_banhcacloai.jpg"
-          },
-          {
-            "id": "3",
-            "name": "Rong biển, khô ăn liền",
-            "image": "assets/img/FakeAPI/Banh_Keo/Rong_bien_kho_an_lien/cate_rongbien.png"
-          },
-          {
-            "id": "4",
-            "name": "Kẹo các loại",
-            "image": "assets/img/FakeAPI/Banh_Keo/Keo_cac_loai/cate_keocacloai.jpg"
-          },
-          {
-            "id": "5",
-            "name": "Socola",
-            "image": "assets/img/FakeAPI/Banh_Keo/Socola/cate_socola.png"
-          },
-          {
-            "id": "6",
-            "name": "Ngũ cốc ăn sáng",
-            "image": "assets/img/FakeAPI/Banh_Keo/Ngu_coc_an_sang/cate_ngucoc.png"
-          },
-          {
-            "id": "7",
-            "name": "Mức trái cây, bơ đậu phộng",
-            "image": "assets/img/FakeAPI/Banh_Keo/Mut_trai_cay_bo_dau_phong/cate_muc-trai-cay-bo-dau-phong.jpg"
-          },
-          {
-            "id": "8",
-            "name": "Thạch rau câu",
-            "image": "assets/img/FakeAPI/Banh_Keo/Thach_rau_cau/cate_raucau.png"
-          }
-        ]
-      },
-      "brand": {
-        "id": "34",
-        "name": "Chupa Chups",
-        "logo": "assets/img/FakeAPI/Banh_Keo/brand_Chuppachups.jpg"
-      }
-    },
-    {
-      "id": "86",
-      "img": "assets/img/FakeAPI/Banh_Keo/Socola/keo-socola-m-ms-mini-ong-35g.jpg",
-      "name": "Kẹo socola M&M ống 35g",
-      "sale_price": 28000,
-      "price": 15000,
-      "unit_of_caculation": "1 hũ 120g",
-      "description": "",
-      "category": {
-        "id": "9",
-        "name": "Bánh, Kẹo",
-        "image": "assets/img/FakeAPI/Banh_Keo/category_banh-keo.png",
-        "subcategories": [
-          {
-            "id": "1",
-            "name": "Snack",
-            "image": "assets/img/FakeAPI/Banh_Keo/Snack/cate_snack.png"
-          },
-          {
-            "id": "2",
-            "name": "Bánh các loại",
-            "image": "assets/img/FakeAPI/Banh_Keo/banh_cac_loai/cate_banhcacloai.jpg"
-          },
-          {
-            "id": "3",
-            "name": "Rong biển, khô ăn liền",
-            "image": "assets/img/FakeAPI/Banh_Keo/Rong_bien_kho_an_lien/cate_rongbien.png"
-          },
-          {
-            "id": "4",
-            "name": "Kẹo các loại",
-            "image": "assets/img/FakeAPI/Banh_Keo/Keo_cac_loai/cate_keocacloai.jpg"
-          },
-          {
-            "id": "5",
-            "name": "Socola",
-            "image": "assets/img/FakeAPI/Banh_Keo/Socola/cate_socola.png"
-          },
-          {
-            "id": "6",
-            "name": "Ngũ cốc ăn sáng",
-            "image": "assets/img/FakeAPI/Banh_Keo/Ngu_coc_an_sang/cate_ngucoc.png"
-          },
-          {
-            "id": "7",
-            "name": "Mức trái cây, bơ đậu phộng",
-            "image": "assets/img/FakeAPI/Banh_Keo/Mut_trai_cay_bo_dau_phong/cate_muc-trai-cay-bo-dau-phong.jpg"
-          },
-          {
-            "id": "8",
-            "name": "Thạch rau câu",
-            "image": "assets/img/FakeAPI/Banh_Keo/Thach_rau_cau/cate_raucau.png"
-          }
-        ]
-      },
-      "brand": {
-        "id": "35",
-        "name": "M&M'",
-        "logo": "assets/img/FakeAPI/Banh_Keo/brand_M&M.jpg"
-      }
-    },
-    {
-      "id": "87",
-      "img": "assets/img/FakeAPI/Banh_Keo/Ngu_coc_an_sang/bot-ngu-coc-vitapro-bich-400g.jpg",
-      "name": "Bột ngũ cốc Vitapro",
-      "sale_price": 37000,
-      "price": 34000,
-      "unit_of_caculation": "1 bịch",
-      "description": "",
-      "category": {
-        "id": "9",
-        "name": "Bánh, Kẹo",
-        "image": "assets/img/FakeAPI/Banh_Keo/category_banh-keo.png",
-        "subcategories": [
-          {
-            "id": "1",
-            "name": "Snack",
-            "image": "assets/img/FakeAPI/Banh_Keo/Snack/cate_snack.png"
-          },
-          {
-            "id": "2",
-            "name": "Bánh các loại",
-            "image": "assets/img/FakeAPI/Banh_Keo/banh_cac_loai/cate_banhcacloai.jpg"
-          },
-          {
-            "id": "3",
-            "name": "Rong biển, khô ăn liền",
-            "image": "assets/img/FakeAPI/Banh_Keo/Rong_bien_kho_an_lien/cate_rongbien.png"
-          },
-          {
-            "id": "4",
-            "name": "Kẹo các loại",
-            "image": "assets/img/FakeAPI/Banh_Keo/Keo_cac_loai/cate_keocacloai.jpg"
-          },
-          {
-            "id": "5",
-            "name": "Socola",
-            "image": "assets/img/FakeAPI/Banh_Keo/Socola/cate_socola.png"
-          },
-          {
-            "id": "6",
-            "name": "Ngũ cốc ăn sáng",
-            "image": "assets/img/FakeAPI/Banh_Keo/Ngu_coc_an_sang/cate_ngucoc.png"
-          },
-          {
-            "id": "7",
-            "name": "Mức trái cây, bơ đậu phộng",
-            "image": "assets/img/FakeAPI/Banh_Keo/Mut_trai_cay_bo_dau_phong/cate_muc-trai-cay-bo-dau-phong.jpg"
-          },
-          {
-            "id": "8",
-            "name": "Thạch rau câu",
-            "image": "assets/img/FakeAPI/Banh_Keo/Thach_rau_cau/cate_raucau.png"
-          }
-        ]
-      },
-      "brand": {
-        "id": "36",
-        "name": "Vitapro",
-        "logo": "assets/img/FakeAPI/Banh_Keo/brand_Vitapro.jpg"
-      }
-    },
-    {
-      "id": "88",
-      "img": "assets/img/FakeAPI/Banh_Keo/Mut_trai_cay_bo_dau_phong/xi_muoi_mo.jpg",
-      "name": "Xí muội mơ Khom Fai hũ 120g",
-      "sale_price": 58000,
-      "price": 43000,
-      "unit_of_caculation": "1 hũ 120g",
-      "description": "",
-      "category": {
-        "id": "9",
-        "name": "Bánh, Kẹo",
-        "image": "assets/img/FakeAPI/Banh_Keo/category_banh-keo.png",
-        "subcategories": [
-          {
-            "id": "1",
-            "name": "Snack",
-            "image": "assets/img/FakeAPI/Banh_Keo/Snack/cate_snack.png"
-          },
-          {
-            "id": "2",
-            "name": "Bánh các loại",
-            "image": "assets/img/FakeAPI/Banh_Keo/banh_cac_loai/cate_banhcacloai.jpg"
-          },
-          {
-            "id": "3",
-            "name": "Rong biển, khô ăn liền",
-            "image": "assets/img/FakeAPI/Banh_Keo/Rong_bien_kho_an_lien/cate_rongbien.png"
-          },
-          {
-            "id": "4",
-            "name": "Kẹo các loại",
-            "image": "assets/img/FakeAPI/Banh_Keo/Keo_cac_loai/cate_keocacloai.jpg"
-          },
-          {
-            "id": "5",
-            "name": "Socola",
-            "image": "assets/img/FakeAPI/Banh_Keo/Socola/cate_socola.png"
-          },
-          {
-            "id": "6",
-            "name": "Ngũ cốc ăn sáng",
-            "image": "assets/img/FakeAPI/Banh_Keo/Ngu_coc_an_sang/cate_ngucoc.png"
-          },
-          {
-            "id": "7",
-            "name": "Mức trái cây, bơ đậu phộng",
-            "image": "assets/img/FakeAPI/Banh_Keo/Mut_trai_cay_bo_dau_phong/cate_muc-trai-cay-bo-dau-phong.jpg"
-          },
-          {
-            "id": "8",
-            "name": "Thạch rau câu",
-            "image": "assets/img/FakeAPI/Banh_Keo/Thach_rau_cau/cate_raucau.png"
-          }
-        ]
-      },
-      "brand": {
-        "id": "37",
-        "name": "KHOM FAI",
-        "logo": "assets/img/FakeAPI/Banh_Keo/brand_Khomfai.jpg"
-      }
-    },
-    {
-      "id": "89",
-      "img": "assets/img/FakeAPI/Banh_Keo/Thach_rau_cau/thach-sua-huong-trai-cay-lothamilk.jpg",
-      "name": "Thạch sữa hương trái cây Lothamilk",
-      "sale_price": 100000,
-      "price": 96000,
-      "unit_of_caculation": "1 kg",
-      "description": "",
-      "category": {
-        "id": "9",
-        "name": "Bánh, Kẹo",
-        "image": "assets/img/FakeAPI/Banh_Keo/category_banh-keo.png",
-        "subcategories": [
-          {
-            "id": "1",
-            "name": "Snack",
-            "image": "assets/img/FakeAPI/Banh_Keo/Snack/cate_snack.png"
-          },
-          {
-            "id": "2",
-            "name": "Bánh các loại",
-            "image": "assets/img/FakeAPI/Banh_Keo/banh_cac_loai/cate_banhcacloai.jpg"
-          },
-          {
-            "id": "3",
-            "name": "Rong biển, khô ăn liền",
-            "image": "assets/img/FakeAPI/Banh_Keo/Rong_bien_kho_an_lien/cate_rongbien.png"
-          },
-          {
-            "id": "4",
-            "name": "Kẹo các loại",
-            "image": "assets/img/FakeAPI/Banh_Keo/Keo_cac_loai/cate_keocacloai.jpg"
-          },
-          {
-            "id": "5",
-            "name": "Socola",
-            "image": "assets/img/FakeAPI/Banh_Keo/Socola/cate_socola.png"
-          },
-          {
-            "id": "6",
-            "name": "Ngũ cốc ăn sáng",
-            "image": "assets/img/FakeAPI/Banh_Keo/Ngu_coc_an_sang/cate_ngucoc.png"
-          },
-          {
-            "id": "7",
-            "name": "Mức trái cây, bơ đậu phộng",
-            "image": "assets/img/FakeAPI/Banh_Keo/Mut_trai_cay_bo_dau_phong/cate_muc-trai-cay-bo-dau-phong.jpg"
-          },
-          {
-            "id": "8",
-            "name": "Thạch rau câu",
-            "image": "assets/img/FakeAPI/Banh_Keo/Thach_rau_cau/cate_raucau.png"
-          }
-        ]
-      },
-      "brand": {
-        "id": "38",
-        "name": "LOTHAMILK",
-        "logo": "assets/img/FakeAPI/Banh_Keo/brand_Lothamilk.jpg"
-      }
-    },
-    {
-      "id": "90",
-      "img": "assets/img/FakeAPI/Banh_Keo/Thach_rau_cau/thach-sua-huong-trai-cay-lothamilk.jpg",
-      "name": "Nước giặt xả MaxKleen hương hoa nắng túi 3.8kg",
-      "sale_price": 210000,
-      "price": 165000,
-      "unit_of_caculation": "3,8kg",
-      "description": "",
-      "category": {
-        "id": "10",
-        "name": "Hóa Mỹ Phẩm",
-        "image": "assets/img/FakeAPI/Hoa_Mi_Pham/category_hoamypham.svg",
-        "subcategories": [
-          {
-            "id": "1",
-            "name": "Giặt, xả",
-            "image": "assets/img/FakeAPI/Hoa_Mi_Pham/giat_xa/cate_giatxa.png"
-          },
-          {
-            "id": "2",
-            "name": "Nước rửa chén",
-            "image": "assets/img/FakeAPI/Hoa_Mi_Pham/Nuoc_rua_chen/cate_nuoc-rua-chen.png"
-          },
-          {
-            "id": "3",
-            "name": "Nước lau sàn",
-            "image": "assets/img/FakeAPI/Hoa_Mi_Pham/Nuoc_lau_san/cate_nuoclausan.png"
-          },
-          {
-            "id": "4",
-            "name": "Tẩy rửa bồn tắm",
-            "image": "assets/img/FakeAPI/Hoa_Mi_Pham/Tay_rua_nha_tam/cate_tay-rua-bon-tam.png"
-          },
-          {
-            "id": "5",
-            "name": "Xịt phòng, sáp thơm",
-            "image": "assets/img/FakeAPI/Hoa_Mi_Pham/Xit_phong_sap_thom/cate_xitphong-sapthom.png"
-          },
-          {
-            "id": "6",
-            "name": "Đuổi Côn Trùng",
-            "image": "assets/img/FakeAPI/Hoa_Mi_Pham/duoi_con_trung/cate_duoi-contrung.png"
-          },
-          {
-            "id": "7",
-            "name": "Nước lau kính",
-            "image": "assets/img/FakeAPI/Hoa_Mi_Pham/Nuoc_lau_kinh/cate_laukinh.png"
-          },
-          {
-            "id": "8",
-            "name": "Chăm sóc cá nhân",
-            "image": "assets/img/FakeAPI/Hoa_Mi_Pham/Cham_soc_ca_nhan/cate_daugoi.png"
-          }
-        ]
-      },
-      "brand": {
-        "id": "39",
-        "name": "MaxKleen",
-        "logo": "assets/img/FakeAPI/Hoa_Mi_Pham/brand_maxkleen.jpg"
-      }
-    },
-    {
-      "id": "91",
-      "img": "assets/img/FakeAPI/Hoa_Mi_Pham/Nuoc_rua_chen/nuoc_rua_chen.jpg",
-      "name": "Nước rửa chén Sunlight lô hội 1.9 lít",
-      "sale_price": 75000,
-      "price": 62000,
-      "unit_of_caculation": "1,9L",
-      "description": "",
-      "category": {
-        "id": "10",
-        "name": "Hóa Mỹ Phẩm",
-        "image": "assets/img/FakeAPI/Hoa_Mi_Pham/category_hoamypham.svg",
-        "subcategories": [
-          {
-            "id": "1",
-            "name": "Giặt, xả",
-            "image": "assets/img/FakeAPI/Hoa_Mi_Pham/giat_xa/cate_giatxa.png"
-          },
-          {
-            "id": "2",
-            "name": "Nước rửa chén",
-            "image": "assets/img/FakeAPI/Hoa_Mi_Pham/Nuoc_rua_chen/cate_nuoc-rua-chen.png"
-          },
-          {
-            "id": "3",
-            "name": "Nước lau sàn",
-            "image": "assets/img/FakeAPI/Hoa_Mi_Pham/Nuoc_lau_san/cate_nuoclausan.png"
-          },
-          {
-            "id": "4",
-            "name": "Tẩy rửa bồn tắm",
-            "image": "assets/img/FakeAPI/Hoa_Mi_Pham/Tay_rua_nha_tam/cate_tay-rua-bon-tam.png"
-          },
-          {
-            "id": "5",
-            "name": "Xịt phòng, sáp thơm",
-            "image": "assets/img/FakeAPI/Hoa_Mi_Pham/Xit_phong_sap_thom/cate_xitphong-sapthom.png"
-          },
-          {
-            "id": "6",
-            "name": "Đuổi Côn Trùng",
-            "image": "assets/img/FakeAPI/Hoa_Mi_Pham/duoi_con_trung/cate_duoi-contrung.png"
-          },
-          {
-            "id": "7",
-            "name": "Nước lau kính",
-            "image": "assets/img/FakeAPI/Hoa_Mi_Pham/Nuoc_lau_kinh/cate_laukinh.png"
-          },
-          {
-            "id": "8",
-            "name": "Chăm sóc cá nhân",
-            "image": "assets/img/FakeAPI/Hoa_Mi_Pham/Cham_soc_ca_nhan/cate_daugoi.png"
-          }
-        ]
-      },
-      "brand": {
-        "id": "40",
-        "name": "Sun light",
-        "logo": "assets/img/FakeAPI/Hoa_Mi_Pham/brand_Sunlight.jpg"
-      }
-    },
-    {
-      "id": "92",
-      "img": "assets/img/FakeAPI/Hoa_Mi_Pham/Thach_rau_cau/nuoc-lau-san-sunlight.jpg",
-      "name": "Nước lau sàn Sunlight bạc hà 3.6kg",
-      "sale_price": 77000,
-      "price": 59000,
-      "unit_of_caculation": "3,6kg",
-      "description": "",
-      "category": {
-        "id": "10",
-        "name": "Hóa Mỹ Phẩm",
-        "image": "assets/img/FakeAPI/Hoa_Mi_Pham/category_hoamypham.svg",
-        "subcategories": [
-          {
-            "id": "1",
-            "name": "Giặt, xả",
-            "image": "assets/img/FakeAPI/Hoa_Mi_Pham/giat_xa/cate_giatxa.png"
-          },
-          {
-            "id": "2",
-            "name": "Nước rửa chén",
-            "image": "assets/img/FakeAPI/Hoa_Mi_Pham/Nuoc_rua_chen/cate_nuoc-rua-chen.png"
-          },
-          {
-            "id": "3",
-            "name": "Nước lau sàn",
-            "image": "assets/img/FakeAPI/Hoa_Mi_Pham/Nuoc_lau_san/cate_nuoclausan.png"
-          },
-          {
-            "id": "4",
-            "name": "Tẩy rửa bồn tắm",
-            "image": "assets/img/FakeAPI/Hoa_Mi_Pham/Tay_rua_nha_tam/cate_tay-rua-bon-tam.png"
-          },
-          {
-            "id": "5",
-            "name": "Xịt phòng, sáp thơm",
-            "image": "assets/img/FakeAPI/Hoa_Mi_Pham/Xit_phong_sap_thom/cate_xitphong-sapthom.png"
-          },
-          {
-            "id": "6",
-            "name": "Đuổi Côn Trùng",
-            "image": "assets/img/FakeAPI/Hoa_Mi_Pham/duoi_con_trung/cate_duoi-contrung.png"
-          },
-          {
-            "id": "7",
-            "name": "Nước lau kính",
-            "image": "assets/img/FakeAPI/Hoa_Mi_Pham/Nuoc_lau_kinh/cate_laukinh.png"
-          },
-          {
-            "id": "8",
-            "name": "Chăm sóc cá nhân",
-            "image": "assets/img/FakeAPI/Hoa_Mi_Pham/Cham_soc_ca_nhan/cate_daugoi.png"
-          }
-        ]
-      },
-      "brand": {
-        "id": "40",
-        "name": "Sun light",
-        "logo": "assets/img/FakeAPI/Hoa_Mi_Pham/brand_Sunlight.jpg"
-      }
-    },
-    {
-      "id": "93",
-      "img": "assets/img/FakeAPI/Hoa_Mi_Pham/Tay_rua_nha_tam/nuoc-tay-quan-ao-trang-swat-javel.jpg",
-      "name": "Nước tẩy vải trắng Swat Javel 1 lít",
-      "sale_price": 21000,
-      "price": 19000,
-      "unit_of_caculation": "1 lít",
-      "description": "",
-      "category": {
-        "id": "10",
-        "name": "Hóa Mỹ Phẩm",
-        "image": "assets/img/FakeAPI/Hoa_Mi_Pham/category_hoamypham.svg",
-        "subcategories": [
-          {
-            "id": "1",
-            "name": "Giặt, xả",
-            "image": "assets/img/FakeAPI/Hoa_Mi_Pham/giat_xa/cate_giatxa.png"
-          },
-          {
-            "id": "2",
-            "name": "Nước rửa chén",
-            "image": "assets/img/FakeAPI/Hoa_Mi_Pham/Nuoc_rua_chen/cate_nuoc-rua-chen.png"
-          },
-          {
-            "id": "3",
-            "name": "Nước lau sàn",
-            "image": "assets/img/FakeAPI/Hoa_Mi_Pham/Nuoc_lau_san/cate_nuoclausan.png"
-          },
-          {
-            "id": "4",
-            "name": "Tẩy rửa bồn tắm",
-            "image": "assets/img/FakeAPI/Hoa_Mi_Pham/Tay_rua_nha_tam/cate_tay-rua-bon-tam.png"
-          },
-          {
-            "id": "5",
-            "name": "Xịt phòng, sáp thơm",
-            "image": "assets/img/FakeAPI/Hoa_Mi_Pham/Xit_phong_sap_thom/cate_xitphong-sapthom.png"
-          },
-          {
-            "id": "6",
-            "name": "Đuổi Côn Trùng",
-            "image": "assets/img/FakeAPI/Hoa_Mi_Pham/duoi_con_trung/cate_duoi-contrung.png"
-          },
-          {
-            "id": "7",
-            "name": "Nước lau kính",
-            "image": "assets/img/FakeAPI/Hoa_Mi_Pham/Nuoc_lau_kinh/cate_laukinh.png"
-          },
-          {
-            "id": "8",
-            "name": "Chăm sóc cá nhân",
-            "image": "assets/img/FakeAPI/Hoa_Mi_Pham/Cham_soc_ca_nhan/cate_daugoi.png"
-          }
-        ]
-      },
-      "brand": {
-        "id": "41",
-        "name": "Lix",
-        "logo": "assets/img/FakeAPI/Hoa_Mi_Pham/brand_Lix.jpg"
-      }
-    },
-    {
-      "id": "94",
-      "img": "assets/img/FakeAPI/Hoa_Mi_Pham/Xit_phong_sap_thom/xit-phong.jpg",
-      "name": "Xịt phòng Oasis hoa nhài & lan 320ml",
-      "sale_price": 47000,
-      "price": 45000,
-      "unit_of_caculation": "320ml",
-      "description": "",
-      "category": {
-        "id": "10",
-        "name": "Hóa Mỹ Phẩm",
-        "image": "assets/img/FakeAPI/Hoa_Mi_Pham/category_hoamypham.svg",
-        "subcategories": [
-          {
-            "id": "1",
-            "name": "Giặt, xả",
-            "image": "assets/img/FakeAPI/Hoa_Mi_Pham/giat_xa/cate_giatxa.png"
-          },
-          {
-            "id": "2",
-            "name": "Nước rửa chén",
-            "image": "assets/img/FakeAPI/Hoa_Mi_Pham/Nuoc_rua_chen/cate_nuoc-rua-chen.png"
-          },
-          {
-            "id": "3",
-            "name": "Nước lau sàn",
-            "image": "assets/img/FakeAPI/Hoa_Mi_Pham/Nuoc_lau_san/cate_nuoclausan.png"
-          },
-          {
-            "id": "4",
-            "name": "Tẩy rửa bồn tắm",
-            "image": "assets/img/FakeAPI/Hoa_Mi_Pham/Tay_rua_nha_tam/cate_tay-rua-bon-tam.png"
-          },
-          {
-            "id": "5",
-            "name": "Xịt phòng, sáp thơm",
-            "image": "assets/img/FakeAPI/Hoa_Mi_Pham/Xit_phong_sap_thom/cate_xitphong-sapthom.png"
-          },
-          {
-            "id": "6",
-            "name": "Đuổi Côn Trùng",
-            "image": "assets/img/FakeAPI/Hoa_Mi_Pham/duoi_con_trung/cate_duoi-contrung.png"
-          },
-          {
-            "id": "7",
-            "name": "Nước lau kính",
-            "image": "assets/img/FakeAPI/Hoa_Mi_Pham/Nuoc_lau_kinh/cate_laukinh.png"
-          },
-          {
-            "id": "8",
-            "name": "Chăm sóc cá nhân",
-            "image": "assets/img/FakeAPI/Hoa_Mi_Pham/Cham_soc_ca_nhan/cate_daugoi.png"
-          }
-        ]
-      },
-      "brand": {
-        "id": "42",
-        "name": "Oasis",
-        "logo": "assets/img/FakeAPI/Hoa_Mi_Pham/brand_Oasis.jpg"
-      }
-    },
-    {
-      "id": "95",
-      "img": "assets/img/FakeAPI/Hoa_Mi_Pham/duoi_con_trung/dung-dich-xong-xua-duoi-muoi-ars-nomat-45ml.jpg",
-      "name": "Dung dịch đuổi muỗi ARS Nomat 45ml",
-      "sale_price": 48000,
-      "price": 45000,
-      "unit_of_caculation": "45ml",
-      "description": "",
-      "category": {
-        "id": "10",
-        "name": "Hóa Mỹ Phẩm",
-        "image": "assets/img/FakeAPI/Hoa_Mi_Pham/category_hoamypham.svg",
-        "subcategories": [
-          {
-            "id": "1",
-            "name": "Giặt, xả",
-            "image": "assets/img/FakeAPI/Hoa_Mi_Pham/giat_xa/cate_giatxa.png"
-          },
-          {
-            "id": "2",
-            "name": "Nước rửa chén",
-            "image": "assets/img/FakeAPI/Hoa_Mi_Pham/Nuoc_rua_chen/cate_nuoc-rua-chen.png"
-          },
-          {
-            "id": "3",
-            "name": "Nước lau sàn",
-            "image": "assets/img/FakeAPI/Hoa_Mi_Pham/Nuoc_lau_san/cate_nuoclausan.png"
-          },
-          {
-            "id": "4",
-            "name": "Tẩy rửa bồn tắm",
-            "image": "assets/img/FakeAPI/Hoa_Mi_Pham/Tay_rua_nha_tam/cate_tay-rua-bon-tam.png"
-          },
-          {
-            "id": "5",
-            "name": "Xịt phòng, sáp thơm",
-            "image": "assets/img/FakeAPI/Hoa_Mi_Pham/Xit_phong_sap_thom/cate_xitphong-sapthom.png"
-          },
-          {
-            "id": "6",
-            "name": "Đuổi Côn Trùng",
-            "image": "assets/img/FakeAPI/Hoa_Mi_Pham/duoi_con_trung/cate_duoi-contrung.png"
-          },
-          {
-            "id": "7",
-            "name": "Nước lau kính",
-            "image": "assets/img/FakeAPI/Hoa_Mi_Pham/Nuoc_lau_kinh/cate_laukinh.png"
-          },
-          {
-            "id": "8",
-            "name": "Chăm sóc cá nhân",
-            "image": "assets/img/FakeAPI/Hoa_Mi_Pham/Cham_soc_ca_nhan/cate_daugoi.png"
-          }
-        ]
-      },
-      "brand": {
-        "id": "43",
-        "name": "ARS Normal",
-        "logo": "assets/img/FakeAPI/Hoa_Mi_Pham/brand_ARS.jpg"
-      }
-    },
-    {
-      "id": "96",
-      "img": "assets/img/FakeAPI/Hoa_Mi_Pham/Nuoc_lau_kinh/nuoc-lau-kinh-lau-bep-sunlight.jpg",
-      "name": "Nước lau bếp Sunlight chanh & baking soda chai 500ml",
-      "sale_price": 340000,
-      "price": 25000,
-      "unit_of_caculation": "500ml",
-      "description": "",
-      "category": {
-        "id": "10",
-        "name": "Hóa Mỹ Phẩm",
-        "image": "assets/img/FakeAPI/Hoa_Mi_Pham/category_hoamypham.svg",
-        "subcategories": [
-          {
-            "id": "1",
-            "name": "Giặt, xả",
-            "image": "assets/img/FakeAPI/Hoa_Mi_Pham/giat_xa/cate_giatxa.png"
-          },
-          {
-            "id": "2",
-            "name": "Nước rửa chén",
-            "image": "assets/img/FakeAPI/Hoa_Mi_Pham/Nuoc_rua_chen/cate_nuoc-rua-chen.png"
-          },
-          {
-            "id": "3",
-            "name": "Nước lau sàn",
-            "image": "assets/img/FakeAPI/Hoa_Mi_Pham/Nuoc_lau_san/cate_nuoclausan.png"
-          },
-          {
-            "id": "4",
-            "name": "Tẩy rửa bồn tắm",
-            "image": "assets/img/FakeAPI/Hoa_Mi_Pham/Tay_rua_nha_tam/cate_tay-rua-bon-tam.png"
-          },
-          {
-            "id": "5",
-            "name": "Xịt phòng, sáp thơm",
-            "image": "assets/img/FakeAPI/Hoa_Mi_Pham/Xit_phong_sap_thom/cate_xitphong-sapthom.png"
-          },
-          {
-            "id": "6",
-            "name": "Đuổi Côn Trùng",
-            "image": "assets/img/FakeAPI/Hoa_Mi_Pham/duoi_con_trung/cate_duoi-contrung.png"
-          },
-          {
-            "id": "7",
-            "name": "Nước lau kính",
-            "image": "assets/img/FakeAPI/Hoa_Mi_Pham/Nuoc_lau_kinh/cate_laukinh.png"
-          },
-          {
-            "id": "8",
-            "name": "Chăm sóc cá nhân",
-            "image": "assets/img/FakeAPI/Hoa_Mi_Pham/Cham_soc_ca_nhan/cate_daugoi.png"
-          }
-        ]
-      },
-      "brand": {
-        "id": "40",
-        "name": "Sun light",
-        "logo": "assets/img/FakeAPI/Hoa_Mi_Pham/brand_Sunlight.jpg"
-      }
-    },
-    {
-      "id": "97",
-      "img": "assets/img/FakeAPI/Banh_Keo/Thach_rau_cau/thach-sua-huong-trai-cay-lothamilk.jpg",
-      "name": "Kem đánh răng Closeup Up White Now tinh thể blue 100g",
-      "sale_price": 72000,
-      "price": 69000,
-      "unit_of_caculation": "100g",
-      "description": "",
-      "category": {
-        "id": "10",
-        "name": "Hóa Mỹ Phẩm",
-        "image": "assets/img/FakeAPI/Hoa_Mi_Pham/category_hoamypham.svg",
-        "subcategories": [
-          {
-            "id": "1",
-            "name": "Giặt, xả",
-            "image": "assets/img/FakeAPI/Hoa_Mi_Pham/giat_xa/cate_giatxa.png"
-          },
-          {
-            "id": "2",
-            "name": "Nước rửa chén",
-            "image": "assets/img/FakeAPI/Hoa_Mi_Pham/Nuoc_rua_chen/cate_nuoc-rua-chen.png"
-          },
-          {
-            "id": "3",
-            "name": "Nước lau sàn",
-            "image": "assets/img/FakeAPI/Hoa_Mi_Pham/Nuoc_lau_san/cate_nuoclausan.png"
-          },
-          {
-            "id": "4",
-            "name": "Tẩy rửa bồn tắm",
-            "image": "assets/img/FakeAPI/Hoa_Mi_Pham/Tay_rua_nha_tam/cate_tay-rua-bon-tam.png"
-          },
-          {
-            "id": "5",
-            "name": "Xịt phòng, sáp thơm",
-            "image": "assets/img/FakeAPI/Hoa_Mi_Pham/Xit_phong_sap_thom/cate_xitphong-sapthom.png"
-          },
-          {
-            "id": "6",
-            "name": "Đuổi Côn Trùng",
-            "image": "assets/img/FakeAPI/Hoa_Mi_Pham/duoi_con_trung/cate_duoi-contrung.png"
-          },
-          {
-            "id": "7",
-            "name": "Nước lau kính",
-            "image": "assets/img/FakeAPI/Hoa_Mi_Pham/Nuoc_lau_kinh/cate_laukinh.png"
-          },
-          {
-            "id": "8",
-            "name": "Chăm sóc cá nhân",
-            "image": "assets/img/FakeAPI/Hoa_Mi_Pham/Cham_soc_ca_nhan/cate_daugoi.png"
-          }
-        ]
-      },
-      "brand": {
-        "id": "44",
-        "name": "Closeup",
-        "logo": "assets/img/FakeAPI/Hoa_Mi_Pham/brand_Closeup.jpg"
-      }
-    },
-    {
-      "id": "98",
       "img": "assets/img/FakeAPI/Migoi_dohop/Mi_an_lien/Mi_an_lien.jpg",
       "name": "Mì 3 miền gold bò hầm rau thơm",
       "sale_price": 5500,
       "price": 45000,
       "unit_of_caculation": "1 gói",
       "description": "",
-      "category": {
-        "id": "11",
-        "name": "Mì gói, đồ hộp",
-        "image": "assets/img/FakeAPI/Migoi_dohop/category_migoi-dohop.svg",
-        "subcategories": [
-          {
-            "id": "1",
-            "name": "Mì ăn liền",
-            "image": "assets/img/FakeAPI/Migoi_dohop/Mi_an_lien/cate_migoi.png"
-          },
-          {
-            "id": "2",
-            "name": "Mì khô, phở, bún",
-            "image": "assets/img/FakeAPI/Migoi_dohop/Mi_kho_pho_bun/cate_mi_pho_bun.png"
-          },
-          {
-            "id": "3",
-            "name": "Nui, miến",
-            "image": "assets/img/FakeAPI/Migoi_dohop/Nui_mien/cate_nui-mien.png"
-          },
-          {
-            "id": "4",
-            "name": "Cá hộp",
-            "image": "assets/img/FakeAPI/Migoi_dohop/ca_hop/cate_cahop.png"
-          },
-          {
-            "id": "5",
-            "name": "Thịt hộp, pate",
-            "image": "assets/img/FakeAPI/Migoi_dohop/Thit_hop_pate/cate_thithop-pate.png"
-          }
-        ]
-      },
-      "brand": {
-        "id": "45",
-        "name": "3 Miền",
-        "logo": "assets/img/FakeAPI/Migoi_dohop/brand_3mien.jpg"
-      }
+      "category_id": "8",
+      "subcategory_id": "1",
+      "brand_id": "31"
     },
     {
-      "id": "100",
+      "id": "82",
       "img": "assets/img/FakeAPI/Migoi_dohop/Mi_kho_pho_bun/pho-an-lien-de-nhat-dac-biet-loi-bo-gau-gion-goi-67g.jpg",
       "name": "Thùng 30 gói phở Đệ nhất đặc biệt",
       "sale_price": 320000,
       "price": 300000,
       "unit_of_caculation": "1 thùng",
       "description": "",
-      "category": {
-        "id": "11",
-        "name": "Mì gói, đồ hộp",
-        "image": "assets/img/FakeAPI/Migoi_dohop/category_migoi-dohop.svg",
-        "subcategories": [
-          {
-            "id": "1",
-            "name": "Mì ăn liền",
-            "image": "assets/img/FakeAPI/Migoi_dohop/Mi_an_lien/cate_migoi.png"
-          },
-          {
-            "id": "2",
-            "name": "Mì khô, phở, bún",
-            "image": "assets/img/FakeAPI/Migoi_dohop/Mi_kho_pho_bun/cate_mi_pho_bun.png"
-          },
-          {
-            "id": "3",
-            "name": "Nui, miến",
-            "image": "assets/img/FakeAPI/Migoi_dohop/Nui_mien/cate_nui-mien.png"
-          },
-          {
-            "id": "4",
-            "name": "Cá hộp",
-            "image": "assets/img/FakeAPI/Migoi_dohop/ca_hop/cate_cahop.png"
-          },
-          {
-            "id": "5",
-            "name": "Thịt hộp, pate",
-            "image": "assets/img/FakeAPI/Migoi_dohop/Thit_hop_pate/cate_thithop-pate.png"
-          }
-        ]
-      },
-      "brand": {
-        "id": "46",
-        "name": "Đệ nhất",
-        "logo": "assets/img/FakeAPI/Migoi_dohop/brand_Denhat.jpg"
-      }
+      "category_id": "8",
+      "subcategory_id": "2",
+      "brand_id": "32"
     },
     {
-      "id": "101",
+      "id": "83",
       "img": "assets/img/FakeAPI/Migoi_dohop/Nui_mien/nui-ong-vinaly-goi-400g.jpg",
       "name": "Nui ống Vinaly gói 400g",
       "sale_price": 26000,
       "price": 20000,
       "unit_of_caculation": "1 bịch",
       "description": "",
-      "category": {
-        "id": "11",
-        "name": "Mì gói, đồ hộp",
-        "image": "assets/img/FakeAPI/Migoi_dohop/category_migoi-dohop.svg",
-        "subcategories": [
-          {
-            "id": "1",
-            "name": "Mì ăn liền",
-            "image": "assets/img/FakeAPI/Migoi_dohop/Mi_an_lien/cate_migoi.png"
-          },
-          {
-            "id": "2",
-            "name": "Mì khô, phở, bún",
-            "image": "assets/img/FakeAPI/Migoi_dohop/Mi_kho_pho_bun/cate_mi_pho_bun.png"
-          },
-          {
-            "id": "3",
-            "name": "Nui, miến",
-            "image": "assets/img/FakeAPI/Migoi_dohop/Nui_mien/cate_nui-mien.png"
-          },
-          {
-            "id": "4",
-            "name": "Cá hộp",
-            "image": "assets/img/FakeAPI/Migoi_dohop/ca_hop/cate_cahop.png"
-          },
-          {
-            "id": "5",
-            "name": "Thịt hộp, pate",
-            "image": "assets/img/FakeAPI/Migoi_dohop/Thit_hop_pate/cate_thithop-pate.png"
-          }
-        ]
-      },
-      "brand": {
-        "id": "46",
-        "name": "Vinaly",
-        "logo": "assets/img/FakeAPI/Migoi_dohop/brand_Vinaly.jpg"
-      }
+      "category_id": "8",
+      "subcategory_id": "3",
+      "brand_id": "33"
     },
     {
-      "id": "102",
+      "id": "84",
       "img": "assets/img/FakeAPI/Migoi_dohop/ca_hop/ca-ngu-xot-ca-ri-tuna-viet-nam-hop-155g.jpg",
       "name": "Cá ngừ sốt cà ri Tuna Việt Nam",
       "sale_price": 22000,
       "price": 12000,
       "unit_of_caculation": "1 lon",
       "description": "",
-      "category": {
-        "id": "11",
-        "name": "Mì gói, đồ hộp",
-        "image": "assets/img/FakeAPI/Migoi_dohop/category_migoi-dohop.svg",
-        "subcategories": [
-          {
-            "id": "1",
-            "name": "Mì ăn liền",
-            "image": "assets/img/FakeAPI/Migoi_dohop/Mi_an_lien/cate_migoi.png"
-          },
-          {
-            "id": "2",
-            "name": "Mì khô, phở, bún",
-            "image": "assets/img/FakeAPI/Migoi_dohop/Mi_kho_pho_bun/cate_mi_pho_bun.png"
-          },
-          {
-            "id": "3",
-            "name": "Nui, miến",
-            "image": "assets/img/FakeAPI/Migoi_dohop/Nui_mien/cate_nui-mien.png"
-          },
-          {
-            "id": "4",
-            "name": "Cá hộp",
-            "image": "assets/img/FakeAPI/Migoi_dohop/ca_hop/cate_cahop.png"
-          },
-          {
-            "id": "5",
-            "name": "Thịt hộp, pate",
-            "image": "assets/img/FakeAPI/Migoi_dohop/Thit_hop_pate/cate_thithop-pate.png"
-          }
-        ]
-      },
-      "brand": {
-        "id": "47",
-        "name": "3 Cô gái",
-        "logo": "assets/img/FakeAPI/Migoi_dohop/brand_3cogai.jpg"
-      }
+      "category_id": "8",
+      "subcategory_id": "4",
+      "brand_id": "34"
     },
     {
-      "id": "103",
+      "id": "85",
       "img": "assets/img/FakeAPI/Migoi_dohop/Migoi_dohop/thit-ap-chao-ponnie-hop-200g.jpg",
       "name": "Thịt áp chảo Ponnie hộp 200g",
       "sale_price": 70000,
       "price": 65000,
       "unit_of_caculation": "1 lon",
       "description": "",
-      "category": {
-        "id": "11",
-        "name": "Mì gói, đồ hộp",
-        "image": "assets/img/FakeAPI/Migoi_dohop/category_migoi-dohop.svg",
-        "subcategories": [
-          {
-            "id": "1",
-            "name": "Mì ăn liền",
-            "image": "assets/img/FakeAPI/Migoi_dohop/Mi_an_lien/cate_migoi.png"
-          },
-          {
-            "id": "2",
-            "name": "Mì khô, phở, bún",
-            "image": "assets/img/FakeAPI/Migoi_dohop/Mi_kho_pho_bun/cate_mi_pho_bun.png"
-          },
-          {
-            "id": "3",
-            "name": "Nui, miến",
-            "image": "assets/img/FakeAPI/Migoi_dohop/Nui_mien/cate_nui-mien.png"
-          },
-          {
-            "id": "4",
-            "name": "Cá hộp",
-            "image": "assets/img/FakeAPI/Migoi_dohop/ca_hop/cate_cahop.png"
-          },
-          {
-            "id": "5",
-            "name": "Thịt hộp, pate",
-            "image": "assets/img/FakeAPI/Migoi_dohop/Thit_hop_pate/cate_thithop-pate.png"
-          }
-        ]
-      },
-      "brand": {
-        "id": "48",
-        "name": "Ponnie",
-        "logo": "assets/img/FakeAPI/Migoi_dohop/brand_Ponnie.jpg"
-      }
+      "category_id": "8",
+      "subcategory_id": "5",
+      "brand_id": "35"
     },
     {
-      "id": "104",
-      "img": "assets/img/product-popular10.svg",
-      "content": "Thực phẩm chế biến sẵn",
-      "name": "Lẩu thái SG Food 500g",
-      "sale_price": 86000,
-      "price": 95000,
-      "unit_of_caculation": "500g",
-      "description": "Sản phẩm lẩu được làm sẵn, thích hợp cho những ngày bận rộn",
-      "type": "Product_Related"
+      "id": "86",
+      "img": "assets/img/FakeAPI/thuc_an_chay/Thit_chay/suon-non-chay-an-nhien-goi-150g.jpg",
+      "name": "Sườn non chay an nhiên",
+      "sale_price": 58000,
+      "price": 50000,
+      "unit_of_caculation": "1 bịch",
+      "description": "",
+      "category_id": "9",
+      "subcategory_id": "2",
+      "brand_id": "36"
     },
     {
-      "id": "105",
-      "img": "assets/img/product-popular9.svg",
-      "name": "Tôm càng xanh tươi sống 2, tươi rói",
-      "sale_price": 69000,
-      "price": 85000,
-      "unit_of_caculation": "500g",
-      "description": "Snack da gà chiên giòn vị Tomyum Dorkbua gói 30g",
-      "type": "Product_Related"
+      "id": "87",
+      "img": "assets/img/FakeAPI/Banh_Keo/Snack/snack-khoai-tay-vi-tao-bien-kieu-nhat-ban-lays-max-goi-75g.jpg",
+      "name": "Snack vị tảo biển nhật bản",
+      "sale_price": 24000,
+      "price": 22000,
+      "unit_of_caculation": "1 bịch",
+      "description": "",
+      "category_id": "10",
+      "subcategory_id": "1",
+      "brand_id": "37"
     },
     {
-      "id": "106",
-      "img": "assets/img/product-popular7.svg",
-      "name": "Lốc 4 hộp sữa lúa mạch milo 180ml",
-      "sale_price": 30000,
+      "id": "88",
+      "img": "assets/img/FakeAPI/Banh_Keo/banh_cac_loai/banh-bao-nhan-khoai-mon-cp-270g.jpg",
+      "name": "Bánh bao nhân khoai môn C.P 270g",
+      "sale_price": 25000,
+      "price": 23000,
+      "unit_of_caculation": "1 bịch",
+      "description": "",
+      "category_id": "10",
+      "subcategory_id": "2",
+      "brand_id": "38"
+    },
+    {
+      "id": "89",
+      "img": "assets/img/FakeAPI/Banh_Keo/Rong_bien_kho_an_lien/rong_bien.jpg",
+      "name": "Rong biển trộn cơm captain lee Choi",
+      "sale_price": 40000,
+      "price": 37000,
+      "unit_of_caculation": "1 bịch",
+      "description": "",
+      "category_id": "10",
+      "subcategory_id": "3",
+      "brand_id": "39"
+    },
+    {
+      "id": "90",
+      "img": "assets/img/FakeAPI/Banh_Keo/Keo_cac_loai/keo-deo-huong-trai-cay-chupa-chups.jpg",
+      "name": "Kẹo dẻo Chupa Chups Sour Belts",
+      "sale_price": 15000,
+      "price": 13000,
+      "unit_of_caculation": "1 bịch",
+      "description": "",
+      "category_id": "10",
+      "subcategory_id": "4",
+      "brand_id": "40"
+    },
+    {
+      "id": "91",
+      "img": "assets/img/FakeAPI/Banh_Keo/Socola/keo-socola-m-ms-mini-ong-35g.jpg",
+      "name": "Kẹo socola M&M ống 35g",
+      "sale_price": 28000,
+      "price": 15000,
+      "unit_of_caculation": "1 hũ 120g",
+      "description": "",
+      "category_id": "10",
+      "subcategory_id": "5",
+      "brand_id": "41"
+    },
+    {
+      "id": "92",
+      "img": "assets/img/FakeAPI/Banh_Keo/Ngu_coc_an_sang/bot-ngu-coc-vitapro-bich-400g.jpg",
+      "name": "Bột ngũ cốc Vitapro",
+      "sale_price": 37000,
+      "price": 34000,
+      "unit_of_caculation": "1 bịch",
+      "description": "",
+      "category_id": "10",
+      "subcategory_id": "6",
+      "brand_id": "42"
+    },
+    {
+      "id": "93",
+      "img": "assets/img/FakeAPI/Banh_Keo/Mut_trai_cay_bo_dau_phong/xi_muoi_mo.jpg",
+      "name": "Xí muội mơ Khom Fai hũ 120g",
+      "sale_price": 58000,
+      "price": 43000,
+      "unit_of_caculation": "1 hũ 120g",
+      "description": "",
+      "category_id": "10",
+      "subcategory_id": "7",
+      "brand_id": "43"
+    },
+    {
+      "id": "94",
+      "img": "assets/img/FakeAPI/Banh_Keo/Thach_rau_cau/thach-sua-huong-trai-cay-lothamilk.jpg",
+      "name": "Thạch sữa hương trái cây Lothamilk",
+      "sale_price": 100000,
+      "price": 96000,
+      "unit_of_caculation": "1 kg",
+      "description": "",
+      "category_id": "10",
+      "subcategory_id": "8",
+      "brand_id": "44"
+    },
+    {
+      "id": "95",
+      "img": "assets/img/FakeAPI/Banh_Keo/Thach_rau_cau/thach-sua-huong-trai-cay-lothamilk.jpg",
+      "name": "Nước giặt xả MaxKleen hương hoa nắng túi 3.8kg",
+      "sale_price": 210000,
+      "price": 165000,
+      "unit_of_caculation": "3,8kg",
+      "description": "",
+      "category_id": "11",
+      "subcategory_id": "1",
+      "brand_id": "45"
+    },
+    {
+      "id": "96",
+      "img": "assets/img/FakeAPI/Hoa_Mi_Pham/Nuoc_rua_chen/nuoc_rua_chen.jpg",
+      "name": "Nước rửa chén Sunlight lô hội 1.9 lít",
+      "sale_price": 75000,
+      "price": 62000,
+      "unit_of_caculation": "1,9L",
+      "description": "",
+      "category_id": "11",
+      "subcategory_id": "2",
+      "brand_id": "46"
+    },
+    {
+      "id": "97",
+      "img": "assets/img/FakeAPI/Hoa_Mi_Pham/Thach_rau_cau/nuoc-lau-san-sunlight.jpg",
+      "name": "Nước lau sàn Sunlight bạc hà 3.6kg",
+      "sale_price": 77000,
+      "price": 59000,
+      "unit_of_caculation": "3,6kg",
+      "description": "",
+      "category_id": "11",
+      "subcategory_id": "3",
+      "brand_id": "46"
+    },
+    {
+      "id": "98",
+      "img": "assets/img/FakeAPI/Hoa_Mi_Pham/Tay_rua_nha_tam/nuoc-tay-quan-ao-trang-swat-javel.jpg",
+      "name": "Nước tẩy vải trắng Swat Javel 1 lít",
+      "sale_price": 21000,
+      "price": 19000,
+      "unit_of_caculation": "1 lít",
+      "description": "",
+      "category_id": "11",
+      "subcategory_id": "4",
+      "brand_id": "47"
+    },
+    {
+      "id": "99",
+      "img": "assets/img/FakeAPI/Hoa_Mi_Pham/Xit_phong_sap_thom/xit-phong.jpg",
+      "name": "Xịt phòng Oasis hoa nhài & lan 320ml",
+      "sale_price": 47000,
       "price": 45000,
-      "unit_of_caculation": "1 Lốc",
-      "description": "Lốc 4 hộp sữa lúa mạch milo 180ml, hàm lượng dinh dưỡng cao",
-      "type": "Product_Related"
+      "unit_of_caculation": "320ml",
+      "description": "",
+      "category_id": "11",
+      "subcategory_id": "5",
+      "brand_id": "48"
     },
     {
-      "id": "107",
-      "img": "assets/img/product-popular8.svg",
-      "name": "Muối ớt chanh Dh Foods 200g",
-      "sale_price": 22000,
-      "price": 27000,
-      "unit_of_caculation": "200g/hủ",
-      "description": "Muối ớt chanh Dh Foods 200g, ngon hơn khi chấm với hải sản",
-      "type": "Product_Related"
+      "id": "100",
+      "img": "assets/img/FakeAPI/Hoa_Mi_Pham/duoi_con_trung/dung-dich-xong-xua-duoi-muoi-ars-nomat-45ml.jpg",
+      "name": "Dung dịch đuổi muỗi ARS Nomat 45ml",
+      "sale_price": 48000,
+      "price": 45000,
+      "unit_of_caculation": "45ml",
+      "description": "",
+      "category_id": "11",
+      "subcategory_id": "6",
+      "brand_id": "49"
     },
     {
-      "id": "108",
-      "img": "assets/img/product-popular9.svg",
-      "name": "Tôm càng xanh tươi sống 500g, tươi rói",
-      "sale_price": 69000,
-      "price": 85000,
-      "unit_of_caculation": "500g",
-      "description": "Snack da gà chiên giòn vị Tomyum Dorkbua gói 30g",
-      "type": "Product_Related"
+      "id": "101",
+      "img": "assets/img/FakeAPI/Hoa_Mi_Pham/Nuoc_lau_kinh/nuoc-lau-kinh-lau-bep-sunlight.jpg",
+      "name": "Nước lau bếp Sunlight chanh & baking soda chai 500ml",
+      "sale_price": 340000,
+      "price": 25000,
+      "unit_of_caculation": "500ml",
+      "description": "",
+      "category_id": "11",
+      "subcategory_id": "7",
+      "brand_id": "46"
+    },
+    {
+      "id": "102",
+      "img": "assets/img/FakeAPI/Banh_Keo/Thach_rau_cau/thach-sua-huong-trai-cay-lothamilk.jpg",
+      "name": "Kem đánh răng Closeup Up White Now tinh thể blue 100g",
+      "sale_price": 72000,
+      "price": 69000,
+      "unit_of_caculation": "100g",
+      "description": "",
+      "category_id": "11",
+      "subcategory_id": "8",
+      "brand_id": "50"
     }
   ]
 }

@@ -1,6 +1,6 @@
 "use client";
 import classNames from "classnames/bind";
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import styles from "./productdetail.module.css";
 const cx = classNames.bind(styles);

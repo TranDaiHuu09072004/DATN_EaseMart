@@ -122,7 +122,7 @@ export default function Footer() {
                 </Link>
               </li>
             </ul>
-            <hr style={{ color: "#3bb77e" }} />
+            <hr style={{ color: "#3bb77e", marginTop: 15 }} />
             <h4 className={styles.copyright}>
               © 2024, Bản quyền thuộc về công ty EaseMart.
             </h4>

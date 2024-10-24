@@ -6,9 +6,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCopy } from "@fortawesome/free-regular-svg-icons";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import Countdown from "./components/CountDown/CountDown";
-import axios from "axios";
 import { useState, useEffect } from "react";
-import { Icon } from "@iconify/react";
+import { fetchProducts } from "@/services/product";
 
 const cx = classNames.bind(styles);
 export default function Home() {
@@ -16,36 +15,40 @@ export default function Home() {
   const [products_Popular, setProducts_Popular] = useState([]);
   const [products_FlashSale, setProducts_Products_FlashSale] = useState([]);
   const [products_OutStanding, setProducts_Products_OutStanding] = useState([]);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const response = await axios.get("http://localhost:3000/products");
-        console.log("Fetched products:", response.data); // Log sản phẩm
-        const popularProducts = response.data.filter(
-          (product) => product.type === "Product_Popular"
-        );
-        const outstandingProducts = response.data.filter(
-          (product) => product.type === "Product_OutStanding"
-        );
-        const flashSaleProducts = response.data.filter(
-          (product) => product.type === "FlashSale"
-        );
-        setProducts_Popular(popularProducts);
-        setProducts_Products_FlashSale(flashSaleProducts);
-        setProducts_Products_OutStanding(outstandingProducts);
-      } catch (error) {
-        console.error("Error fetching products:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
+    fetchProducts("Product_Popular").then((popular) => {
+      setProducts_Popular(() => {
+        let newPopular = [];
+        for (let index = 0; index < 10; index++) {
+          newPopular.push(popular[index]);
+        }
+        return newPopular;
+      });
+    });
+    fetchProducts("FlashSale").then((flashsale) => {
+      setProducts_Products_FlashSale(() => {
+        let newflashsale = [];
+        for (let index = 0; index < 10; index++) {
+          newflashsale.push(flashsale[index]);
+        }
+        return newflashsale;
+      });
+    });
+    fetchProducts("Product_OutStanding").then((outStanding) => {
+      setProducts_Products_OutStanding(() => {
+        let newoutStanding = [];
+        for (let index = 0; index < 10; index++) {
+          newoutStanding.push(outStanding[index]);
+        }
+        return newoutStanding;
+      });
+    });
 
-    fetchProducts();
+    // setProducts_Popular(popular);
+    // setProducts_Products_FlashSale(flashsale);
+    // setProducts_Products_OutStanding(outStanding);
   }, []);
-
-  if (loading) return <div>Loading...</div>;
 
   return (
     <>
@@ -151,7 +154,6 @@ export default function Home() {
                 className={cx(
                   "flex",
                   "flex-col",
-                  "justify-between",
                   "lg:basis-1/5",
                   "md:basis-1/3",
                   "basis-1/2 ",
@@ -163,11 +165,7 @@ export default function Home() {
                   <img
                     src={product.img}
                     alt={product.name}
-                    className={cx(
-                      "product-image",
-                      "max-h-[200px]",
-                      "object-cover"
-                    )}
+                    className={cx("product-image", "h-auto", "object-cover")}
                   />
                   <div className={cx("content-product")}>
                     <h3>{product.name}</h3>
@@ -187,6 +185,7 @@ export default function Home() {
                       "addtocart",
                       "flex",
                       "justify-center",
+                      "max-h-full",
                       "items-center"
                     )}
                   >
