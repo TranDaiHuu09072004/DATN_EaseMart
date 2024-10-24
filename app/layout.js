@@ -1,6 +1,6 @@
-import Header from "@/app/components/Header/Header";
+import Header from "@/components/Header/Header";
 import { Roboto } from "next/font/google";
-import Footer from "@/app/components/Footer/Footer";
+import Footer from "@/components/Footer/Footer";
 import "@/public/css/list_category.globals.css";
 import "@/public/css/CardFlashSale.globals.css";
 import "@/public/css/CardPopular.globals.css";
