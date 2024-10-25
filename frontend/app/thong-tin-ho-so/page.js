@@ -16,7 +16,9 @@ export default function CustomerProfile() {
           )}
         >
           <div className={cx("information", "max-lg:w-full")}>
-            <h3 className={cx("title_information")}>THÔNG TIN HỘI VIÊN</h3>
+            <h3 className={cx("title_information", "max-sm:text-center")}>
+              THÔNG TIN HỘI VIÊN
+            </h3>
             <form action="" className="max-md:flex max-md:flex-col">
               <div
                 className={cx(
