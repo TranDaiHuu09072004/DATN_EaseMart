@@ -1,0 +1,63 @@
+/* Banner */
+.bg {
+  object-fit: cover;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+
+  .main {
+    display: block;
+    margin: 0 auto;
+    width: 79%;
+    // padding: 25px;
+    padding-top: 0;
+    overflow: hidden;
+    button {
+      // background-color: #3bb77e;
+      border-radius: 50%;
+      display: flex !important;
+      justify-content: center;
+      align-items: center;
+      &::before,
+      &::after {
+        color: #00a659;
+      }
+    }
+
+    a {
+      display: block;
+      width: 100%;
+    }
+    .box-scroll {
+      scroll-behavior: smooth; /* Thêm thuộc tính này để đảm bảo cuộn mượt mà */
+      overflow-x: auto; /* Bảo đảm rằng thanh cuộn ngang hiện ra khi cần */
+      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none;
+      white-space: nowrap;
+      width: 100%;
+      display: flex;
+      // gap: 10px;
+      position: relative;
+
+      img {
+        display: block;
+        width: 100%;
+        margin: 5px;
+        &:first-child {
+          margin-left: 0;
+        }
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+  .sub {
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 10px;
+    img {
+      width: 100%;
+    }
+  }
+}

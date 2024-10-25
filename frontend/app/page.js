@@ -1,10 +1,11 @@
+"use client";
 import classNames from "classnames/bind";
 import styles from "./home.module.scss";
-import Banner from "./components/Banner/Banner";
+import Banner from "../components/Banner/Banner";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCopy } from "@fortawesome/free-regular-svg-icons";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
-import Countdown from "./components/CountDown/CountDown";
+import Countdown from "../components/CountDown/CountDown";
 import { Icon } from "@iconify/react";
 
 const cx = classNames.bind(styles);
@@ -53,14 +54,7 @@ export default function Home() {
             })}
         </div>
       </div>
-      <div
-        className={cx(
-          "max-w-screen-xl",
-          " mx-auto",
-
-          "gap"
-        )}
-      >
+      <div className={cx("max-w-screen-xl", " mx-auto", "gap")}>
         <div className={cx("flash-sale")}>
           <h4>Flash Sale - Giá Sốc</h4>
           <Countdown targetDate={targetDate} />

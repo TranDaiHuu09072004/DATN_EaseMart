@@ -164,13 +164,16 @@
               font-size: 16px;
               margin-bottom: 5px;
               text-decoration: none;
+              height: 30px;
               color: black;
               width: 100%;
               text-align: center;
               display: -webkit-box;
-              -webkit-line-clamp: 1; /* Giới hạn số dòng hiển thị */
-              -webkit-box-orient: vertical;
-              overflow: hidden;
+              display: -webkit-box; /* Hiển thị như một box */
+              -webkit-box-orient: vertical; /* Định hướng theo chiều dọc */
+              -webkit-line-clamp: 2; /* Giới hạn số dòng */
+              overflow: hidden; /* Ẩn văn bản ngoài giới hạn */
+              text-overflow: ellipsis;
             }
           }
         }
@@ -199,8 +202,7 @@
               }
             }
             .name {
-              width: 100%;
-              max-height: 40px;
+              height: 40px;
               overflow-y: hidden;
               font-size: 19px;
               font-weight: 600;
@@ -212,10 +214,11 @@
               -webkit-box-orient: vertical;
             }
             .price {
+              width: 100%;
               display: flex;
-              justify-content: flex-start;
+              justify-content: space-between;
               align-items: center;
-              gap: 10px;
+
               .original-price {
                 font-size: 15px;
                 color: #a2a2a2;
