@@ -7,7 +7,7 @@ import Link from "next/link";
 import { useState } from "react";
 
 const cx = classNames.bind(styles);
-const Sidebar = () => {
+const Sidebar = ({ listCate, updateCate, listBrand, updateBrand }) => {
   const [showCate, setShowCate] = useState(true);
   const [showBrand, setShowBrand] = useState(true);
   const handleToggleCate = () => {
@@ -30,30 +30,19 @@ const Sidebar = () => {
         </div>
         {showCate && (
           <ul className={cx("list-cate")}>
-            <li className={cx("item")}>
-              <img src={"assets/img/products/image 321.png"} />
-              <Link href={"#"}>Rau, Củ, Quả</Link>
-            </li>
-            <li className={cx("item")}>
-              <img src={"assets/img/products/image 321.png"} />
-              <Link href={"#"}>Rau, Củ, Quả</Link>
-            </li>
-            <li className={cx("item")}>
-              <img src={"assets/img/products/image 321.png"} />
-              <Link href={"#"}>Rau, Củ, Quả</Link>
-            </li>
-            <li className={cx("item")}>
-              <img src={"assets/img/products/image 321.png"} />
-              <Link href={"#"}>Rau, Củ, Quả</Link>
-            </li>
-            <li className={cx("item")}>
-              <img src={"assets/img/products/image 321.png"} />
-              <Link href={"#"}>Rau, Củ, Quả</Link>
-            </li>
-            <li className={cx("item")}>
-              <img src={"assets/img/products/image 321.png"} />
-              <Link href={"#"}>Rau, Củ, Quả</Link>
-            </li>
+            {listCate.map((item) => {
+              return (
+                <li
+                  className={cx("item")}
+                  onClick={() => {
+                    updateCate({ id: item.id, name: item.name });
+                  }}
+                >
+                  <img src={item.image} />
+                  <Link href={"#"}>{item.name}</Link>
+                </li>
+              );
+            })}
           </ul>
         )}
       </div>
@@ -66,36 +55,19 @@ const Sidebar = () => {
         </div>
         {showBrand && (
           <div className={cx("list-brand")}>
-            <Link href="#">
-              <img src="assets/img/brands/1.svg" />
-            </Link>
-            <Link href="#">
-              <img src="assets/img/brands/2.png" />
-            </Link>
-            <Link href="#">
-              <img src="assets/img/brands/1.svg" />
-            </Link>
-            <Link href="#">
-              <img src="assets/img/brands/1.svg" />
-            </Link>
-            <Link href="#">
-              <img src="assets/img/brands/2.png" />
-            </Link>
-            <Link href="#">
-              <img src="assets/img/brands/1.svg" />
-            </Link>
-            <Link href="#">
-              <img src="assets/img/brands/1.svg" />
-            </Link>
-            <Link href="#">
-              <img src="assets/img/brands/2.png" />
-            </Link>
-            <Link href="#">
-              <img src="assets/img/brands/1.svg" />
-            </Link>
-            <Link href="#">
-              <img src="assets/img/brands/1.svg" />
-            </Link>
+            {listBrand.map((item) => {
+              return (
+                <Link
+                  href="#"
+                  onClick={(e) => {
+                    e.preventDefault;
+                    updateBrand({ id: item.id, name: item.name });
+                  }}
+                >
+                  <img src="assets/img/brands/1.svg" />
+                </Link>
+              );
+            })}
           </div>
         )}
       </div>
