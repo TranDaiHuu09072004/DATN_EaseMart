@@ -45,7 +45,6 @@ export default function Home() {
       });
     });
   }, []);
-
   return (
     <>
       <Banner />
@@ -157,9 +156,9 @@ export default function Home() {
                 )}
                 key={product.id}
               >
-                <div className={cx("product-item", "h-full")}>
+                <div className={cx("product-item", "w-full", "h-full")}>
                   <img
-                    src={product.img}
+                    src={product.image}
                     alt={product.name}
                     className={cx("product-image", "h-auto", "object-cover")}
                   />
@@ -217,7 +216,7 @@ export default function Home() {
               >
                 <div className={cx("product-item", "h-full")}>
                   <img
-                    src={product.img}
+                    src={product.image}
                     alt={product.name}
                     className={cx(
                       "product-image",
@@ -278,7 +277,7 @@ export default function Home() {
               >
                 <div className={cx("product-item", "h-full")}>
                   <img
-                    src={product.img}
+                    src={product.image}
                     alt={product.name}
                     className={cx(
                       "product-image",

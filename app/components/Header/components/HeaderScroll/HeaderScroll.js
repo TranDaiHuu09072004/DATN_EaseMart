@@ -16,7 +16,7 @@ import MenuMobile from "../MenuMobile";
 const cx = classNames.bind(styles);
 const HeaderScroll = () => {
   const [showHeader, setShowHeader] = useState(false);
-  const [showHeaderScroll, setShowHeaderScroll] = useState(false);
+  const [showHeaderScroll, setShowHeaderScroll] = useState(true);
 
   useEffect(() => {
     window.addEventListener("resize", () => {

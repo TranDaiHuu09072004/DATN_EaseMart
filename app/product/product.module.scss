@@ -109,7 +109,8 @@
         background-color: #fff;
         .menu-type {
           display: flex;
-          gap: 15px;
+          justify-content:flex-start;
+          gap: 30px;
           margin-bottom: 5px;
           padding: 10px 20px;
 
@@ -130,15 +131,16 @@
               font-size: 16px;
               margin-bottom: 5px;
               text-decoration: none;
+              height: 30px;
               color: black;
               width: 100%;
               text-align: center;
               display: -webkit-box;
-              -webkit-line-clamp: 1; /* Giới hạn số dòng hiển thị */
-              -webkit-box-orient: vertical;
-              overflow: hidden;
-              // Thêm thuộc tính mới
-              font-weight: 500; /* Thay đổi độ đậm của chữ */
+              display: -webkit-box; /* Hiển thị như một box */
+              -webkit-box-orient: vertical; /* Định hướng theo chiều dọc */
+              -webkit-line-clamp: 2; /* Giới hạn số dòng */
+              overflow: hidden; /* Ẩn văn bản ngoài giới hạn */
+              text-overflow: ellipsis;
             }
           }
         }
@@ -150,16 +152,16 @@
         margin-top: 10px;
         .box-product {
           box-sizing: border-box;
-          padding: 15px;
+          padding: 12px;
           background-color: #fff;
           border-radius: 5px;
           box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 4px;
           .product {
             height: fit-content;
-            // justify-content: space-between;
             display: flex;
             flex-direction: column;
             gap: 10px;
+            justify-content: space-between;
             .thumb {
               // width: 100%;
               img {
@@ -167,8 +169,7 @@
               }
             }
             .name {
-              width: 100%;
-              max-height: 40px;
+              height: 40px;
               overflow-y: hidden;
               font-size: 19px;
               font-weight: 600;
@@ -180,10 +181,11 @@
               -webkit-box-orient: vertical;
             }
             .price {
+              width: 100%;
               display: flex;
-              justify-content: flex-start;
+              justify-content: space-between;
               align-items: center;
-              gap: 10px;
+
               .original-price {
                 font-size: 15px;
                 color: #a2a2a2;
