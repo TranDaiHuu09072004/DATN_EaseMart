@@ -1,5 +1,6 @@
+"use client";
 import classNames from "classnames/bind";
-import React from "react";
+import React, { useState } from "react";
 import styles from "./header.module.scss";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -10,18 +11,36 @@ import { Icon } from "@iconify/react";
 import MenuMobile from "./components/MenuMobile";
 
 const cx = classNames.bind(styles);
+
 export default function Header() {
+  const [searchKeyword, setSearchKeyWord] = useState("");
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (searchKeyword.trim()) {
+      const encodedKeyword = encodeURIComponent(searchKeyword.trim());
+      window.location.href = `/product?name=${encodedKeyword}`;
+    }
+  };
+
   return (
     <div className={cx("box-header")}>
       <div className="max-w-screen-xl mx-auto px-4">
         <div className={cx("header")}>
           <div className={cx("header-top")}>
-            <MenuMobile></MenuMobile>
+            <MenuMobile />
             <div className={cx("logo")}>
               <img src="assets/img/home/logo.png" />
             </div>
-            <form action="" className={cx("search-box", "lg:flex", "hidden")}>
-              <input type="text" placeholder="Bạn muốn mua gì ..." />
+            <form
+              onSubmit={handleSearch}
+              className={cx("search-box", "lg:flex", "hidden")}
+            >
+              <input
+                type="text"
+                onChange={(e) => setSearchKeyWord(e.target.value)}
+                placeholder="Bạn muốn mua gì ..."
+              />
               <button type="submit">
                 <FontAwesomeIcon
                   className={cx("icon-search")}
@@ -32,7 +51,6 @@ export default function Header() {
             <div
               className={cx(
                 "cart-info",
-
                 "items-center",
                 "lg:justify-between",
                 "justify-end",
@@ -67,7 +85,6 @@ export default function Header() {
                     "hidden"
                   )}
                 >
-                  {" "}
                   Giỏ hàng
                 </div>
               </Link>
@@ -96,7 +113,6 @@ export default function Header() {
                       "hidden"
                     )}
                   >
-                    {" "}
                     Giỏ hàng
                   </div>
                 </Link>

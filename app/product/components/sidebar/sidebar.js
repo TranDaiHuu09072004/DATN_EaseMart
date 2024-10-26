@@ -33,7 +33,7 @@ const Sidebar = ({ listCate, updateCate, listBrand, updateBrand }) => {
             {listCate.map((item) => {
               return (
                 <li
-                  className={cx("item", "bg-white", "active:bg-[#CDCDCD]")}
+                  className={cx("item")}
                   onClick={() => {
                     updateCate({ id: item.id, name: item.name });
                   }}
@@ -59,13 +59,12 @@ const Sidebar = ({ listCate, updateCate, listBrand, updateBrand }) => {
               return (
                 <Link
                   href="#"
-                  className="bg-white"
                   onClick={(e) => {
                     e.preventDefault;
                     updateBrand({ id: item.id, name: item.name });
                   }}
                 >
-                  <img src={`${item.logo}`} />
+                  <img src={item.logo} />
                 </Link>
               );
             })}
