@@ -16,7 +16,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { getProBy2Cate, getProByCate } from "@/service/product";
 import { getBrand } from "@/service/brand";
-
+import { searchProductsByName } from "@/service/product";
 const cx = classNames.bind(styles);
 const Product = () => {
   const [cate, setCate] = useState([]);
@@ -93,6 +93,10 @@ const Product = () => {
   };
 
   console.log("cateSubChoose", cateSubChoose);
+
+  const handleSearchResults = (results) => {
+    setProduct(results); // Update the product list with search results
+  };
 
   return (
     <div className={cx("max-w-screen-xl", " mx-auto", "px-4")}>
