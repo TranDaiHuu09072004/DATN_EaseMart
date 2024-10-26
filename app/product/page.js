@@ -14,7 +14,7 @@ import { Icon } from "@iconify/react";
 import { getCate, getCateById } from "@/service/category";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { getProByCate } from "@/service/product";
+import { getProBy2Cate, getProByCate } from "@/service/product";
 import { getBrand } from "@/service/brand";
 
 const cx = classNames.bind(styles);
@@ -72,13 +72,16 @@ const Product = () => {
 
   //đổi sản phẩm khi nhấp vào cate con
   useEffect(() => {
-    getProByCate("subcategory_id", cateSubChoose).then((data) => {
+    getProBy2Cate(
+      { name: "subcategory_id", id: cateSubChoose.id },
+      { name: "category_id", id: cateChoose.id }
+    ).then((data) => {
       setProduct(data);
     });
   }, [cateSubChoose]);
 
   const handleChooseSubCate = (id) => {
-    setCateSubChoose(`${id}`);
+    setCateSubChoose(id);
   };
 
   const handleChooseCate = (id) => {
@@ -89,7 +92,7 @@ const Product = () => {
     setBrandChoose(id);
   };
 
-  console.log(brandChoose);
+  console.log("cateSubChoose", cateSubChoose);
 
   return (
     <div className={cx("max-w-screen-xl", " mx-auto", "px-4")}>
@@ -192,7 +195,12 @@ const Product = () => {
                       return (
                         <li
                           className={cx("item")}
-                          onClick={() => handleChooseSubCate(item.id)}
+                          onClick={() =>
+                            handleChooseSubCate({
+                              id: item.id,
+                              name: item.name,
+                            })
+                          }
                         >
                           <div className={cx("item-thumbnail")}>
                             <img
