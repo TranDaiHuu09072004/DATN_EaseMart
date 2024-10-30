@@ -27,10 +27,7 @@ export default function Banner() {
 
   return (
     <div>
-      <div
-        className={cx("max-w-screen-xl", "mx-auto")}
-        style={{ marginTop: "15px" }}
-      >
+      <div className={cx("max-w-screen-xl", "mx-auto")}>
         <div className={cx("bg", "flex", "gap-1")}>
           <div
             className={cx(
@@ -44,8 +41,6 @@ export default function Banner() {
               <img src="assets/img/banner/3.png" alt="" />
               <img src="assets/img/banner/slider_banner2.svg" alt="" />
               <img src="assets/img/banner/slider_banner3.svg" alt="" />
-              {/* <img src="assets/img/Banner-slider.png" alt="" />
-              <img src="assets/img/Banner-slider.png" alt="" /> */}
             </Slider>
           </div>
 

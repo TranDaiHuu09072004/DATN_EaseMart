@@ -259,7 +259,6 @@
   gap: 10px;
   background-color: #fff;
   margin: 10px 0;
-  height: 100%;
 }
 
 .item_productrelate img {
@@ -450,9 +449,6 @@
     width: 100%;
   }
 
-  .product_detail {
-  }
-
   .product_name_detail {
     font-size: 20px;
     padding-top: 0;
@@ -503,4 +499,22 @@
 }
 /* Tablet witdth >= 740px and width < 1024px */
 @media only screen and (min-width: 46.25em) and (max-width: 63.9375em) {
+}
+.product_img_left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.img_small {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.thumbnail {
+  width: 80px; /* Chỉnh width tùy ý */
+  height: auto;
+  object-fit: cover; /* Đảm bảo ảnh không bị méo */
+  margin: 0 5px; /* Khoảng cách giữa các ảnh */
 }

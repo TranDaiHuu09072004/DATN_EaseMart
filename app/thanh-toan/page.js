@@ -152,12 +152,12 @@ export default function Payment() {
                 <h5>
                   Tỉnh/ Thành phố <span class={cx("required")}>*</span>
                 </h5>
-                <input
-                  type="text"
+                <select
                   required
-                  placeholder="Vui lòng nhập Tỉnh/ Thành phố"
-                  className="max-xl:w-[320px] xl:w-full max-md:w-full"
-                />
+                  className="max-xl:w-[320px] xl:w-full max-md:w-full "
+                >
+                  <option> Tỉnh/ Thành phố</option>
+                </select>
               </div>
               <div className={cx("phone")}>
                 <h5>

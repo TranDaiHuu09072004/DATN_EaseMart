@@ -1,6 +1,6 @@
 "use client";
 import classNames from "classnames/bind";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./header.module.scss";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -14,7 +14,6 @@ const cx = classNames.bind(styles);
 
 export default function Header() {
   const [searchKeyword, setSearchKeyWord] = useState("");
-
   const handleSearch = (e) => {
     e.preventDefault();
     if (searchKeyword.trim()) {
@@ -30,7 +29,7 @@ export default function Header() {
           <div className={cx("header-top")}>
             <MenuMobile />
             <div className={cx("logo")}>
-              <img src="assets/img/home/logo.png" />
+              <img src="/assets/home/logo.png" />
             </div>
             <form
               onSubmit={handleSearch}
@@ -113,7 +112,7 @@ export default function Header() {
                       "hidden"
                     )}
                   >
-                    Giỏ hàng
+                    Đăng ký
                   </div>
                 </Link>
                 <ul
@@ -173,12 +172,7 @@ export default function Header() {
               </li>
               <li className={cx("item")}>
                 <Link href="/product" className={cx("link")}>
-                  Cửa hàng
-                </Link>
-              </li>
-              <li className={cx("item")}>
-                <Link href="/khuyenmai" className={cx("link")}>
-                  Khuyến mãi
+                  Sản phẩm
                 </Link>
               </li>
               <li className={cx("item")}>
@@ -186,6 +180,12 @@ export default function Header() {
                   Về Chúng Tôi
                 </Link>
               </li>
+              <li className={cx("item")}>
+                <Link href="/khuyenmai" className={cx("link")}>
+                  Khuyến mãi
+                </Link>
+              </li>
+
               <li className={cx("item")}>
                 <Link href="/lienhe" className={cx("link")}>
                   Liên hệ
