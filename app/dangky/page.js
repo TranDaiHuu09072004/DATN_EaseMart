@@ -3,73 +3,108 @@ import React from "react";
 import Link from "next/link";
 import styles from "./dangky.module.css";
 import axios from "axios";
-import { useState } from "react";
-
+import { useForm } from "react-hook-form";
+import * as Yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 export default function DangKy() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  // Yup validation schema
+  const validationSchema = Yup.object().shape({
+    name: Yup.string().required("Họ và tên là bắt buộc"),
+    email: Yup.string()
+      .email("Email không hợp lệ")
+      .required("Email là bắt buộc"),
+    password: Yup.string()
+      .min(8, "Mật khẩu phải có ít nhất 8 ký tự")
+      .required("Mật khẩu là bắt buộc"),
+    confirmPassword: Yup.string()
+      .oneOf([Yup.ref("password"), null], "Mật khẩu xác nhận không khớp")
+      .required("Xác nhận mật khẩu là bắt buộc"),
+  });
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(validationSchema),
+  });
+
+  const onSubmit = async (data) => {
     try {
       const response = await axios.post(
         "https://trandainghia.id.vn/api/register",
-        {
-          name,
-          email,
-          password,
-        }
+        data
       );
       console.log(response.data);
+      toast.success("Đăng ký thành công!", {
+        position: "top-right",
+        autoClose: 3000,
+      });
+      setTimeout(() => {
+        window.location.href = "http://localhost:3001/dangnhap";
+      }, 3000);
     } catch (error) {
       console.error("Đăng ký thất bại:", error.response.data);
+      toast.error("Đăng ký thất bại!", {
+        position: "top-right",
+        autoClose: 3000,
+      });
     }
   };
 
   return (
     <div className={styles.pageContainer}>
+      <ToastContainer />
       <div className={styles.container}>
         <div className={styles.formContainer}>
           <div className={styles.logo}>
-            <h1>EaseMart</h1>
-            <p>Your Daily Essentials, Delivered</p>
+            <h1>Đăng ký hội viên</h1>
+            <p>Đăng ký ngay để trở thành hội viên</p>
           </div>
-          <h2 className={styles.heading}>Đăng ký hội viên</h2>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <input
               type="text"
               className={styles.inputField}
               placeholder="Nhập họ và tên"
-              required
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              {...register("name")}
             />
+            {errors.name && (
+              <p className={styles.error}>{errors.name.message}</p>
+            )}
+
             <input
               type="email"
               className={styles.inputField}
               placeholder="Nhập email"
-              required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              {...register("email")}
             />
+            {errors.email && (
+              <p className={styles.error}>{errors.email.message}</p>
+            )}
+
             <input
               type="password"
               className={styles.inputField}
               placeholder="Nhập mật khẩu"
-              required
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              {...register("password")}
             />
+            {errors.password && (
+              <p className={styles.error}>{errors.password.message}</p>
+            )}
+
             <input
               type="password"
               className={styles.inputField}
               placeholder="Nhập lại mật khẩu"
-              required
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
+              {...register("confirmPassword")}
             />
+            {errors.confirmPassword && (
+              <p className={styles.error}>{errors.confirmPassword.message}</p>
+            )}
+
             <p className={styles.formText}>
               Bằng việc chọn vào Đăng Ký, bạn đồng ý với các điều kiện áp dụng
               của EaseMart để trở thành hội viên của chúng tôi.

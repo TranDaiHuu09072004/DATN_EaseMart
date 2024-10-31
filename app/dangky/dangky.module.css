@@ -22,21 +22,21 @@
   background-color: #fff;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   padding: 40px;
-  text-align: center;
 }
 
 /* Logo và slogan */
 .logo h1 {
   color: #2ba84a;
-  font-size: 28px;
-  margin-bottom: 5px;
+  font-size: 35px;
+  margin-bottom: 15px;
   font-weight: bold;
+  text-align: center;
 }
 
 .logo p {
   color: #666;
-  font-size: 14px;
-  margin-bottom: 30px;
+  font-size: 20px;
+  text-align: center;
 }
 
 /* Tiêu đề form */
@@ -51,7 +51,7 @@
 .inputField {
   width: 100%;
   padding: 12px 15px;
-  margin-bottom: 20px;
+  margin: 15px 0;
   border-radius: 5px;
   border: 1px solid #ccc;
   font-size: 16px;
@@ -61,8 +61,9 @@
 .formText {
   font-size: 14px;
   color: #777;
-  margin-bottom: 25px;
+  margin: 15px 0;
   line-height: 1.5;
+  text-align: center;
 }
 
 /* Nút đăng ký */
@@ -87,6 +88,7 @@
   font-size: 14px;
   color: #555;
   margin: 10px 0;
+  text-align: center;
 }
 
 .socialLogin button {
@@ -130,4 +132,10 @@
 
 .linkContainer a:hover {
   text-decoration: underline;
+}
+
+/* Validate */
+
+.error {
+  color: red; /* Change the text color to red */
 }
