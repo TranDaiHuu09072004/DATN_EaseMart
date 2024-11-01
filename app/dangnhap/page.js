@@ -1,12 +1,85 @@
-"use client"; // Declare this at the top to ensure it's client-side
-import React from "react";
+"use client";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import styles from "./dangnhap.module.css"; // Import CSS module
+import styles from "./dangnhap.module.css";
+import * as Yup from "yup"; // Import Yup for validation
+import { useForm } from "react-hook-form"; // Import useForm from react-hook-form
+import { yupResolver } from "@hookform/resolvers/yup"; // Import yupResolver for Yup integration
+import Swal from "sweetalert2";
+
+// Define validation schema
+const validationSchema = Yup.object().shape({
+  email: Yup.string()
+    .email("Email hoặc password đã tồn tại")
+    .required("Email là bắt buộc"),
+  password: Yup.string()
+    .required("Mật khẩu là bắt buộc")
+    .min(6, "Mật khẩu phải có ít nhất 6 ký tự"),
+});
 
 export default function DangNhap() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [rememberMe, setRememberMe] = useState(false);
+  const [error, setError] = useState("");
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(validationSchema),
+  });
+
+  useEffect(() => {
+    // Kiểm tra dữ liệu đã lưu trong localStorage cho tính năng "Ghi nhớ mật khẩu"
+    const savedEmail = localStorage.getItem("email");
+    const savedPassword = localStorage.getItem("password");
+    if (savedEmail && savedPassword) {
+      setEmail(savedEmail);
+      setPassword(savedPassword);
+      setRememberMe(true);
+    }
+  }, []);
+
+  const handleLogin = async (data) => {
+    const { email, password } = data; // Use data from form
+    try {
+      const response = await fetch("http://localhost:3000/register");
+      if (!response.ok) throw new Error("Network response was not ok");
+
+      const users = await response.json();
+      const user = users.find(
+        (user) => user.email === email && user.password === password
+      );
+
+      if (user) {
+        setError("");
+        Swal.fire("Đăng nhập thành công!", "", "success"); // Use SweetAlert2 for success message
+
+        if (rememberMe) {
+          localStorage.setItem("email", email);
+          localStorage.setItem("password", password);
+        } else {
+          localStorage.removeItem("email");
+          localStorage.removeItem("password");
+        }
+        localStorage.setItem("username", user.name);
+
+        setTimeout(() => {
+          window.location.href = window.location.href = "/";
+        }, 2000);
+      } else {
+        Swal.fire("Đăng nhập thất bại!", "", "error");
+      }
+    } catch (err) {
+      console.error("Lỗi khi gọi API:", err);
+      setError("Có lỗi xảy ra. Vui lòng thử lại sau.");
+    }
+  };
+
   return (
     <div className={styles.pageContainer}>
-      {" "}
       <div className={styles.container}>
         <div className={styles.formContainer}>
           <div className={styles.logo}>
@@ -14,20 +87,37 @@ export default function DangNhap() {
             <p>Your Daily Essentials, Delivered</p>
           </div>
           <h2 className={styles.heading}>Đăng nhập hội viên</h2>
-          <form>
+          <form onSubmit={handleSubmit(handleLogin)}>
             <input
               type="email"
               className={styles.inputField}
               placeholder="Nhập Email"
+              {...register("email")}
               required
             />
+            {errors.email && (
+              <p className={styles.error}>{errors.email.message}</p>
+            )}{" "}
             <input
               type="password"
               className={styles.inputField}
               placeholder="Nhập mật khẩu"
+              {...register("password")}
               required
-              autoComplete="current-password" // Correct autocomplete attribute
+              autoComplete="current-password"
             />
+            {errors.password && (
+              <p className={styles.error}>{errors.password.message}</p>
+            )}
+            <div className={styles.rememberMe}>
+              <input
+                type="checkbox"
+                id="rememberMe"
+                checked={rememberMe}
+                onChange={() => setRememberMe(!rememberMe)}
+              />
+              <label htmlFor="rememberMe">Ghi nhớ mật khẩu</label>
+            </div>
             <button type="submit" className={styles.loginBtn}>
               Đăng nhập
             </button>
@@ -37,8 +127,12 @@ export default function DangNhap() {
           </p>
           <div className={styles.socialLogin}>
             <p>Hoặc</p>
-            <button className={styles.facebookBtn}>Facebook</button>
-            <button className={styles.googleBtn}>Google</button>
+            <button className={`${styles.socialButton} ${styles.facebookBtn}`}>
+              Facebook
+            </button>
+            <button className={`${styles.socialButton} ${styles.googleBtn}`}>
+              Google
+            </button>
           </div>
           <p className={styles.linkContainer}>
             Chưa có tài khoản vui lòng <Link href="/dangky">đăng ký ngay</Link>

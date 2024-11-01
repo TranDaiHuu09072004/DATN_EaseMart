@@ -1822,18 +1822,32 @@
       "brand_id": "50"
     }
   ],
-  "resgister": [
-    {
-      "name": "",
-      "email": "",
-      "password": "",
-      "reconfirmPassword": "",
-      "id": "1f0c"
-    },
+  "register": [
     {
       "id": "6c6c",
       "name": "Hữu Đại Trần ",
       "email": "daihuu@gmail.com",
+      "password": "12345678",
+      "confirmPassword": "12345678"
+    },
+    {
+      "id": "a73e",
+      "name": "mai xuan lam",
+      "email": "lam@gmail.com",
+      "password": "12345678",
+      "confirmPassword": "12345678"
+    },
+    {
+      "id": "5748",
+      "name": "tran dai huuuuu",
+      "email": "daihuu111@gmail.com",
+      "password": "12345678",
+      "confirmPassword": "12345678"
+    },
+    {
+      "id": "9924",
+      "name": "duy muoi",
+      "email": "duymuamuoi@gmail.com",
       "password": "12345678",
       "confirmPassword": "12345678"
     }

@@ -9,6 +9,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
+
 export default function DangKy() {
   // Yup validation schema
   const validationSchema = Yup.object().shape({
@@ -34,10 +35,7 @@ export default function DangKy() {
 
   const onSubmit = async (data) => {
     try {
-      const response = await axios.post(
-        "http://localhost:3000/resgister",
-        data
-      );
+      const response = await axios.post("http://localhost:3000/register", data);
       console.log(response.data);
       toast.success("Đăng ký thành công!", {
         position: "top-right",

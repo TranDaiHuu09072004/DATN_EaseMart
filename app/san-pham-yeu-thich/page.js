@@ -6,23 +6,12 @@ export default function Wishlist() {
   return (
     <div>
       <div className="container">
-        <div className={styles.link_home_news}>
-          <ul className={styles.list_link}>
-            <li>
-              <a href="#">Trang Chủ</a>
-            </li>
-            <li>/</li>
-            <li>
-              <a href="#">Sản phẩm yêu thích</a>
-            </li>
-          </ul>
-        </div>
         {!showproduct_empty ? (
           <div className={styles.product_empty}>
             <h3 className={styles.title_wishlist_empty}>Sản Phẩm Yêu Thích</h3>
             <div className={styles.product_cartempty}>
               <i class="fa-light fa-cart-shopping"></i>
-              <span>Bạn chưa có sản phẩm yêu thích nào</span>
+              <span>Bạn chưa có sản phẩm yêu thích nào?</span>
               <button className={styles.btn_continuewbuy}>
                 Tiếp tục mua sắm
               </button>
