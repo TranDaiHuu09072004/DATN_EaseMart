@@ -143,7 +143,7 @@ export default function Payment() {
                 </h5>
                 <select
                   required
-                  className="max-xl:w-[320px] xl:w-full max-md:w-full "
+                  className="max-xl:w-[320px] h-[40px] xl:w-full max-md:w-full "
                 >
                   <option>Việt Nam</option>
                 </select>
@@ -154,9 +154,9 @@ export default function Payment() {
                 </h5>
                 <select
                   required
-                  className="max-xl:w-[320px] xl:w-full max-md:w-full "
+                  className="max-xl:w-[320px] h-[40px] xl:w-full max-md:w-full border border-[#cccccc] rounded-[5px] my-[10px]"
                 >
-                  <option> Tỉnh/ Thành phố</option>
+                  <option>Việt Nam</option>
                 </select>
               </div>
               <div className={cx("phone")}>
