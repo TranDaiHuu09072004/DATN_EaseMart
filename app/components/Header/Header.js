@@ -9,6 +9,9 @@ import { faUser } from "@fortawesome/free-regular-svg-icons";
 import HeaderScroll from "./components/HeaderScroll/HeaderScroll";
 import { Icon } from "@iconify/react";
 import MenuMobile from "./components/MenuMobile";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 
 const cx = classNames.bind(styles);
 
@@ -31,13 +34,19 @@ export default function Header() {
   };
 
   const handleLogout = () => {
-    // Xóa dữ liệu đăng nhập khỏi localStorage
     localStorage.removeItem("username");
-    window.location.reload(); // Tải lại trang sau khi đăng xuất
+    toast.success("Đăng Xuất thành công!", {
+      position: "top-right",
+      autoClose: 3000,
+    });
+    setTimeout(() => {
+      window.location.reload();
+    }, 2000);
   };
 
   return (
     <div className={cx("box-header")}>
+      <ToastContainer />
       <div className="max-w-screen-xl mx-auto px-4">
         <div className={cx("header")}>
           <div className={cx("header-top")}>
