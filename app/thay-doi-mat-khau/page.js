@@ -1,91 +1,122 @@
 "use client";
 import React, { useState } from "react";
 import styles from "./replace_password.module.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-
+import classNames from "classnames/bind";
+const cx = classNames.bind(styles);
 export default function ChangePassword() {
-  const [showPassword, setShowPassword] = useState(false);
-  const [showNewPassword, setShowNewPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-
-  const togglePasswordVisibility = (type) => {
-    if (type === "current") setShowPassword(!showPassword);
-    if (type === "new") setShowNewPassword(!showNewPassword);
-    if (type === "confirm") setShowConfirmPassword(!showConfirmPassword);
-  };
-
   return (
     <div>
-      <div className="container">
-        <div className={styles.link_home_news}>
-          <ul className={styles.list_link}>
-            <li>
-              <a href="#">Trang Chủ</a>
-            </li>
-            <li>/</li>
-            <li>
-              <a href="#">Đổi mật khẩu</a>
-            </li>
-          </ul>
-        </div>
-        <div className={styles.change_password}>
-          <h3 className={styles.title_changepassword}>ĐỔI MẬT KHẨU</h3>
+      <div className={cx("max-w-screen-xl", " mx-auto", "p-4")}>
+        <div
+          className={cx(
+            "change_password",
+            "xl:mx-auto",
+            "xl:max-w-[700px]",
+            "max-lg:w-full",
+            "max-md:mx-auto"
+          )}
+        >
+          <h3 className={cx("title_changepassword")}>ĐỔI MẬT KHẨU</h3>
           <form action="">
-            {/* Mật khẩu hiện tại */}
-            <div className={styles.now_pasword}>
-              <h5>
-                Mật khẩu hiện tại <span className={styles.changecolor}>*</span>
+            <div
+              className={cx(
+                "now_pasword",
+                "xl:flex",
+                "xl:gap-[50px]",
+                "xl:items-center",
+                "xl:mt-5",
+                "max-lg:flex-col"
+              )}
+            >
+              <h5 className="max-lg:mb-2">
+                Mật khẩu hiện tại <span className={cx("changecolor")}>*</span>
               </h5>
-              <div className={styles.password_input_wrapper}>
-                <input
-                  type={showPassword ? "text" : "password"}
-                  className={styles.ip_now_password}
-                />
-                <FontAwesomeIcon
-                  icon={showPassword ? faEye : faEyeSlash}
-                  className={styles.eye_icon}
-                  onClick={() => togglePasswordVisibility("current")}
-                />
-              </div>
+
+              <input
+                type="password"
+                className={cx(
+                  "ip_now_password",
+                  "xl:w-[430px]",
+                  "h-[35px]",
+                  "max-lg:w-full",
+                  "border border-[#cccccc]",
+                  "rounded-[5px]"
+                )}
+              />
             </div>
 
-            {/* Mật khẩu mới */}
-            <div className={styles.new_password}>
-              <h5>
-                Mật khẩu mới <span className={styles.changecolor}>*</span>
+            <div
+              className={cx(
+                "new_password",
+                "xl:flex",
+                "xl:gap-[75px]",
+                "xl:items-center",
+                "mt-5",
+                "max-lg:flex-col"
+              )}
+            >
+              <h5 className="max-lg:mb-2">
+                Mật khẩu mới <span className={cx("changecolor")}>*</span>
               </h5>
-              <div className={styles.password_input_wrapper}>
-                <input
-                  type={showNewPassword ? "text" : "password"}
-                  className={styles.ip_new_password}
-                />
-                <FontAwesomeIcon
-                  icon={showNewPassword ? faEye : faEyeSlash}
-                  className={styles.eye_icon}
-                  onClick={() => togglePasswordVisibility("new")}
-                />
-              </div>
+
+              <input
+                type="password"
+                className={cx(
+                  "ip_new_password",
+                  "xl:w-[430px]",
+                  "h-[35px]",
+                  "max-lg:w-full",
+                  "border border-[#cccccc]",
+                  "rounded-[5px]"
+                )}
+              />
             </div>
 
-            {/* Nhập lại mật khẩu mới */}
-            <div className={styles.enter_new_password}>
-              <h5>
-                Nhập mật khẩu mới <span className={styles.changecolor}>*</span>
+            <div
+              className={cx(
+                "enter_new_password",
+                "xl:flex",
+                "xl:gap-[33px]",
+                "xl:items-center",
+                "mt-5",
+                "max-lg:flex-col"
+              )}
+            >
+              <h5 className="max-lg:mb-2">
+                Nhập mật khẩu mới <span className={cx("changecolor")}>*</span>
               </h5>
-              <div className={styles.password_input_wrapper}>
-                <input
-                  type={showConfirmPassword ? "text" : "password"}
-                  className={styles.ip_enter_new_password}
-                />
-                <FontAwesomeIcon
-                  icon={showConfirmPassword ? faEye : faEyeSlash}
-                  className={styles.eye_icon}
-                  onClick={() => togglePasswordVisibility("confirm")}
-                />
-              </div>
+
+              <input
+                type="password"
+                className={cx(
+                  "ip_enter_new_password",
+                  "xl:w-[430px]",
+                  "h-[35px]",
+                  "max-lg:w-full",
+                  "border border-[#cccccc]",
+                  "rounded-[5px]"
+                )}
+              />
             </div>
           </form>
+          <button
+            className={cx(
+              "submit_button",
+              "xl:w-[130px]",
+              "max-lg:w-full",
+              "items-center",
+              "bg-[#3bb77e]",
+              "text-white",
+              "xl:ml-[320px]",
+              "p-[15px]",
+              "xl:my-4",
+              "border-none",
+              "rounded-[5px]",
+              "cursor-pointer"
+            )}
+          >
+            Đổi mật khẩu
+          </button>
         </div>
       </div>
     </div>

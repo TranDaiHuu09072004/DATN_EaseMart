@@ -1821,5 +1821,28 @@
       "subcategory_id": "8",
       "brand_id": "50"
     }
+  ],
+  "resgister": [
+    {
+      "name": "",
+      "email": "",
+      "password": "",
+      "reconfirmPassword": "",
+      "id": "1f0c"
+    },
+    {
+      "id": "6c6c",
+      "name": "Hữu Đại Trần ",
+      "email": "daihuu@gmail.com",
+      "password": "12345678",
+      "confirmPassword": "12345678"
+    }
+  ],
+  "login": [
+    {
+      "name": "",
+      "email": "",
+      "id": "d479"
+    }
   ]
 }

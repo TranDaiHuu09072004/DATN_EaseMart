@@ -85,7 +85,7 @@ export default function ProductDetail({ params }) {
           <img
             src={`/${product.image}`}
             alt={product.name}
-            className="w-full h-full mx-auto"
+            className="w-full h-auto mx-auto"
           />
           <div className={cx("img_small", "flex", "justify-center")}>
             {[...Array(3)].map((_, index) => (
@@ -146,7 +146,6 @@ export default function ProductDetail({ params }) {
             </div>
           </div>
 
-          {/* SKU and Quantity */}
           <div className={cx("sku")}>
             <span className={cx("name")}>Mã hàng</span>
             <span className={cx("code_sku")}>{product.sku || "ESM12AB30"}</span>
@@ -159,10 +158,14 @@ export default function ProductDetail({ params }) {
               <button className={cx("upcount")}>+</button>
             </div>
           </div>
-
-          {/* Action Buttons */}
+          <div className="btn_wishlistProduct my-[10px]">
+            <button className="border border-red-500 text-red-500 font-semibold text-[18px] w-[145px] h-[35px] rounded-[5px]">
+              <i class="fa-solid fa-heart text-red-500 text-[18px]"></i> Yêu
+              thích
+            </button>
+          </div>
           <div className="flex_btn mt-3 max-md:flex max-md:flex-col max-md:gap-y-4">
-            <button className={cx("btn_addCart")}>
+            <button className={cx("btn_addCart", "font-semibold")}>
               <i className="fa-solid fa-cart-shopping"></i> Thêm vào giỏ hàng
             </button>
             <button className={cx("btn_buynow", "lg:ml-3", "max-lg:ml-[10px]")}>

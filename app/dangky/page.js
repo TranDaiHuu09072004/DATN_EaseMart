@@ -35,22 +35,22 @@ export default function DangKy() {
   const onSubmit = async (data) => {
     try {
       const response = await axios.post(
-        "https://trandainghia.id.vn/api/register",
+        "http://localhost:3000/resgister",
         data
       );
       console.log(response.data);
       toast.success("Đăng ký thành công!", {
         position: "top-right",
-        autoClose: 3000,
+        autoClose: 2000,
       });
       setTimeout(() => {
         window.location.href = "http://localhost:3001/dangnhap";
-      }, 3000);
+      }, 2000);
     } catch (error) {
       console.error("Đăng ký thất bại:", error.response.data);
       toast.error("Đăng ký thất bại!", {
         position: "top-right",
-        autoClose: 3000,
+        autoClose: 2000,
       });
     }
   };
