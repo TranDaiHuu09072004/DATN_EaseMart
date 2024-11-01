@@ -14,12 +14,26 @@ const cx = classNames.bind(styles);
 
 export default function Header() {
   const [searchKeyword, setSearchKeyWord] = useState("");
+  const [username, setUsername] = useState(null);
+
+  useEffect(() => {
+    // Lấy tên người dùng từ localStorage nếu đã đăng nhập
+    const name = localStorage.getItem("username");
+    if (name) setUsername(name);
+  }, []);
+
   const handleSearch = (e) => {
     e.preventDefault();
     if (searchKeyword.trim()) {
       const encodedKeyword = encodeURIComponent(searchKeyword.trim());
       window.location.href = `/product?name=${encodedKeyword}`;
     }
+  };
+
+  const handleLogout = () => {
+    // Xóa dữ liệu đăng nhập khỏi localStorage
+    localStorage.removeItem("username");
+    window.location.reload(); // Tải lại trang sau khi đăng xuất
   };
 
   return (
@@ -29,7 +43,7 @@ export default function Header() {
           <div className={cx("header-top")}>
             <MenuMobile />
             <div className={cx("logo")}>
-              <img src="/assets/home/logo.png" />
+              <img src="/assets/home/logo.png" alt="Logo" />
             </div>
             <form
               onSubmit={handleSearch}
@@ -88,78 +102,64 @@ export default function Header() {
                 </div>
               </Link>
               <div className={cx("account", "relative", "group", "py-3")}>
-                <Link href="/dangky" className={cx("flex")}>
-                  <div className={cx("box-icon-account")}>
-                    <FontAwesomeIcon
-                      className={cx(
-                        "icon-cart",
-                        "lg:w-7",
-                        "lg:h-7",
-                        "w-9",
-                        "h-9"
-                      )}
-                      icon={faUser}
-                    />
-                  </div>
-                  <div
-                    className={cx(
-                      "title",
-                      "xl:text-xl",
-                      "lg:text-base",
-                      "text-sm",
-                      "w-20",
-                      "lg:block",
-                      "hidden"
-                    )}
-                  >
-                    Đăng ký
+                <Link href={username ? "#" : "/dangky"} className="flex items-center space-x-2">
+                  <FontAwesomeIcon
+                    icon={faUser}
+                    className="text-white lg:w-7 lg:h-7 w-9 h-9"
+                  />
+                  <div className="text-white lg:text-lg text-base font-semibold">
+                    {username ? `Chào, ${username}` : "Đăng ký"}
                   </div>
                 </Link>
-                <ul
-                  className={cx(
-                    "hidden",
-                    "menu-child",
-                    "w-48",
-                    "absolute",
-                    "-top-full",
-                    "right-0",
-                    "flex",
-                    "flex-col",
-                    "opacity-0",
-                    "group-hover:flex",
-                    "group-hover:opacity-100",
-                    "group-hover:top-full",
-                    "transition-all",
-                    "ease-in-out-300",
-                    "bg-white"
-                  )}
-                >
-                  <li className={cx("text-black", "px-3", "py-4")}>
-                    <Link href="#">Cập nhật tài khoản</Link>
-                  </li>
-                  <li className={cx("text-black", "px-3", "py-4")}>
-                    <Link href="#">Cập nhật tài khoản</Link>
-                  </li>
-                  <li className={cx("text-black", "px-3", "py-4")}>
-                    <Link href="#">Cập nhật tài khoản</Link>
-                  </li>
-                  <li
+                {username && (
+                  <ul
                     className={cx(
-                      "text-black",
-                      "px-3",
-                      "py-4",
+                      "hidden",
+                      "menu-child",
+                      "w-48",
+                      "absolute",
+                      "-top-full",
+                      "right-0",
                       "flex",
-                      "items-center",
-                      "gap-2"
+                      "flex-col",
+                      "opacity-0",
+                      "group-hover:flex",
+                      "group-hover:opacity-100",
+                      "group-hover:top-full",
+                      "transition-all",
+                      "ease-in-out-300",
+                      "bg-white"
                     )}
                   >
-                    <Icon
-                      icon="material-symbols:logout-sharp"
-                      className={cx("w-5", "h-5")}
-                    />
-                    <Link href="#">Đăng xuất</Link>
-                  </li>
-                </ul>
+                    <li className={cx("text-black", "px-3", "py-4")}>
+                      <Link href="#">Cập nhật tài khoản</Link>
+                    </li>
+                    <li className={cx("text-black", "px-3", "py-4")}>
+                      <Link href="#">Đổi mật khẩu</Link>
+                    </li>
+                    <li className={cx("text-black", "px-3", "py-4")}>
+                      <Link href="#">Sản phẩm yêu thích</Link>
+                    </li>
+                    <li
+                      className={cx(
+                        "text-black",
+                        "px-3",
+                        "py-4",
+                        "flex",
+                        "items-center",
+                        "gap-2",
+                        "cursor-pointer"
+                      )}
+                      onClick={handleLogout}
+                    >
+                      <Icon
+                        icon="material-symbols:logout-sharp"
+                        className={cx("w-5", "h-5")}
+                      />
+                      Đăng xuất
+                    </li>
+                  </ul>
+                )}
               </div>
             </div>
           </div>
@@ -185,7 +185,6 @@ export default function Header() {
                   Khuyến mãi
                 </Link>
               </li>
-
               <li className={cx("item")}>
                 <Link href="/lienhe" className={cx("link")}>
                   Liên hệ

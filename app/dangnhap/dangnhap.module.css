@@ -126,3 +126,29 @@
 .linkContainer a:hover {
   text-decoration: underline;
 }
+/* Phần "Ghi nhớ mật khẩu" */
+.rememberMe {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.rememberMe input[type="checkbox"] {
+  margin-right: 8px;
+  width: 18px;
+  height: 18px;
+  accent-color: #2ba84a; /* Đổi màu cho checkbox */
+  cursor: pointer;
+}
+
+.rememberMe label {
+  cursor: pointer;
+  color: #555;
+}
+
+.rememberMe label:hover {
+  color: #2ba84a;
+}

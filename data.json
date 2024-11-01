@@ -1821,5 +1821,42 @@
       "subcategory_id": "8",
       "brand_id": "50"
     }
+  ],
+  "register": [
+    {
+      "name": "",
+      "email": "",
+      "password": "",
+      "reconfirmPassword": "",
+      "id": "1f0c"
+    },
+    {
+      "id": "6c6c",
+      "name": "Hữu Đại Trần",
+      "email": "daihuu@gmail.com",
+      "password": "12345678",
+      "confirmPassword": "12345678"
+    },
+    {
+      "id": "a73e",
+      "name": "mai xuan lam",
+      "email": "lam@gmail.com",
+      "password": "12345678",
+      "confirmPassword": "12345678"
+    },
+    {
+      "id": "5748",
+      "name": "tran dai huuuuu",
+      "email": "daihuu111@gmail.com",
+      "password": "12345678",
+      "confirmPassword": "12345678"
+    }
+  ],
+  "login": [
+    {
+      "name": "",
+      "email": "",
+      "id": "d479"
+    }
   ]
 }

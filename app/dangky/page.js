@@ -9,6 +9,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
+
 export default function DangKy() {
   // Yup validation schema
   const validationSchema = Yup.object().shape({
@@ -35,7 +36,7 @@ export default function DangKy() {
   const onSubmit = async (data) => {
     try {
       const response = await axios.post(
-        "https://trandainghia.id.vn/api/register",
+        "http://localhost:3000/register",
         data
       );
       console.log(response.data);
@@ -47,11 +48,19 @@ export default function DangKy() {
         window.location.href = "http://localhost:3001/dangnhap";
       }, 3000);
     } catch (error) {
-      console.error("Đăng ký thất bại:", error.response.data);
-      toast.error("Đăng ký thất bại!", {
-        position: "top-right",
-        autoClose: 3000,
-      });
+      if (error.response) {
+        console.error("Đăng ký thất bại:", error.response.data);
+        toast.error("Đăng ký thất bại!", {
+          position: "top-right",
+          autoClose: 3000,
+        });
+      } else {
+        console.error("Đăng ký thất bại:", error.message);
+        toast.error("Đăng ký thất bại! Lỗi không xác định.", {
+          position: "top-right",
+          autoClose: 3000,
+        });
+      }
     }
   };
 
