@@ -31,18 +31,31 @@ export default function ChangePassword() {
               <h5 className="max-lg:mb-2">
                 Mật khẩu hiện tại <span className={cx("changecolor")}>*</span>
               </h5>
-
-              <input
-                type="password"
-                className={cx(
-                  "ip_now_password",
-                  "xl:w-[430px]",
-                  "h-[35px]",
-                  "max-lg:w-full",
-                  "border border-[#cccccc]",
-                  "rounded-[5px]"
-                )}
-              />
+              <div className={cx("relative")}>
+                <input
+                  type="password"
+                  className={cx(
+                    "ip_now_password",
+                    "xl:w-[430px]",
+                    "h-[35px]",
+                    "max-lg:w-full",
+                    "border border-[#cccccc]",
+                    "rounded-[5px]",
+                    "pr-10"
+                  )}
+                />
+                <span
+                  className={cx(
+                    "absolute",
+                    "right-2",
+                    "top-1/2",
+                    "-translate-y-1/2",
+                    "cursor-pointer"
+                  )}
+                >
+                  <i class="fa-regular fa-eye"></i>
+                </span>
+              </div>
             </div>
 
             <div
@@ -58,18 +71,30 @@ export default function ChangePassword() {
               <h5 className="max-lg:mb-2">
                 Mật khẩu mới <span className={cx("changecolor")}>*</span>
               </h5>
-
-              <input
-                type="password"
-                className={cx(
-                  "ip_new_password",
-                  "xl:w-[430px]",
-                  "h-[35px]",
-                  "max-lg:w-full",
-                  "border border-[#cccccc]",
-                  "rounded-[5px]"
-                )}
-              />
+              <div className={cx("relative")}>
+                <input
+                  type="password"
+                  className={cx(
+                    "ip_new_password",
+                    "xl:w-[430px]",
+                    "h-[35px]",
+                    "max-lg:w-full",
+                    "border border-[#cccccc]",
+                    "rounded-[5px]"
+                  )}
+                />
+                <span
+                  className={cx(
+                    "absolute",
+                    "right-2",
+                    "top-1/2",
+                    "-translate-y-1/2",
+                    "cursor-pointer"
+                  )}
+                >
+                  <i class="fa-regular fa-eye"></i>
+                </span>
+              </div>
             </div>
 
             <div
@@ -85,18 +110,30 @@ export default function ChangePassword() {
               <h5 className="max-lg:mb-2">
                 Nhập mật khẩu mới <span className={cx("changecolor")}>*</span>
               </h5>
-
-              <input
-                type="password"
-                className={cx(
-                  "ip_enter_new_password",
-                  "xl:w-[430px]",
-                  "h-[35px]",
-                  "max-lg:w-full",
-                  "border border-[#cccccc]",
-                  "rounded-[5px]"
-                )}
-              />
+              <div className={cx("relative")}>
+                <input
+                  type="password"
+                  className={cx(
+                    "ip_enter_new_password",
+                    "xl:w-[430px]",
+                    "h-[35px]",
+                    "max-lg:w-full",
+                    "border border-[#cccccc]",
+                    "rounded-[5px]"
+                  )}
+                />
+                <span
+                  className={cx(
+                    "absolute",
+                    "right-2",
+                    "top-1/2",
+                    "-translate-y-1/2",
+                    "cursor-pointer"
+                  )}
+                >
+                  <i class="fa-regular fa-eye"></i>
+                </span>
+              </div>
             </div>
           </form>
           <button

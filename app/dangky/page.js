@@ -35,17 +35,20 @@ export default function DangKy() {
 
   const onSubmit = async (data) => {
     try {
-      const response = await axios.post("http://localhost:3000/register", data);
+      const response = await axios.post("http://localhost:3000/users", data);
       console.log(response.data);
       toast.success("Đăng ký thành công!", {
         position: "top-right",
         autoClose: 2000,
       });
       setTimeout(() => {
-        window.location.href = "http://localhost:3001/dangnhap";
+        window.location.href = "/dangnhap";
       }, 2000);
     } catch (error) {
-      console.error("Đăng ký thất bại:", error.response.data);
+      console.error(
+        "Đăng ký thất bại:",
+        error.response ? error.response.data : error.message
+      );
       toast.error("Đăng ký thất bại!", {
         position: "top-right",
         autoClose: 2000,

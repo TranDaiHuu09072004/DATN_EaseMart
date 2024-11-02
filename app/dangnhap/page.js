@@ -20,7 +20,7 @@ const validationSchema = Yup.object().shape({
 export default function DangNhap() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [rememberMe, setRememberMe] = useState(false);
+  const [rememberMe, setRememberMe] = useState(true);
   const [error, setError] = useState("");
 
   const {
@@ -42,10 +42,14 @@ export default function DangNhap() {
     }
   }, []);
 
+  const generateToken = () => {
+    return Math.random().toString(36).slice(2); // Tạo token ngẫu nhiên
+  };
+
   const handleLogin = async (data) => {
     const { email, password } = data; // Use data from form
     try {
-      const response = await fetch("http://localhost:3000/register");
+      const response = await fetch("http://localhost:3000/users");
       if (!response.ok) throw new Error("Network response was not ok");
 
       const users = await response.json();
@@ -55,19 +59,22 @@ export default function DangNhap() {
 
       if (user) {
         setError("");
-        Swal.fire("Đăng nhập thành công!", "", "success"); // Use SweetAlert2 for success message
+        const token = generateToken(); // Tạo token ngẫu nhiên
+        console.log("Token:", token);
+        Swal.fire("Đăng nhập thành công!", "", "success");
 
         if (rememberMe) {
-          localStorage.setItem("email", email);
-          localStorage.setItem("password", password);
+          localStorage.setItem(
+            "user",
+            JSON.stringify({ email, token, username: user.name })
+          );
         } else {
           localStorage.removeItem("email");
-          localStorage.removeItem("password");
+          localStorage.removeItem("token"); // Remove token if not remembering
         }
-        localStorage.setItem("username", user.name);
 
         setTimeout(() => {
-          window.location.href = window.location.href = "/";
+          window.location.href = "/";
         }, 2000);
       } else {
         Swal.fire("Đăng nhập thất bại!", "", "error");
