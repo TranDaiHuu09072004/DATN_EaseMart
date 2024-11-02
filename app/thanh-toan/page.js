@@ -143,7 +143,7 @@ export default function Payment() {
                 </h5>
                 <select
                   required
-                  className="max-xl:w-[320px] xl:w-full max-md:w-full "
+                  className="max-xl:w-[320px] h-[40px] xl:w-full max-md:w-full "
                 >
                   <option>Việt Nam</option>
                 </select>
@@ -152,12 +152,12 @@ export default function Payment() {
                 <h5>
                   Tỉnh/ Thành phố <span class={cx("required")}>*</span>
                 </h5>
-                <input
-                  type="text"
+                <select
                   required
-                  placeholder="Vui lòng nhập Tỉnh/ Thành phố"
-                  className="max-xl:w-[320px] xl:w-full max-md:w-full"
-                />
+                  className="max-xl:w-[320px] h-[40px] xl:w-full max-md:w-full border border-[#cccccc] rounded-[5px] my-[10px]"
+                >
+                  <option>Việt Nam</option>
+                </select>
               </div>
               <div className={cx("phone")}>
                 <h5>
@@ -255,31 +255,34 @@ export default function Payment() {
             </div>
             <div className={cx("payment_method")}>
               <h5 className=" text-2xl mb-3 font-medium ">
+                <i class="fa-solid fa-money-bill-transfer text-[25px] text-[#3bb77e] font-bold pr-1"></i>
                 Phương thức thanh toán
               </h5>
-              <div className="flex text-center items-center gap-2">
-                <input
-                  type="checkbox"
-                  className="w-[20px] h-[20px] mt-2 mb-3"
-                />
-                <span className={cx("checkmark")}></span>
-                <a href="" className="">
-                  <i class="fa-solid fa-money-bill-transfer text-[25px] text-[#3bb77e] font-bold"></i>{" "}
-                  Chuyển khoản ngân hàng
-                </a>
-              </div>
-
-              <div className="flex text-center items-center gap-2">
-                <input
-                  type="checkbox"
-                  className="w-[20px] h-[20px] mt-2 mb-3"
-                />
-                <span className={cx("checkmark")}></span>
-                <a href="" className="text-[18px]">
-                  <i class="fa-solid fa-circle-dollar  text-[25px] text-[#3bb77e] font-bold"></i>{" "}
-                  Thanh toán khi nhận hàng
-                </a>
-              </div>
+              <select
+                name=""
+                id=""
+                className="text-[18px] w-full h-[35px] rounded-[5px] border-2 border-[#3bb77e] mb-2"
+              >
+                <option value="Thanh Toán Khi Nhận Hàng">
+                  Thanh Toán Khi Nhận Hàng
+                </option>
+                <option value="Thanh toán bằng VNPAY">
+                  Thanh toán bằng VNPAY
+                </option>
+              </select>
+              <h5 className=" text-2xl mb-3 font-medium">
+                <i class="fa-solid fa-truck-fast  text-[25px] text-[#3bb77e] font-bold pr-1"></i>
+                Hình thức vận chuyển
+              </h5>
+              <select
+                name=""
+                id=""
+                className="text-[18px] w-full h-[35px] rounded-[5px] border-2 border-[#3bb77e]"
+              >
+                <option value="Giao hàng hỏa tốc">Giao hàng hỏa tốc</option>
+                <option value="Giao hàng nhanh">Giao hàng nhanh</option>
+                <option value="Giao hàng tiết kiệm">Giao hàng tiết kiệm</option>
+              </select>
               <p className={cx("payment_description")}>
                 Thực hiện thanh toán vào ngay tài khoản ngân hàng của chúng tôi.
               </p>

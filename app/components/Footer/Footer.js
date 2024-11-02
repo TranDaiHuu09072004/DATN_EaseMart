@@ -103,18 +103,18 @@ export default function Footer() {
                     <h6 className={styles.footer_item}>Từ mạng xã hội</h6>
                     <div className={styles.media_social}>
                       <img
-                        src="assets/img/ft_fb.svg"
+                        src="/assets/img/ft_fb.svg"
                         alt=""
                         className={styles.gg_play}
                       />
                       <img
                         className={styles.app_store}
-                        src="assets/img/ft_tt.svg"
+                        src="/assets/img/ft_tt.svg"
                         alt=""
                       />
                       <img
                         className={styles.app_store}
-                        src="assets/img/ft_ig.svg"
+                        src="/assets/img/ft_ig.svg"
                         alt=""
                       />
                     </div>

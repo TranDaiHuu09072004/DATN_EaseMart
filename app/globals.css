@@ -148,3 +148,11 @@ body {
   z-index: 50;
   /* background-color: transparent !important ; */
 }
+
+.limit_text {
+  display: -webkit-box;
+  -webkit-box-orient: vertical; /* Định hướng theo chiều dọc */
+  -webkit-line-clamp: 1; /* Giới hạn số dòng */
+  overflow: hidden; /* Ẩn văn bản ngoài giới hạn */
+  text-overflow: ellipsis;
+}
