@@ -51,7 +51,7 @@ export default function Header() {
         <div className={cx("header")}>
           <div className={cx("header-top")}>
             <MenuMobile />
-            <div className={cx("logo")}>
+            <div className={cx("logo", "w-full", "h-auto")}>
               <img src="/assets/home/logo.png" alt="Logo" />
             </div>
             <form
@@ -119,7 +119,7 @@ export default function Header() {
                     icon={faUser}
                     className="text-white lg:w-7 lg:h-7 w-9 h-9"
                   />
-                  <div className="text-white lg:text-lg text-base font-semibold w-[150px]">
+                  <div className="text-white lg:text-lg text-base font-medium w-[150px]">
                     {username ? `Chào, ${username}` : "Đăng ký"}
                   </div>
                 </Link>

@@ -1824,9 +1824,13 @@
   ],
   "users": [
     {
-      "id": "38f5",
-      "name": "Đức ANh",
-      "email": "ducanh@gmail.com",
+      "id": "9212",
+      "password": "123456789"
+    },
+    {
+      "id": "44a8",
+      "name": "duybuonmuoi",
+      "email": "duymuoi@gmail.com",
       "password": "12345678",
       "confirmPassword": "12345678"
     }

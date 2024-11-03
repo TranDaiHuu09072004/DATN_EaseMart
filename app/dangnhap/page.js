@@ -68,9 +68,10 @@ export default function DangNhap() {
             "user",
             JSON.stringify({ email, token, username: user.name })
           );
+          localStorage.setItem("username", user.name); // Store username
         } else {
-          localStorage.removeItem("email");
-          localStorage.removeItem("token"); // Remove token if not remembering
+          localStorage.setItem("username", user.name);
+          localStorage.removeItem("user"); // Xóa thông tin người dùng nếu không ghi nhớ
         }
 
         setTimeout(() => {
