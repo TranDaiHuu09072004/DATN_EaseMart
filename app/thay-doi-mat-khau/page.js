@@ -1,10 +1,12 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
 import styles from "./replace_password.module.css";
 import classNames from "classnames/bind";
 import Swal from "sweetalert2";
 import axios from "axios";
+
 const cx = classNames.bind(styles);
+
 export default function ChangePassword() {
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
@@ -12,60 +14,50 @@ export default function ChangePassword() {
   const [showCurrentPassword, setShowCurrentPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  useEffect(() => {
-    const fetchCurrentPassword = async () => {
-      try {
-        const response = await axios.get("http://localhost:3000/users");
-        setCurrentPassword(response.data.password);
-      } catch (error) {
-        console.error("Lỗi khi lấy mật khẩu hiện tại:", error);
-      }
-    };
-    fetchCurrentPassword();
-  }, []);
 
   const handleChangePassword = async (e) => {
     e.preventDefault();
+
+    // Kiểm tra mật khẩu xác nhận có khớp không
     if (newPassword !== confirmPassword) {
       Swal.fire("Lỗi", "Mật khẩu mới không khớp!", "error");
       return;
     }
+
     try {
-      const usersResponse = await axios.get("http://localhost:3000/users");
-      const users = usersResponse.data;
-      const user = users.find((user) => user.id === users);
-      if (user) {
-        if (user.password !== currentPassword) {
-          Swal.fire("Lỗi", "Mật khẩu hiện tại không đúng!", "error");
-          return;
+      // Gọi API để đổi mật khẩu
+      const response = await axios.put(
+        "http://trandainghia.id.vn/api/user/update-password",
+        {
+          current_password: currentPassword,
+          new_password: newPassword,
+          new_password_confirmation: confirmPassword,
         }
-        const response = await axios.put(
-          `http://localhost:3000/users/${user.id}`,
-          {
-            password: newPassword,
-          }
+      );
+
+      if (response.status === 200) {
+        Swal.fire(
+          "Thành công",
+          "Bạn đã thay đổi mật khẩu thành công!",
+          "success"
         );
-        if (response.status === 200) {
-          Swal.fire(
-            "Thành công",
-            "Bạn đã thay đổi mật khẩu thành công!",
-            "success"
-          );
-        } else {
-          Swal.fire("Lỗi", "Có lỗi xảy ra khi thay đổi mật khẩu!", "error");
-        }
       } else {
-        Swal.fire("Lỗi", "Người dùng không tìm thấy!", "error");
+        Swal.fire("Lỗi", "Có lỗi xảy ra khi thay đổi mật khẩu!", "error");
       }
     } catch (error) {
-      Swal.fire("Lỗi", "Có lỗi xảy ra khi thay đổi mật khẩu!", "error");
+      // Hiển thị lỗi nếu có lỗi khi gọi API
+      Swal.fire(
+        "Lỗi",
+        "Mật khẩu hiện tại không đúng hoặc có lỗi khi đổi mật khẩu!",
+        "error"
+      );
       console.error("Lỗi khi thay đổi mật khẩu:", error);
     }
   };
 
   return (
     <div>
-      <div className={cx("max-w-screen-xl", " mx-auto", "p-4")}>
+      <div className={cx("max-w-screen-xl", "mx-auto", "p-4")}>
         <div
           className={cx(
             "change_password",
@@ -103,9 +95,7 @@ export default function ChangePassword() {
                     "pr-10"
                   )}
                   value={currentPassword}
-                  // {{ edit_1 }}
-                  onChange={(e) => setCurrentPassword(e.target.value)} // Cho phép nhập mật khẩu hiện tại
-                  // {{ edit_1 }}
+                  onChange={(e) => setCurrentPassword(e.target.value)}
                 />
                 <span
                   className={cx(
@@ -128,6 +118,7 @@ export default function ChangePassword() {
               </div>
             </div>
 
+            {/* Trường mật khẩu mới */}
             <div
               className={cx(
                 "new_password",
@@ -173,6 +164,7 @@ export default function ChangePassword() {
               </div>
             </div>
 
+            {/* Xác nhận mật khẩu mới */}
             <div
               className={cx(
                 "enter_new_password",
