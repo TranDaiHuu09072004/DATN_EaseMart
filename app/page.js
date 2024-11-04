@@ -1,15 +1,15 @@
 "use client";
 import classNames from "classnames/bind";
 import styles from "./home.module.scss";
-import Banner from "./components/Banner/Banner";
+import Banner from "../components/Banner/Banner";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCopy } from "@fortawesome/free-regular-svg-icons";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
-import Countdown from "./components/CountDown/CountDown";
+import Countdown from "../components/CountDown/CountDown";
 import { useState, useEffect } from "react";
 import { fetchProducts } from "@/service/product";
 import Link from "next/link";
-
+import { Dispatch, useCart, CartFunction } from "../components/CartFunction";
 const cx = classNames.bind(styles);
 
 export default function Home() {
@@ -19,6 +19,7 @@ export default function Home() {
   const [productsOutstanding, setProductsOutstanding] = useState([]);
   const [isChatVisible, setChatVisible] = useState(false);
   const [selectedMessage, setSelectedMessage] = useState(null);
+
   useEffect(() => {
     fetchProducts("Product_Popular").then((popular) => {
       setProductsPopular(popular.slice(0, 10));
@@ -281,6 +282,7 @@ export default function Home() {
 }
 
 const ProductList = ({ products }) => {
+  const { state, dispatch } = useCart();
   const formatPrice = (price) => {
     return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
@@ -300,19 +302,19 @@ const ProductList = ({ products }) => {
             )}
             key={product.id}
           >
-            <Link
-              href={`/chi-tiet-san-pham/${product.id}`}
-              className="w-full h-full"
-            >
+            <div className="w-full h-full">
               <div className={cx("product-item")}>
                 <img
                   src={product.image}
                   alt={product.name}
                   className={cx("product-image", "h-auto", "object-cover")}
                 />
-                <div className={cx("content-product")}>
+                <Link
+                  href={`/chi-tiet-san-pham/${product.id}`}
+                  className={cx("content-product")}
+                >
                   <h3>{product.name}</h3>
-                </div>
+                </Link>
                 <div className={cx("unit")}>
                   ĐVT: <span>{product.unit_of_caculation}</span>
                 </div>
@@ -333,6 +335,10 @@ const ProductList = ({ products }) => {
                     "max-h-full",
                     "items-center"
                   )}
+                  onClick={() => {
+                    product.quantity = 1;
+                    dispatch(new Dispatch("ADD_ITEM_CART", product));
+                  }}
                 >
                   <span className={cx("lg:block", "hidden")}>
                     <FontAwesomeIcon icon={faCartShopping} />
@@ -340,7 +346,7 @@ const ProductList = ({ products }) => {
                   Thêm giỏ hàng
                 </button>
               </div>
-            </Link>
+            </div>
           </div>
         ))}
       </div>

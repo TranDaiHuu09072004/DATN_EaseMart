@@ -1,7 +1,7 @@
 "use client";
 import { usePathname } from "next/navigation";
-import Header from "@/app/components/Header/Header";
-import Footer from "@/app/components/Footer/Footer";
+import Header from "@/components/Header/Header";
+import Footer from "@/components/Footer/Footer";
 import { Roboto } from "next/font/google";
 import "@/public/css/list_category.globals.css";
 import "@/public/css/CardFlashSale.globals.css";
@@ -11,7 +11,9 @@ import "@/public/css/pr_product.globals.css";
 import "@/public/css/CardRelated.globals.css";
 import "@/public/css/rating.globals.css";
 import "@/app/globals.css";
-
+import { CartFunction } from "@/components/CartFunction";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const roboto = Roboto({
   weight: ["400", "700"],
   subsets: ["latin"],
@@ -32,9 +34,12 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body className={roboto.className}>
-        {!hideHeaderFooter && <Header />}
-        {children}
-        {!hideHeaderFooter && <Footer />}
+        <ToastContainer position="top-right" autoClose={3000} />
+        <CartFunction>
+          {!hideHeaderFooter && <Header />}
+          {children}
+          {!hideHeaderFooter && <Footer />}
+        </CartFunction>
       </body>
     </html>
   );

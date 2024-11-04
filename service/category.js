@@ -8,7 +8,6 @@ export const getCate = async () => {
 
 export const getCateById = async (id) => {
   id = String(id);
-  console.log(typeof id);
 
   const respone = await axios.get(`${url}/category?id=${id}`);
   return respone.data;

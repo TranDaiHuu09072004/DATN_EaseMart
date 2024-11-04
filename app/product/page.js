@@ -67,8 +67,6 @@ const Product = () => {
   useEffect(() => {
     // list cate
     getCate().then((data) => {
-      console.log({ id: data[0].id, name: data[0].name });
-
       setCate(data);
       setCateChoose({ id: data[0].id, name: data[0].name });
       setCateSub(data[0].subcategories);
@@ -82,12 +80,11 @@ const Product = () => {
     getProByCate("category_id", cateChoose.id).then((data) => {
       setBrandChooseCheck(false);
       setProduct(data);
-    });
-    getCateById(cateChoose.id).then((data) => {
-      if (data.length > 0) {
-        console.log(data);
-        setCateSub(data[0].subcategories);
-      }
+      getCateById(cateChoose.id).then((data) => {
+        if (data.length > 0) {
+          setCateSub(data[0].subcategories);
+        }
+      });
     });
   }, [cateChoose]);
 
@@ -132,6 +129,8 @@ const Product = () => {
     setIsSearching(false); // Đặt lại trạng thái khi chọn brand
     setResultFilterProduct([]); // Xóa kết quả tìm kiếm
   };
+
+  console.log(product);
 
   return (
     <div className={cx("max-w-screen-xl", " mx-auto", "px-4")}>
