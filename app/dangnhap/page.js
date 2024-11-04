@@ -49,7 +49,13 @@ export default function DangNhap() {
   const handleLogin = async (data) => {
     const { email, password } = data; // Use data from form
     try {
-      const response = await fetch("http://localhost:3000/users");
+      const response = await fetch("http://trandainghia.id.vn/api/login", {
+        method: "POST", // Thay đổi phương thức thành POST
+        headers: {
+          "Content-Type": "application/json", // Đặt tiêu đề Content-Type
+        },
+        body: JSON.stringify({ email, password }), // Gửi email và password trong body
+      });
       if (!response.ok) throw new Error("Network response was not ok");
 
       const users = await response.json();

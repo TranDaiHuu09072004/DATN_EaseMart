@@ -35,7 +35,10 @@ export default function DangKy() {
 
   const onSubmit = async (data) => {
     try {
-      const response = await axios.post("http://localhost:3000/users", data);
+      const response = await axios.post(
+        "http://trandainghia.id.vn/api/register",
+        data
+      );
       console.log(response.data);
       toast.success("Đăng ký thành công!", {
         position: "top-right",
