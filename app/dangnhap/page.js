@@ -6,6 +6,7 @@ import * as Yup from "yup"; // Import Yup for validation
 import { useForm } from "react-hook-form"; // Import useForm from react-hook-form
 import { yupResolver } from "@hookform/resolvers/yup"; // Import yupResolver for Yup integration
 import Swal from "sweetalert2";
+import axios from "axios";
 
 // Define validation schema
 const validationSchema = Yup.object().shape({
@@ -42,55 +43,11 @@ export default function DangNhap() {
     }
   }, []);
 
-  const generateToken = () => {
-    return Math.random().toString(36).slice(2); // Tạo token ngẫu nhiên
-  };
+  // const generateToken = () => {
+  //   return Math.random().toString(36).slice(2); // Tạo token ngẫu nhiên
+  // };
 
-  const handleLogin = async (data) => {
-    const { email, password } = data; // Use data from form
-    try {
-      const response = await fetch("http://trandainghia.id.vn/api/login", {
-        method: "POST", // Thay đổi phương thức thành POST
-        headers: {
-          "Content-Type": "application/json", // Đặt tiêu đề Content-Type
-        },
-        body: JSON.stringify({ email, password }), // Gửi email và password trong body
-      });
-      if (!response.ok) throw new Error("Network response was not ok");
-
-      const users = await response.json();
-      const user = users.find(
-        (user) => user.email === email && user.password === password
-      );
-
-      if (user) {
-        setError("");
-        const token = generateToken(); // Tạo token ngẫu nhiên
-        console.log("Token:", token);
-        Swal.fire("Đăng nhập thành công!", "", "success");
-
-        if (rememberMe) {
-          localStorage.setItem(
-            "user",
-            JSON.stringify({ email, token, username: user.name })
-          );
-          localStorage.setItem("username", user.name); // Store username
-        } else {
-          localStorage.setItem("username", user.name);
-          localStorage.removeItem("user"); // Xóa thông tin người dùng nếu không ghi nhớ
-        }
-
-        setTimeout(() => {
-          window.location.href = "/";
-        }, 2000);
-      } else {
-        Swal.fire("Đăng nhập thất bại!", "", "error");
-      }
-    } catch (err) {
-      console.error("Lỗi khi gọi API:", err);
-      setError("Có lỗi xảy ra. Vui lòng thử lại sau.");
-    }
-  };
+ 
 
   return (
     <div className={styles.pageContainer}>
