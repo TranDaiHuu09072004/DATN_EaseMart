@@ -16,7 +16,7 @@ import MenuMobile from "../MenuMobile";
 const cx = classNames.bind(styles);
 const HeaderScroll = () => {
   const [showHeader, setShowHeader] = useState(false);
-  const [showHeaderScroll, setShowHeaderScroll] = useState(false);
+  const [showHeaderScroll, setShowHeaderScroll] = useState(true);
 
   useEffect(() => {
     window.addEventListener("resize", () => {
@@ -52,32 +52,32 @@ const HeaderScroll = () => {
           <div className={cx("header")}>
             <MenuMobile color={true}></MenuMobile>
             <div className={cx("logo", "lg:w-48", "w-fit")}>
-              <img src="assets/img/logo.png" />
+              <img src="/assets/home/LogoScroll.png" />
             </div>
             <ul className={cx("nav", "lg:flex", "hidden")}>
               <li className={cx("item")}>
-                <Link href="#" className={cx("link")}>
+                <Link href="/" className={cx("link")}>
                   Trang chủ
                 </Link>
               </li>
               <li className={cx("item")}>
-                <Link href="#" className={cx("link")}>
-                  Trang chủ
+                <Link href="/product" className={cx("link")}>
+                  Sản phẩm
                 </Link>
               </li>
               <li className={cx("item")}>
-                <Link href="#" className={cx("link")}>
-                  Trang chủ
+                <Link href="/vechungtoi" className={cx("link")}>
+                  Về chúng tôi
                 </Link>
               </li>
               <li className={cx("item")}>
-                <Link href="#" className={cx("link")}>
-                  Trang chủ
+                <Link href="/khuyenmai" className={cx("link")}>
+                  Khuyến mãi
                 </Link>
               </li>
               <li className={cx("item")}>
-                <Link href="#" className={cx("link")}>
-                  Trang chủ
+                <Link href="/lienhe" className={cx("link")}>
+                  Liên hệ
                 </Link>
               </li>
             </ul>
@@ -110,7 +110,10 @@ const HeaderScroll = () => {
                   Giỏ hàng
                 </div>
               </Link>
-              <Link href="#" className={cx("account", "w-fit", "lg:w-28")}>
+              <Link
+                href="/dangky"
+                className={cx("account", "w-fit", "lg:w-28")}
+              >
                 <div className={cx("box-icon-account")}>
                   <FontAwesomeIcon
                     className={cx(
@@ -123,9 +126,7 @@ const HeaderScroll = () => {
                     icon={faUser}
                   />
                 </div>
-                <div className={cx("title", "hidden", "lg:block")}>
-                  Giỏ hàng
-                </div>
+                <div className={cx("title", "hidden", "lg:block")}>Đăng ký</div>
               </Link>
             </div>
           </div>

@@ -698,7 +698,7 @@
       "sale_price": 23000,
       "price": 35000,
       "unit_of_caculation": "270g",
-      "description": "Bánh bao nhân khoai môn thơm lừng, béo ngậy, kích thích vị giác, thích hợp với người ăn chay",
+      "description": " khoai môn thơm lừng, béo ngậy, kích thích vị giác, thích hợp với người ăn chay",
       "type": "FlashSale"
     },
     {
@@ -1103,7 +1103,7 @@
     },
     {
       "id": "44",
-      "image": "assets/img/FakeAPI/Rau_cu_qua/Nam/nam_kim_cham.jpg",
+      "image": "assets/img/FakeAPI/Rau_cu_qua/Rau_nem/hanh-la-ngo-ri-khoang-100g.jpg",
       "name": "Hành lá, ngò rí 100g",
       "sale_price": 10000,
       "price": 7000,
@@ -1139,7 +1139,7 @@
     },
     {
       "id": "47",
-      "image": "assets/img/FakeAPI/Trai_cay/Trai_cay_ngoai_nhap/tao_cherry_trung_quoc.jpg",
+      "image": "assets/img/FakeAPI/Trai_cay/Trai_cay_ngoai_nhap/tao_cherry_trungquoc.jpg",
       "name": "Táo Chery nhập khẩu trung quốc",
       "sale_price": 55000,
       "price": 45000,
@@ -1820,6 +1820,29 @@
       "category_id": "11",
       "subcategory_id": "8",
       "brand_id": "50"
+    }
+  ],
+  "users": [
+    {
+      "id": "38f5",
+      "name": "Đức ANh",
+      "email": "ducanh@gmail.com",
+      "password": "12345678",
+      "confirmPassword": "12345678"
+    },
+    {
+      "id": "a671",
+      "name": "lê đức anh",
+      "email": "anhldps30633@fpt.edu.vn",
+      "password": "leducanh1234",
+      "confirmPassword": "leducanh1234"
+    },
+    {
+      "id": "6490",
+      "name": "Phan Trung Kiên ",
+      "email": "lducanh2111@gmail.com",
+      "password": "leducanh1234",
+      "confirmPassword": "leducanh1234"
     }
   ]
 }

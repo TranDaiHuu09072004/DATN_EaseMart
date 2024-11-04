@@ -1,6 +1,8 @@
-import Header from "@/app/components/Header/Header";
+"use client";
+import { usePathname } from "next/navigation";
+import Header from "@/components/Header/Header";
+import Footer from "@/components/Footer/Footer";
 import { Roboto } from "next/font/google";
-import Footer from "@/app/components/Footer/Footer";
 import "@/public/css/list_category.globals.css";
 import "@/public/css/CardFlashSale.globals.css";
 import "@/public/css/CardPopular.globals.css";
@@ -9,11 +11,20 @@ import "@/public/css/pr_product.globals.css";
 import "@/public/css/CardRelated.globals.css";
 import "@/public/css/rating.globals.css";
 import "@/app/globals.css";
+import { CartFunction } from "@/components/CartFunction";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const roboto = Roboto({
-  weight: ["400", "700"], // Chọn các độ đậm bạn cần
-  subsets: ["latin"], // Chọn các ký tự phụ
+  weight: ["400", "700"],
+  subsets: ["latin"],
 });
+
 export default function RootLayout({ children }) {
+  const pathname = usePathname(); // Lấy đường dẫn hiện tại
+
+  // Kiểm tra nếu là trang đăng ký hoặc đăng nhập
+  const hideHeaderFooter = pathname === "/dangky" || pathname === "/dangnhap";
+
   return (
     <html lang="en">
       <head>
@@ -23,9 +34,12 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body className={roboto.className}>
-        <Header />
-        {children}
-        <Footer />
+        <ToastContainer position="top-right" autoClose={3000} />
+        <CartFunction>
+          {!hideHeaderFooter && <Header />}
+          {children}
+          {!hideHeaderFooter && <Footer />}
+        </CartFunction>
       </body>
     </html>
   );
