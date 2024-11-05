@@ -10,40 +10,97 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import { faTrashCan } from "@fortawesome/free-regular-svg-icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Dispatch, useCart } from "@/components/CartFunction";
 
 const cx = classNames.bind(styles);
 
+const formatPrice = (price) => {
+  return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+};
+
 const Cart = () => {
-  const [showListCart, setShowListCart] = useState(true);
+  const { state, dispatch } = useCart();
+  const [total, setTotal] = useState(0);
+  // const [showListCart, setShowListCart] = useState(true);
+  const formatPrice = (price) => {
+    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
+
+  useEffect(() => {
+    let total = 0;
+    state.cartItems.forEach((item) => {
+      total += item.quantity * item.sale_price;
+    });
+
+    setTotal(total);
+  }, [state]);
   return (
     <div className="container">
       <div className={cx("page-cart")}>
-        <ul className={cx("nav")}>
-          <li>
-            <FontAwesomeIcon
-              className={cx("icon")}
-              icon={faHouse}
-            ></FontAwesomeIcon>
-            <Link className={cx("item")} href="#">
-              Trang chủ
-            </Link>
-          </li>
-          <li>
-            <Link className={cx("item")} href="#">
-              Giỏ hàng
-            </Link>
-          </li>
-        </ul>
+        <div
+          className={cx(
+            "link_home_news",
+            "max-md:px-3",
+            "max-md:p-1",
+            "md:px-3",
+            "items-center"
+          )}
+        >
+          <ul className={cx("list_link")}>
+            <li>
+              <Link
+                href="/"
+                className={cx(
+                  "link_item",
+                  "xl:text-xl",
+                  "lg:text-[#585757]",
+                  "lg:no-underline",
+                  "max-lg:text-[18px]",
+                  "max-md:text-[16px]"
+                )}
+              >
+                Trang Chủ
+              </Link>
+            </li>
+            <li
+              className={cx(
+                "separator",
+                "xl:text-xl",
+                "lg:text-[#585757]",
+                "lg:no-underline",
+                "max-lg:text-[18px]",
+                "max-md:text-[16px]"
+              )}
+            >
+              /
+            </li>
+            <li>
+              <Link
+                href="#"
+                className={cx(
+                  "link_item",
+                  "xl:text-xl",
+                  "lg:text-[#585757]",
+                  "lg:no-underline",
+                  "max-lg:text-[18px]",
+                  "max-md:text-[16px]"
+                )}
+              >
+                Giỏ hàng
+              </Link>
+            </li>
+          </ul>
+        </div>
         <div className={cx("cart-content")}>
           <div className={cx("title")}>Giỏ hàng</div>
-          {showListCart ? (
+          {state.cartItems.length > 0 ? (
             <div className={cx("content")}>
               <table className={cx("list-product")}>
                 {/* Phần tiêu đề của bảng */}
                 <thead>
                   <tr>
-                    <th colSpan="2">Sản phẩm</th>{" "}
+                    <th colSpan="2">Sản phẩm</th>
                     {/* Lưu ý: colSpan với chữ "S" lớn */}
                     <th>Giá</th>
                     <th>Số lượng</th>
@@ -54,92 +111,81 @@ const Cart = () => {
 
                 {/* Phần thân của bảng */}
                 <tbody>
-                  <tr>
-                    <td className={cx("product")} colSpan="2">
-                      <label className={cx("container")}>
-                        <input type="checkbox" />
-                        <span className={cx("checkmark")}></span>
-                      </label>
-                      <div className={cx("thumb")}>
-                        <img
-                          src="assets/img/product_hotnew1.svg"
-                          alt="Sản phẩm"
-                          className={cx("product-image")}
-                        />
-                      </div>
-                      <div className={cx("info")}>
-                        <div className={cx("name")}>
-                          Muối ớt chanh Nha Trang
-                        </div>
-                        <div className={cx("unit")}>
-                          ĐVT: <span>Bó</span>
-                        </div>
-                      </div>
-                    </td>
-                    <td></td>
-                    <td className={cx("price")}>390.000đ</td>
-                    <td className={cx("box-quantity")}>
-                      <div className={cx("quantity")}>
-                        <button>
-                          <FontAwesomeIcon icon={faPlus} />
-                        </button>
-                        <input type="number" value="1" min="1" />
-                        <button>
-                          <FontAwesomeIcon icon={faMinus} />
-                        </button>
-                      </div>
-                    </td>
-                    <td className={cx("price")}>390.000đ</td>
-                    <td className={cx("delete")}>
-                      <FontAwesomeIcon
-                        className={cx("icon-trash")}
-                        icon={faTrashCan}
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className={cx("product")} colSpan="2">
-                      <label className={cx("container")}>
-                        <input type="checkbox" />
-                        <span className={cx("checkmark")}></span>
-                      </label>
-                      <div className={cx("thumb")}>
-                        <img
-                          src="assets/img/product_hotnew1.svg"
-                          alt="Sản phẩm"
-                          className={cx("product-image")}
-                        />
-                      </div>
-                      <div className={cx("info")}>
-                        <div className={cx("name")}>
-                          Muối ớt chanh Nha Trang
-                        </div>
-                        <div className={cx("unit")}>
-                          ĐVT: <span>Bó</span>
-                        </div>
-                      </div>
-                    </td>
-                    <td></td>
-                    <td className={cx("price")}>390.000đ</td>
-                    <td className={cx("box-quantity")}>
-                      <div className={cx("quantity")}>
-                        <button>
-                          <FontAwesomeIcon icon={faPlus} />
-                        </button>
-                        <input type="number" value="1" min="1" />
-                        <button>
-                          <FontAwesomeIcon icon={faMinus} />
-                        </button>
-                      </div>
-                    </td>
-                    <td className={cx("price")}>390.000đ</td>
-                    <td className={cx("delete")}>
-                      <FontAwesomeIcon
-                        className={cx("icon-trash")}
-                        icon={faTrashCan}
-                      />
-                    </td>
-                  </tr>
+                  {state?.cartItems?.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <td className={cx("product")} colSpan="2">
+                          <label className={cx("container")}>
+                            <input type="checkbox" />
+                            <span className={cx("checkmark")}></span>
+                          </label>
+                          <div className={cx("thumb")}>
+                            <img
+                              src={item.image}
+                              alt="Sản phẩm"
+                              className={cx("product-image")}
+                            />
+                          </div>
+                          <div className={cx("info")}>
+                            <div className={cx("name")}>{item.name}</div>
+                            <div className={cx("unit")}>
+                              ĐVT: <span>{item.unit_of_caculation}</span>
+                            </div>
+                          </div>
+                        </td>
+                        <td></td>
+                        <td className={cx("price")}>
+                          {formatPrice(item.sale_price)}đ
+                        </td>
+                        <td className={cx("box-quantity")}>
+                          <div className={cx("quantity")}>
+                            <button
+                              onClick={() => {
+                                dispatch(
+                                  new Dispatch("UPDATE_PLUS_ITEM_CART", {
+                                    ...item,
+                                    index,
+                                  })
+                                );
+                              }}
+                            >
+                              <FontAwesomeIcon icon={faPlus} />
+                            </button>
+                            <input
+                              type="number"
+                              value={item.quantity}
+                              onChange={() => {}}
+                              min="1"
+                            />
+                            <button
+                              onClick={() => {
+                                dispatch(
+                                  new Dispatch("UPDATE_MINUS_ITEM_CART", {
+                                    ...item,
+                                    index,
+                                  })
+                                );
+                              }}
+                            >
+                              <FontAwesomeIcon icon={faMinus} />
+                            </button>
+                          </div>
+                        </td>
+                        <td className={cx("price")}>
+                          {formatPrice(item.quantity * item.sale_price)}đ
+                        </td>
+                        <td className={cx("delete")}>
+                          <FontAwesomeIcon
+                            className={cx("icon-trash")}
+                            icon={faTrashCan}
+                            onClick={() => {
+                              dispatch(new Dispatch("REMOVE_ITEM_CART", item));
+                            }}
+                          />
+                        </td>
+                      </tr>
+                    );
+                  })}
                 </tbody>
               </table>
               <div className={cx("total")}>
@@ -172,7 +218,9 @@ const Cart = () => {
                   </div>
                   <div className={cx("main-total")}>
                     <span>Tạm tính</span>{" "}
-                    <span className={cx("main-total")}>390,000₫</span>
+                    <span className={cx("main-total")}>
+                      {formatPrice(total)}₫
+                    </span>
                   </div>
                 </div>
                 <button className={cx("buynow")}>Thanh toán</button>

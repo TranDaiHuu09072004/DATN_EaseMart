@@ -12,17 +12,34 @@ import MenuMobile from "./components/MenuMobile";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
+import { useCart } from "../CartFunction";
 
 const cx = classNames.bind(styles);
 
 export default function Header() {
+  const { state, dispatch } = useCart();
   const [searchKeyword, setSearchKeyWord] = useState("");
   const [username, setUsername] = useState(null);
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    let newCount = 0;
+    state.cartItems.forEach((element) => {
+      newCount += element.quantity;
+    });
+    setCount(newCount);
+  }, [state]);
 
   useEffect(() => {
     // Lấy tên người dùng từ localStorage nếu đã đăng nhập
     const name = localStorage.getItem("username");
-    if (name) setUsername(name);
+    if (name) {
+      let handleUsername = name.split(" ");
+
+      handleUsername = handleUsername[handleUsername.length - 1];
+
+      setUsername(handleUsername);
+    }
   }, []);
 
   const handleSearch = (e) => {
@@ -82,7 +99,10 @@ export default function Header() {
                 "lg:w-72"
               )}
             >
-              <Link href="#" className={cx("cart", "flex", "py-3", "gap-2")}>
+              <Link
+                href="/cart"
+                className={cx("cart", "flex", "py-3", "gap-2")}
+              >
                 <div className={cx("box-icon-cart")}>
                   <FontAwesomeIcon
                     className={cx(
@@ -94,7 +114,7 @@ export default function Header() {
                     )}
                     icon={faCartShopping}
                   />
-                  <span className={cx("count")}>0</span>
+                  <span className={cx("count")}>{count}</span>
                 </div>
                 <div
                   className={cx(
@@ -113,7 +133,7 @@ export default function Header() {
               <div className={cx("account", "relative", "group", "py-3")}>
                 <Link
                   href={username ? "#" : "/dangky"}
-                  className="flex items-center space-x-2"
+                  className="flex items-center space-x-2 truncate whitespace-nowrap overflow-hidden text-ellipsis"
                 >
                   <FontAwesomeIcon
                     icon={faUser}
@@ -148,7 +168,7 @@ export default function Header() {
                       <Link href="/thong-tin-ho-so">Cập nhật tài khoản</Link>
                     </li>
                     <li className={cx("text-black", "px-3", "py-4")}>
-                      <Link href="/thay-doi-mat-khau">Đổi mật khẩu</Link>
+                      <Link href="/doi-mat-khau">Đổi mật khẩu</Link>
                     </li>
                     <li className={cx("text-black", "px-3", "py-4")}>
                       <Link href="/san-pham-yeu-thich">Sản phẩm yêu thích</Link>

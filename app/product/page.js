@@ -17,10 +17,12 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { getProBy2Cate, getProByCate } from "@/service/product";
 import { getBrand } from "@/service/brand";
+import { Dispatch, useCart } from "@/components/CartFunction";
 
 const cx = classNames.bind(styles);
 
 const Product = () => {
+  const { state, dispatch } = useCart();
   const [cate, setCate] = useState([]);
   const [cateChoose, setCateChoose] = useState({});
   const [cateSub, setCateSub] = useState([]);
@@ -67,8 +69,6 @@ const Product = () => {
   useEffect(() => {
     // list cate
     getCate().then((data) => {
-      console.log({ id: data[0].id, name: data[0].name });
-
       setCate(data);
       setCateChoose({ id: data[0].id, name: data[0].name });
       setCateSub(data[0].subcategories);
@@ -82,12 +82,11 @@ const Product = () => {
     getProByCate("category_id", cateChoose.id).then((data) => {
       setBrandChooseCheck(false);
       setProduct(data);
-    });
-    getCateById(cateChoose.id).then((data) => {
-      if (data.length > 0) {
-        console.log(data);
-        setCateSub(data[0].subcategories);
-      }
+      getCateById(cateChoose.id).then((data) => {
+        if (data.length > 0) {
+          setCateSub(data[0].subcategories);
+        }
+      });
     });
   }, [cateChoose]);
 
@@ -132,6 +131,8 @@ const Product = () => {
     setIsSearching(false); // Đặt lại trạng thái khi chọn brand
     setResultFilterProduct([]); // Xóa kết quả tìm kiếm
   };
+
+  console.log(product);
 
   return (
     <div className={cx("max-w-screen-xl", " mx-auto", "px-4")}>
@@ -287,6 +288,14 @@ const Product = () => {
                             "text-base",
                             "basis-full"
                           )}
+                          onClick={() => {
+                            dispatch(
+                              new Dispatch("ADD_ITEM_CART", {
+                                ...item,
+                                quantity: 1,
+                              })
+                            );
+                          }}
                         >
                           <span>
                             <Icon

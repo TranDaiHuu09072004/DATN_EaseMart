@@ -5,13 +5,15 @@ import Link from "next/link";
 import styles from "./productdetail.module.css";
 import { fetchProductById } from "@/service/product";
 import { fetchProducts } from "@/service/product";
+import { useCart, CartFunction, Dispatch } from "@/components/CartFunction";
 const cx = classNames.bind(styles);
 
 export default function ProductDetail({ params }) {
+  const { state, dispatch } = useCart();
   const { id } = params; // lấy id từ params
   const [product, setProduct] = useState(null);
   const [product_related, setProduct_Related] = useState(null);
-
+  const [quantity, setQuantity] = useState(1);
   const formatPrice = (price) => {
     return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
@@ -31,7 +33,11 @@ export default function ProductDetail({ params }) {
   }, [id]);
 
   if (!product) return <p>Loading...</p>;
-
+  const handleQuantityChange = (action) => {
+    if (quantity <= 1 && action === "minus") return;
+    const newQuatity = action === "plus" ? quantity + 1 : quantity - 1;
+    setQuantity(newQuatity);
+  };
   return (
     <div className="md:max-w-screen-xl md:mx-auto">
       <div
@@ -153,9 +159,21 @@ export default function ProductDetail({ params }) {
           <div className={cx("quantity")}>
             <span className={cx("name")}>Số lượng</span>
             <div className={cx("flex_quantity")}>
-              <button className={cx("downcount")}>-</button>
-              <button className={cx("updatecount")}>1</button>
-              <button className={cx("upcount")}>+</button>
+              <button
+                onClick={() => {
+                  handleQuantityChange("minus");
+                }}
+                className={cx("downcount")}
+              >
+                -
+              </button>
+              <button className={cx("updatecount")}>{quantity}</button>
+              <button
+                onClick={() => handleQuantityChange("plus")}
+                className={cx("upcount")}
+              >
+                +
+              </button>
             </div>
           </div>
           <div className="btn_wishlistProduct my-[10px]">
@@ -165,7 +183,14 @@ export default function ProductDetail({ params }) {
             </button>
           </div>
           <div className="flex_btn mt-3 max-md:flex max-md:flex-col max-md:gap-y-4">
-            <button className={cx("btn_addCart", "font-semibold")}>
+            <button
+              onClick={() => {
+                let data = product;
+                data.quantity = quantity;
+                dispatch(new Dispatch("ADD_ITEM_CART", data));
+              }}
+              className={cx("btn_addCart", "font-semibold")}
+            >
               <i className="fa-solid fa-cart-shopping"></i> Thêm vào giỏ hàng
             </button>
             <button className={cx("btn_buynow", "lg:ml-3", "max-lg:ml-[10px]")}>

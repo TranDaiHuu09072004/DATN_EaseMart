@@ -143,7 +143,7 @@ export default function DangNhap() {
             </button>
           </form>
           <p className={styles.forgotPassword}>
-            <Link href="#">Quên mật khẩu?</Link>
+            <Link href="/quen-mat-khau">Quên mật khẩu?</Link>
           </p>
           <div className={styles.socialLogin}>
             <p>Hoặc</p>

@@ -22,8 +22,6 @@ import { Icon } from "@iconify/react/dist/iconify.js";
 const cx = classNames.bind(styles);
 
 const MenuMobile = ({ color = false }) => {
-  console.log(color);
-
   const [showSidebar, setShowSidebar] = useState(false);
   useEffect(() => {
     if (showSidebar) {
