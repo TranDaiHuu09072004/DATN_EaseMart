@@ -93,7 +93,10 @@ export default function Header() {
                 "lg:w-72"
               )}
             >
-              <Link href="#" className={cx("cart", "flex", "py-3", "gap-2")}>
+              <Link
+                href="/cart"
+                className={cx("cart", "flex", "py-3", "gap-2")}
+              >
                 <div className={cx("box-icon-cart")}>
                   <FontAwesomeIcon
                     className={cx(
@@ -159,7 +162,7 @@ export default function Header() {
                       <Link href="/thong-tin-ho-so">Cập nhật tài khoản</Link>
                     </li>
                     <li className={cx("text-black", "px-3", "py-4")}>
-                      <Link href="/thay-doi-mat-khau">Đổi mật khẩu</Link>
+                      <Link href="/doi-mat-khau">Đổi mật khẩu</Link>
                     </li>
                     <li className={cx("text-black", "px-3", "py-4")}>
                       <Link href="/san-pham-yeu-thich">Sản phẩm yêu thích</Link>

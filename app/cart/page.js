@@ -24,22 +24,60 @@ const Cart = () => {
   return (
     <div className="container">
       <div className={cx("page-cart")}>
-        <ul className={cx("nav")}>
-          <li>
-            <FontAwesomeIcon
-              className={cx("icon")}
-              icon={faHouse}
-            ></FontAwesomeIcon>
-            <Link className={cx("item")} href="#">
-              Trang chủ
-            </Link>
-          </li>
-          <li>
-            <Link className={cx("item")} href="#">
-              Giỏ hàng
-            </Link>
-          </li>
-        </ul>
+        <div
+          className={cx(
+            "link_home_news",
+            "max-md:px-3",
+            "max-md:p-1",
+            "md:px-3",
+            "items-center"
+          )}
+        >
+          <ul className={cx("list_link")}>
+            <li>
+              <Link
+                href="/"
+                className={cx(
+                  "link_item",
+                  "xl:text-xl",
+                  "lg:text-[#585757]",
+                  "lg:no-underline",
+                  "max-lg:text-[18px]",
+                  "max-md:text-[16px]"
+                )}
+              >
+                Trang Chủ
+              </Link>
+            </li>
+            <li
+              className={cx(
+                "separator",
+                "xl:text-xl",
+                "lg:text-[#585757]",
+                "lg:no-underline",
+                "max-lg:text-[18px]",
+                "max-md:text-[16px]"
+              )}
+            >
+              /
+            </li>
+            <li>
+              <Link
+                href="#"
+                className={cx(
+                  "link_item",
+                  "xl:text-xl",
+                  "lg:text-[#585757]",
+                  "lg:no-underline",
+                  "max-lg:text-[18px]",
+                  "max-md:text-[16px]"
+                )}
+              >
+                Giỏ hàng
+              </Link>
+            </li>
+          </ul>
+        </div>
         <div className={cx("cart-content")}>
           <div className={cx("title")}>Giỏ hàng</div>
           {state.cartItems.length > 0 ? (
