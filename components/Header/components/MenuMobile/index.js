@@ -34,7 +34,7 @@ const MenuMobile = ({ color = false }) => {
     <div className={cx("hamburger-menu", "lg:hidden", "flex")}>
       <Icon
         icon="heroicons-outline:menu-alt-3"
-        className={cx("w-7", "h-full", "text-white", {
+        className={cx("w-5", "lg:w-7", "h-full", "text-white", {
           "primary-color": color,
         })}
         onClick={() => {

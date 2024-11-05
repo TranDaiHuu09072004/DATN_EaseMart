@@ -12,17 +12,22 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
-    "/cart/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/cart/page.css",
-      "static/chunks/app/cart/page.js"
-    ],
     "/product/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/css/app/product/page.css",
       "static/chunks/app/product/page.js"
+    ],
+    "/thong-tin-ho-so/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/thong-tin-ho-so/page.css",
+      "static/chunks/app/thong-tin-ho-so/page.js"
+    ],
+    "/_not-found/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/_not-found/page.js"
     ]
   }
 }

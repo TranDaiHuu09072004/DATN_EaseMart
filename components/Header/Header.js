@@ -62,15 +62,15 @@ export default function Header() {
   };
 
   return (
-    <div className={cx("box-header")}>
+    <div div className={cx("box-header")}>
       <ToastContainer />
       <div className="max-w-screen-xl mx-auto px-4">
         <div className={cx("header")}>
           <div className={cx("header-top")}>
             <MenuMobile />
-            <div className={cx("logo", "w-full", "h-auto")}>
+            <Link href={"/"} className={cx("logo", "w-full", "h-auto")}>
               <img src="/assets/home/logo.png" alt="Logo" />
-            </div>
+            </Link>
             <form
               onSubmit={handleSearch}
               className={cx("search-box", "lg:flex", "hidden")}
@@ -101,7 +101,14 @@ export default function Header() {
             >
               <Link
                 href="/cart"
-                className={cx("cart", "flex", "py-3", "gap-2")}
+                className={cx(
+                  "cart",
+                  "flex",
+                  "py-3",
+                  "gap-2",
+                  "sm:flex",
+                  "hidden"
+                )}
               >
                 <div className={cx("box-icon-cart")}>
                   <FontAwesomeIcon
@@ -137,9 +144,9 @@ export default function Header() {
                 >
                   <FontAwesomeIcon
                     icon={faUser}
-                    className="text-white lg:w-7 lg:h-7 w-9 h-9"
+                    className="text-white sm:w-7 sm:h-7 w-5 h-5"
                   />
-                  <div className="text-white lg:text-lg text-base font-medium w-[150px]">
+                  <div className="text-white lg:text-lg text-base font-medium w-full lg:block hidden">
                     {username ? `Chào, ${username}` : "Đăng ký"}
                   </div>
                 </Link>
@@ -152,7 +159,7 @@ export default function Header() {
                       "absolute",
                       "-top-full",
                       "right-0",
-                      "left-[3px]",
+                      "lg:left-[3px]",
                       "flex",
                       "flex-col",
                       "opacity-0",
@@ -164,6 +171,19 @@ export default function Header() {
                       "bg-white"
                     )}
                   >
+                    <li
+                      className={cx(
+                        "text-black",
+                        "px-3",
+                        "py-4",
+                        "block",
+                        "lg:hidden"
+                      )}
+                    >
+                      <Link href="/thong-tin-ho-so">
+                        {username ? `Chào, ${username}` : "Đăng ký"}
+                      </Link>
+                    </li>
                     <li className={cx("text-black", "px-3", "py-4")}>
                       <Link href="/thong-tin-ho-so">Cập nhật tài khoản</Link>
                     </li>

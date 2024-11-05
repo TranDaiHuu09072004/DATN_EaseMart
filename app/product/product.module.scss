@@ -4,13 +4,13 @@
   .link_home_news {
     margin: 10px 0;
   }
-  
+
   .list_link {
     display: flex;
     justify-content: left;
     gap: 10px;
   }
-  
+
   .list_link > li > a {
     text-decoration: none;
   }
@@ -21,10 +21,11 @@
     gap: 15px;
     margin-bottom: 30px;
     .sidebar {
-      width: 310px;
+      width: 310px !important;
     }
     .content {
-      flex: 1;
+      /* Chiều rộng 100% của .product-content */
+      max-width: calc(100% - 310px);
       .title {
         padding: 10px 7px;
         padding-top: 0;
@@ -104,16 +105,18 @@
         }
       }
       .type {
+        width: 100%;
         border-radius: 5px;
         box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
         background-color: #fff;
+        overflow: auto;
         .menu-type {
+          width: 100%;
           display: flex;
-          justify-content:flex-start;
+          justify-content: flex-start;
           gap: 30px;
           margin-bottom: 5px;
           padding: 10px 20px;
-
           .item {
             width: 80px;
             display: flex;
@@ -266,6 +269,11 @@
   }
 }
 
+@media (max-width: 1024px) {
+  .content {
+    max-width: 100% !important;
+  }
+}
 @keyframes dropDown {
   0% {
     height: 0;

@@ -135,7 +135,7 @@ const Product = () => {
   console.log(product);
 
   return (
-    <div className={cx("max-w-screen-xl", " mx-auto", "px-4")}>
+    <div className={cx("max-w-screen-xl", "mx-auto", "p-4")}>
       <div className={cx("page-product")}>
         {/* Breadcrumb */}
         <div
