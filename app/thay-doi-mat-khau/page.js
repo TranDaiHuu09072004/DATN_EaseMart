@@ -1,9 +1,68 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./replace_password.module.css";
 import classNames from "classnames/bind";
+import Swal from "sweetalert2";
+import axios from "axios";
 const cx = classNames.bind(styles);
 export default function ChangePassword() {
+  const [currentPassword, setCurrentPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [showCurrentPassword, setShowCurrentPassword] = useState(false);
+  const [showNewPassword, setShowNewPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  useEffect(() => {
+    const fetchCurrentPassword = async () => {
+      try {
+        const response = await axios.get("http://localhost:3000/users");
+        setCurrentPassword(response.data.password);
+      } catch (error) {
+        console.error("Lỗi khi lấy mật khẩu hiện tại:", error);
+      }
+    };
+    fetchCurrentPassword();
+  }, []);
+
+  const handleChangePassword = async (e) => {
+    e.preventDefault();
+    if (newPassword !== confirmPassword) {
+      Swal.fire("Lỗi", "Mật khẩu mới không khớp!", "error");
+      return;
+    }
+    try {
+      const usersResponse = await axios.get("http://localhost:3000/users");
+      const users = usersResponse.data;
+      const user = users.find((user) => user.id === users);
+      if (user) {
+        if (user.password !== currentPassword) {
+          Swal.fire("Lỗi", "Mật khẩu hiện tại không đúng!", "error");
+          return;
+        }
+        const response = await axios.put(
+          `http://localhost:3000/users/${user.id}`,
+          {
+            password: newPassword,
+          }
+        );
+        if (response.status === 200) {
+          Swal.fire(
+            "Thành công",
+            "Bạn đã thay đổi mật khẩu thành công!",
+            "success"
+          );
+        } else {
+          Swal.fire("Lỗi", "Có lỗi xảy ra khi thay đổi mật khẩu!", "error");
+        }
+      } else {
+        Swal.fire("Lỗi", "Người dùng không tìm thấy!", "error");
+      }
+    } catch (error) {
+      Swal.fire("Lỗi", "Có lỗi xảy ra khi thay đổi mật khẩu!", "error");
+      console.error("Lỗi khi thay đổi mật khẩu:", error);
+    }
+  };
+
   return (
     <div>
       <div className={cx("max-w-screen-xl", " mx-auto", "p-4")}>
@@ -17,7 +76,7 @@ export default function ChangePassword() {
           )}
         >
           <h3 className={cx("title_changepassword")}>ĐỔI MẬT KHẨU</h3>
-          <form action="">
+          <form onSubmit={handleChangePassword}>
             <div
               className={cx(
                 "now_pasword",
@@ -33,7 +92,7 @@ export default function ChangePassword() {
               </h5>
               <div className={cx("relative")}>
                 <input
-                  type="password"
+                  type={showCurrentPassword ? "text" : "password"}
                   className={cx(
                     "ip_now_password",
                     "xl:w-[430px]",
@@ -43,6 +102,10 @@ export default function ChangePassword() {
                     "rounded-[5px]",
                     "pr-10"
                   )}
+                  value={currentPassword}
+                  // {{ edit_1 }}
+                  onChange={(e) => setCurrentPassword(e.target.value)} // Cho phép nhập mật khẩu hiện tại
+                  // {{ edit_1 }}
                 />
                 <span
                   className={cx(
@@ -52,8 +115,15 @@ export default function ChangePassword() {
                     "-translate-y-1/2",
                     "cursor-pointer"
                   )}
+                  onClick={() => setShowCurrentPassword(!showCurrentPassword)}
                 >
-                  <i class="fa-regular fa-eye"></i>
+                  <i
+                    className={
+                      showCurrentPassword
+                        ? "fa-solid fa-eye"
+                        : "fa-regular fa-eye"
+                    }
+                  ></i>
                 </span>
               </div>
             </div>
@@ -73,7 +143,7 @@ export default function ChangePassword() {
               </h5>
               <div className={cx("relative")}>
                 <input
-                  type="password"
+                  type={showNewPassword ? "text" : "password"}
                   className={cx(
                     "ip_new_password",
                     "xl:w-[430px]",
@@ -82,6 +152,7 @@ export default function ChangePassword() {
                     "border border-[#cccccc]",
                     "rounded-[5px]"
                   )}
+                  onChange={(e) => setNewPassword(e.target.value)}
                 />
                 <span
                   className={cx(
@@ -91,8 +162,13 @@ export default function ChangePassword() {
                     "-translate-y-1/2",
                     "cursor-pointer"
                   )}
+                  onClick={() => setShowNewPassword(!showNewPassword)}
                 >
-                  <i class="fa-regular fa-eye"></i>
+                  <i
+                    className={
+                      showNewPassword ? "fa-solid fa-eye" : "fa-regular fa-eye"
+                    }
+                  ></i>
                 </span>
               </div>
             </div>
@@ -112,7 +188,7 @@ export default function ChangePassword() {
               </h5>
               <div className={cx("relative")}>
                 <input
-                  type="password"
+                  type={showConfirmPassword ? "text" : "password"}
                   className={cx(
                     "ip_enter_new_password",
                     "xl:w-[430px]",
@@ -121,6 +197,7 @@ export default function ChangePassword() {
                     "border border-[#cccccc]",
                     "rounded-[5px]"
                   )}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
                 />
                 <span
                   className={cx(
@@ -130,30 +207,37 @@ export default function ChangePassword() {
                     "-translate-y-1/2",
                     "cursor-pointer"
                   )}
+                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                 >
-                  <i class="fa-regular fa-eye"></i>
+                  <i
+                    className={
+                      showConfirmPassword
+                        ? "fa-solid fa-eye"
+                        : "fa-regular fa-eye"
+                    }
+                  ></i>
                 </span>
               </div>
             </div>
+            <button
+              className={cx(
+                "submit_button",
+                "xl:w-[130px]",
+                "max-lg:w-full",
+                "items-center",
+                "bg-[#3bb77e]",
+                "text-white",
+                "xl:ml-[320px]",
+                "p-[15px]",
+                "xl:my-4",
+                "border-none",
+                "rounded-[5px]",
+                "cursor-pointer"
+              )}
+            >
+              Đổi mật khẩu
+            </button>
           </form>
-          <button
-            className={cx(
-              "submit_button",
-              "xl:w-[130px]",
-              "max-lg:w-full",
-              "items-center",
-              "bg-[#3bb77e]",
-              "text-white",
-              "xl:ml-[320px]",
-              "p-[15px]",
-              "xl:my-4",
-              "border-none",
-              "rounded-[5px]",
-              "cursor-pointer"
-            )}
-          >
-            Đổi mật khẩu
-          </button>
         </div>
       </div>
     </div>

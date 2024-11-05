@@ -51,7 +51,7 @@ const HeaderScroll = () => {
         <div className={cx("header-scroll", "py-2", "px-2", "lg:px-16")}>
           <div className={cx("header")}>
             <MenuMobile color={true}></MenuMobile>
-            <div className={cx("logo", "lg:w-48", "w-fit")}>
+            <div className={cx("logo", "lg:w-48", "w-fit", "h-full")}>
               <img src="/assets/home/LogoScroll.png" />
             </div>
             <ul className={cx("nav", "lg:flex", "hidden")}>

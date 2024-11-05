@@ -85,7 +85,10 @@ const MenuMobile = ({ color = false }) => {
                 )}
               >
                 <div className={cx("logo", "h-full")}>
-                  <img src="assets/img/logo.png" className={cx("h-full")} />
+                  <img
+                    src="assets/img/logo.png"
+                    className={cx("h-full", "w-full")}
+                  />
                 </div>
                 <div
                   className={cx(

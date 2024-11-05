@@ -6,6 +6,7 @@ import * as Yup from "yup"; // Import Yup for validation
 import { useForm } from "react-hook-form"; // Import useForm from react-hook-form
 import { yupResolver } from "@hookform/resolvers/yup"; // Import yupResolver for Yup integration
 import Swal from "sweetalert2";
+import axios from "axios";
 
 // Define validation schema
 const validationSchema = Yup.object().shape({
@@ -42,46 +43,54 @@ export default function DangNhap() {
     }
   }, []);
 
-  const generateToken = () => {
-    return Math.random().toString(36).slice(2); // Tạo token ngẫu nhiên
-  };
-
   const handleLogin = async (data) => {
-    const { email, password } = data; // Use data from form
+    const { email, password } = data;
+
     try {
-      const response = await fetch("http://localhost:3000/users");
-      if (!response.ok) throw new Error("Network response was not ok");
+      const response = await fetch("http://trandainghia.id.vn/api/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
 
-      const users = await response.json();
-      const user = users.find(
-        (user) => user.email === email && user.password === password
-      );
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
 
+      const user = await response.json();
+      console.log(user);
+
+      const username = user.customers.name;
       if (user) {
         setError("");
-        const token = generateToken(); // Tạo token ngẫu nhiên
-        console.log("Token:", token);
-        Swal.fire("Đăng nhập thành công!", "", "success");
+        Swal.fire("Thành công", "Đăng nhập thành công!", "success");
 
         if (rememberMe) {
           localStorage.setItem(
             "user",
-            JSON.stringify({ email, token, username: user.name })
+            JSON.stringify({ email, token: user.token, username })
           );
+          localStorage.setItem("username", username);
         } else {
-          localStorage.removeItem("email");
-          localStorage.removeItem("token"); // Remove token if not remembering
+          localStorage.removeItem("user");
         }
 
         setTimeout(() => {
           window.location.href = "/";
         }, 2000);
       } else {
-        Swal.fire("Đăng nhập thất bại!", "", "error");
+        Swal.fire(
+          "Thất bại",
+          "Email hoặc mật khẩu không đúng. Vui lòng thử lại.",
+          "error"
+        );
       }
     } catch (err) {
       console.error("Lỗi khi gọi API:", err);
       setError("Có lỗi xảy ra. Vui lòng thử lại sau.");
+      Swal.fire("Lỗi", "Có lỗi xảy ra. Vui lòng thử lại sau.", "error");
     }
   };
 
@@ -101,10 +110,12 @@ export default function DangNhap() {
               placeholder="Nhập Email"
               {...register("email")}
               required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
             {errors.email && (
               <p className={styles.error}>{errors.email.message}</p>
-            )}{" "}
+            )}
             <input
               type="password"
               className={styles.inputField}
@@ -112,6 +123,8 @@ export default function DangNhap() {
               {...register("password")}
               required
               autoComplete="current-password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
             {errors.password && (
               <p className={styles.error}>{errors.password.message}</p>
