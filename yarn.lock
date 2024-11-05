@@ -773,6 +773,7 @@ ms@^2.1.1:
     bootstrap "^5.3.3"
     classnames "^2.5.1"
     dotenv "^16.4.5"
+    jsonwebtoken "^9.0.2"
     my-project "file:"
     next "14.2.5"
     react "^18"
