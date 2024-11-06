@@ -263,7 +263,10 @@ const Product = () => {
                       <div className={cx("thumb")}>
                         <img src={item.image} />
                       </div>
-                      <Link href="#" className={cx("name")}>
+                      <Link
+                        href={`/chi-tiet-san-pham/${item.id}`}
+                        className={cx("name")}
+                      >
                         {item.name}
                       </Link>
                       <div className={cx("unit", "text-sm", "text-gray-400")}>
