@@ -251,7 +251,8 @@ const Product = () => {
                 <div
                   key={item.id}
                   className={cx(
-                    "lg:basis-1/5",
+                    "xl:basis-1/5",
+                    "lg:basis-1/4",
                     "sm:basis-1/3",
                     "basis-1/2",
                     "p-[2px]"

@@ -2,6 +2,8 @@ import { useEffect, useReducer, createContext, useContext } from "react";
 import { ToastContainer, toast } from "react-toastify";
 // import { usePathname } from "next/navigation";
 import "react-toastify/dist/ReactToastify.css";
+import { useRouter } from "next/router";
+import Swal from "sweetalert2";
 let userEmail = null;
 
 if (typeof window !== "undefined") {
@@ -36,7 +38,20 @@ const cartReducer = (state, action) => {
       return newCart;
     case "ADD_ITEM_CART":
       if (!userEmail) {
-        toast.error("Vui lòng đăng nhập để có thể thêm sản phẩm vào giỏ hàng!");
+        Swal.fire({
+          icon: "error",
+          title: "Chưa đăng nhập",
+          text: "Vui lòng đăng nhập để có thể thêm sản phẩm vào giỏ hàng!",
+          showCancelButton: true, // Hiển thị nút "Hủy" (hoặc OK)
+          confirmButtonText: "Đăng nhập", // Văn bản nút xác nhận
+          cancelButtonText: "OK", // Văn bản nút hủy
+        }).then((result) => {
+          if (result.isConfirmed) {
+            // Điều hướng đến trang đăng nhập nếu người dùng chọn "Đăng nhập"
+            window.location.href = "/dangnhap";
+          }
+          // Nếu người dùng nhấn "OK", popup sẽ đóng mà không có thêm hành động nào.
+        });
         return initialState;
       }
 

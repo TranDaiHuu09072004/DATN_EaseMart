@@ -133,32 +133,6 @@ const MenuMobile = ({ color = false }) => {
                       "item-menu",
                       "mx-1",
                       "lg:mx-2",
-                      "flex",
-                      "justify-between",
-                      "items-center",
-                      "gap-1",
-                      "pb-2"
-                    )}
-                  >
-                    <Link href={""}>Home</Link>
-                    <FontAwesomeIcon
-                      icon={faPlus}
-                      className={cx("icon-menu")}
-                    />
-                  </div>
-                  <ul className={cx("menu-child", "pl-5")}>
-                    <li className={cx("")}>Trang chủ 1</li>
-                    <li className={cx("")}>Trang chủ 1</li>
-                    <li className={cx("")}>Trang chủ 1</li>
-                    <li className={cx("")}>Trang chủ 1</li>
-                  </ul>
-                </li>
-                <li className={cx("flex", "flex-col", "gap-1", "pb-1", "mb-1")}>
-                  <div
-                    className={cx(
-                      "item-menu",
-                      "mx-1",
-                      "lg:mx-2",
                       "",
                       "flex",
                       "justify-between",
@@ -167,11 +141,7 @@ const MenuMobile = ({ color = false }) => {
                       "pb-2"
                     )}
                   >
-                    <Link href={""}>Home</Link>
-                    <FontAwesomeIcon
-                      icon={faPlus}
-                      className={cx("icon-menu")}
-                    />
+                    <Link href={"/"}>Trang chủ</Link>
                   </div>
                 </li>
                 <li className={cx("flex", "flex-col", "gap-1", "pb-1", "mb-1")}>
@@ -188,18 +158,59 @@ const MenuMobile = ({ color = false }) => {
                       "pb-2"
                     )}
                   >
-                    <Link href={""}>Home</Link>
-                    <FontAwesomeIcon
-                      icon={faPlus}
-                      className={cx("icon-menu")}
-                    />
+                    <Link href={"/product"}>Sản phẩm</Link>
                   </div>
-                  <ul className={cx("menu-child", "pl-5")}>
-                    <li className={cx("")}>Trang chủ 1</li>
-                    <li className={cx("")}>Trang chủ 1</li>
-                    <li className={cx("")}>Trang chủ 1</li>
-                    <li className={cx("")}>Trang chủ 1</li>
-                  </ul>
+                </li>
+                <li className={cx("flex", "flex-col", "gap-1", "pb-1", "mb-1")}>
+                  <div
+                    className={cx(
+                      "item-menu",
+                      "mx-1",
+                      "lg:mx-2",
+                      "",
+                      "flex",
+                      "justify-between",
+                      "items-center",
+                      "gap-1",
+                      "pb-2"
+                    )}
+                  >
+                    <Link href={"/vechungtoi"}>Về chúng tôi</Link>
+                  </div>
+                </li>
+                <li className={cx("flex", "flex-col", "gap-1", "pb-1", "mb-1")}>
+                  <div
+                    className={cx(
+                      "item-menu",
+                      "mx-1",
+                      "lg:mx-2",
+                      "",
+                      "flex",
+                      "justify-between",
+                      "items-center",
+                      "gap-1",
+                      "pb-2"
+                    )}
+                  >
+                    <Link href={"/khuyenmai"}>Khuyến mãi</Link>
+                  </div>
+                </li>
+                <li className={cx("flex", "flex-col", "gap-1", "pb-1", "mb-1")}>
+                  <div
+                    className={cx(
+                      "item-menu",
+                      "mx-1",
+                      "lg:mx-2",
+                      "",
+                      "flex",
+                      "justify-between",
+                      "items-center",
+                      "gap-1",
+                      "pb-2"
+                    )}
+                  >
+                    <Link href={"/lienhe"}>Liên hệ</Link>
+                  </div>
                 </li>
               </ul>
               <p className={cx("description", "", "text-sm", "mb-5")}>

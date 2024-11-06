@@ -6,10 +6,16 @@ import styles from "./productdetail.module.css";
 import { fetchProductById } from "@/service/product";
 import { fetchProducts } from "@/service/product";
 import { useCart, CartFunction, Dispatch } from "@/components/CartFunction";
+import {
+  DispatchYt,
+  useYeuThich,
+  YeuThichFunction,
+} from "@/components/YTFunction/sanphamyeuthich";
 const cx = classNames.bind(styles);
 
 export default function ProductDetail({ params }) {
   const { state, dispatch } = useCart();
+  const { stateYt, dispatchYt } = useYeuThich();
   const { id } = params; // lấy id từ params
   const [product, setProduct] = useState(null);
   const [product_related, setProduct_Related] = useState(null);
@@ -177,7 +183,12 @@ export default function ProductDetail({ params }) {
             </div>
           </div>
           <div className="btn_wishlistProduct my-[10px]">
-            <button className="border border-red-500 text-red-500 font-semibold text-[18px] w-[145px] h-[35px] rounded-[5px]">
+            <button
+              onClick={() => {
+                dispatchYt(new DispatchYt("ADD_ITEM_YEUTHICH", product));
+              }}
+              className="border border-red-500 text-red-500 font-semibold text-[18px] w-[145px] h-[35px] rounded-[5px]"
+            >
               <i class="fa-solid fa-heart text-red-500 text-[18px]"></i> Yêu
               thích
             </button>

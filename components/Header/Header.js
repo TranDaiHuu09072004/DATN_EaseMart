@@ -184,6 +184,17 @@ export default function Header() {
                         {username ? `Chào, ${username}` : "Đăng ký"}
                       </Link>
                     </li>
+                    <li
+                      className={cx(
+                        "text-black",
+                        "px-3",
+                        "py-4",
+                        "block",
+                        "sm:hidden"
+                      )}
+                    >
+                      <Link href="/cart">Giỏ hàng ({count})</Link>
+                    </li>
                     <li className={cx("text-black", "px-3", "py-4")}>
                       <Link href="/thong-tin-ho-so">Cập nhật tài khoản</Link>
                     </li>

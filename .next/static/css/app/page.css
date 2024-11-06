@@ -215,6 +215,17 @@
 .home_list-product__jwUtY .home_product-item__mDXdL .home_btn__2zSLE span {
   margin-right: 10px;
 }
+@media (max-width: 1024px) {
+  .home_list-product__jwUtY .home_product-item__mDXdL {
+    height: 450px;
+  }
+}
+@media (max-width: 768px) {
+  .home_list-product__jwUtY .home_product-item__mDXdL {
+    min-height: 470px;
+  }
+}
+
 .home_title__wuuLF {
   font-size: 32px;
   font-weight: 600;

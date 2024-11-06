@@ -12,12 +12,22 @@ import {
 import Link from "next/link";
 import { Icon } from "@iconify/react";
 import MenuMobile from "../MenuMobile";
+import { useCart } from "@/components/CartFunction";
 
 const cx = classNames.bind(styles);
 const HeaderScroll = () => {
+  const { state, dispatch } = useCart();
   const [showHeader, setShowHeader] = useState(false);
   const [showHeaderScroll, setShowHeaderScroll] = useState(true);
-
+  const [count, setCount] = useState(0);
+  const [username, setUsername] = useState(null);
+  useEffect(() => {
+    let newCount = 0;
+    state.cartItems.forEach((element) => {
+      newCount += element.quantity;
+    });
+    setCount(newCount);
+  }, [state]);
   useEffect(() => {
     window.addEventListener("resize", () => {
       const width = window.innerWidth;
@@ -30,6 +40,18 @@ const HeaderScroll = () => {
         setShowHeaderScroll(false);
       }
     });
+  }, []);
+
+  useEffect(() => {
+    // Lấy tên người dùng từ localStorage nếu đã đăng nhập
+    const name = localStorage.getItem("username");
+    if (name) {
+      let handleUsername = name.split(" ");
+
+      handleUsername = handleUsername[handleUsername.length - 1];
+
+      setUsername(handleUsername);
+    }
   }, []);
 
   useEffect(() => {
@@ -91,7 +113,7 @@ const HeaderScroll = () => {
                 "gap-8"
               )}
             >
-              <Link href="#" className={cx("cart", "w-fit", "lg:w-28")}>
+              <Link href="/cart" className={cx("cart", "w-fit", "lg:w-28")}>
                 <div className={cx("box-icon-cart")}>
                   <FontAwesomeIcon
                     className={cx(
@@ -103,7 +125,7 @@ const HeaderScroll = () => {
                     )}
                     icon={faCartShopping}
                   />
-                  <span className={cx("count")}>0</span>
+                  <span className={cx("count")}>{count}</span>
                 </div>
                 <div className={cx("title", "hidden", "lg:block")}>
                   {" "}
@@ -111,7 +133,7 @@ const HeaderScroll = () => {
                 </div>
               </Link>
               <Link
-                href="/dangky"
+                href={username ? "#" : "/dangky"}
                 className={cx("account", "w-fit", "lg:w-28")}
               >
                 <div className={cx("box-icon-account")}>
@@ -126,7 +148,9 @@ const HeaderScroll = () => {
                     icon={faUser}
                   />
                 </div>
-                <div className={cx("title", "hidden", "lg:block")}>Đăng ký</div>
+                <div className={cx("title", "hidden", "lg:block")}>
+                  {username ? `Chào,${username}` : "đăng nhập"}
+                </div>
               </Link>
             </div>
           </div>

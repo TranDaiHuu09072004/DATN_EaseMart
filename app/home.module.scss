@@ -219,7 +219,15 @@
       }
     }
   }
-  @media (min-width: 1000) {
+  @media (max-width: 1024px) {
+    .product-item {
+      height: 450px;
+    }
+  }
+  @media (max-width: 768px) {
+    .product-item {
+      min-height: 470px;
+    }
   }
 }
 .title {

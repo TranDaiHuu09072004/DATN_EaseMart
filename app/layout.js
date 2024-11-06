@@ -14,6 +14,7 @@ import "@/app/globals.css";
 import { CartFunction } from "@/components/CartFunction";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { YeuThichFunction } from "@/components/YTFunction/sanphamyeuthich";
 const roboto = Roboto({
   weight: ["400", "700"],
   subsets: ["latin"],
@@ -36,9 +37,11 @@ export default function RootLayout({ children }) {
       </head>
       <body className={roboto.className}>
         <CartFunction>
-          {!hideHeaderFooter && <Header />}
-          {children}
-          {!hideHeaderFooter && <Footer />}
+          <YeuThichFunction>
+            {!hideHeaderFooter && <Header />}
+            {children}
+            {!hideHeaderFooter && <Footer />}
+          </YeuThichFunction>
         </CartFunction>
       </body>
     </html>

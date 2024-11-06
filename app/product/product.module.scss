@@ -25,6 +25,7 @@
     }
     .content {
       /* Chiều rộng 100% của .product-content */
+      width: 100%;
       max-width: calc(100% - 310px);
       .title {
         padding: 10px 7px;

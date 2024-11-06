@@ -113,7 +113,7 @@ const Cart = () => {
                 <tbody>
                   {state?.cartItems?.map((item, index) => {
                     return (
-                      <tr key={index}>
+                      <tr key={index} className={cx("")}>
                         <td className={cx("product")} colSpan="2">
                           <label className={cx("container")}>
                             <input type="checkbox" />
@@ -192,8 +192,12 @@ const Cart = () => {
                 <div className={cx("box-discount")}>
                   <div className={cx("title")}>Áp dụng khuyến mãi</div>
                   <div className={cx("discount")}>
-                    <input type="text" placeholder="Mã khuyến mãi" />
-                    <button>Áp dụng</button>
+                    <input
+                      className={cx("pl-1")}
+                      type="text"
+                      placeholder="Mã khuyến mãi"
+                    />
+                    <button className={cx("px-1")}>Áp dụng</button>
                   </div>
                 </div>
                 <div className={cx("detail-total")}>
