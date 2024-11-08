@@ -2,7 +2,6 @@
 import classNames from "classnames/bind";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import styles from "./productdetail.module.css";
 import { fetchProductById } from "@/service/product";
 import { fetchProducts } from "@/service/product";
 import { useCart, CartFunction, Dispatch } from "@/components/CartFunction";
@@ -11,6 +10,7 @@ import {
   useYeuThich,
   YeuThichFunction,
 } from "@/components/YTFunction/sanphamyeuthich";
+import styles from "../productdetail.module.css";
 const cx = classNames.bind(styles);
 
 export default function ProductDetail({ params }) {
@@ -45,7 +45,7 @@ export default function ProductDetail({ params }) {
     setQuantity(newQuatity);
   };
   return (
-    <div className="md:max-w-screen-xl md:mx-auto">
+    <div className="md:max-w-screen-xl md:mx-auto px-4">
       <div
         className={cx("link_home_news", "max-md:px-3", "max-md:p-1", "md:px-3")}
       >
@@ -90,7 +90,7 @@ export default function ProductDetail({ params }) {
           "product_detail",
           "mx-auto",
           "max-md:flex-col",
-          "max-md:p-1"
+          "max-md:p-4"
         )}
       >
         <div className={cx("product_img_left")}>

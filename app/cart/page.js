@@ -36,7 +36,7 @@ const Cart = () => {
     setTotal(total);
   }, [state]);
   return (
-    <div className={cx("max-w-screen-xl", "mx-auto", "p-4")}>
+    <div className={cx("max-w-screen-xl", "mx-auto", "px-4")}>
       <div className={cx("page-cart")}>
         <div
           className={cx(
@@ -229,7 +229,7 @@ const Cart = () => {
                     toán
                   </div>
                   <div className={cx("main-total")}>
-                    <span>Tạm tính</span>{" "}
+                    <span>Tổng tiền</span>{" "}
                     <span className={cx("main-total")}>
                       {formatPrice(total)}₫
                     </span>
@@ -245,7 +245,9 @@ const Cart = () => {
                 icon={faCartShopping}
               />
               <p> Bạn chưa có sản phẩm nào</p>
-              <button>Tiếp tục mua hàng</button>
+              <button>
+                <Link href="/">Tiếp tục mua hàng</Link>
+              </button>
             </div>
           )}
         </div>

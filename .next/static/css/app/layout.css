@@ -3773,9 +3773,18 @@ body {
     padding: 0.5rem;
   }
 
+  .max-md\:p-4 {
+    padding: 1rem;
+  }
+
   .max-md\:px-3 {
     padding-left: 0.75rem;
     padding-right: 0.75rem;
+  }
+
+  .max-md\:px-4 {
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 
   .max-md\:text-\[14px\] {
