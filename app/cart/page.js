@@ -12,6 +12,7 @@ import Link from "next/link";
 import { faTrashCan } from "@fortawesome/free-regular-svg-icons";
 import { useEffect, useState } from "react";
 import { Dispatch, useCart } from "@/components/CartFunction";
+import Swal from "sweetalert2";
 
 const cx = classNames.bind(styles);
 
@@ -27,6 +28,22 @@ const Cart = () => {
     return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
 
+  const handleRemoveCart = (data) => {
+    Swal.fire({
+      icon: "warning",
+      title: "Cảnh báo",
+      text: "Bạn có chắc muốn xóa toàn bộ giỏ hàng không",
+      showCancelButton: true, // Hiển thị nút "Hủy" (hoặc OK)
+      confirmButtonText: "OK", // Văn bản nút xác nhận
+      cancelButtonText: "Cancel", // Văn bản nút hủy
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Điều hướng đến trang đăng nhập nếu người dùng chọn "Đăng nhập"
+        dispatch(new Dispatch("REMOVE_ALL", data));
+      }
+      // Nếu người dùng nhấn "OK", popup sẽ đóng mà không có thêm hành động nào.
+    });
+  };
   useEffect(() => {
     let total = 0;
     state.cartItems.forEach((item) => {
@@ -108,7 +125,22 @@ const Cart = () => {
             >
               <div className={cx("list-product")}>
                 {/* Phần tiêu đề của bảng */}
-
+                <div className={cx("box-title", "md:flex", "hidden", "gap-7")}>
+                  <div
+                    className={cx(
+                      "lg:basis-7/12",
+                      "md:basis-6/12",
+                      "mr-16",
+                      "md:mr-10",
+                      "lg:mr-0"
+                    )}
+                  >
+                    Sản phẩm
+                  </div>
+                  <div className={cx("basis-1/12")}>Giá</div>
+                  <div className={cx("basis-1/12")}>Số lượng</div>
+                  <div className={cx("basis-1/12")}>Tổng</div>
+                </div>
                 {/* Phần thân của bảng */}
                 <div className={cx("flex", "flex-col", "gap-4", "not")}>
                   {state?.cartItems?.map((item, index) => {
@@ -208,6 +240,18 @@ const Cart = () => {
                       </div>
                     );
                   })}
+                  <div
+                    className={cx("flex", "justify-between", "text-[#3bb77e]")}
+                  >
+                    <button
+                      onClick={() => {
+                        handleRemoveCart(true);
+                      }}
+                    >
+                      Xóa tất cả
+                    </button>
+                    <Link href={"/"}>Tiếp tục mua hàng</Link>
+                  </div>
                 </div>
               </div>
               <div className={cx("total")}>

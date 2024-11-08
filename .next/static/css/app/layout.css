@@ -2776,6 +2776,24 @@ video {
 .mt-\[7px\] {
   margin-top: 7px;
 }
+.mr-5 {
+  margin-right: 1.25rem;
+}
+.mr-10 {
+  margin-right: 2.5rem;
+}
+.mr-12 {
+  margin-right: 3rem;
+}
+.mr-14 {
+  margin-right: 3.5rem;
+}
+.mr-16 {
+  margin-right: 4rem;
+}
+.mr-0 {
+  margin-right: 0px;
+}
 .block {
   display: block;
 }
@@ -2952,14 +2970,26 @@ video {
 .flex-grow {
   flex-grow: 1;
 }
+.basis-1\/12 {
+  flex-basis: 8.333333%;
+}
 .basis-1\/2 {
   flex-basis: 50%;
 }
 .basis-1\/5 {
   flex-basis: 20%;
 }
+.basis-7\/12 {
+  flex-basis: 58.333333%;
+}
 .basis-full {
   flex-basis: 100%;
+}
+.basis-6\/12 {
+  flex-basis: 50%;
+}
+.basis-5\/12 {
+  flex-basis: 41.666667%;
 }
 .border-collapse {
   border-collapse: collapse;
@@ -3036,6 +3066,9 @@ video {
 }
 .gap-\[10px\] {
   gap: 10px;
+}
+.gap-7 {
+  gap: 1.75rem;
 }
 .space-x-2 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
@@ -3824,6 +3857,10 @@ body {
     flex-basis: 33.333333%;
   }
 
+  .sm\:basis-7\/12 {
+    flex-basis: 58.333333%;
+  }
+
   .sm\:text-\[12px\] {
     font-size: 12px;
   }
@@ -3836,12 +3873,60 @@ body {
     margin-right: auto;
   }
 
+  .md\:mr-8 {
+    margin-right: 2rem;
+  }
+
+  .md\:mr-9 {
+    margin-right: 2.25rem;
+  }
+
+  .md\:mr-11 {
+    margin-right: 2.75rem;
+  }
+
+  .md\:mr-12 {
+    margin-right: 3rem;
+  }
+
+  .md\:mr-14 {
+    margin-right: 3.5rem;
+  }
+
+  .md\:mr-16 {
+    margin-right: 4rem;
+  }
+
+  .md\:mr-20 {
+    margin-right: 5rem;
+  }
+
+  .md\:mr-10 {
+    margin-right: 2.5rem;
+  }
+
+  .md\:flex {
+    display: flex;
+  }
+
   .md\:max-w-screen-xl {
     max-width: 1280px;
   }
 
   .md\:basis-1\/3 {
     flex-basis: 33.333333%;
+  }
+
+  .md\:basis-7\/12 {
+    flex-basis: 58.333333%;
+  }
+
+  .md\:basis-6\/12 {
+    flex-basis: 50%;
+  }
+
+  .md\:basis-8\/12 {
+    flex-basis: 66.666667%;
   }
 
   .md\:flex-row {
@@ -3879,6 +3964,14 @@ body {
 
   .lg\:ml-\[160px\] {
     margin-left: 160px;
+  }
+
+  .lg\:mr-16 {
+    margin-right: 4rem;
+  }
+
+  .lg\:mr-0 {
+    margin-right: 0px;
   }
 
   .lg\:block {
@@ -3939,6 +4032,14 @@ body {
 
   .lg\:basis-1\/5 {
     flex-basis: 20%;
+  }
+
+  .lg\:basis-7\/12 {
+    flex-basis: 58.333333%;
+  }
+
+  .lg\:basis-6\/12 {
+    flex-basis: 50%;
   }
 
   .lg\:justify-between {

@@ -127,10 +127,12 @@ const cartReducer = (state, action) => {
       saveCartToLocalStorage(userEmail, newCart.cartItems);
       return newCart;
     case "REMOVE_ALL":
-      return {
+      newCart = {
         ...state,
         cartItems: [],
       };
+      saveCartToLocalStorage(userEmail, newCart.cartItems);
+      return newCart;
     default:
       return state;
   }
