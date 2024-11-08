@@ -245,7 +245,10 @@ export default function ProductDetail({ params }) {
                 />
               </Link>
               <h3 className={cx("name_productrelated")}>
-                <Link href="" className={cx("a")}>
+                <Link
+                  href={`/chi-tiet-san-pham/${item.id}`}
+                  className={cx("a")}
+                >
                   {item.name}
                 </Link>
               </h3>

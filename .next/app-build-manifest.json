@@ -12,11 +12,11 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
-    "/cart/page": [
+    "/chi-tiet-san-pham/[id]/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/cart/page.css",
-      "static/chunks/app/cart/page.js"
+      "static/css/app/chi-tiet-san-pham/[id]/page.css",
+      "static/chunks/app/chi-tiet-san-pham/[id]/page.js"
     ],
     "/product/page": [
       "static/chunks/webpack.js",
@@ -24,29 +24,10 @@
       "static/css/app/product/page.css",
       "static/chunks/app/product/page.js"
     ],
-    "/dangky/page": [
+    "/_not-found/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/dangky/page.css",
-      "static/chunks/app/dangky/page.js"
-    ],
-    "/dangnhap/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/dangnhap/page.css",
-      "static/chunks/app/dangnhap/page.js"
-    ],
-    "/chi-tiet-san-pham/[id]/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/chi-tiet-san-pham/[id]/page.css",
-      "static/chunks/app/chi-tiet-san-pham/[id]/page.js"
-    ],
-    "/san-pham-yeu-thich/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/san-pham-yeu-thich/page.css",
-      "static/chunks/app/san-pham-yeu-thich/page.js"
+      "static/chunks/app/_not-found/page.js"
     ]
   }
 }
