@@ -169,12 +169,13 @@
 
 .product_description {
   margin: 20px 0;
+  padding: 15px;
   border-radius: 8px;
   width: 100%;
 }
 
 .product_description h3 {
-  font-size: 25px;
+  font-size: 24px;
   margin-bottom: 10px;
 }
 
@@ -225,7 +226,7 @@
   font-size: 1rem; /* Adjust paragraph size */
   line-height: 1.5; /* Increase line height for readability */
   margin-bottom: 10px; /* Space below the paragraph */
-  font-weight: 500;
+  font-weight: 550;
 }
 
 .product_description ul {
@@ -375,6 +376,10 @@
 
 @media screen and (max-width: 768px) {
   .product_img_left {
+    width: 100%;
+  }
+
+  .product_content_right {
     width: 100%;
   }
 

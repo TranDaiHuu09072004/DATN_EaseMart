@@ -33,16 +33,9 @@
       .list-product {
         width: 875px;
         height: fit-content;
-        tr {
-          border-bottom: 1px solid rgba(0, 0, 0, 0.14);
-        }
-        th {
-          text-align: center;
-          padding: 10px 0;
-          font-weight: 500;
-          &:first-child {
-            text-align: start;
-          }
+        .box-title {
+          padding-bottom: 6px;
+          border-bottom: 1px solid #ccc;
         }
 
         .container {
@@ -361,7 +354,7 @@
       p {
         font-size: 16px;
       }
-      button {
+      a {
         width: 165px;
         padding: 7px;
         font-size: 15px;

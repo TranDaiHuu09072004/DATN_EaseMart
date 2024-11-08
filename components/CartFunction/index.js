@@ -68,15 +68,17 @@ const cartReducer = (state, action) => {
               };
             }
 
-            return item;
+            return { ...item, select: false };
           }),
         };
+
         saveCartToLocalStorage(userEmail, newCart.cartItems);
         toast.success("Số lượng sản phẩm đã được cập nhật!");
         return newCart;
       }
 
       action.data.quantity = 1;
+      action.data.select = false;
 
       newCart = {
         ...state,
@@ -104,8 +106,6 @@ const cartReducer = (state, action) => {
       saveCartToLocalStorage(userEmail, newCart.cartItems);
       return newCart;
     case "UPDATE_PLUS_ITEM_CART":
-      console.log(action.data);
-
       const newCartItemsPlus = [...state.cartItems];
 
       newCartItemsPlus[action.data.index].quantity += 1;
@@ -126,11 +126,27 @@ const cartReducer = (state, action) => {
       };
       saveCartToLocalStorage(userEmail, newCart.cartItems);
       return newCart;
+    case "UPDATE_SELECT_CART":
+      const newCartItemsSelect = [...state.cartItems];
+      newCart = {
+        ...state,
+        cartItems: newCartItemsSelect.map((item) => {
+          if (item.id === action.data.id) {
+            item.select = !item.select;
+          }
+          return item;
+        }),
+      };
+
+      saveCartToLocalStorage(userEmail, newCart.cartItems);
+      return newCart;
     case "REMOVE_ALL":
-      return {
+      newCart = {
         ...state,
         cartItems: [],
       };
+      saveCartToLocalStorage(userEmail, newCart.cartItems);
+      return newCart;
     default:
       return state;
   }
@@ -143,22 +159,13 @@ const initialState = {
 const CartContext = createContext();
 
 export const CartFunction = ({ children }) => {
-  // const pathname = usePathname();
   const [state, dispatch] = useReducer(cartReducer, initialState);
-  // useEffect(() => {
-  //   const handleBeforeUnload = () => {
-  //     toast.dismiss(); // Xóa các toast hiện tại khi đường dẫn thay đổi
-  //   };
 
-  //   window.addEventListener("beforeunload", handleBeforeUnload);
-
-  //   return () => {
-  //     window.removeEventListener("beforeunload", handleBeforeUnload);
-  //   }; // Xóa các toast hiện tại khi đường dẫn thay đổi
-  // }, [pathname]);
   useEffect(() => {
     const cartUser = getCartFromLocalStorage(userEmail);
     if (cartUser !== undefined) {
+      console.log("check");
+
       dispatch(new Dispatch("ADD_CART_ITEMS_FROM_LOCAL", cartUser));
     }
   }, []);
