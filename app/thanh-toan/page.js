@@ -1,8 +1,23 @@
-import React from "react";
+"use client";
+import { useEffect, useRef, useState } from "react";
 import styles from "./payment.module.css";
 import classNames from "classnames/bind";
+import { useCart } from "@/components/CartFunction";
 const cx = classNames.bind(styles);
 export default function Payment() {
+  const { state, dispatch } = useCart();
+  const [listPayment, setListPayment] = useState([]);
+  let total = useRef(0);
+  // const [infoUser, setInfoUser] = useState({});
+  useEffect(() => {
+    setListPayment(() => {
+      return state.cartItems.filter((item) => {
+        if (item.select) total.current += item.quantity * item.sale_price;
+        return item.select;
+      });
+    });
+  }, [state]);
+
   return (
     <div>
       <div className="md:max-w-screen-xl md:mx-auto">
@@ -223,23 +238,20 @@ export default function Payment() {
               <span>Tạm tính</span>
             </div>
             <div className={cx("product_list")}>
-              <div className={cx("product")}>
-                <img src="assets/img/pr_detail1.svg" alt="" width={80} />
-                <p>Gà Giòn Cổ Diễn Foster Farms Takeout </p>
-                <span>(X1)</span>
-                <span className={cx("price_payment")}>390,000đ</span>
-              </div>
-
-              <div className={cx("product")}>
-                <img src="assets/img/pr_detail1.svg" alt="" width={80} />
-                <p>Gà Giòn Cổ Diễn Foster Farms Takeout </p>
-                <span>(X1)</span>
-                <span className={cx("price_payment")}>390,000đ</span>
-              </div>
+              {listPayment.map((item) => (
+                <div className={cx("product")}>
+                  <img src={item.image} alt="" width={80} />
+                  <p>{item.name}</p>
+                  <span>(X{item.quantity})</span>
+                  <span className={cx("price_payment")}>
+                    {item.quantity * item.sale_price}đ
+                  </span>
+                </div>
+              ))}
             </div>
             <div className={cx("order_total")}>
               <span>Tạm tính:</span>
-              <span className={cx("price_payment")}>785,000đ</span>
+              <span className={cx("price_payment")}>{total.current}đ</span>
             </div>
             <div className={cx("order_voucher")}>
               <span className="mt-[5px]">Mã voucher: </span>

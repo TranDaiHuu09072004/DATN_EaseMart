@@ -47,11 +47,28 @@ const Cart = () => {
   useEffect(() => {
     let total = 0;
     state.cartItems.forEach((item) => {
-      total += item.quantity * item.sale_price;
+      if (item.select) {
+        total += item.quantity * item.sale_price;
+      }
     });
-
     setTotal(total);
   }, [state]);
+
+  const handlePayMent = () => {
+    // kiểm tra đã có sản phẩm nào được chọn chưa
+    if (state.cartItems.some((item) => item.select)) {
+      // đưa đến trang thanh toán
+      window.location.href = "/thanh-toan";
+      //...
+    } else {
+      // thông báo người dùng chưa chọn sản phẩm nào
+      Swal.fire({
+        icon: "error",
+        title: "Thông báo",
+        text: "Vui lòng chọn sản phẩm để thanh toán",
+      });
+    }
+  };
   return (
     <div className={cx("max-w-screen-xl", "mx-auto", "p-4")}>
       <div className={cx("page-cart")}>
@@ -125,7 +142,15 @@ const Cart = () => {
             >
               <div className={cx("list-product")}>
                 {/* Phần tiêu đề của bảng */}
-                <div className={cx("box-title", "md:flex", "hidden", "gap-7")}>
+                <div
+                  className={cx(
+                    "box-title",
+                    "md:flex",
+                    "hidden",
+                    "gap-7",
+                    "mb-2"
+                  )}
+                >
                   <div
                     className={cx(
                       "lg:basis-7/12",
@@ -159,7 +184,15 @@ const Cart = () => {
                         )}
                       >
                         <label className={cx("container")}>
-                          <input type="checkbox" />
+                          <input
+                            type="checkbox"
+                            checked={item.select}
+                            onChange={() => {
+                              dispatch(
+                                new Dispatch("UPDATE_SELECT_CART", item)
+                              );
+                            }}
+                          />
                           <span className={cx("checkmark")}></span>
                         </label>
                         <div className={cx("thumb", "w-20", "flex-shrink-0")}>
@@ -257,15 +290,9 @@ const Cart = () => {
               <div className={cx("total")}>
                 <div className={cx("detail-total")}>
                   <div className={cx("title-total")}>Cộng giỏ hàng</div>
-                  <div className={cx("provisional")}>
-                    <span>Tạm tính</span>{" "}
-                    <span className={cx("total-provisional")}>390,000₫</span>
-                  </div>
                   <div className={cx("ship")}>
                     <span>Giao hàng</span>{" "}
-                    <span className={cx("ship-detail")}>
-                      Giao hàng miễn phí
-                    </span>
+                    <span className={cx("ship-detail")}>Chưa có</span>
                   </div>
 
                   <div className={cx("warning")}>
@@ -279,7 +306,14 @@ const Cart = () => {
                     </span>
                   </div>
                 </div>
-                <button className={cx("buynow")}>Thanh toán</button>
+                <button
+                  onClick={() => {
+                    handlePayMent();
+                  }}
+                  className={cx("buynow")}
+                >
+                  Thanh toán
+                </button>
               </div>
             </div>
           ) : (
@@ -289,7 +323,7 @@ const Cart = () => {
                 icon={faCartShopping}
               />
               <p> Bạn chưa có sản phẩm nào</p>
-              <button>Tiếp tục mua hàng</button>
+              <Link href={"/"}>Tiếp tục mua hàng</Link>
             </div>
           )}
         </div>

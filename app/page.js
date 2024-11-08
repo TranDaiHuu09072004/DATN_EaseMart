@@ -54,12 +54,28 @@ export default function Home() {
             <div className={cx("voucher-item")} key={index}>
               <div className={cx("voucher-item-top")}>
                 <div className={cx("info-left")}>
-                  <p>
+                  <p
+                    className={cx(
+                      "text-xs",
+                      "max-h-[150px]",
+                      "overflow-hidden",
+                      "text-ellipsis",
+                      "line-clamp-3"
+                    )}
+                  >
                     Giảm 50.000đ cho đơn từ 1.500.000đ (không áp dụng với đơn
                     COD, Trả góp, Thanh toán Payme)
                   </p>
                 </div>
-                <div className={cx("info-right")}>
+                <div
+                  className={cx(
+                    "info-right",
+                    "max-h-[150px]",
+                    "overflow-hidden",
+                    "text-ellipsis",
+                    "line-clamp-3"
+                  )}
+                >
                   Giảm 50.000đ cho đơn từ 1.500.000đ
                 </div>
               </div>
@@ -298,7 +314,8 @@ const ProductList = ({ products }) => {
               "flex-col",
               "lg:basis-1/5",
               "md:basis-1/3",
-              "basis-1/2",
+              "xs:basis-1/2",
+              "basis-full",
               "p-1"
             )}
             key={product.id}

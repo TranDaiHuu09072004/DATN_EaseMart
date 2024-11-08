@@ -6,6 +6,10 @@ export const content = [
   "./components/**/*.{js,ts,jsx,tsx}",
 ];
 export const theme = {
-  extend: {},
+  extend: {
+    screens: {
+      xs: "400px", // Thêm breakpoint cho màn hình dưới 300px
+    },
+  },
 };
 export const plugins = [];
