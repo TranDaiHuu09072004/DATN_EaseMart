@@ -2785,12 +2785,6 @@ video {
 .mt-\[7px\] {
   margin-top: 7px;
 }
-.line-clamp-1 {
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 1;
-}
 .line-clamp-3 {
   overflow: hidden;
   display: -webkit-box;
@@ -2875,14 +2869,14 @@ video {
 .h-screen {
   height: 100vh;
 }
+.max-h-\[150px\] {
+  max-height: 150px;
+}
 .max-h-\[370px\] {
   max-height: 370px;
 }
 .max-h-full {
   max-height: 100%;
-}
-.max-h-\[150px\] {
-  max-height: 150px;
 }
 .w-10 {
   width: 2.5rem;

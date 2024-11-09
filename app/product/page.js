@@ -18,7 +18,7 @@ import { useSearchParams } from "next/navigation";
 import { getProBy2Cate, getProByCate } from "@/service/product";
 import { getBrand } from "@/service/brand";
 import { Dispatch, useCart } from "@/components/CartFunction";
-
+import { formatPrice } from "@/uilts/formatPrice";
 const cx = classNames.bind(styles);
 
 const Product = () => {
@@ -274,7 +274,7 @@ const Product = () => {
                       </div>
                       <div className={cx("price")}>
                         <div className={cx("price-reduction")}>
-                          {item.sale_price}đ
+                          {formatPrice(item.sale_price)}đ
                         </div>
                         <div className={cx("original-price")}>
                           {item.price}đ

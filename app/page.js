@@ -37,6 +37,15 @@ export default function Home() {
     setChatVisible(!isChatVisible);
   };
 
+  const handleCopy = (code) => {
+    navigator.clipboard
+      .writeText(code)
+
+      .catch((err) => {
+        console.error("Lỗi khi sao chép:", err);
+      });
+  };
+
   return (
     <>
       <Banner />
@@ -81,7 +90,12 @@ export default function Home() {
               </div>
               <div className={cx("voucher-item-bottom")}>
                 <h4>2NZ42HJB</h4>
-                <button className={cx("button-copy")}>
+                <button
+                  onClick={() => {
+                    handleCopy(`test${index}`);
+                  }}
+                  className={cx("button-copy")}
+                >
                   <FontAwesomeIcon icon={faCopy} /> Copy
                 </button>
               </div>

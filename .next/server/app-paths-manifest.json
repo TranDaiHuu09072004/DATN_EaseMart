@@ -1,8 +1,5 @@
 {
-  "/_not-found/page": "app/_not-found/page.js",
-  "/page": "app/page.js",
-  "/chi-tiet-san-pham/[id]/page": "app/chi-tiet-san-pham/[id]/page.js",
-  "/cart/page": "app/cart/page.js",
-  "/product/page": "app/product/page.js",
-  "/thanh-toan/page": "app/thanh-toan/page.js"
+  "/dangky/page": "app/dangky/page.js",
+  "/dangnhap/page": "app/dangnhap/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js"
 }
