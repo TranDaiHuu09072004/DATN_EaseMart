@@ -291,7 +291,7 @@ const MenuMobile = ({ color = false }) => {
                       "w-7",
                       "h-7"
                     )}
-                  >
+                  >``
                     <FontAwesomeIcon
                       icon={faPhone}
                       className={cx("icon", "w-3")}

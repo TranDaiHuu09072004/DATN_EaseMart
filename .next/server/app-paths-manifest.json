@@ -1,6 +1,8 @@
 {
-  "/chi-tiet-san-pham/[id]/page": "app/chi-tiet-san-pham/[id]/page.js",
-  "/product/page": "app/product/page.js",
-  "/cart/page": "app/cart/page.js",
-  "/page": "app/page.js"
+  "/_not-found/page": "app/_not-found/page.js",
+  "/dangnhap/page": "app/dangnhap/page.js",
+  "/page": "app/page.js",
+  "/lich-su-don-hang/page": "app/lich-su-don-hang/page.js",
+  "/thanh-toan/page": "app/thanh-toan/page.js",
+  "/cart/page": "app/cart/page.js"
 }

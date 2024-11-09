@@ -36,7 +36,7 @@ export default function DangKy() {
   const onSubmit = async (data) => {
     try {
       const response = await axios.post(
-        "http://trandainghia.id.vn/api/register",
+        "https://trandainghia.id.vn/api/register",
         data
       );
       console.log(response.data);

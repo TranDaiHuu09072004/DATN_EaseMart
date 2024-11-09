@@ -139,7 +139,7 @@ export default function Header() {
               </Link>
               <div className={cx("account", "relative", "group", "py-3")}>
                 <Link
-                  href={username ? "#" : "/dangky"}
+                  href={username ? "#" : "/dangnhap"}
                   className="flex items-center space-x-2 truncate whitespace-nowrap overflow-hidden text-ellipsis"
                 >
                   <FontAwesomeIcon
@@ -147,7 +147,7 @@ export default function Header() {
                     className="text-white sm:w-7 sm:h-7 w-5 h-5"
                   />
                   <div className="text-white lg:text-lg text-base font-medium w-full lg:block hidden">
-                    {username ? `Chào, ${username}` : "Đăng ký"}
+                    {username ? `Chào, ${username}` : "Đăng nhập"}
                   </div>
                 </Link>
                 {username && (
@@ -199,10 +199,10 @@ export default function Header() {
                       <Link href="/thong-tin-ho-so">Cập nhật tài khoản</Link>
                     </li>
                     <li className={cx("text-black", "px-3", "py-4")}>
-                      <Link href="/doi-mat-khau">Đổi mật khẩu</Link>
+                      <Link href="/san-pham-yeu-thich">Sản phẩm yêu thích</Link>
                     </li>
                     <li className={cx("text-black", "px-3", "py-4")}>
-                      <Link href="/san-pham-yeu-thich">Sản phẩm yêu thích</Link>
+                      <Link href="/lich-su-don-hang">Lịch sử đơn hàng</Link>
                     </li>
                     <li
                       className={cx(

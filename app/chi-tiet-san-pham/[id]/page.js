@@ -2,6 +2,7 @@
 import classNames from "classnames/bind";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import styles from "../productdetail.module.css";
 import { fetchProductById } from "@/service/product";
 import { fetchProducts } from "@/service/product";
 import { useCart, CartFunction, Dispatch } from "@/components/CartFunction";
@@ -10,7 +11,6 @@ import {
   useYeuThich,
   YeuThichFunction,
 } from "@/components/YTFunction/sanphamyeuthich";
-import styles from "../productdetail.module.css";
 const cx = classNames.bind(styles);
 
 export default function ProductDetail({ params }) {
@@ -256,10 +256,16 @@ export default function ProductDetail({ params }) {
                 ĐVT: {item.unit_of_caculation}
               </span>
               <h5 className={cx("price_related")}>{formatPrice(item.price)}</h5>
-              <button className={cx("btn_addRelated")}>
-                <Link href="" className={cx("a")}>
+              <button
+                onClick={() => {
+                  item.quantity = 1;
+                  dispatch(new Dispatch("ADD_ITEM_CART", item));
+                }}
+                className={cx("btn_addRelated")}
+              >
+                <div href="" className={cx("a")}>
                   <i className="fa-solid fa-cart-shopping"></i> Thêm vào giỏ
-                </Link>
+                </div>
               </button>
             </li>
           ))}
