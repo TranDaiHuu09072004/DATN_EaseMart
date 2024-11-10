@@ -54,23 +54,23 @@ const Cart = () => {
     setTotal(total);
   }, [state]);
 
-  const handlePayMent = () => {
-    // kiểm tra đã có sản phẩm nào được chọn chưa
-    if (state.cartItems.some((item) => item.select)) {
-      // đưa đến trang thanh toán
-      window.location.href = "/thanh-toan";
-      //...
-    } else {
-      // thông báo người dùng chưa chọn sản phẩm nào
-      Swal.fire({
-        icon: "error",
-        title: "Thông báo",
-        text: "Vui lòng chọn sản phẩm để thanh toán",
-      });
-    }
-  };
+    const handlePayMent = () => {
+      // kiểm tra đã có sản phẩm nào được chọn chưa
+      if (state.cartItems.some((item) => item.select)) {
+        // đưa đến trang thanh toán
+        window.location.href = "/thanh-toan";
+        //...
+      } else {
+        // thông báo người dùng chưa chọn sản phẩm nào
+        Swal.fire({
+          icon: "error",
+          title: "Thông báo",
+          text: "Vui lòng chọn sản phẩm để thanh toán",
+        });
+      }
+    };
   return (
-    <div className={cx("max-w-screen-xl", "mx-auto", "p-4")}>
+    <div className={cx("max-w-screen-xl", "mx-auto", "px-4")}>
       <div className={cx("page-cart")}>
         <div
           className={cx(
@@ -300,7 +300,7 @@ const Cart = () => {
                     toán
                   </div>
                   <div className={cx("main-total")}>
-                    <span>Tạm tính</span>{" "}
+                    <span>Tổng tiền</span>{" "}
                     <span className={cx("main-total")}>
                       {formatPrice(total)}₫
                     </span>
@@ -323,7 +323,9 @@ const Cart = () => {
                 icon={faCartShopping}
               />
               <p> Bạn chưa có sản phẩm nào</p>
-              <Link href={"/"}>Tiếp tục mua hàng</Link>
+              <button>
+                <Link href="/">Tiếp tục mua hàng</Link>
+              </button>
             </div>
           )}
         </div>

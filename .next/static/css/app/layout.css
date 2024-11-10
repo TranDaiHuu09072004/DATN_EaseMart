@@ -1217,6 +1217,7 @@ color: #fff;
   color: #fff;
   font-weight: 600;
   font-size: 15px;
+  line-height: 20px;
 }
 
 .footer_footer_content__Hr8tp span {
@@ -1228,6 +1229,7 @@ color: #fff;
 .footer_footer_address__ppP8w {
   color: #fff;
   font-size: 15px;
+  line-height: 20px;
 }
 
 .footer_footer_hotline__zb2Qn {
@@ -3216,9 +3218,6 @@ video {
 .p-\[10px\] {
   padding: 10px;
 }
-.p-\[15px\] {
-  padding: 15px;
-}
 .p-\[25px\] {
   padding: 25px;
 }
@@ -3292,9 +3291,6 @@ video {
 }
 .pr-1 {
   padding-right: 0.25rem;
-}
-.pr-10 {
-  padding-right: 2.5rem;
 }
 .text-left {
   text-align: left;
@@ -3377,6 +3373,10 @@ video {
 .text-\[\#3bb77e\] {
   --tw-text-opacity: 1;
   color: rgb(59 183 126 / var(--tw-text-opacity));
+}
+.text-\[\#939292\] {
+  --tw-text-opacity: 1;
+  color: rgb(147 146 146 / var(--tw-text-opacity));
 }
 .text-\[\#9E9D9D\] {
   --tw-text-opacity: 1;
@@ -3684,10 +3684,6 @@ body {
     margin-right: auto;
   }
 
-  .max-lg\:mb-2 {
-    margin-bottom: 0.5rem;
-  }
-
   .max-lg\:ml-\[10px\] {
     margin-left: 10px;
   }
@@ -3786,6 +3782,10 @@ body {
 
   .max-md\:p-2 {
     padding: 0.5rem;
+  }
+
+  .max-md\:p-4 {
+    padding: 1rem;
   }
 
   .max-md\:px-3 {
@@ -4035,26 +4035,8 @@ body {
 
 @media (min-width: 1280px) {
 
-  .xl\:mx-auto {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .xl\:my-4 {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-  }
-
-  .xl\:ml-\[320px\] {
-    margin-left: 320px;
-  }
-
   .xl\:ml-\[60px\] {
     margin-left: 60px;
-  }
-
-  .xl\:mt-5 {
-    margin-top: 1.25rem;
   }
 
   .xl\:mt-\[30px\] {
@@ -4081,16 +4063,8 @@ body {
     width: 18rem;
   }
 
-  .xl\:w-\[130px\] {
-    width: 130px;
-  }
-
   .xl\:w-\[350px\] {
     width: 350px;
-  }
-
-  .xl\:w-\[430px\] {
-    width: 430px;
   }
 
   .xl\:w-\[500px\] {
@@ -4099,10 +4073,6 @@ body {
 
   .xl\:w-full {
     width: 100%;
-  }
-
-  .xl\:max-w-\[700px\] {
-    max-width: 700px;
   }
 
   .xl\:basis-1\/5 {
@@ -4117,10 +4087,6 @@ body {
     flex-direction: row;
   }
 
-  .xl\:items-center {
-    align-items: center;
-  }
-
   .xl\:justify-between {
     justify-content: space-between;
   }
@@ -4133,24 +4099,12 @@ body {
     gap: 23px;
   }
 
-  .xl\:gap-\[33px\] {
-    gap: 33px;
-  }
-
   .xl\:gap-\[48px\] {
     gap: 48px;
   }
 
-  .xl\:gap-\[50px\] {
-    gap: 50px;
-  }
-
   .xl\:gap-\[69px\] {
     gap: 69px;
-  }
-
-  .xl\:gap-\[75px\] {
-    gap: 75px;
   }
 
   .xl\:gap-\[76px\] {

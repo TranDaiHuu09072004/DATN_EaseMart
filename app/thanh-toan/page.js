@@ -3,12 +3,26 @@ import { useEffect, useRef, useState } from "react";
 import styles from "./payment.module.css";
 import classNames from "classnames/bind";
 import { useCart } from "@/components/CartFunction";
+import { getDistrict, getProvince, getWard } from "@/service/address";
+import { formatPrice } from "@/uilts/formatPrice";
 const cx = classNames.bind(styles);
 export default function Payment() {
-  const { state, dispatch } = useCart();
+  const { state } = useCart();
   const [listPayment, setListPayment] = useState([]);
+  const [listProvince, setlistProvince] = useState([]);
+  const [selectedProvince, setSelectedProvince] = useState(null);
+  const [district, setDistrict] = useState([]);
+  const [selectedDistrict, setSelectedDistrict] = useState(null);
+  const [ward, setWard] = useState([]);
+  const [selectedWard, setSelectedWard] = useState(null);
+  const [address, setAddress] = useState("");
+  const [number, setNumber] = useState(null);
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
   let total = useRef(0);
   // const [infoUser, setInfoUser] = useState({});
+
   useEffect(() => {
     setListPayment(() => {
       return state.cartItems.filter((item) => {
@@ -17,6 +31,40 @@ export default function Payment() {
       });
     });
   }, [state]);
+  // thành phố
+  useEffect(() => {
+    getProvince().then((province) => {
+      console.log(province.data);
+
+      setlistProvince(province.data);
+    });
+  }, []);
+  // quận
+  useEffect(() => {
+    if (!selectedProvince) return;
+    console.log(selectedProvince);
+
+    getDistrict(selectedProvince.id)
+      .then((province) => {
+        console.log(province.data);
+
+        setDistrict(province.data);
+      })
+      .catch((error) => console.log(error));
+  }, [selectedProvince]);
+
+  // phường
+  useEffect(() => {
+    if (!selectedDistrict) return;
+
+    getWard(selectedDistrict.id)
+      .then((province) => {
+        console.log(province.data);
+
+        setWard(province.data);
+      })
+      .catch((error) => console.log(error));
+  }, [selectedDistrict]);
 
   return (
     <div>
@@ -138,6 +186,10 @@ export default function Payment() {
                     required
                     placeholder="Vui lòng nhập tên"
                     className="xl:w-[350px] max-xl:w-[320px] h-[40px] rounded-[5px] p-[10px] border border-[#cccccc] max-md:w-full"
+                    value={firstName}
+                    onChange={(e) => {
+                      setFirstName(e.target.value);
+                    }}
                   />
                 </div>
                 <div className={cx("name_form")}>
@@ -149,29 +201,105 @@ export default function Payment() {
                     required
                     placeholder="Vui lòng nhập họ"
                     className="xl:w-[350px] max-xl:w-[320px] h-[40px] rounded-[5px] p-[10px] border border-[#cccccc] max-md:w-full"
+                    value={lastName}
+                    onChange={(e) => {
+                      setLastName(e.target.value);
+                    }}
                   />
                 </div>
               </div>
+              <div className={cx("phone")}>
+                <h5>
+                  Địa chỉ nhà <span class={cx("required")}>*</span>
+                </h5>
+                <input
+                  type="tel"
+                  required
+                  placeholder="Vui lòng nhập địa chỉ nhà của bạn"
+                  className="max-xl:w-[320px] xl:w-full max-md:w-full"
+                  value={address}
+                  onChange={(e) => {
+                    setAddress(e.target.value);
+                  }}
+                />
+              </div>
               <div className={cx("nation")}>
                 <h5>
-                  Quốc gia <span class={cx("required")}>*</span>
+                  Tỉnh/ Thành phố<span class={cx("required")}>*</span>
                 </h5>
                 <select
                   required
                   className="max-xl:w-[320px] h-[40px] xl:w-full max-md:w-full "
+                  onChange={(e) => {
+                    console.log(e.target.value);
+
+                    setSelectedProvince(JSON.parse(e.target.value));
+                  }}
                 >
-                  <option>Việt Nam</option>
+                  <option value={null}></option>
+                  {listProvince.map((pro) => {
+                    return (
+                      <option
+                        key={pro.name}
+                        value={JSON.stringify({
+                          id: pro.ProvinceID,
+                          name: pro.ProvinceName,
+                        })}
+                      >
+                        {pro.ProvinceName}
+                      </option>
+                    );
+                  })}
                 </select>
               </div>
               <div className={cx("city")}>
                 <h5>
-                  Tỉnh/ Thành phố <span class={cx("required")}>*</span>
+                  Quận <span class={cx("required")}>*</span>
                 </h5>
                 <select
                   required
                   className="max-xl:w-[320px] h-[40px] xl:w-full max-md:w-full border border-[#cccccc] rounded-[5px] my-[10px]"
+                  onChange={(e) => {
+                    setSelectedDistrict(JSON.parse(e.target.value));
+                  }}
                 >
-                  <option>Việt Nam</option>
+                  <option></option>
+                  {district.map((dis) => (
+                    <option
+                      key={dis.name}
+                      value={JSON.stringify({
+                        id: dis.DistrictID,
+                        name: dis.DistrictName,
+                      })}
+                    >
+                      {dis.DistrictName}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className={cx("city")}>
+                <h5>
+                  Phường <span class={cx("required")}>*</span>
+                </h5>
+                <select
+                  required
+                  className="max-xl:w-[320px] h-[40px] xl:w-full max-md:w-full border border-[#cccccc] rounded-[5px] my-[10px]"
+                  onChange={(e) => {
+                    setSelectedWard(JSON.parse(e.target.value));
+                  }}
+                >
+                  <option></option>
+                  {ward.map((ward) => (
+                    <option
+                      key={ward.name}
+                      value={JSON.stringify({
+                        id: ward.DistrictID,
+                        name: ward.WardName,
+                      })}
+                    >
+                      {ward.WardName}
+                    </option>
+                  ))}
                 </select>
               </div>
               <div className={cx("phone")}>
@@ -179,10 +307,14 @@ export default function Payment() {
                   Số điện thoại <span class={cx("required")}>*</span>
                 </h5>
                 <input
-                  type="tel"
+                  type="number"
                   required
                   placeholder="Vui lòng nhập số điện thoại"
                   className="max-xl:w-[320px] xl:w-full max-md:w-full"
+                  value={number}
+                  onChange={(e) => {
+                    setNumber(e.target.value);
+                  }}
                 />
               </div>
               <div className={cx("email")}>
@@ -194,6 +326,10 @@ export default function Payment() {
                   required
                   placeholder="Vui lòng nhập Email"
                   className="max-xl:w-[320px] xl:w-full max-sm:w-full max-md:w-full"
+                  value={email}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
                 />
               </div>
               <div className={cx("text_note")}>
@@ -244,14 +380,10 @@ export default function Payment() {
                   <p>{item.name}</p>
                   <span>(X{item.quantity})</span>
                   <span className={cx("price_payment")}>
-                    {item.quantity * item.sale_price}đ
+                    {formatPrice(item.quantity * item.sale_price)}đ
                   </span>
                 </div>
               ))}
-            </div>
-            <div className={cx("order_total")}>
-              <span>Tạm tính:</span>
-              <span className={cx("price_payment")}>{total.current}đ</span>
             </div>
             <div className={cx("order_voucher")}>
               <span className="mt-[5px]">Mã voucher: </span>
@@ -265,6 +397,13 @@ export default function Payment() {
             <div className={cx("order_discount")}>
               <span>Đã giảm: 15,000đ</span>
             </div>
+            <div className={cx("order_total")}>
+              <span>Tổng tiền:</span>
+              <span className={cx("price_payment")}>
+                {formatPrice(total.current)}đ
+              </span>
+            </div>
+
             <div className={cx("payment_method")}>
               <h5 className=" text-2xl mb-3 font-medium ">
                 <i class="fa-solid fa-money-bill-transfer text-[25px] text-[#3bb77e] font-bold pr-1"></i>

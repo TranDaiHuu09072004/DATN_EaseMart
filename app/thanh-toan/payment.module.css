@@ -140,6 +140,16 @@
   margin-top: 19px;
 }
 
+.phone input::-webkit-outer-spin-button,
+.phone input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.phone input {
+  -moz-appearance: textfield;
+}
+
 .nation select {
   height: 40px;
   border-radius: 5px;

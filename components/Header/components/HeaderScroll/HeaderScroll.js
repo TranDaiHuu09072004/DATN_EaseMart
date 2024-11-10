@@ -133,7 +133,7 @@ const HeaderScroll = () => {
                 </div>
               </Link>
               <Link
-                href={username ? "#" : "/dangky"}
+                href={username ? "#" : "/dangnhap"}
                 className={cx("account", "w-fit", "lg:w-28")}
               >
                 <div className={cx("box-icon-account")}>

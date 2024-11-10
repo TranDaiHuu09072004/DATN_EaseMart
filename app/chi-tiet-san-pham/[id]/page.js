@@ -45,7 +45,7 @@ export default function ProductDetail({ params }) {
     setQuantity(newQuatity);
   };
   return (
-    <div className="md:max-w-screen-xl md:mx-auto">
+    <div className="md:max-w-screen-xl md:mx-auto px-4">
       <div
         className={cx("link_home_news", "max-md:px-3", "max-md:p-1", "md:px-3")}
       >
@@ -90,7 +90,7 @@ export default function ProductDetail({ params }) {
           "product_detail",
           "mx-auto",
           "max-md:flex-col",
-          "max-md:p-1"
+          "max-md:p-4"
         )}
       >
         <div className={cx("product_img_left")}>
@@ -245,7 +245,10 @@ export default function ProductDetail({ params }) {
                 />
               </Link>
               <h3 className={cx("name_productrelated")}>
-                <Link href="" className={cx("a")}>
+                <Link
+                  href={`/chi-tiet-san-pham/${item.id}`}
+                  className={cx("a")}
+                >
                   {item.name}
                 </Link>
               </h3>

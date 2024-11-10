@@ -23,6 +23,7 @@ const cx = classNames.bind(styles);
 
 const MenuMobile = ({ color = false }) => {
   const [showSidebar, setShowSidebar] = useState(false);
+  const [searchKeyword, setSearchKeyWord] = useState("");
   useEffect(() => {
     if (showSidebar) {
       document.body.style.overflow = "hidden";
@@ -30,6 +31,14 @@ const MenuMobile = ({ color = false }) => {
       document.body.style.overflow = "auto";
     }
   }, [showSidebar]);
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (searchKeyword.trim()) {
+      const encodedKeyword = encodeURIComponent(searchKeyword.trim());
+      window.location.href = `/product?name=${encodedKeyword}`;
+    }
+  };
   return (
     <div className={cx("hamburger-menu", "lg:hidden", "flex")}>
       <Icon
@@ -84,7 +93,7 @@ const MenuMobile = ({ color = false }) => {
               >
                 <div className={cx("logo", "h-full")}>
                   <img
-                    src="assets/img/logo.png"
+                    src="/assets/img/logo.png"
                     className={cx("h-full", "w-full")}
                   />
                 </div>
@@ -106,14 +115,20 @@ const MenuMobile = ({ color = false }) => {
                 </div>
               </div>
               <div className={cx("box-rearch", "flex", "mb-5")}>
-                <input
-                  type="text"
-                  placeholder="Tìm kiếm..."
-                  className={cx("input-search", "w-full", "h-10", "pl-2")}
-                />
-                <button className={cx("btn-search", "h-10", "w-14")}>
-                  <FontAwesomeIcon icon={faMagnifyingGlass} />
-                </button>
+                <form onSubmit={handleSearch} className="flex w-full">
+                  <input
+                    type="text"
+                    placeholder="Tìm kiếm..."
+                    className={cx("input-search", "w-full", "h-10", "pl-2")}
+                    onChange={(e) => setSearchKeyWord(e.target.value)}
+                  />
+                  <button
+                    type="submit"
+                    className={cx("btn-search", "h-10", "w-14")}
+                  >
+                    <FontAwesomeIcon icon={faMagnifyingGlass} />
+                  </button>
+                </form>
               </div>
 
               <ul
@@ -167,7 +182,6 @@ const MenuMobile = ({ color = false }) => {
                       "item-menu",
                       "mx-1",
                       "lg:mx-2",
-                      "",
                       "flex",
                       "justify-between",
                       "items-center",
@@ -213,15 +227,23 @@ const MenuMobile = ({ color = false }) => {
                   </div>
                 </li>
               </ul>
-              <p className={cx("description", "", "text-sm", "mb-5")}>
-                Quisque dignissim enim diam, eget pulvinar ex viverra id. Nulla
-                a lobortis lectus, id volutpat magna. Morbi consequat porttitor
-                fermentum. Nulla vestibulum tincidunt viverra. Vestibulum
-                accumsan molestie lorem, non laoreet massa. Duis at dui sem.
+              <p
+                className={cx(
+                  "description",
+                  "text-[#939292]",
+                  "text-sm",
+                  "mb-5"
+                )}
+              >
+                EaseMart là chuỗi cửa hàng tiện lợi, chuyên cung cấp các sản
+                phẩm hàng tiêu dùng thiết yếu cho cuộc sống hàng ngày với giá cả
+                hợp lý. Với phương châm "Tiện lợi mỗi ngày", chúng tôi mong muốn
+                đem đến trải nghiệm mua sắm tiện lợi, nhanh chóng và chất lượng
+                cho khách hàng.
               </p>
 
               <div className={cx("box-social", "")}>
-                <h2 className={cx("text-lg", "mb-6")}>Contact Us</h2>
+                <h2 className={cx("text-lg", "mb-6")}>Liên hệ với chúng tôi</h2>
                 <div
                   className={cx(
                     "social-item",
@@ -247,7 +269,7 @@ const MenuMobile = ({ color = false }) => {
                     />
                   </div>
                   <div className={cx("info", "")}>
-                    Valentin, Street Road 24, New York,
+                    11/7J Nguyễn Ảnh Thủ, Xã Bà Điểm, Huyện Hóc Môn, TPHCM
                   </div>
                 </div>
 
@@ -269,13 +291,13 @@ const MenuMobile = ({ color = false }) => {
                       "w-7",
                       "h-7"
                     )}
-                  >
+                  >``
                     <FontAwesomeIcon
                       icon={faPhone}
                       className={cx("icon", "w-3")}
                     />
                   </div>
-                  <div className={cx("info", "")}>+000 123 (456) 789</div>
+                  <div className={cx("info", "")}>+84 392 706 757</div>
                 </div>
                 <div
                   className={cx(
@@ -301,7 +323,7 @@ const MenuMobile = ({ color = false }) => {
                       className={cx("icon", "w-3")}
                     />
                   </div>
-                  <div className={cx("info", "")}>+000 123 (456) 789</div>
+                  <div className={cx("info", "")}>+84 392 706 755</div>
                 </div>
               </div>
               <div>
