@@ -269,7 +269,7 @@
 .name_productrelated {
   font-size: 18px;
   display: -webkit-box;
-  display: box; /* Added standard property for compatibility */
+  display: flex; /* Added standard property for compatibility */
   -webkit-line-clamp: 2; /* Số dòng tối đa là 2 */
   line-clamp: 2; /* Added standard property for compatibility */
   -webkit-box-orient: vertical;

@@ -21,10 +21,9 @@ export default function ForgotPassword() {
 
       if (response.status === 200) {
         sessionStorage.setItem("email", email);
-        Swal.fire("Success", "Email has been sent", "success");
-        setTimeout(() => {
+        Swal.fire("Success", "Email has been sent", "success").then(() => {
           window.location.href = "/otp";
-        }, 1000);
+        });
       } else {
         Swal.fire(
           "Error",
