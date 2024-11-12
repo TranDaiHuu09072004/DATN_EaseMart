@@ -21,6 +21,7 @@ export default function Header() {
   const [searchKeyword, setSearchKeyWord] = useState("");
   const [username, setUsername] = useState(null);
   const [count, setCount] = useState(0);
+  const [avatar, setAvatar] = useState(null);
 
   useEffect(() => {
     let newCount = 0;
@@ -31,14 +32,15 @@ export default function Header() {
   }, [state]);
 
   useEffect(() => {
-    // Lấy tên người dùng từ localStorage nếu đã đăng nhập
     const name = localStorage.getItem("username");
+    const savedAvatar = localStorage.getItem("avatar");
     if (name) {
       let handleUsername = name.split(" ");
-
       handleUsername = handleUsername[handleUsername.length - 1];
-
       setUsername(handleUsername);
+    }
+    if (savedAvatar) {
+      setAvatar(savedAvatar);
     }
   }, []);
 
@@ -53,6 +55,12 @@ export default function Header() {
   const handleLogout = () => {
     localStorage.removeItem("username");
     localStorage.removeItem("user");
+    localStorage.removeItem("username");
+    localStorage.removeItem("email");
+    localStorage.removeItem("phone");
+    localStorage.removeItem("address");
+    localStorage.removeItem("date_of_birth");
+    localStorage.removeItem("avatar");
     toast.success("Đăng Xuất thành công!", {
       position: "top-right",
       autoClose: 3000,
@@ -96,7 +104,6 @@ export default function Header() {
                 "justify-end",
                 "flex",
                 "lg:gap-5",
-                "gap-12",
                 "lg:w-72"
               )}
             >
@@ -143,10 +150,18 @@ export default function Header() {
                   href={username ? "#" : "/dangnhap"}
                   className="flex items-center space-x-2 truncate whitespace-nowrap overflow-hidden text-ellipsis"
                 >
-                  <FontAwesomeIcon
-                    icon={faUser}
-                    className="text-white sm:w-7 sm:h-7 w-5 h-5"
-                  />
+                  {username ? (
+                    <img
+                      src={avatar}
+                      alt="Avatar"
+                      className="w-full h-auto rounded-full sm:w-7 sm:h-7"
+                    />
+                  ) : (
+                    <FontAwesomeIcon
+                      icon={faUser}
+                      className="text-white sm:w-7 sm:h-7 w-5 h-5"
+                    />
+                  )}
                   <div className="text-white lg:text-lg text-base font-medium w-full lg:block hidden">
                     {username ? `Chào, ${username}` : "Đăng nhập"}
                   </div>

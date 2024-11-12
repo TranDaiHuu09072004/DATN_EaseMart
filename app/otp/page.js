@@ -5,12 +5,17 @@ import { useState } from "react";
 import axios from "axios";
 
 export default function OTP() {
-  const [otp, setOtp] = useState(["", "", "", ""]);
+  const [otp_code, setOtp] = useState(["", "", "", ""]);
   const [isCooldown, setIsCooldown] = useState(false);
 
   const handleVerify = async () => {
     const email = sessionStorage.getItem("email");
-    const otpValue = otp.join("");
+    const otpValue = otp_code.join("");
+
+    if (!email) {
+      Swal.fire("Lỗi", "Email không tồn tại trong session storage", "error");
+      return;
+    }
 
     if (!otpValue || otpValue.length !== 4) {
       Swal.fire("Lỗi", "Vui lòng nhập đúng OTP", "error");
@@ -20,9 +25,9 @@ export default function OTP() {
     try {
       const response = await axios.post(
         "https://trandainghia.id.vn/api/password/verify-otp",
-        { email, otp: otpValue }
+        { email, otp_code: otpValue }
       );
-
+      console.log(response.data);
       if (response.status === 200) {
         Swal.fire("Success", "OTP verified successfully", "success");
         setTimeout(() => {
@@ -37,7 +42,7 @@ export default function OTP() {
   };
 
   const handleOtpChange = (index, value) => {
-    const newOtp = [...otp];
+    const newOtp = [...otp_code];
     newOtp[index] = value;
     setOtp(newOtp);
   };
@@ -74,7 +79,7 @@ export default function OTP() {
           </span>
         </div>
         <div className="input_otp flex justify-center gap-5 my-[60px]">
-          {otp.map((value, index) => (
+          {otp_code.map((value, index) => (
             <input
               key={index}
               type="text"

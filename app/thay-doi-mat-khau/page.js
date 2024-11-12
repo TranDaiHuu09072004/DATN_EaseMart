@@ -4,13 +4,13 @@ import axios from "axios";
 import Swal from "sweetalert2";
 
 export default function ChangePassword() {
-  const [newPassword, setNewPassword] = useState("");
+  const [password, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
   const handleChangePassword = async () => {
     const email = sessionStorage.getItem("email");
 
-    if (!newPassword || newPassword !== confirmPassword) {
+    if (!password || password !== confirmPassword) {
       Swal.fire("Error", "Passwords do not match", "error");
       return;
     }
@@ -18,7 +18,7 @@ export default function ChangePassword() {
     try {
       const response = await axios.post(
         "https://trandainghia.id.vn/api/password/reset",
-        { email, newPassword }
+        { email, password }
       );
 
       if (response.status === 200) {
@@ -50,7 +50,7 @@ export default function ChangePassword() {
           <h5 className="mb-2">Mật khẩu mới</h5>
           <input
             type="password"
-            value={newPassword}
+            value={password}
             onChange={(e) => setNewPassword(e.target.value)}
             className="w-full h-[35px] rounded-[5px] border-2 border-solid border-[#cccccc] pl-2 outline-none"
           />
