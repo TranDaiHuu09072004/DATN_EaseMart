@@ -6,7 +6,6 @@ import * as Yup from "yup"; // Import Yup for validation
 import { useForm } from "react-hook-form"; // Import useForm from react-hook-form
 import { yupResolver } from "@hookform/resolvers/yup"; // Import yupResolver for Yup integration
 import Swal from "sweetalert2";
-import axios from "axios";
 
 // Define validation schema
 const validationSchema = Yup.object().shape({
@@ -33,7 +32,6 @@ export default function DangNhap() {
   });
 
   useEffect(() => {
-    // Kiểm tra dữ liệu đã lưu trong localStorage cho tính năng "Ghi nhớ mật khẩu"
     const savedEmail = localStorage.getItem("email");
     const savedPassword = localStorage.getItem("password");
     if (savedEmail && savedPassword) {
@@ -62,7 +60,7 @@ export default function DangNhap() {
       const user = await response.json();
       console.log(user);
 
-      const username = user.customers.name;
+      const name = user.customers.name;
       if (user) {
         setError("");
         Swal.fire("Thành công", "Đăng nhập thành công!", "success");
@@ -70,13 +68,12 @@ export default function DangNhap() {
         if (rememberMe) {
           localStorage.setItem(
             "user",
-            JSON.stringify({ email, token: user.token, username })
+            JSON.stringify({ email, token: user.token, name })
           );
-          localStorage.setItem("username", username);
+          localStorage.setItem("name", name);
         } else {
           localStorage.removeItem("user");
         }
-
         setTimeout(() => {
           window.location.href = "/";
         }, 2000);

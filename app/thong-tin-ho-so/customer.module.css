@@ -29,18 +29,20 @@
 .email_input,
 .phone_input,
 .address_input,
-.birthday_input {
+.birthday_input,
+.gender_input {
   margin-top: 15px;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 15px;
 }
 
 .fullname_input h5,
 .email_input h5,
 .phone_input h5,
 .address_input h5,
-.birthday_input h5 {
+.birthday_input h5,
+.gender_input h5 {
   width: 100px;
   font-size: 16px;
   color: #333;
@@ -51,7 +53,8 @@
 .ip_email,
 .ip_phone,
 .ip_address,
-.ip_birthday {
+.ip_birthday,
+.ip_gender {
   width: 100%;
   max-width: 400px;
   height: 35px;
@@ -85,7 +88,7 @@
   gap: 15px;
 }
 
-.avatar_preview {
+.image_preview {
   width: 200px;
   height: 200px;
   border-radius: 50%;

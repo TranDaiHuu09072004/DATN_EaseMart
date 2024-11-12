@@ -93,7 +93,7 @@ const MenuMobile = ({ color = false }) => {
               >
                 <div className={cx("logo", "h-full")}>
                   <img
-                    src="/assets/img/logo.png"
+                    src="/assets/img/home/logo.png"
                     className={cx("h-full", "w-full")}
                   />
                 </div>
@@ -291,7 +291,8 @@ const MenuMobile = ({ color = false }) => {
                       "w-7",
                       "h-7"
                     )}
-                  >``
+                  >
+                    ``
                     <FontAwesomeIcon
                       icon={faPhone}
                       className={cx("icon", "w-3")}

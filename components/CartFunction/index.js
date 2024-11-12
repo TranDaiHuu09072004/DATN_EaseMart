@@ -1,5 +1,5 @@
 import { useEffect, useReducer, createContext, useContext } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 // import { usePathname } from "next/navigation";
 import "react-toastify/dist/ReactToastify.css";
 import Swal from "sweetalert2";

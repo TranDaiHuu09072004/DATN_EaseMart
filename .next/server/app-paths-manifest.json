@@ -1,5 +1,8 @@
 {
-  "/thong-tin-ho-so/page": "app/thong-tin-ho-so/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
   "/page": "app/page.js",
-  "/dangnhap/page": "app/dangnhap/page.js"
+  "/otp/page": "app/otp/page.js",
+  "/thay-doi-mat-khau/page": "app/thay-doi-mat-khau/page.js",
+  "/dangnhap/page": "app/dangnhap/page.js",
+  "/thong-tin-ho-so/page": "app/thong-tin-ho-so/page.js"
 }

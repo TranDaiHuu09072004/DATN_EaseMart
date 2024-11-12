@@ -12,23 +12,43 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
+    "/dangnhap/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/dangnhap/page.css",
+      "static/chunks/app/dangnhap/page.js"
+    ],
     "/thong-tin-ho-so/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/css/app/thong-tin-ho-so/page.css",
       "static/chunks/app/thong-tin-ho-so/page.js"
     ],
-    "/san-pham-yeu-thich/page": [
+    "/chi-tiet-san-pham/[id]/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/san-pham-yeu-thich/page.css",
-      "static/chunks/app/san-pham-yeu-thich/page.js"
+      "static/css/app/chi-tiet-san-pham/[id]/page.css",
+      "static/chunks/app/chi-tiet-san-pham/[id]/page.js"
     ],
-    "/dangnhap/page": [
+    "/quen-mat-khau/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/dangnhap/page.css",
-      "static/chunks/app/dangnhap/page.js"
+      "static/chunks/app/quen-mat-khau/page.js"
+    ],
+    "/otp/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/otp/page.js"
+    ],
+    "/thay-doi-mat-khau/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/thay-doi-mat-khau/page.js"
+    ],
+    "/_not-found/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/_not-found/page.js"
     ]
   }
 }
