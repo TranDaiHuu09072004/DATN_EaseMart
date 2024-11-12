@@ -11,6 +11,11 @@ import { fetchProducts } from "@/service/product";
 import Link from "next/link";
 import { Dispatch, useCart } from "../components/CartFunction";
 import { usePathname } from "next/navigation";
+import { Icon } from "@iconify/react";
+import {
+  DispatchYt,
+  useYeuThich,
+} from "@/components/YTFunction/sanphamyeuthich";
 const cx = classNames.bind(styles);
 
 export default function Home() {
@@ -314,6 +319,7 @@ export default function Home() {
 
 const ProductList = ({ products }) => {
   const { state, dispatch } = useCart();
+  const { stateYt, dispatchYt } = useYeuThich();
   const formatPrice = (price) => {
     return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
@@ -356,6 +362,17 @@ const ProductList = ({ products }) => {
                   </div>
                   <div className={cx("price-reduction")}>
                     {formatPrice(product.sale_price)}
+                  </div>
+                  <div className={cx("flex-grow", "flex", "justify-end")}>
+                    <Icon
+                      onClick={() => {
+                        dispatchYt(
+                          new DispatchYt("ADD_ITEM_YEUTHICH", product)
+                        );
+                      }}
+                      icon="mdi:heart-outline"
+                      className="w-6 h-6 text-red-500"
+                    />
                   </div>
                 </div>
                 <button
