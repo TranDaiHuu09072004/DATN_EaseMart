@@ -17,12 +17,10 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { getProBy2Cate, getProByCate } from "@/service/product";
 import { getBrand } from "@/service/brand";
-import { Dispatch, useCart } from "@/components/CartFunction";
-import { formatPrice } from "@/uilts/formatPrice";
+
 const cx = classNames.bind(styles);
 
 const Product = () => {
-  const { state, dispatch } = useCart();
   const [cate, setCate] = useState([]);
   const [cateChoose, setCateChoose] = useState({});
   const [cateSub, setCateSub] = useState([]);
@@ -69,6 +67,8 @@ const Product = () => {
   useEffect(() => {
     // list cate
     getCate().then((data) => {
+      console.log({ id: data[0].id, name: data[0].name });
+
       setCate(data);
       setCateChoose({ id: data[0].id, name: data[0].name });
       setCateSub(data[0].subcategories);
@@ -82,11 +82,12 @@ const Product = () => {
     getProByCate("category_id", cateChoose.id).then((data) => {
       setBrandChooseCheck(false);
       setProduct(data);
-      getCateById(cateChoose.id).then((data) => {
-        if (data.length > 0) {
-          setCateSub(data[0].subcategories);
-        }
-      });
+    });
+    getCateById(cateChoose.id).then((data) => {
+      if (data.length > 0) {
+        console.log(data);
+        setCateSub(data[0].subcategories);
+      }
     });
   }, [cateChoose]);
 
@@ -132,10 +133,8 @@ const Product = () => {
     setResultFilterProduct([]); // Xóa kết quả tìm kiếm
   };
 
-  console.log(product);
-
   return (
-    <div className={cx("max-w-screen-xl", "mx-auto", "p-4")}>
+    <div className={cx("max-w-screen-xl", " mx-auto", "px-4")}>
       <div className={cx("page-product")}>
         {/* Breadcrumb */}
         <div
@@ -251,8 +250,7 @@ const Product = () => {
                 <div
                   key={item.id}
                   className={cx(
-                    "xl:basis-1/5",
-                    "lg:basis-1/4",
+                    "lg:basis-1/5",
                     "sm:basis-1/3",
                     "basis-1/2",
                     "p-[2px]"
@@ -263,10 +261,7 @@ const Product = () => {
                       <div className={cx("thumb")}>
                         <img src={item.image} />
                       </div>
-                      <Link
-                        href={`/chi-tiet-san-pham/${item.id}`}
-                        className={cx("name")}
-                      >
+                      <Link href="#" className={cx("name")}>
                         {item.name}
                       </Link>
                       <div className={cx("unit", "text-sm", "text-gray-400")}>
@@ -274,7 +269,7 @@ const Product = () => {
                       </div>
                       <div className={cx("price")}>
                         <div className={cx("price-reduction")}>
-                          {formatPrice(item.sale_price)}đ
+                          {item.sale_price}đ
                         </div>
                         <div className={cx("original-price")}>
                           {item.price}đ
@@ -292,14 +287,6 @@ const Product = () => {
                             "text-base",
                             "basis-full"
                           )}
-                          onClick={() => {
-                            dispatch(
-                              new Dispatch("ADD_ITEM_CART", {
-                                ...item,
-                                quantity: 1,
-                              })
-                            );
-                          }}
                         >
                           <span>
                             <Icon
