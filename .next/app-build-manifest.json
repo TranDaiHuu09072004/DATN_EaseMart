@@ -1,28 +1,39 @@
 {
   "pages": {
-    "/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/page.css",
-      "static/chunks/app/page.js"
-    ],
     "/layout": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
+<<<<<<< HEAD
+=======
+    "/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/page.css",
+      "static/chunks/app/page.js"
+    ],
+>>>>>>> leducanh
     "/dangnhap/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/css/app/dangnhap/page.css",
       "static/chunks/app/dangnhap/page.js"
     ],
+<<<<<<< HEAD
     "/thong-tin-ho-so/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/css/app/thong-tin-ho-so/page.css",
       "static/chunks/app/thong-tin-ho-so/page.js"
+=======
+    "/chi-tiet-san-pham/[id]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/chi-tiet-san-pham/[id]/page.css",
+      "static/chunks/app/chi-tiet-san-pham/[id]/page.js"
+>>>>>>> leducanh
     ],
     "/chi-tiet-san-pham/[id]/page": [
       "static/chunks/webpack.js",
@@ -30,6 +41,7 @@
       "static/css/app/chi-tiet-san-pham/[id]/page.css",
       "static/chunks/app/chi-tiet-san-pham/[id]/page.js"
     ],
+<<<<<<< HEAD
     "/quen-mat-khau/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
@@ -44,6 +56,13 @@
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/thay-doi-mat-khau/page.js"
+=======
+    "/san-pham-yeu-thich/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/san-pham-yeu-thich/page.css",
+      "static/chunks/app/san-pham-yeu-thich/page.js"
+>>>>>>> leducanh
     ],
     "/_not-found/page": [
       "static/chunks/webpack.js",

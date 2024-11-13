@@ -18,7 +18,7 @@ import { getCate, getCateById } from "@/service/category";
 import { getProBy2Cate, getProByCate } from "@/service/product";
 import { getBrand } from "@/service/brand";
 import { Dispatch, useCart } from "@/components/CartFunction";
-
+import { formatPrice } from "@/uilts/formatPrice";
 const cx = classNames.bind(styles);
 
 const Product = () => {

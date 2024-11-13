@@ -204,7 +204,14 @@ export default function ProductDetail({ params }) {
             >
               <i className="fa-solid fa-cart-shopping"></i> Thêm vào giỏ hàng
             </button>
-            <button className={cx("btn_buynow", "lg:ml-3", "max-lg:ml-[10px]")}>
+            <button
+              onClick={() => {
+                product.quantity = quantity;
+                localStorage.setItem("buy_now", JSON.stringify([product]));
+                window.location.href = "/thanh-toan";
+              }}
+              className={cx("btn_buynow", "lg:ml-3", "max-lg:ml-[10px]")}
+            >
               <i className="fa-solid fa-cart-shopping"></i> Mua ngay
             </button>
           </div>
