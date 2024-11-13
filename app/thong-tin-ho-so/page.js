@@ -3,6 +3,9 @@ import React, { useState, useEffect } from "react";
 import classNames from "classnames/bind";
 import styles from "./customer.module.css";
 import "react-toastify/dist/ReactToastify.css";
+// import Swal from "sweetalert2";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 const cx = classNames.bind(styles);
 export default function CustomerInfoForm() {
@@ -16,71 +19,112 @@ export default function CustomerInfoForm() {
   });
   const [image, setImage] = useState(null);
 
-  useEffect(() => {
-    fetchCustomerData(); // Fetch customer data on component mount
-  }, []);
-
   const fetchCustomerData = async () => {
-    const getUser = localStorage.getItem("user");
-
-    if (getUser) {
-      // Parse the stored string as JSON
+    try {
+      const getUser = localStorage.getItem("user");
       const parsedUser = JSON.parse(getUser);
-      const email = parsedUser.email;
-      const token = parsedUser.token;
+      const { email, token, name } = parsedUser;
+      // Make the API request using axios
+      const response = await axios.post(
+        "https://trandainghia.id.vn/api/customers",
+        { email },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
 
-      const response = await fetch("https://trandainghia.id.vn/api/customers", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ email }),
-      });
-      const data = await response.json();
-      console.log(data); // Log the customer data
+      // Parse the response data
+      const data = response.data;
 
-      if (data.email === email) {
+      if (data.customers && data.customers.email === email) {
         setUserData({
-          name: data.name,
-          email: data.email,
+          name: data.customers.name || name,
+          email: data.customers.email,
           phone: data.phone,
           address: data.address,
           birth_date: data.birth_date,
           gender: data.gender,
         });
+      } else {
+        console.warn("Fetched data does not match the logged-in user email.");
       }
-    } else {
-      console.error("User data not found in localStorage");
+    } catch (error) {
+      console.error("An error occurred while fetching customer data:", error);
     }
   };
 
+  // Call the function only once when the component mounts
+  useEffect(() => {
+    fetchCustomerData();
+    setUserData((prevData) => ({
+      ...prevData,
+      name: userData.name,
+      email: userData.email,
+      phone: userData.phone,
+      address: userData.address,
+      birth_date: userData.birth_date,
+      gender: userData.gender,
+    }));
+  }, []);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setUserData((prevData) => ({ ...prevData, [name]: value }));
+    setUserData((prevUserData) => ({
+      ...prevUserData,
+      [name]: value,
+    }));
+  };
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setImage(URL.createObjectURL(file));
+      setUserData((prevData) => ({ ...prevData, image: file }));
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const token = localStorage.getItem("token");
 
-    const response = await fetch(
-      "https://trandainghia.id.vn/api/customers/profile",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(userData),
-      }
-    );
+    // Log dữ liệu trước khi gửi
 
-    if (response.ok) {
-      // Handle successful update
-      console.log("Cập nhật thành công!");
-    } else {
-      // Handle error
-      console.error("Cập nhật thất bại!");
+    try {
+      const response = await axios.put(
+        "https://trandainghia.id.vn/api/customers/profile",
+        {
+          name: userData.name,
+          // email: userData.email,
+          phone: userData.phone,
+          address: userData.address,
+          birth_date: userData.birth_date,
+          gender: userData.gender,
+        },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+
+      // Log phản hồi từ API
+      console.log("Response from API:", response.data);
+
+      console.log("Submitting data:", {
+        name: userData.name,
+        email: userData.email,
+        phone: userData.phone,
+        address: userData.address,
+        birth_date: userData.birth_date,
+        gender: userData.gender,
+      });
+
+      if (response.status === 200) {
+        toast.success("Cập nhật thông tin thành công!");
+        setTimeout(() => {
+          window.location.reload(); // Reload the page after a successful update
+        }, 1000);
+      }
+    } catch (error) {
+      console.error("An error occurred while submitting data:", error);
+      const errorMessages = error.response?.data.errors
+        ? Object.values(error.response.data.errors).join(", ")
+        : error.response?.data.message || "Có lỗi xảy ra.";
+      toast.error(`Cập nhật thất bại! ${errorMessages}`);
     }
   };
 
@@ -117,7 +161,7 @@ export default function CustomerInfoForm() {
               <input
                 type="email"
                 name="email"
-                value={userData.email} // Ensure userData is used here
+                value={userData.email}
                 onChange={handleChange}
                 className={cx(
                   "ip_email",
@@ -198,7 +242,7 @@ export default function CustomerInfoForm() {
           )}
           <input
             type="file"
-            onChange=""
+            onChange={handleImageChange}
             className="hidden"
             name="image"
             id="image-upload"
