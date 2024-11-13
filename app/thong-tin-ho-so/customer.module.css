@@ -1,118 +1,111 @@
 .update_information {
-    background-color: #fff;
-    padding: 20px;
-    margin: 15px 0;
-    border-radius: 10px;
-    display: flex;
-    gap:30px;
+  background-color: #fff;
+  padding: 30px;
+  margin: 20px 0;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
 }
 
 .information {
-    width: 60%;
+  width: 60%;
 }
 
 .title_information {
-    font-size: 25px;
-    color:#253D4E;
-    font-weight: 550;
-}
-
-.fullname_input {
-    margin-top: 50px;
-    display: flex;
-    gap:69px;
-    align-items: center;
-}
-
-.ip_fullname {
-    width: 500px;
-    height: 35px;
-    border:1px solid #CCCCCC;
-    border-radius: 5px;
-    padding: 5px;
-}
-
-.email_input {
-    margin-top: 32px;
-    display: flex;
-    gap:76px;
-    align-items: center;
-}
-
-.ip_email {
-    width: 500px;
-    height: 35px;
-    border:1px solid #CCCCCC;
-    border-radius: 5px;
-    padding: 5px;
-}
-
-.phone_input {
-    margin-top: 32px;
-    display: flex;
-    gap:23px;
-    align-items: center;
-}
-
-.ip_phone {
-    width: 500px;
-    height: 35px;
-    border:1px solid #CCCCCC;
-    border-radius: 5px;
-    padding: 5px;
-}
-
-.birthday_input {
-    margin-top: 32px;
-    display: flex;
-    gap:48px;
-    align-items: center;
-}
-
-.ip_birthday {
-    width: 500px;
-    height: 35px;
-    border:1px solid #CCCCCC;
-    border-radius: 5px;
-    padding: 5px;
+  font-size: 26px;
+  color: #253d4e;
+  font-weight: 600;
+  margin-bottom: 20px;
 }
 
 .red {
-    color:red;
+  color: red;
+}
+
+.fullname_input,
+.email_input,
+.phone_input,
+.address_input,
+.birthday_input {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.fullname_input h5,
+.email_input h5,
+.phone_input h5,
+.address_input h5,
+.birthday_input h5 {
+  width: 100px;
+  font-size: 16px;
+  color: #333;
+  font-weight: 500;
+}
+
+.ip_fullname,
+.ip_email,
+.ip_phone,
+.ip_address,
+.ip_birthday {
+  width: 100%;
+  max-width: 400px;
+  height: 35px;
+  padding: 8px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  font-size: 15px;
 }
 
 .update {
-    background-color: #3BB77E;
-    border-radius: 5px;
-    padding: 10px;
-    color:#fff;
-    border: none;
-    margin-top: 25px;
-    cursor: pointer;
-    font-weight: 550;
+  background-color: #3bb77e;
+  border-radius: 5px;
+  padding: 10px 20px;
+  color: #fff;
+  border: none;
+  margin-top: 25px;
+  cursor: pointer;
+  font-weight: 550;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.update:hover {
+  background-color: #2c9f68;
 }
 
 .upload_img {
-    width: 40%;
-    display: flex;
-    flex-direction: column;
-    gap:10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
 }
 
-.upload_img i {
-    font-size: 300px;
-    color:#9A9A9A;
-    margin-top: 30px;
-    margin-left: 60px;
+.avatar_preview {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #cccccc;
+  background-color: #f0f0f0;
 }
 
 .upload_file {
-    width: 100px;
-    padding: 10px;
-    background-color: #D2D2D2;
-    border-radius: 5px;
-    border: none;
-    font-weight: 550;
-    margin-left: 160px;
-    cursor: pointer;
+  background-color: #d2d2d2;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 550;
+  text-align: center;
+  font-size: 14px;
+  color: #333;
+  transition: background-color 0.3s;
+}
+
+.upload_file:hover {
+  background-color: #bcbcbc;
 }
