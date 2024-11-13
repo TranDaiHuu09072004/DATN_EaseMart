@@ -17,10 +17,12 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { getProBy2Cate, getProByCate } from "@/service/product";
 import { getBrand } from "@/service/brand";
-
+import { Dispatch, useCart } from "@/components/CartFunction";
+import { formatPrice } from "@/uilts/formatPrice";
 const cx = classNames.bind(styles);
 
 const Product = () => {
+  const { state, dispatch } = useCart();
   const [cate, setCate] = useState([]);
   const [cateChoose, setCateChoose] = useState({});
   const [cateSub, setCateSub] = useState([]);
@@ -33,6 +35,8 @@ const Product = () => {
   const name = searchParams.get("name"); // Update to get "name" parameter
   const [resultfilterProduct, setResultFilterProduct] = useState([]);
   const [isSearching, setIsSearching] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [sortOrder, setSortOrder] = useState(""); // "asc" or "desc"
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -67,8 +71,6 @@ const Product = () => {
   useEffect(() => {
     // list cate
     getCate().then((data) => {
-      console.log({ id: data[0].id, name: data[0].name });
-
       setCate(data);
       setCateChoose({ id: data[0].id, name: data[0].name });
       setCateSub(data[0].subcategories);
@@ -82,12 +84,11 @@ const Product = () => {
     getProByCate("category_id", cateChoose.id).then((data) => {
       setBrandChooseCheck(false);
       setProduct(data);
-    });
-    getCateById(cateChoose.id).then((data) => {
-      if (data.length > 0) {
-        console.log(data);
-        setCateSub(data[0].subcategories);
-      }
+      getCateById(cateChoose.id).then((data) => {
+        if (data.length > 0) {
+          setCateSub(data[0].subcategories);
+        }
+      });
     });
   }, [cateChoose]);
 
@@ -133,8 +134,29 @@ const Product = () => {
     setResultFilterProduct([]); // Xóa kết quả tìm kiếm
   };
 
+  console.log(product);
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
+  const handleSort = (order) => {
+    setSortOrder(order);
+    setIsDropdownOpen(false);
+
+    const sortedProducts = [...product].sort((a, b) => {
+      if (order === "asc") {
+        return a.sale_price - b.sale_price;
+      } else if (order === "desc") {
+        return b.sale_price - a.sale_price;
+      }
+      return 0;
+    });
+    setProduct(sortedProducts);
+  };
+
   return (
-    <div className={cx("max-w-screen-xl", " mx-auto", "px-4")}>
+    <div className={cx("max-w-screen-xl", "mx-auto", "p-4")}>
       <div className={cx("page-product")}>
         {/* Breadcrumb */}
         <div
@@ -203,16 +225,31 @@ const Product = () => {
           </div>
 
           <div className={cx("content")}>
-            {/* Category or Brand Title */}
             <div className={cx("title")}>
               {brandChooseCheck ? brandChoose.name : cateChoose.name}
-              <div className={cx("filter")}>
-                <button className={cx("btn-filter")}>
-                  Sắp xếp theo{" "}
-                  <span>
-                    <FontAwesomeIcon icon={faAngleDown} />
-                  </span>
+              <div className="relative inline-block text-left">
+                <button
+                  className="bg-[#3bb77e] text-white px-3 py-1.5 rounded-md flex items-center gap-1 text-sm hover:bg-green-600"
+                  onClick={toggleDropdown}
+                >
+                  Sắp xếp theo <FontAwesomeIcon icon={faAngleDown} />
                 </button>
+                {isDropdownOpen && (
+                  <div className="absolute mt-2 w-full bg-white border border-gray-200 rounded-md shadow-lg z-10">
+                    <div
+                      className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-[#3bb77e] font-medium transition-colors text-sm"
+                      onClick={() => handleSort("asc")}
+                    >
+                      Giá tăng dần
+                    </div>
+                    <div
+                      className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-[#3bb77e] font-medium transition-colors text-sm"
+                      onClick={() => handleSort("desc")}
+                    >
+                      Giá giảm dần
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
 
@@ -250,7 +287,8 @@ const Product = () => {
                 <div
                   key={item.id}
                   className={cx(
-                    "lg:basis-1/5",
+                    "xl:basis-1/5",
+                    "lg:basis-1/4",
                     "sm:basis-1/3",
                     "basis-1/2",
                     "p-[2px]"
@@ -261,7 +299,10 @@ const Product = () => {
                       <div className={cx("thumb")}>
                         <img src={item.image} />
                       </div>
-                      <Link href="#" className={cx("name")}>
+                      <Link
+                        href={`/chi-tiet-san-pham/${item.id}`}
+                        className={cx("name")}
+                      >
                         {item.name}
                       </Link>
                       <div className={cx("unit", "text-sm", "text-gray-400")}>
@@ -269,7 +310,7 @@ const Product = () => {
                       </div>
                       <div className={cx("price")}>
                         <div className={cx("price-reduction")}>
-                          {item.sale_price}đ
+                          {formatPrice(item.sale_price)}đ
                         </div>
                         <div className={cx("original-price")}>
                           {item.price}đ
@@ -287,6 +328,14 @@ const Product = () => {
                             "text-base",
                             "basis-full"
                           )}
+                          onClick={() => {
+                            dispatch(
+                              new Dispatch("ADD_ITEM_CART", {
+                                ...item,
+                                quantity: 1,
+                              })
+                            );
+                          }}
                         >
                           <span>
                             <Icon
