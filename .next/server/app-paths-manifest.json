@@ -1,5 +1,7 @@
 {
-  "/_not-found/page": "app/_not-found/page.js",
+  "/lich-su-don-hang/page": "app/lich-su-don-hang/page.js",
+  "/dangnhap/page": "app/dangnhap/page.js",
+  "/product/page": "app/product/page.js",
   "/page": "app/page.js",
-  "/favicon.ico/route": "app/favicon.ico/route.js"
+  "/san-pham-yeu-thich/page": "app/san-pham-yeu-thich/page.js"
 }

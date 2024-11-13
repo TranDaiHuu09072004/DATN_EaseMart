@@ -33,14 +33,11 @@ export default function Header() {
 
   useEffect(() => {
     const name = localStorage.getItem("name");
-    const savedImage = localStorage.getItem("image");
+
     if (name) {
       let handlename = name.split(" ");
       handlename = handlename[handlename.length - 1];
       setName(handlename);
-    }
-    if (savedImage) {
-      setImage(savedImage);
     }
   }, []);
 

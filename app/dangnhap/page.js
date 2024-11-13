@@ -6,16 +6,14 @@ import * as Yup from "yup"; // Import Yup for validation
 import { useForm } from "react-hook-form"; // Import useForm from react-hook-form
 import { yupResolver } from "@hookform/resolvers/yup"; // Import yupResolver for Yup integration
 import Swal from "sweetalert2";
-import axios from "axios";
 
-// Define validation schema
 const validationSchema = Yup.object().shape({
   email: Yup.string()
     .email("Email hoặc password đã tồn tại")
     .required("Email là bắt buộc"),
   password: Yup.string()
     .required("Mật khẩu là bắt buộc")
-    .min(6, "Mật khẩu phải có ít nhất 6 ký tự"),
+    .min(8, "Mật khẩu phải có ít nhất 8 ký tự"),
 });
 
 export default function DangNhap() {
@@ -62,7 +60,8 @@ export default function DangNhap() {
       const user = await response.json();
       console.log(user);
 
-      const username = user.customers.name;
+      const name = user.customers.name;
+      const customerId = user.customers.id;
       if (user) {
         setError("");
         Swal.fire("Thành công", "Đăng nhập thành công!", "success");
@@ -70,9 +69,9 @@ export default function DangNhap() {
         if (rememberMe) {
           localStorage.setItem(
             "user",
-            JSON.stringify({ email, token: user.token, username })
+            JSON.stringify({ email, token: user.token, name, customerId })
           );
-          localStorage.setItem("username", username);
+          localStorage.setItem("name", name);
         } else {
           localStorage.removeItem("user");
         }
