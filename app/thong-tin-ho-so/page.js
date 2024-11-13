@@ -2,125 +2,85 @@
 import React, { useState, useEffect } from "react";
 import classNames from "classnames/bind";
 import styles from "./customer.module.css";
-import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const cx = classNames.bind(styles);
 export default function CustomerInfoForm() {
-  const [token, setToken] = useState("");
-  const [email, setEmail] = useState("");
-  const [customerData, setCustomerData] = useState(null);
-  const [formData, setFormData] = useState({
+  const [userData, setUserData] = useState({
     name: "",
+    email: "",
     phone: "",
     address: "",
     birth_date: "",
     gender: "",
-    image: "",
   });
-  const [userData, setUserData] = useState(formData); // Initialize userData with formData
-  const [image, setImage] = useState(""); // Thêm state cho hình ảnh
+  const [image, setImage] = useState(null);
 
   useEffect(() => {
-    const storedUser = JSON.parse(localStorage.getItem("user")); // Lấy thông tin user từ localStorage
+    fetchCustomerData(); // Fetch customer data on component mount
+  }, []);
 
-    if (storedUser) {
-      setEmail(storedUser.email); // Set email từ localStorage
-      setUserData((prevUserData) => ({
-        ...prevUserData,
-        name: storedUser.name, // Set name từ localStorage
-        email: storedUser.email, // Set email từ localStorage
-      }));
-    }
-  }, []); // Chạy một lần khi component được mount
-
-  // Hàm lấy thông tin customer
   const fetchCustomerData = async () => {
-    try {
+    const getUser = localStorage.getItem("user");
+
+    if (getUser) {
+      // Parse the stored string as JSON
+      const parsedUser = JSON.parse(getUser);
+      const email = parsedUser.email;
+      const token = parsedUser.token;
+
       const response = await fetch("https://trandainghia.id.vn/api/customers", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ email }),
+      });
+      const data = await response.json();
+      console.log(data); // Log the customer data
+
+      if (data.email === email) {
+        setUserData({
+          name: data.name,
+          email: data.email,
+          phone: data.phone,
+          address: data.address,
+          birth_date: data.birth_date,
+          gender: data.gender,
+        });
+      }
+    } else {
+      console.error("User data not found in localStorage");
+    }
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUserData((prevData) => ({ ...prevData, [name]: value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const token = localStorage.getItem("token");
+
+    const response = await fetch(
+      "https://trandainghia.id.vn/api/customers/profile",
+      {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ email }),
-      });
-
-      if (!response.ok) {
-        throw new Error("Lấy thông tin khách hàng thất bại.");
+        body: JSON.stringify(userData),
       }
+    );
 
-      const data = await response.json();
-      console.log(data);
-      setCustomerData(data.customers); // Cập nhật dữ liệu customer
-      setUserData({
-        name: data.customers.name,
-        phone: data.customers.phone,
-        address: data.customers.address,
-        birth_date: data.customers.birth_date,
-        gender: data.customers.gender,
-        image: data.customers.image,
-      });
-    } catch (error) {
-      console.error(error);
-      alert("Không tìm thấy khách hàng hoặc có lỗi xảy ra.");
-    }
-    fetchCustomerData();
-  };
-
-  // Hàm cập nhật thông tin customer
-  const updateCustomerProfile = async () => {
-    try {
-      const response = await fetch(
-        "https://trandainghia.id.vn/api/customers/profile",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify(userData), // Use userData for update
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error("Cập nhật thông tin khách hàng thất bại.");
-      }
-
-      const data = await response.json();
-      alert("Cập nhật thông tin thành công.");
-      setTimeout(() => window.location.reload(), 1000);
-      setCustomerData(data.customers); // Cập nhật lại thông tin khách hàng nếu cần
-    } catch (error) {
-      console.error(error);
-      alert("Có lỗi xảy ra khi cập nhật thông tin.");
-    }
-  };
-
-  // Hàm xử lý khi có thay đổi trong form
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setUserData((prevUserData) => ({
-      ...prevUserData,
-      [name]: value,
-    }));
-  };
-
-  // Hàm xử lý khi gửi form
-  const handleSubmit = (e) => {
-    e.preventDefault(); // Prevent default form submission
-    updateCustomerProfile(); // Call the update function
-  };
-
-  // Hàm xử lý khi thay đổi hình ảnh
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setImage(reader.result); // Cập nhật hình ảnh
-      };
-      reader.readAsDataURL(file);
+    if (response.ok) {
+      // Handle successful update
+      console.log("Cập nhật thành công!");
+    } else {
+      // Handle error
+      console.error("Cập nhật thất bại!");
     }
   };
 
@@ -238,7 +198,7 @@ export default function CustomerInfoForm() {
           )}
           <input
             type="file"
-            onChange={handleImageChange}
+            onChange=""
             className="hidden"
             name="image"
             id="image-upload"
