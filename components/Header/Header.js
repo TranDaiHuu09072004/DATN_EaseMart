@@ -33,14 +33,11 @@ export default function Header() {
 
   useEffect(() => {
     const name = localStorage.getItem("name");
-    const savedImage = localStorage.getItem("image");
+
     if (name) {
       let handlename = name.split(" ");
       handlename = handlename[handlename.length - 1];
       setName(handlename);
-    }
-    if (savedImage) {
-      setImage(savedImage);
     }
   }, []);
 
@@ -55,11 +52,6 @@ export default function Header() {
   const handleLogout = () => {
     localStorage.removeItem("name");
     localStorage.removeItem("user");
-    localStorage.removeItem("email");
-    localStorage.removeItem("phone");
-    localStorage.removeItem("address");
-    localStorage.removeItem("birth_date");
-    localStorage.removeItem("image");
     toast.success("Đăng Xuất thành công!", {
       position: "top-right",
       autoClose: 3000,
@@ -71,6 +63,7 @@ export default function Header() {
 
   return (
     <div div className={cx("box-header")}>
+      <ToastContainer />
       <div className="max-w-screen-xl mx-auto px-4">
         <div className={cx("header")}>
           <div className={cx("header-top")}>
@@ -102,6 +95,7 @@ export default function Header() {
                 "justify-end",
                 "flex",
                 "lg:gap-5",
+                "gap-12",
                 "lg:w-72"
               )}
             >
@@ -260,7 +254,6 @@ export default function Header() {
         </div>
       </div>
       <HeaderScroll />
-      <ToastContainer />
     </div>
   );
 }

@@ -16,10 +16,6 @@ import Swal from "sweetalert2";
 
 const cx = classNames.bind(styles);
 
-const formatPrice = (price) => {
-  return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-};
-
 const Cart = () => {
   const { state, dispatch } = useCart();
   const [total, setTotal] = useState(0);
