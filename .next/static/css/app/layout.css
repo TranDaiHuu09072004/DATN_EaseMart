@@ -1763,7 +1763,7 @@ color: #fff;
 
   
 /*!*******************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[3]!./public/css/CardNewhot.globals.css ***!
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[12].use[3]!./public/css/CardNewHot.globals.css ***!
   \*******************************************************************************************************************************************************************************************************************************************************************************/
 
 /* Flex CountDown Content */
@@ -2871,6 +2871,9 @@ video {
 .h-\[500px\] {
   height: 500px;
 }
+.h-\[50px\] {
+  height: 50px;
+}
 .h-\[62px\] {
   height: 62px;
 }
@@ -3022,6 +3025,9 @@ video {
 .transform {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
+.cursor-not-allowed {
+  cursor: not-allowed;
+}
 .cursor-pointer {
   cursor: pointer;
 }
@@ -3067,9 +3073,6 @@ video {
 .gap-1 {
   gap: 0.25rem;
 }
-.gap-12 {
-  gap: 3rem;
-}
 .gap-2 {
   gap: 0.5rem;
 }
@@ -3087,9 +3090,6 @@ video {
 }
 .gap-8 {
   gap: 2rem;
-}
-.gap-\[10px\] {
-  gap: 10px;
 }
 .space-x-2 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-x-reverse: 0;
@@ -3133,9 +3133,6 @@ video {
 }
 .rounded-md {
   border-radius: 0.375rem;
-}
-.rounded-none {
-  border-radius: 0px;
 }
 .border {
   border-width: 1px;
@@ -3200,10 +3197,6 @@ video {
 .bg-\[\#3bb77e\] {
   --tw-bg-opacity: 1;
   background-color: rgb(59 183 126 / var(--tw-bg-opacity));
-}
-.bg-\[\#d2d2d2\] {
-  --tw-bg-opacity: 1;
-  background-color: rgb(210 210 210 / var(--tw-bg-opacity));
 }
 .bg-\[\#d7f7ef\] {
   --tw-bg-opacity: 1;
@@ -3390,9 +3383,6 @@ video {
 }
 .font-\[550\] {
   font-weight: 550;
-}
-.font-\[550px\] {
-  font-weight: 550px;
 }
 .font-bold {
   font-weight: 700;
@@ -3708,6 +3698,10 @@ body {
   outline-offset: 2px;
 }
 
+.focus\:outline-\[\#3bb77e\]:focus {
+  outline-color: #3bb77e;
+}
+
 .group:hover .group-hover\:top-full {
   top: 100%;
 }
@@ -3738,11 +3732,6 @@ body {
     margin-right: 0.75rem;
   }
 
-  .max-lg\:mx-auto {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
   .max-lg\:ml-\[10px\] {
     margin-left: 10px;
   }
@@ -3755,18 +3744,6 @@ body {
     margin-top: 1.25rem;
   }
 
-  .max-lg\:mt-\[10px\] {
-    margin-top: 10px;
-  }
-
-  .max-lg\:mt-\[15px\] {
-    margin-top: 15px;
-  }
-
-  .max-lg\:mt-\[25px\] {
-    margin-top: 25px;
-  }
-
   .max-lg\:flex {
     display: flex;
   }
@@ -3777,10 +3754,6 @@ body {
 
   .max-lg\:w-\[210px\] {
     width: 210px;
-  }
-
-  .max-lg\:w-full {
-    width: 100%;
   }
 
   .max-lg\:grid-cols-3 {
@@ -3871,21 +3844,12 @@ body {
   .max-md\:text-\[25px\] {
     font-size: 25px;
   }
-
-  .max-md\:text-base {
-    font-size: 1rem;
-    line-height: 1.5rem;
-  }
 }
 
 @media not all and (min-width: 640px) {
 
   .max-sm\:w-full {
     width: 100%;
-  }
-
-  .max-sm\:text-center {
-    text-align: center;
   }
 }
 
@@ -3981,10 +3945,6 @@ body {
 
   .lg\:ml-3 {
     margin-left: 0.75rem;
-  }
-
-  .lg\:ml-\[160px\] {
-    margin-left: 160px;
   }
 
   .lg\:mr-0 {
@@ -4098,22 +4058,6 @@ body {
 
 @media (min-width: 1280px) {
 
-  .xl\:ml-\[60px\] {
-    margin-left: 60px;
-  }
-
-  .xl\:mt-\[30px\] {
-    margin-top: 30px;
-  }
-
-  .xl\:mt-\[32px\] {
-    margin-top: 32px;
-  }
-
-  .xl\:mt-\[50px\] {
-    margin-top: 50px;
-  }
-
   .xl\:flex {
     display: flex;
   }
@@ -4128,10 +4072,6 @@ body {
 
   .xl\:w-\[350px\] {
     width: 350px;
-  }
-
-  .xl\:w-\[500px\] {
-    width: 500px;
   }
 
   .xl\:w-full {
@@ -4156,22 +4096,6 @@ body {
 
   .xl\:gap-7 {
     gap: 1.75rem;
-  }
-
-  .xl\:gap-\[23px\] {
-    gap: 23px;
-  }
-
-  .xl\:gap-\[48px\] {
-    gap: 48px;
-  }
-
-  .xl\:gap-\[69px\] {
-    gap: 69px;
-  }
-
-  .xl\:gap-\[76px\] {
-    gap: 76px;
   }
 
   .xl\:p-5 {

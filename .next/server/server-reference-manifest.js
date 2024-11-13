@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-self.__RSC_SERVER_MANIFEST="{\n  \"node\": {},\n  \"edge\": {},\n  \"encryptionKey\": \"umCHXZsxYGkqc//b9Us3o4RxF6xqPUmCG+afnc6LeTY=\"\n}"
-=======
-self.__RSC_SERVER_MANIFEST="{\n  \"node\": {},\n  \"edge\": {},\n  \"encryptionKey\": \"23J54KzKZ9vjF9PYjvRLgM5Y2J7SIAym0Lv9ehXKdus=\"\n}"
->>>>>>> leducanh
+self.__RSC_SERVER_MANIFEST="{\n  \"node\": {},\n  \"edge\": {},\n  \"encryptionKey\": \"W6NLbC3j7K8c4D1MuNNzL/cX4nYUmY2I5TLIeTkkfaM=\"\n}"
