@@ -71,7 +71,6 @@ export default function Header() {
 
   return (
     <div div className={cx("box-header")}>
-      <ToastContainer />
       <div className="max-w-screen-xl mx-auto px-4">
         <div className={cx("header")}>
           <div className={cx("header-top")}>
@@ -261,6 +260,7 @@ export default function Header() {
         </div>
       </div>
       <HeaderScroll />
+      <ToastContainer />
     </div>
   );
 }
