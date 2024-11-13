@@ -1,4 +1,10 @@
 {
   "/_not-found/page": "app/_not-found/page.js",
-  "/product/page": "app/product/page.js"
+  "/lich-su-don-hang/page": "app/lich-su-don-hang/page.js",
+  "/page": "app/page.js",
+  "/dangnhap/page": "app/dangnhap/page.js",
+  "/thong-tin-ho-so/page": "app/thong-tin-ho-so/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/san-pham-yeu-thich/page": "app/san-pham-yeu-thich/page.js",
+  "/dangky/page": "app/dangky/page.js"
 }

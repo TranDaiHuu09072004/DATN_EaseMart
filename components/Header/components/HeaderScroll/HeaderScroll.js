@@ -20,7 +20,8 @@ const HeaderScroll = () => {
   const [showHeader, setShowHeader] = useState(false);
   const [showHeaderScroll, setShowHeaderScroll] = useState(true);
   const [count, setCount] = useState(0);
-  const [username, setUsername] = useState(null);
+  const [name, setName] = useState(null);
+  const [image, setImage] = useState(null);
   useEffect(() => {
     let newCount = 0;
     state.cartItems.forEach((element) => {
@@ -28,6 +29,7 @@ const HeaderScroll = () => {
     });
     setCount(newCount);
   }, [state]);
+
   useEffect(() => {
     window.addEventListener("resize", () => {
       const width = window.innerWidth;
@@ -43,14 +45,12 @@ const HeaderScroll = () => {
   }, []);
 
   useEffect(() => {
-    // Lấy tên người dùng từ localStorage nếu đã đăng nhập
-    const name = localStorage.getItem("username");
+    const name = localStorage.getItem("name");
+
     if (name) {
-      let handleUsername = name.split(" ");
-
-      handleUsername = handleUsername[handleUsername.length - 1];
-
-      setUsername(handleUsername);
+      let handlename = name.split(" ");
+      handlename = handlename[handlename.length - 1];
+      setName(handlename);
     }
   }, []);
 
@@ -67,6 +67,19 @@ const HeaderScroll = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("name");
+    localStorage.removeItem("user");
+    localStorage.removeItem("image");
+    toast.success("Đăng Xuất thành công!", {
+      position: "top-right",
+      autoClose: 3000,
+    });
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
+  };
   return (
     <>
       {showHeader && showHeaderScroll && (
@@ -132,26 +145,89 @@ const HeaderScroll = () => {
                   Giỏ hàng
                 </div>
               </Link>
-              <Link
-                href={username ? "#" : "/dangnhap"}
-                className={cx("account", "w-fit", "lg:w-28")}
-              >
-                <div className={cx("box-icon-account")}>
-                  <FontAwesomeIcon
+              <div className={cx("account", "relative", "group", "py-3")}>
+                <Link
+                  href={name ? "#" : "/dangnhap"}
+                  className="flex items-center space-x-2 truncate whitespace-nowrap overflow-hidden text-ellipsis"
+                >
+                  {name ? (
+                    <img
+                      src={image}
+                      alt="Avatar"
+                      className="w-[100px] h-[50px] rounded-full"
+                    />
+                  ) : (
+                    <FontAwesomeIcon
+                      icon={faUser}
+                      className="text-[#3bb77e]  sm:w-7 sm:h-7 w-5 h-5"
+                    />
+                  )}
+                  <div className="text-[#3bb77e] lg:text-lg text-base font-medium w-full lg:block hidden">
+                    {name ? `Chào, ${name}` : "Đăng nhập"}
+                  </div>
+                </Link>
+                {name && (
+                  <ul
                     className={cx(
-                      "icon-account",
-                      "w-9",
-                      "h-9",
-                      "lg:w-8",
-                      "lg:h-8"
+                      "hidden",
+                      "menu-child",
+                      "w-48",
+                      "absolute",
+                      "-top-full",
+                      "right-0",
+                      "lg:left-[3px]",
+                      "flex",
+                      "flex-col",
+                      "opacity-0",
+                      "group-hover:flex",
+                      "group-hover:opacity-100",
+                      "group-hover:top-full",
+                      "transition-all",
+                      "ease-in-out-300",
+                      "bg-white"
                     )}
-                    icon={faUser}
-                  />
-                </div>
-                <div className={cx("title", "hidden", "lg:block")}>
-                  {username ? `Chào,${username}` : "đăng nhập"}
-                </div>
-              </Link>
+                  >
+                    <li
+                      className={cx(
+                        "text-black",
+                        "px-3",
+                        "py-4",
+                        "block",
+                        "sm:hidden"
+                      )}
+                    >
+                      <Link href="/cart">Giỏ hàng ({count})</Link>
+                    </li>
+                    <li className={cx("text-black", "px-3", "py-4")}>
+                      <Link href="/thong-tin-ho-so">Cập nhật tài khoản</Link>
+                    </li>
+                    <li className={cx("text-black", "px-3", "py-4")}>
+                      <Link href="/san-pham-yeu-thich">Sản phẩm yêu thích</Link>
+                    </li>
+                    <li className={cx("text-black", "px-3", "py-4")}>
+                      <Link href="/lich-su-don-hang">Lịch sử đơn hàng</Link>
+                    </li>
+                    <li
+                      className={cx(
+                        "text-black",
+                        "px-3",
+                        "py-4",
+                        "flex",
+                        "items-center",
+                        "gap-2",
+                        "cursor-pointer"
+                      )}
+                      onClick={handleLogout}
+                    >
+                      <Icon
+                        icon="material-symbols:logout-sharp"
+                        className={cx("w-5", "h-5")}
+                      />
+                      Đăng xuất
+                    </li>
+                  </ul>
+                )}
+              </div>
             </div>
           </div>
         </div>

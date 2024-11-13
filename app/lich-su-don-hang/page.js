@@ -9,7 +9,6 @@ const cx = classNames.bind(styles);
 export default function OrderHistory() {
   const [order_id, setOrder_Id] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -62,17 +61,12 @@ export default function OrderHistory() {
       })
       .catch((err) => {
         console.error(err);
-        setError("Không thể tải lịch sử đơn hàng. Vui lòng thử lại sau.");
         setLoading(false);
       });
   }, []);
 
   if (loading) {
     return <p>Đang tải...</p>;
-  }
-
-  if (error) {
-    return <p className={cx("error")}>{error}</p>;
   }
 
   return (
