@@ -13,16 +13,19 @@ import { toast } from "react-toastify";
 export default function DangKy() {
   // Yup validation schema
   const validationSchema = Yup.object().shape({
-    name: Yup.string().required("Họ và tên là bắt buộc"),
+    name: Yup.string().required("Vui lòng nhập họ và tên"),
     email: Yup.string()
       .email("Email không hợp lệ")
       .required("Email là bắt buộc"),
+    phone: Yup.string()
+      .required("Vui lòng nhập số điện thoại")
+      .matches(/^[0-9]{10}$/, "Số điện thoại phải có 10 số"),
     password: Yup.string()
       .min(8, "Mật khẩu phải có ít nhất 8 ký tự")
-      .required("Mật khẩu là bắt buộc"),
+      .required("Vui lòng nhập mật khẩu"),
     confirmPassword: Yup.string()
       .oneOf([Yup.ref("password"), null], "Mật khẩu xác nhận không khớp")
-      .required("Xác nhận mật khẩu là bắt buộc"),
+      .required("Bạn phải nhập mật khẩu xác nhận"),
   });
 
   const {
@@ -89,6 +92,15 @@ export default function DangKy() {
               <p className={styles.error}>{errors.email.message}</p>
             )}
 
+            <input
+              type="tel"
+              className={styles.inputField}
+              placeholder="Nhập số điện thoại"
+              {...register("phone")}
+            />
+            {errors.phone && (
+              <p className={styles.error}>{errors.phone.message}</p>
+            )}
             <input
               type="password"
               className={styles.inputField}
