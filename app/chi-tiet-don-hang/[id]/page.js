@@ -1,9 +1,44 @@
+"use client";
 import classNames from "classnames/bind";
-import styles from "./Chitietdonhang.module.scss";
+import styles from "../Chitietdonhang.module.scss";
 import { Icon } from "@iconify/react";
+import { GetOrderById } from "@/service/order";
+import { fetchProductById } from "@/service/product";
+import { useEffect, useState } from "react";
+import { formatPrice } from "@/uilts/formatPrice";
 const cx = classNames.bind(styles);
-const Chitietdonhang = () => {
-  return (
+const Chitietdonhang = ({ params }) => {
+  const { id } = params;
+  const [orderDetail, setOrderDetail] = useState({});
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (!user) {
+      return;
+    }
+    const { token } = user;
+    GetOrderById(id, token).then(async (res) => {
+      const list_pro = await Promise.all(
+        res.order_details.map(async (item) => {
+          const product = await fetchProductById(item.product_id);
+          item.product_name = product.name; // Gắn thêm product_name vào item
+          item.prce = product.sale_price; // Gắn thêm product_name vào item
+          return item;
+        })
+      );
+      console.log(res.order.shipping_address);
+
+      res.order.shipping_address = res?.order?.shipping_address?.split(" - ");
+      res.customer.address = res?.customer?.address?.split(" - ");
+      res.order_details = list_pro;
+      console.log(res);
+
+      setOrderDetail(res);
+    });
+  }, []);
+
+  return Object.keys(orderDetail).length === 0 ? (
+    "...đang load dữ liệu"
+  ) : (
     <div className={cx("max-w-screen-xl", " mx-auto", "p-4", "bg-white")}>
       <table
         className={cx(
@@ -44,40 +79,30 @@ const Chitietdonhang = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td className={cx("border", " border-gray-300 ", "px-4", " py-5")}>
-              Muối ớt chanh Nha Trang{" "}
-              <span className="block text-xs">(x1)</span>
-            </td>
-            <td
-              className={cx(
-                "border",
-                " border-gray-300 ",
-                "px-4",
-                " py-5",
-                "hightlight"
-              )}
-            >
-              250,000đ
-            </td>
-          </tr>
-          <tr>
-            <td className={cx("border", " border-gray-300 ", "px-4", " py-5")}>
-              Muối ớt chanh Nha Trang{" "}
-              <span className="block text-xs">(x1)</span>
-            </td>
-            <td
-              className={cx(
-                "border",
-                " border-gray-300 ",
-                "px-4",
-                " py-5",
-                "hightlight"
-              )}
-            >
-              250,000đ
-            </td>
-          </tr>
+          {orderDetail?.order_details?.map((prod, index) => {
+            return (
+              <tr key={index}>
+                <td
+                  className={cx("border", " border-gray-300 ", "px-4", " py-5")}
+                >
+                  {prod?.product_name}
+                  <span className="block text-xs">(x{prod?.quantity})</span>
+                </td>
+                <td
+                  className={cx(
+                    "border",
+                    " border-gray-300 ",
+                    "px-4",
+                    " py-5",
+                    "hightlight"
+                  )}
+                >
+                  {prod?.total_price}đ
+                </td>
+              </tr>
+            );
+          })}
+
           <tr>
             <td className={cx("border", " border-gray-300 ", "px-4", " py-5")}>
               Tạm tính:
@@ -91,15 +116,15 @@ const Chitietdonhang = () => {
                 "hightlight"
               )}
             >
-              500,000đ
+              {+orderDetail?.order?.total_amount}đ
             </td>
           </tr>
           <tr>
             <td className={cx("border", " border-gray-300 ", "px-4", " py-5")}>
-              Giao nhận hàng:
+              Trang thái đơn hàng:
             </td>
             <td className="border border-gray-300 px-4 py-6 text-blue-500 underline">
-              Giao hàng miễn phí
+              {orderDetail?.order?.status}
             </td>
           </tr>
           <tr>
@@ -107,7 +132,9 @@ const Chitietdonhang = () => {
               Phương thức thanh toán:
             </td>
             <td className={cx("border", " border-gray-300 ", "px-4", " py-5")}>
-              Trả tiền mặt khi nhận hàng
+              {orderDetail?.order?.payment_method === "BANK"
+                ? " Chuyển khoản qua MBBank "
+                : "Trả tiền mặt khi nhận hàng"}
             </td>
           </tr>
           <tr>
@@ -125,7 +152,7 @@ const Chitietdonhang = () => {
                 " text-base"
               )}
             >
-              500,000đ
+              {+orderDetail?.order?.total_amount}đ
             </td>
           </tr>
         </tbody>
@@ -157,12 +184,25 @@ const Chitietdonhang = () => {
                 "gap-5"
               )}
             >
-              <p className="font-semibold">Lê Đức Anh</p>
-              <p>Quận 11</p>
-              <p className="text-green-500">Hồ Chí Minh</p>
+              <p className="font-semibold">{orderDetail?.customer?.name}</p>
+              <p>
+                {orderDetail?.customer?.address?.[0]
+                  ? orderDetail?.customer?.address?.[0]
+                  : null}
+              </p>
+              <p>
+                {orderDetail?.customer?.address?.[1]
+                  ? orderDetail?.customer?.address?.[1]
+                  : null}
+              </p>
+              <p className="text-green-500">
+                {orderDetail?.customer?.shipping_address?.[2]
+                  ? orderDetail?.customer?.shipping_address?.[2]
+                  : null}
+              </p>
               <p className="flex items-center ">
                 <Icon icon="solar:phone-broken" />
-                0334481550
+                {orderDetail?.customer?.phone}
               </p>
             </div>
           </div>
@@ -180,7 +220,7 @@ const Chitietdonhang = () => {
                 "border-gray-200"
               )}
             >
-              Địa chỉ thanh toán
+              Địa chỉ nhận hàng
             </div>
             <div
               className={cx(
@@ -192,12 +232,15 @@ const Chitietdonhang = () => {
                 "gap-5"
               )}
             >
-              <p className="font-semibold">Lê Đức Anh</p>
-              <p>Quận 11</p>
-              <p className="text-green-500">Hồ Chí Minh</p>
+              <p className="font-semibold">{orderDetail?.customer?.name}</p>
+              <p>{orderDetail?.order?.shipping_address[0]}</p>
+              <p>{orderDetail?.order?.shipping_address[1]}</p>
+              <p className="text-green-500">
+                {orderDetail?.order?.shipping_address[2]}
+              </p>
               <p className="flex items-center ">
                 <Icon icon="solar:phone-broken" />
-                0334481550
+                {orderDetail?.customer?.phone}
               </p>
             </div>
           </div>

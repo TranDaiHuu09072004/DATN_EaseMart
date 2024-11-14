@@ -44,3 +44,16 @@ export const CheckPayment = async (paymentId) => {
   );
   return respone.data;
 };
+
+export const GetOrderById = async (paymentId, token) => {
+  const respone = await axios.get(
+    `https://trandainghia.id.vn/api/orders/${paymentId}/details`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  return respone.data;
+};

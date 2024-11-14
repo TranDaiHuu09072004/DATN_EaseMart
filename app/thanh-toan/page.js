@@ -37,7 +37,7 @@ export default function Payment() {
   let total = useRef(0);
   let listPaymentMethod = useRef([
     { method: "COD", des: "Thanh toán khi nhận hàng" },
-    { method: "BANK", des: "Thanh toán bằng VNPAY" },
+    { method: "BANK", des: "Thanh toán bằng ngân hàng MB" },
   ]);
   // const [infoUser, setInfoUser] = useState({});
   const intervalId = useRef(null);
