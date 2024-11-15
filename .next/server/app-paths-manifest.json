@@ -1,8 +1,1 @@
-{
-  "/_not-found/page": "app/_not-found/page.js",
-  "/dangnhap/page": "app/dangnhap/page.js",
-  "/dangky/page": "app/dangky/page.js",
-  "/thay-doi-mat-khau/page": "app/thay-doi-mat-khau/page.js",
-  "/thanh-toan/page": "app/thanh-toan/page.js",
-  "/quen-mat-khau/page": "app/quen-mat-khau/page.js"
-}
+{}
