@@ -165,7 +165,15 @@ export default function OrderHistory() {
                     <td>
                       <span
                         className={`${cx("status")} ${
-                          styles[order.status.toLowerCase()]
+                          order.status.toLowerCase() === "đang giao hàng"
+                            ? "text-blue-500 font-bold"
+                            : order.status.toLowerCase() === "đã giao"
+                            ? "text-[#3bb77e] font-bold"
+                            : order.status.toLowerCase() === "đã hủy"
+                            ? "text-red-500 font-bold"
+                            : order.status.toLowerCase() === "chờ xử lý"
+                            ? "text-[#FED070]"
+                            : ""
                         }`}
                       >
                         {order.status}

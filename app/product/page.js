@@ -19,6 +19,11 @@ import { getProBy2Cate, getProByCate } from "@/service/product";
 import { getBrand } from "@/service/brand";
 import { Dispatch, useCart } from "@/components/CartFunction";
 import { formatPrice } from "@/uilts/formatPrice";
+import {
+  DispatchYt,
+  useYeuThich,
+} from "@/components/YTFunction/sanphamyeuthich";
+
 const cx = classNames.bind(styles);
 
 const Product = () => {
@@ -35,12 +40,9 @@ const Product = () => {
   const name = searchParams.get("name"); // Update to get "name" parameter
   const [resultfilterProduct, setResultFilterProduct] = useState([]);
   const [isSearching, setIsSearching] = useState(false);
-<<<<<<< HEAD
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [sortOrder, setSortOrder] = useState(""); // "asc" or "desc"
-=======
->>>>>>> leducanh
-
+  const { stateYt, dispatchYt } = useYeuThich();
   useEffect(() => {
     const fetchProducts = async () => {
       if (name) {
@@ -139,7 +141,6 @@ const Product = () => {
 
   console.log(product);
 
-<<<<<<< HEAD
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
@@ -159,8 +160,6 @@ const Product = () => {
     setProduct(sortedProducts);
   };
 
-=======
->>>>>>> leducanh
   return (
     <div className={cx("max-w-screen-xl", "mx-auto", "p-4")}>
       <div className={cx("page-product")}>
@@ -231,7 +230,6 @@ const Product = () => {
           </div>
 
           <div className={cx("content")}>
-<<<<<<< HEAD
             <div className={cx("title")}>
               {brandChooseCheck ? brandChoose.name : cateChoose.name}
               <div className="relative inline-block text-left">
@@ -257,18 +255,6 @@ const Product = () => {
                     </div>
                   </div>
                 )}
-=======
-            {/* Category or Brand Title */}
-            <div className={cx("title")}>
-              {brandChooseCheck ? brandChoose.name : cateChoose.name}
-              <div className={cx("filter")}>
-                <button className={cx("btn-filter")}>
-                  Sắp xếp theo{" "}
-                  <span>
-                    <FontAwesomeIcon icon={faAngleDown} />
-                  </span>
-                </button>
->>>>>>> leducanh
               </div>
             </div>
 
@@ -333,6 +319,17 @@ const Product = () => {
                         </div>
                         <div className={cx("original-price")}>
                           {item.price}đ
+                        </div>
+                        <div className={cx("flex-grow", "flex", "justify-end")}>
+                          <Icon
+                            onClick={() => {
+                              dispatchYt(
+                                new DispatchYt("ADD_ITEM_YEUTHICH", item)
+                              );
+                            }}
+                            icon="mdi:heart-outline"
+                            className="w-6 h-6 text-red-500"
+                          />
                         </div>
                       </div>
                       <div className={cx("btn-action")}>

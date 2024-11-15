@@ -228,12 +228,7 @@ const MenuMobile = ({ color = false }) => {
                 </li>
               </ul>
               <p
-                className={cx(
-                  "description",
-                  "text-[#939292]",
-                  "text-sm",
-                  "mb-5"
-                )}
+                className={cx("description", "text-[#333]", "text-sm", "mb-5")}
               >
                 EaseMart là chuỗi cửa hàng tiện lợi, chuyên cung cấp các sản
                 phẩm hàng tiêu dùng thiết yếu cho cuộc sống hàng ngày với giá cả
@@ -292,13 +287,12 @@ const MenuMobile = ({ color = false }) => {
                       "h-7"
                     )}
                   >
-                    ``
                     <FontAwesomeIcon
                       icon={faPhone}
                       className={cx("icon", "w-3")}
                     />
                   </div>
-                  <div className={cx("info", "")}>+84 392 706 757</div>
+                  <div className={cx("info")}>+84 392 706 757</div>
                 </div>
                 <div
                   className={cx(
@@ -324,7 +318,7 @@ const MenuMobile = ({ color = false }) => {
                       className={cx("icon", "w-3")}
                     />
                   </div>
-                  <div className={cx("info", "")}>+84 392 706 755</div>
+                  <div className={cx("info", "")}>beaulycontact@gmail.com</div>
                 </div>
               </div>
               <div>
