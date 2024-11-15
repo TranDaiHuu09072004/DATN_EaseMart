@@ -1,10 +1,6 @@
-<<<<<<< HEAD
-{}
-=======
 {
   "/_not-found/page": "app/_not-found/page.js",
-  "/chi-tiet-don-hang/[id]/page": "app/chi-tiet-don-hang/[id]/page.js",
-  "/lich-su-don-hang/page": "app/lich-su-don-hang/page.js",
-  "/favicon.ico/route": "app/favicon.ico/route.js"
+  "/page": "app/page.js",
+  "/quen-mat-khau/page": "app/quen-mat-khau/page.js",
+  "/dangnhap/page": "app/dangnhap/page.js"
 }
->>>>>>> 9c22894afeb66fd7a6aead6e645991aabaf5fd1a
