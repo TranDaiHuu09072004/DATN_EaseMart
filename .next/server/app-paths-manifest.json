@@ -1,6 +1,11 @@
 {
   "/_not-found/page": "app/_not-found/page.js",
   "/page": "app/page.js",
+<<<<<<< HEAD
   "/cart/page": "app/cart/page.js",
   "/thanh-toan/page": "app/thanh-toan/page.js"
+=======
+  "/quen-mat-khau/page": "app/quen-mat-khau/page.js",
+  "/dangnhap/page": "app/dangnhap/page.js"
+>>>>>>> leducanh
 }

@@ -12,6 +12,7 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
+<<<<<<< HEAD
     "/cart/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
@@ -23,6 +24,18 @@
       "static/chunks/main-app.js",
       "static/css/app/thanh-toan/page.css",
       "static/chunks/app/thanh-toan/page.js"
+=======
+    "/dangnhap/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/dangnhap/page.css",
+      "static/chunks/app/dangnhap/page.js"
+    ],
+    "/quen-mat-khau/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/quen-mat-khau/page.js"
+>>>>>>> leducanh
     ],
     "/_not-found/page": [
       "static/chunks/webpack.js",
