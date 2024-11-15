@@ -119,7 +119,7 @@ export default function DangNhap() {
             )}
             <div className="relative">
               <input
-                type={setShowPassword ? "text" : "password"}
+                type={showPassword ? "text" : "password"}
                 className={styles.inputField}
                 placeholder="Nhập mật khẩu"
                 {...register("password")}
@@ -130,7 +130,7 @@ export default function DangNhap() {
               />
               <span
                 className="absolute right-3 mt-7 text-[20px] cursor-pointer text-[#757575]"
-                onClick={() => setShowPassword(!setShowPassword)}
+                onClick={() => setShowPassword(!showPassword)}
               >
                 {showPassword ? <FaEyeSlash /> : <FaEye />}
               </span>
