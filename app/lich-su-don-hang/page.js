@@ -23,10 +23,9 @@ export default function OrderHistory() {
     return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
   useEffect(() => {
-    // Lấy token từ local storage
-    const user = JSON.parse(localStorage.getItem("user")); // Lấy thông tin người dùng
-    const token = user?.token; // Lấy token từ thông tin người dùng
-    const customerId = user?.customerId; // Lấy ID khách hàng từ local storage
+    const user = JSON.parse(localStorage.getItem("user"));
+    const token = user?.token;
+    const customerId = user?.customerId;
 
     if (!token || !customerId) {
       Swal.fire({
@@ -40,7 +39,6 @@ export default function OrderHistory() {
         if (result.isConfirmed) {
           window.location.href = "/dangnhap";
         }
-        // Nếu người dùng nhấn "OK", popup sẽ đóng mà không có thêm hành động nào.
       });
       setLoading(false);
       return;
@@ -55,12 +53,13 @@ export default function OrderHistory() {
         }
       )
       .then((response) => {
-        console.log(response.data);
+        console.log(response);
         setOrder_Id(response.data.orders || []);
         setLoading(false);
       })
       .catch((err) => {
         console.error(err);
+
         setLoading(false);
       });
   }, []);
@@ -181,7 +180,14 @@ export default function OrderHistory() {
                     </td>
                     <td>{formatPrice(order.total_amount)}đ</td>
                     <td>
-                      <button className={cx("button")}>Xem</button>
+                      <button
+                        onClick={() => {
+                          window.location.href = `/chi-tiet-don-hang/${order.id}`;
+                        }}
+                        className={cx("button")}
+                      >
+                        Xem
+                      </button>
                     </td>
                   </tr>
                 ))}
