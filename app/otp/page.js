@@ -29,15 +29,19 @@ export default function OTP() {
       );
       console.log(response.data);
       if (response.status === 200) {
-        Swal.fire("Success", "OTP verified successfully", "success");
+        Swal.fire("Thành Công", "Xác minh mã OTP thành công", "success");
         setTimeout(() => {
           window.location.href = "/thay-doi-mat-khau";
         }, 1000);
       } else {
-        Swal.fire("Error", response.data.message || "Invalid OTP", "error");
+        Swal.fire(
+          "Thất bại",
+          response.data.message || "Vui lòng nhập đúng OTP",
+          "error"
+        );
       }
     } catch (error) {
-      Swal.fire("Error", "An error occurred", "error");
+      Swal.fire("Thất bại", "Vui lòng nhập đúng OTP của bạn", "error");
     }
   };
 

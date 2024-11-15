@@ -35,8 +35,11 @@ const Product = () => {
   const name = searchParams.get("name"); // Update to get "name" parameter
   const [resultfilterProduct, setResultFilterProduct] = useState([]);
   const [isSearching, setIsSearching] = useState(false);
+<<<<<<< HEAD
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [sortOrder, setSortOrder] = useState(""); // "asc" or "desc"
+=======
+>>>>>>> leducanh
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -136,6 +139,7 @@ const Product = () => {
 
   console.log(product);
 
+<<<<<<< HEAD
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
@@ -155,6 +159,8 @@ const Product = () => {
     setProduct(sortedProducts);
   };
 
+=======
+>>>>>>> leducanh
   return (
     <div className={cx("max-w-screen-xl", "mx-auto", "p-4")}>
       <div className={cx("page-product")}>
@@ -225,6 +231,7 @@ const Product = () => {
           </div>
 
           <div className={cx("content")}>
+<<<<<<< HEAD
             <div className={cx("title")}>
               {brandChooseCheck ? brandChoose.name : cateChoose.name}
               <div className="relative inline-block text-left">
@@ -250,6 +257,18 @@ const Product = () => {
                     </div>
                   </div>
                 )}
+=======
+            {/* Category or Brand Title */}
+            <div className={cx("title")}>
+              {brandChooseCheck ? brandChoose.name : cateChoose.name}
+              <div className={cx("filter")}>
+                <button className={cx("btn-filter")}>
+                  Sắp xếp theo{" "}
+                  <span>
+                    <FontAwesomeIcon icon={faAngleDown} />
+                  </span>
+                </button>
+>>>>>>> leducanh
               </div>
             </div>
 

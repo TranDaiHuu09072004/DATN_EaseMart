@@ -50,21 +50,21 @@ const Cart = () => {
     setTotal(total);
   }, [state]);
 
-    const handlePayMent = () => {
-      // kiểm tra đã có sản phẩm nào được chọn chưa
-      if (state.cartItems.some((item) => item.select)) {
-        // đưa đến trang thanh toán
-        window.location.href = "/thanh-toan";
-        //...
-      } else {
-        // thông báo người dùng chưa chọn sản phẩm nào
-        Swal.fire({
-          icon: "error",
-          title: "Thông báo",
-          text: "Vui lòng chọn sản phẩm để thanh toán",
-        });
-      }
-    };
+  const handlePayMent = () => {
+    // kiểm tra đã có sản phẩm nào được chọn chưa
+    if (state.cartItems.some((item) => item.select)) {
+      // đưa đến trang thanh toán
+      window.location.href = "/thanh-toan";
+      //...
+    } else {
+      // thông báo người dùng chưa chọn sản phẩm nào
+      Swal.fire({
+        icon: "error",
+        title: "Thông báo",
+        text: "Vui lòng chọn sản phẩm để thanh toán",
+      });
+    }
+  };
   return (
     <div className={cx("max-w-screen-xl", "mx-auto", "px-4")}>
       <div className={cx("page-cart")}>

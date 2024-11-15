@@ -12,7 +12,7 @@ import "public/css/CardRelated.globals.css";
 import "public/css/rating.globals.css";
 import "app/globals.css";
 import { CartFunction } from "@/components/CartFunction";
-// import "react-toastify/dist/ReactToastify.css";
+import "react-toastify/dist/ReactToastify.css";
 import { YeuThichFunction } from "@/components/YTFunction/sanphamyeuthich";
 const roboto = Roboto({
   weight: ["400", "700"],

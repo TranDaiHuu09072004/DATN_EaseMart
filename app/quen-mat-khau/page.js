@@ -21,7 +21,11 @@ export default function ForgotPassword() {
 
       if (response.status === 200) {
         sessionStorage.setItem("email", email);
-        Swal.fire("Success", "Email has been sent", "success").then(() => {
+        Swal.fire(
+          "Thành công",
+          "Email đã gửi vào hòm thư của bạn, vui lòng kiểm tra email",
+          "success"
+        ).then(() => {
           window.location.href = "/otp";
         });
       } else {

@@ -37,7 +37,7 @@ export default function Payment() {
   let total = useRef(0);
   let listPaymentMethod = useRef([
     { method: "COD", des: "Thanh toán khi nhận hàng" },
-    { method: "BANK", des: "Thanh toán bằng VNPAY" },
+    { method: "BANK", des: "Thanh toán bằng ngân hàng MB" },
   ]);
   // const [infoUser, setInfoUser] = useState({});
   const intervalId = useRef(null);
@@ -602,6 +602,7 @@ export default function Payment() {
                   </div>
                 ))}
               </div>
+
               <div className={cx("order_voucher")}>
                 <span className="mt-[5px]">Mã voucher: </span>
                 <input
@@ -620,7 +621,6 @@ export default function Payment() {
                   {formatPrice(total.current)}đ
                 </span>
               </div>
-
               <div className={cx("payment_method")}>
                 <h5 className=" text-2xl mb-3 font-medium ">
                   <i class="fa-solid fa-money-bill-transfer text-[25px] text-[#3bb77e] font-bold pr-1"></i>

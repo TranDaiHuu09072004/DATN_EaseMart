@@ -29,6 +29,7 @@ const HeaderScroll = () => {
     });
     setCount(newCount);
   }, [state]);
+
   useEffect(() => {
     window.addEventListener("resize", () => {
       const width = window.innerWidth;
@@ -42,23 +43,6 @@ const HeaderScroll = () => {
       }
     });
   }, []);
-
-  const handleLogout = () => {
-    localStorage.removeItem("name");
-    localStorage.removeItem("user");
-    localStorage.removeItem("email");
-    localStorage.removeItem("phone");
-    localStorage.removeItem("address");
-    localStorage.removeItem("birth_date");
-    localStorage.removeItem("image");
-    toast.success("Đăng Xuất thành công!", {
-      position: "top-right",
-      autoClose: 3000,
-    });
-    setTimeout(() => {
-      window.location.reload();
-    }, 1000);
-  };
 
   useEffect(() => {
     const name = localStorage.getItem("name");
@@ -86,6 +70,19 @@ const HeaderScroll = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("name");
+    localStorage.removeItem("user");
+    localStorage.removeItem("image");
+    toast.success("Đăng Xuất thành công!", {
+      position: "top-right",
+      autoClose: 3000,
+    });
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
+  };
   return (
     <>
       {showHeader && showHeaderScroll && (
@@ -156,18 +153,18 @@ const HeaderScroll = () => {
                   href={name ? "#" : "/dangnhap"}
                   className="flex items-center space-x-2 truncate whitespace-nowrap overflow-hidden text-ellipsis"
                 >
-                  {name ? (
+                  {/* {name ? (
                     <img
                       src={image}
                       alt="Avatar"
-                      className="w-full h-auto rounded-full sm:w-7 sm:h-7"
+                      className="w-[100px] h-[50px] rounded-full"
                     />
-                  ) : (
-                    <FontAwesomeIcon
-                      icon={faUser}
-                      className="text-[#3bb77e] sm:w-7 sm:h-7 w-5 h-5"
-                    />
-                  )}
+                  ) : ( */}
+                  <FontAwesomeIcon
+                    icon={faUser}
+                    className="text-[#3bb77e] sm:w-7 sm:h-7 w-5 h-5"
+                  />
+                  {/* )} */}
                   <div className="text-[#3bb77e] lg:text-lg text-base font-medium w-full lg:block hidden">
                     {name ? `Chào, ${name}` : "Đăng nhập"}
                   </div>
