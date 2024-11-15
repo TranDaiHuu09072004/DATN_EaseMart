@@ -46,8 +46,39 @@ export const CheckPayment = async (paymentId) => {
 };
 
 export const GetOrderById = async (paymentId, token) => {
+  console.log(paymentId);
+
   const respone = await axios.get(
     `https://trandainghia.id.vn/api/orders/${paymentId}/details`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  return respone.data;
+};
+
+export const CancelOrderById = async (id, token) => {
+  const respone = await axios.delete(
+    `https://trandainghia.id.vn/api/orders/${id}/cancel`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  return respone.data;
+};
+
+export const RestoreOrderById = async (id, token) => {
+  console.log(id);
+
+  const respone = await axios.post(
+    `https://trandainghia.id.vn/api/orders/${id}/restore`,
+    { token: token },
     {
       headers: {
         Authorization: `Bearer ${token}`,
