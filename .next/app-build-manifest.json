@@ -24,6 +24,22 @@
       "static/css/app/dangky/page.css",
       "static/chunks/app/dangky/page.js"
     ],
+    "/thanh-toan/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/thanh-toan/page.css",
+      "static/chunks/app/thanh-toan/page.js"
+    ],
+    "/thay-doi-mat-khau/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/thay-doi-mat-khau/page.js"
+    ],
+    "/quen-mat-khau/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/quen-mat-khau/page.js"
+    ],
     "/_not-found/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
