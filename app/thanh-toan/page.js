@@ -71,7 +71,7 @@ export default function Payment() {
         : listProductCart.filter((item) => item.select);
       const items = listProductPayment.map((item) => {
         return {
-          product_id: 33,
+          product_id: 23,
           quantity: item.quantity,
           unit_code: "THUNG",
         };
