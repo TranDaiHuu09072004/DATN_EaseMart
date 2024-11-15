@@ -6,8 +6,8 @@ import { useCart } from "@/components/CartFunction";
 import { getDistrict, getProvince, getWard } from "@/service/address";
 import { formatPrice } from "@/uilts/formatPrice";
 import { CheckPayment, CreateQr, PostOrder } from "@/service/order";
-import { log } from "util";
-import { FALSE } from "sass";
+// import { log } from "util";
+// import { FALSE } from "sass";
 import Swal from "sweetalert2";
 
 const cx = classNames.bind(styles);
