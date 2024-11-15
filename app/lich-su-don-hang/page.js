@@ -24,14 +24,13 @@ export default function OrderHistory() {
   };
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
-    const token = user?.token;
-    const customerId = user?.customerId;
 
-    if (!token || !customerId) {
+    if (!user) {
+      setLoading(false);
       Swal.fire({
         icon: "error",
         title: "Chưa đăng nhập",
-        text: "Vui lòng đăng nhập để có thể xem lịch sử đơn hàng!",
+        text: "Bạn cần đăng nhập để xem lịch sử đơn hàng!",
         showCancelButton: true,
         confirmButtonText: "Đăng nhập",
         cancelButtonText: "OK",
@@ -43,6 +42,10 @@ export default function OrderHistory() {
       setLoading(false);
       return;
     }
+
+    const token = user.token;
+    const customerId = user.customerId;
+
     axios
       .get(
         `https://trandainghia.id.vn/api/customer/${customerId}/order-history`,
@@ -54,12 +57,13 @@ export default function OrderHistory() {
       )
       .then((response) => {
         console.log(response);
+        console.log(response.data.orders);
+
         setOrder_Id(response.data.orders || []);
         setLoading(false);
       })
       .catch((err) => {
         console.error(err);
-
         setLoading(false);
       });
   }, []);

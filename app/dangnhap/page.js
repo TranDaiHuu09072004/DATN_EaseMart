@@ -2,27 +2,27 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import styles from "./dangnhap.module.css";
-import * as Yup from "yup";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
+import * as Yup from "yup"; // Import Yup for validation
+import { useForm } from "react-hook-form"; // Import useForm from react-hook-form
+import { yupResolver } from "@hookform/resolvers/yup"; // Import yupResolver for Yup integration
 import Swal from "sweetalert2";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
+const validationSchema = Yup.object().shape({
+  email: Yup.string()
+    .email("Email hoặc password đã tồn tại")
+    .required("Email là bắt buộc"),
+  password: Yup.string()
+    .required("Mật khẩu là bắt buộc")
+    .min(8, "Mật khẩu phải có ít nhất 8 ký tự"),
+});
+
 export default function DangNhap() {
+  const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(true);
-  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
-
-  const validationSchema = Yup.object().shape({
-    email: Yup.string()
-      .email("Email hoặc password đã tồn tại")
-      .required("Email là bắt buộc"),
-    password: Yup.string()
-      .required("Mật khẩu là bắt buộc")
-      .min(8, "Mật khẩu phải có ít nhất 8 ký tự"),
-  });
 
   const {
     register,
@@ -33,6 +33,7 @@ export default function DangNhap() {
   });
 
   useEffect(() => {
+    // Kiểm tra dữ liệu đã lưu trong localStorage cho tính năng "Ghi nhớ mật khẩu"
     const savedEmail = localStorage.getItem("email");
     const savedPassword = localStorage.getItem("password");
     if (savedEmail && savedPassword) {
@@ -62,6 +63,7 @@ export default function DangNhap() {
       console.log(user);
 
       const name = user.customers.name;
+      const customerId = user.customers.id;
       if (user) {
         setError("");
         Swal.fire("Thành công", "Đăng nhập thành công!", "success");
@@ -69,12 +71,13 @@ export default function DangNhap() {
         if (rememberMe) {
           localStorage.setItem(
             "user",
-            JSON.stringify({ email, token: user.token, name })
+            JSON.stringify({ email, token: user.token, name, customerId })
           );
           localStorage.setItem("name", name);
         } else {
           localStorage.removeItem("user");
         }
+
         setTimeout(() => {
           window.location.href = "/";
         }, 2000);
@@ -116,7 +119,7 @@ export default function DangNhap() {
             )}
             <div className="relative">
               <input
-                type={showPassword ? "text" : "password"}
+                type={setShowPassword ? "text" : "password"}
                 className={styles.inputField}
                 placeholder="Nhập mật khẩu"
                 {...register("password")}
@@ -127,15 +130,15 @@ export default function DangNhap() {
               />
               <span
                 className="absolute right-3 mt-7 text-[20px] cursor-pointer text-[#757575]"
-                onClick={() => setShowPassword(!showPassword)}
+                onClick={() => setShowPassword(!setShowPassword)}
               >
                 {showPassword ? <FaEyeSlash /> : <FaEye />}
               </span>
-
               {errors.password && (
                 <p className={styles.error}>{errors.password.message}</p>
               )}
             </div>
+
             <div className={styles.rememberMe}>
               <input
                 type="checkbox"
