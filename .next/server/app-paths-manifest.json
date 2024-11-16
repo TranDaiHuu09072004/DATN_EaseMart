@@ -1,1 +1,9 @@
-{}
+{
+  "/_not-found/page": "app/_not-found/page.js",
+  "/san-pham-yeu-thich/page": "app/san-pham-yeu-thich/page.js",
+  "/lich-su-don-hang/page": "app/lich-su-don-hang/page.js",
+  "/chi-tiet-san-pham/[id]/page": "app/chi-tiet-san-pham/[id]/page.js",
+  "/chi-tiet-don-hang/[id]/page": "app/chi-tiet-don-hang/[id]/page.js",
+  "/product/page": "app/product/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js"
+}

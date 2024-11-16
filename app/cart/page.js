@@ -314,11 +314,14 @@ const Cart = () => {
             </div>
           ) : (
             <div className={cx("empty-cart")}>
-              <FontAwesomeIcon
+              <img
+                src="/assets/gio_hang_trong/gio_hang_trong.png"
+                alt=""
                 className={cx("icon-cart-empty")}
-                icon={faCartShopping}
               />
-              <p> Bạn chưa có sản phẩm nào</p>
+              <p className="text-[#939393] font-bold">
+                Bạn chưa có sản phẩm nào
+              </p>
               <button>
                 <Link href="/">Tiếp tục mua hàng</Link>
               </button>

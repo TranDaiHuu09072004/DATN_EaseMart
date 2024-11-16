@@ -29,7 +29,7 @@ const Sidebar = ({ listCate, updateCate, listBrand, updateBrand }) => {
           </span>
         </div>
         {showCate && (
-          <ul className={cx("list-cate")}>
+          <ul className={cx("list-cate", "bg-white")}>
             {listCate.map((item) => {
               return (
                 <li
@@ -54,7 +54,7 @@ const Sidebar = ({ listCate, updateCate, listBrand, updateBrand }) => {
           </span>
         </div>
         {showBrand && (
-          <div className={cx("list-brand")}>
+          <div className={cx("list-brand", "bg-white")}>
             {listBrand.map((item) => {
               return (
                 <Link

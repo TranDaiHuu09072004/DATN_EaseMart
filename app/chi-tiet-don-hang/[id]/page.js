@@ -52,6 +52,9 @@ const Chitietdonhang = ({ params }) => {
     "...đang load dữ liệu"
   ) : (
     <div className={cx("max-w-screen-xl", " mx-auto", "p-4", "bg-white")}>
+      <h2 className="text-center font-bold text-[25px] text-gray-700 mb-2">
+        Chi tiết đơn hàng
+      </h2>
       <div className={cx("w-full", "flex", "justify-end", "mb-2")}>
         {orderDetail.order.status !== "Đã hủy" ? (
           <button

@@ -74,60 +74,9 @@ export default function OrderHistory() {
 
   return (
     <div className={cx("container")}>
-      <div
-        className={cx(
-          "link_home_news",
-          "max-md:px-3",
-          "max-md:p-1",
-          "md:px-3",
-          "items-center"
-        )}
-      >
-        <ul className={cx("list_link")}>
-          <li>
-            <Link
-              href="/"
-              className={cx(
-                "link_item",
-                "xl:text-xl",
-                "lg:text-[#585757]",
-                "lg:no-underline",
-                "max-lg:text-[18px]",
-                "max-md:text-[16px]"
-              )}
-            >
-              Trang Chủ
-            </Link>
-          </li>
-          <li
-            className={cx(
-              "separator",
-              "xl:text-xl",
-              "lg:text-[#585757]",
-              "lg:no-underline",
-              "max-lg:text-[18px]",
-              "max-md:text-[16px]"
-            )}
-          >
-            /
-          </li>
-          <li>
-            <Link
-              href="#"
-              className={cx(
-                "link_item",
-                "xl:text-xl",
-                "lg:text-[#585757]",
-                "lg:no-underline",
-                "max-lg:text-[18px]",
-                "max-md:text-[16px]"
-              )}
-            >
-              Lịch sử đơn hàng
-            </Link>
-          </li>
-        </ul>
-      </div>
+      <h2 className="text-center font-bold text-[25px] text-gray-700 my-5">
+        Lịch sử đơn hàng
+      </h2>
       <div className={cx("bg_color", "mb-5")}>
         {order_id.length === 0 ? (
           <div className="mx-auto">
