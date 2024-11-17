@@ -12,6 +12,7 @@ import Swal from "sweetalert2";
 
 const cx = classNames.bind(styles);
 export default function Payment() {
+  const [errorProduct, setErrorProduct] = useState([]);
   const [checkAccept, setCheckAccept] = useState(false);
   const [ErrorCheckAccept, setErrorCheckAccept] = useState(false);
   const [checkPayment, setCheckPayment] = useState(false);
@@ -39,6 +40,12 @@ export default function Payment() {
     { method: "COD", des: "Thanh toán khi nhận hàng" },
     { method: "BANK", des: "Thanh toán bằng ngân hàng MB" },
   ]);
+
+  useEffect(() => {
+    return () => {
+      localStorage.removeItem("buy_now");
+    };
+  }, []);
   // const [infoUser, setInfoUser] = useState({});
   const intervalId = useRef(null);
   const timeoutId = useRef(null);
@@ -71,7 +78,7 @@ export default function Payment() {
         : listProductCart.filter((item) => item.select);
       const items = listProductPayment.map((item) => {
         return {
-          product_id: 23,
+          product_id: 33,
           quantity: item.quantity,
           unit_code: "THUNG",
         };
@@ -175,7 +182,7 @@ export default function Payment() {
           });
         })
         .catch((err) => {
-          console.log(err);
+          // console.log(err.);
         });
     }
   };
