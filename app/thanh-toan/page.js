@@ -12,6 +12,7 @@ import Swal from "sweetalert2";
 
 const cx = classNames.bind(styles);
 export default function Payment() {
+  const [errorProduct, setErrorProduct] = useState([]);
   const [checkAccept, setCheckAccept] = useState(false);
   const [ErrorCheckAccept, setErrorCheckAccept] = useState(false);
   const [checkPayment, setCheckPayment] = useState(false);
@@ -39,6 +40,12 @@ export default function Payment() {
     { method: "COD", des: "Thanh toán khi nhận hàng" },
     { method: "BANK", des: "Thanh toán bằng ngân hàng MB" },
   ]);
+
+  useEffect(() => {
+    return () => {
+      localStorage.removeItem("buy_now");
+    };
+  }, []);
   // const [infoUser, setInfoUser] = useState({});
   const intervalId = useRef(null);
   const timeoutId = useRef(null);
@@ -71,7 +78,7 @@ export default function Payment() {
         : listProductCart.filter((item) => item.select);
       const items = listProductPayment.map((item) => {
         return {
-          product_id: 33,
+          product_id: 23,
           quantity: item.quantity,
           unit_code: "THUNG",
         };
@@ -91,18 +98,7 @@ export default function Payment() {
             if (byStatus) {
               localStorage.removeItem("buy_now");
             } else {
-              let getCart = JSON.parse(
-                localStorage.getItem(`cart_${user.email}`)
-              );
-              console.log(getCart);
-
-              getCart = getCart.filter((item) => {
-                return !item.select;
-              });
-              localStorage.setItem(
-                `cart_${user.email}`,
-                JSON.stringify(getCart)
-              );
+              localStorage.removeItem(`cart_${user.email}`);
             }
             Swal.fire({
               icon: "success",
@@ -176,6 +172,20 @@ export default function Payment() {
         })
         .catch((err) => {
           console.log(err);
+          Swal.fire({
+            icon: "error",
+            title: "Đặt hàng thất bại",
+            text: "Bạn không đặt hàng được đơn này có thể là do đơn hàng của bạn đã có sản phẩm đã hết hàng !",
+            showCancelButton: false, // Hiển thị nút "Hủy" (hoặc OK)
+            confirmButtonText: "OK", // Văn bản nút xác nhận
+            // Văn bản nút hủy
+          }).then((result) => {
+            if (result.isConfirmed) {
+              // Điều hướng đến trang đăng nhập nếu người dùng chọn "Đăng nhập"
+              // window.location.href = "/";
+            }
+            // Nếu người dùng nhấn "OK", popup sẽ đóng mà không có thêm hành động nào.
+          });
         });
     }
   };
