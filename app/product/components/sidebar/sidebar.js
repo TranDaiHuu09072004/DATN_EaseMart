@@ -29,7 +29,7 @@ const Sidebar = ({ listCate, updateCate, listBrand, updateBrand }) => {
           </span>
         </div>
         {showCate && (
-          <ul className={cx("list-cate")}>
+          <ul className={cx("list-cate", "bg-white")}>
             {listCate.map((item) => {
               return (
                 <li
@@ -46,7 +46,7 @@ const Sidebar = ({ listCate, updateCate, listBrand, updateBrand }) => {
           </ul>
         )}
       </div>
-      <div className={cx("box-list-brand")}>
+      <div className={cx("box-list-brand", "bg-white")}>
         <div className={cx("title")}>
           Thương hiệu{" "}
           <span className={cx("down")} onClick={handleShowBrand}>

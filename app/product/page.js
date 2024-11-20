@@ -39,9 +39,9 @@ const Product = () => {
   const searchParams = useSearchParams();
   const name = searchParams.get("name"); // Update to get "name" parameter
   const [resultfilterProduct, setResultFilterProduct] = useState([]);
-  const [isSearching, setIsSearching] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [sortOrder, setSortOrder] = useState(""); // "asc" or "desc"
+  const [sortOrder, setSortOrder] = useState("");
+  const [isSearching, setIsSearching] = useState(false);
   const { stateYt, dispatchYt } = useYeuThich();
   useEffect(() => {
     const fetchProducts = async () => {
@@ -213,7 +213,7 @@ const Product = () => {
                   "max-md:text-[16px]"
                 )}
               >
-                Cửa hàng
+                Sản Phẩm
               </Link>
             </li>
           </ul>
@@ -229,32 +229,34 @@ const Product = () => {
             />
           </div>
 
-          <div className={cx("content")}>
-            <div className={cx("title")}>
-              {brandChooseCheck ? brandChoose.name : cateChoose.name}
-              <div className="relative inline-block text-left">
-                <button
-                  className="bg-[#3bb77e] text-white px-3 py-1.5 rounded-md flex items-center gap-1 text-sm hover:bg-green-600"
-                  onClick={toggleDropdown}
-                >
-                  Sắp xếp theo <FontAwesomeIcon icon={faAngleDown} />
-                </button>
-                {isDropdownOpen && (
-                  <div className="absolute mt-2 w-full bg-white border border-gray-200 rounded-md shadow-lg z-10">
-                    <div
-                      className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-[#3bb77e] font-medium transition-colors text-sm"
-                      onClick={() => handleSort("asc")}
-                    >
-                      Giá tăng dần
+          <div className={cx("wrapper-content")}>
+            <div className={cx("content")}>
+              <div className={cx("title")}>
+                {brandChooseCheck ? brandChoose.name : cateChoose.name}
+                <div className="relative inline-block text-left">
+                  <button
+                    className="bg-[#3bb77e] text-white px-3 py-1.5 rounded-md flex items-center gap-1 text-sm hover:bg-green-600"
+                    onClick={toggleDropdown}
+                  >
+                    Sắp xếp theo <FontAwesomeIcon icon={faAngleDown} />
+                  </button>
+                  {isDropdownOpen && (
+                    <div className="absolute mt-2 w-full bg-white border border-gray-200 rounded-md shadow-lg z-10">
+                      <div
+                        className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-[#3bb77e] font-medium transition-colors text-sm"
+                        onClick={() => handleSort("asc")}
+                      >
+                        Giá tăng dần
+                      </div>
+                      <div
+                        className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-[#3bb77e] font-medium transition-colors text-sm"
+                        onClick={() => handleSort("desc")}
+                      >
+                        Giá giảm dần
+                      </div>
                     </div>
-                    <div
-                      className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-[#3bb77e] font-medium transition-colors text-sm"
-                      onClick={() => handleSort("desc")}
-                    >
-                      Giá giảm dần
-                    </div>
-                  </div>
-                )}
+                  )}
+                </div>
               </div>
 
               {/* Subcategories */}
