@@ -31,7 +31,7 @@ export default function Header() {
     setCount(newCount);
   }, [state]);
 
-  useEffect(() => {
+  useEffect(() => {``
     const name = localStorage.getItem("name");
 
     if (name) {
