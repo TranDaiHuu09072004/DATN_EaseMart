@@ -132,18 +132,7 @@ export default function Payment() {
                   if (byStatus) {
                     localStorage.removeItem("buy_now");
                   } else {
-                    let getCart = JSON.parse(
-                      localStorage.getItem(`cart_${user.email}`)
-                    );
-                    console.log(getCart);
-
-                    getCart = getCart.filter((item) => {
-                      return !item.select;
-                    });
-                    localStorage.setItem(
-                      `cart_${user.email}`,
-                      JSON.stringify(getCart)
-                    );
+                    localStorage.removeItem(`cart_${user.email}`);
                   }
 
                   Swal.fire({
