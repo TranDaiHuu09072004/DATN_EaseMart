@@ -39,9 +39,9 @@ const Product = () => {
   const searchParams = useSearchParams();
   const name = searchParams.get("name"); // Update to get "name" parameter
   const [resultfilterProduct, setResultFilterProduct] = useState([]);
-  const [isSearching, setIsSearching] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [sortOrder, setSortOrder] = useState(""); // "asc" or "desc"
+  const [sortOrder, setSortOrder] = useState("");
+  const [isSearching, setIsSearching] = useState(false);
   const { stateYt, dispatchYt } = useYeuThich();
   useEffect(() => {
     const fetchProducts = async () => {
@@ -213,7 +213,7 @@ const Product = () => {
                   "max-md:text-[16px]"
                 )}
               >
-                Cửa hàng
+                Sản Phẩm
               </Link>
             </li>
           </ul>
@@ -229,152 +229,157 @@ const Product = () => {
             />
           </div>
 
-          <div className={cx("content")}>
-            <div className={cx("title")}>
-              {brandChooseCheck ? brandChoose.name : cateChoose.name}
-              <div className="relative inline-block text-left">
-                <button
-                  className="bg-[#3bb77e] text-white px-3 py-1.5 rounded-md flex items-center gap-1 text-sm hover:bg-green-600"
-                  onClick={toggleDropdown}
-                >
-                  Sắp xếp theo <FontAwesomeIcon icon={faAngleDown} />
-                </button>
-                {isDropdownOpen && (
-                  <div className="absolute mt-2 w-full bg-white border border-gray-200 rounded-md shadow-lg z-10">
-                    <div
-                      className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-[#3bb77e] font-medium transition-colors text-sm"
-                      onClick={() => handleSort("asc")}
-                    >
-                      Giá tăng dần
-                    </div>
-                    <div
-                      className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-[#3bb77e] font-medium transition-colors text-sm"
-                      onClick={() => handleSort("desc")}
-                    >
-                      Giá giảm dần
-                    </div>
-                  </div>
-                )}
-              </div>
-            </div>
-
-            {/* Subcategories */}
-            {!brandChooseCheck && (
-              <div className={cx("type")}>
-                <ul className={cx("menu-type")}>
-                  {cateSub.map((item) => (
-                    <li
-                      key={item.id}
-                      className={cx("item")}
-                      onClick={() =>
-                        handleChooseSubCate({ id: item.id, name: item.name })
-                      }
-                    >
-                      <div className={cx("item-thumbnail")}>
-                        <img
-                          src={item.image}
-                          alt={item.name}
-                          className="w-full object-cover h-full rounded-full"
-                        />
-                      </div>
-                      <Link className={cx("item-name", "w-full")} href="#">
-                        {item.name}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-
-            {/* Product List */}
-            <div className={cx("product-list")}>
-              {(isSearching ? resultfilterProduct : product).map((item) => (
-                <div
-                  key={item.id}
-                  className={cx(
-                    "xl:basis-1/5",
-                    "lg:basis-1/4",
-                    "sm:basis-1/3",
-                    "basis-1/2",
-                    "p-[2px]"
-                  )}
-                >
-                  <div className={cx("box-product", "h-full")}>
-                    <div className={cx("product")}>
-                      <div className={cx("thumb")}>
-                        <img src={item.image} />
-                      </div>
-                      <Link
-                        href={`/chi-tiet-san-pham/${item.id}`}
-                        className={cx("name")}
+          <div className={cx("wrapper-content")}>
+            <div className={cx("content")}>
+              <div className={cx("title")}>
+                {brandChooseCheck ? brandChoose.name : cateChoose.name}
+                <div className="relative inline-block text-left">
+                  <button
+                    className="bg-[#3bb77e] text-white px-3 py-1.5 rounded-md flex items-center gap-1 text-sm hover:bg-green-600"
+                    onClick={toggleDropdown}
+                  >
+                    Sắp xếp theo <FontAwesomeIcon icon={faAngleDown} />
+                  </button>
+                  {isDropdownOpen && (
+                    <div className="absolute mt-2 w-full bg-white border border-gray-200 rounded-md shadow-lg z-10">
+                      <div
+                        className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-[#3bb77e] font-medium transition-colors text-sm"
+                        onClick={() => handleSort("asc")}
                       >
-                        {item.name}
-                      </Link>
-                      <div className={cx("unit", "text-sm", "text-gray-400")}>
-                        ĐVT: <span>{item.unit_of_caculation}</span>
+                        Giá tăng dần
                       </div>
-                      <div className={cx("price")}>
-                        <div className={cx("price-reduction")}>
-                          {formatPrice(item.sale_price)}đ
-                        </div>
-                        <div className={cx("original-price")}>
-                          {item.price}đ
-                        </div>
-                        <div className={cx("flex-grow", "flex", "justify-end")}>
-                          <Icon
-                            onClick={() => {
-                              dispatchYt(
-                                new DispatchYt("ADD_ITEM_YEUTHICH", item)
-                              );
-                            }}
-                            icon="mdi:heart-outline"
-                            className="w-6 h-6 text-red-500"
+                      <div
+                        className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-[#3bb77e] font-medium transition-colors text-sm"
+                        onClick={() => handleSort("desc")}
+                      >
+                        Giá giảm dần
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* Subcategories */}
+              {!brandChooseCheck && (
+                <div className={cx("type")}>
+                  <ul className={cx("menu-type")}>
+                    {cateSub.map((item) => (
+                      <li
+                        key={item.id}
+                        className={cx("item")}
+                        onClick={() =>
+                          handleChooseSubCate({ id: item.id, name: item.name })
+                        }
+                      >
+                        <div className={cx("item-thumbnail")}>
+                          <img
+                            src={item.image}
+                            alt={item.name}
+                            className="w-full object-cover h-full rounded-full"
                           />
                         </div>
-                      </div>
-                      <div className={cx("btn-action")}>
-                        <button
-                          className={cx(
-                            "btn",
-                            "addtocart",
-                            "flex",
-                            "items-center",
-                            "justify-center",
-                            "gap-1",
-                            "text-base",
-                            "basis-full"
-                          )}
-                          onClick={() => {
-                            dispatch(
-                              new Dispatch("ADD_ITEM_CART", {
-                                ...item,
-                                quantity: 1,
-                              })
-                            );
-                          }}
+                        <Link className={cx("item-name", "w-full")} href="#">
+                          {item.name}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {/* Product List */}
+              <div className={cx("product-list")}>
+                {(isSearching ? resultfilterProduct : product).map((item) => (
+                  <div
+                    key={item.id}
+                    className={cx(
+                      "xl:basis-1/5",
+                      "lg:basis-1/4",
+                      "sm:basis-1/3",
+                      "xs:basis-1/2",
+                      "basis-full",
+                      "p-[2px]"
+                    )}
+                  >
+                    <div className={cx("box-product", "h-full")}>
+                      <div className={cx("product")}>
+                        <div className={cx("thumb")}>
+                          <img src={item.image} />
+                        </div>
+                        <Link
+                          href={`/chi-tiet-san-pham/${item.id}`}
+                          className={cx("name")}
                         >
-                          <span>
+                          {item.name}
+                        </Link>
+                        <div className={cx("unit", "text-sm", "text-gray-400")}>
+                          ĐVT: <span>{item.unit_of_caculation}</span>
+                        </div>
+                        <div className={cx("price")}>
+                          <div className={cx("price-reduction")}>
+                            {formatPrice(item.sale_price)}đ
+                          </div>
+                          <div className={cx("original-price")}>
+                            {item.price}đ
+                          </div>
+                          <div
+                            className={cx("flex-grow", "flex", "justify-end")}
+                          >
                             <Icon
-                              icon="humbleicons:cart"
-                              className={cx("w-5", "h-6")}
+                              onClick={() => {
+                                dispatchYt(
+                                  new DispatchYt("ADD_ITEM_YEUTHICH", item)
+                                );
+                              }}
+                              icon="mdi:heart-outline"
+                              className="w-6 h-6 text-red-500"
                             />
-                          </span>
-                          Thêm vào giỏ
-                        </button>
+                          </div>
+                        </div>
+                        <div className={cx("btn-action")}>
+                          <button
+                            className={cx(
+                              "btn",
+                              "addtocart",
+                              "flex",
+                              "items-center",
+                              "justify-center",
+                              "gap-1",
+                              "text-base",
+                              "basis-full"
+                            )}
+                            onClick={() => {
+                              dispatch(
+                                new Dispatch("ADD_ITEM_CART", {
+                                  ...item,
+                                  quantity: 1,
+                                })
+                              );
+                            }}
+                          >
+                            <span>
+                              <Icon
+                                icon="humbleicons:cart"
+                                className={cx("w-5", "h-6")}
+                              />
+                            </span>
+                            Thêm vào giỏ
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
 
-            {/* Pagination */}
-            <div className={cx("pagination")}>
-              <div className={cx("page-number", "active")}>1</div>
-              <div className={cx("page-number")}>2</div>
-              <div className={cx("page-number")}>3</div>
-              <div className={cx("page-change")}>
-                <FontAwesomeIcon icon={faChevronRight} />
+              {/* Pagination */}
+              <div className={cx("pagination")}>
+                <div className={cx("page-number", "active")}>1</div>
+                <div className={cx("page-number")}>2</div>
+                <div className={cx("page-number")}>3</div>
+                <div className={cx("page-change")}>
+                  <FontAwesomeIcon icon={faChevronRight} />
+                </div>
               </div>
             </div>
           </div>

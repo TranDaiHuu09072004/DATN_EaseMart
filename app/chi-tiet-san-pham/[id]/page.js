@@ -114,7 +114,14 @@ export default function ProductDetail({ params }) {
         </div>
 
         {/* Product Information */}
-        <div className={cx("product_content_right", "p-5", "max-md:w-full")}>
+        <div
+          className={cx(
+            "product_content_right",
+            "p-5",
+            "w-[60%]",
+            "max-md:w-full"
+          )}
+        >
           <h3 className={cx("product_name_detail")}>{product.name}</h3>
 
           {/* Price Details */}
