@@ -29,11 +29,10 @@ const Sidebar = ({ listCate, updateCate, listBrand, updateBrand }) => {
           </span>
         </div>
         {showCate && (
-          <ul className={cx("list-cate")}>
-            {listCate.map((item, index) => {
+          <ul className={cx("list-cate", "bg-white")}>
+            {listCate.map((item) => {
               return (
                 <li
-                  key={index}
                   className={cx("item")}
                   onClick={() => {
                     updateCate({ id: item.id, name: item.name });
@@ -55,11 +54,10 @@ const Sidebar = ({ listCate, updateCate, listBrand, updateBrand }) => {
           </span>
         </div>
         {showBrand && (
-          <div className={cx("list-brand")}>
-            {listBrand.map((item, index) => {
+          <div className={cx("list-brand", "bg-white")}>
+            {listBrand.map((item) => {
               return (
                 <Link
-                  key={index}
                   href="#"
                   onClick={(e) => {
                     e.preventDefault;

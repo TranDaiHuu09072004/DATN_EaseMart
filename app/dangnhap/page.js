@@ -6,19 +6,19 @@ import * as Yup from "yup"; // Import Yup for validation
 import { useForm } from "react-hook-form"; // Import useForm from react-hook-form
 import { yupResolver } from "@hookform/resolvers/yup"; // Import yupResolver for Yup integration
 import Swal from "sweetalert2";
-import axios from "axios";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
-// Define validation schema
 const validationSchema = Yup.object().shape({
   email: Yup.string()
     .email("Email hoặc password đã tồn tại")
     .required("Email là bắt buộc"),
   password: Yup.string()
     .required("Mật khẩu là bắt buộc")
-    .min(6, "Mật khẩu phải có ít nhất 6 ký tự"),
+    .min(8, "Mật khẩu phải có ít nhất 8 ký tự"),
 });
 
 export default function DangNhap() {
+  const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(true);
@@ -62,7 +62,8 @@ export default function DangNhap() {
       const user = await response.json();
       console.log(user);
 
-      const username = user.customers.name;
+      const name = user.customers.name;
+      const customerId = user.customers.id;
       if (user) {
         setError("");
         Swal.fire("Thành công", "Đăng nhập thành công!", "success");
@@ -70,9 +71,9 @@ export default function DangNhap() {
         if (rememberMe) {
           localStorage.setItem(
             "user",
-            JSON.stringify({ email, token: user.token, username })
+            JSON.stringify({ email, token: user.token, name, customerId })
           );
-          localStorage.setItem("username", username);
+          localStorage.setItem("name", name);
         } else {
           localStorage.removeItem("user");
         }
@@ -116,19 +117,28 @@ export default function DangNhap() {
             {errors.email && (
               <p className={styles.error}>{errors.email.message}</p>
             )}
-            <input
-              type="password"
-              className={styles.inputField}
-              placeholder="Nhập mật khẩu"
-              {...register("password")}
-              required
-              autoComplete="current-password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            {errors.password && (
-              <p className={styles.error}>{errors.password.message}</p>
-            )}
+            <div className="relative">
+              <input
+                type={showPassword ? "text" : "password"}
+                className={styles.inputField}
+                placeholder="Nhập mật khẩu"
+                {...register("password")}
+                required
+                autoComplete="current-password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <span
+                className="absolute right-3 mt-7 text-[20px] cursor-pointer text-[#757575]"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </span>
+              {errors.password && (
+                <p className={styles.error}>{errors.password.message}</p>
+              )}
+            </div>
+
             <div className={styles.rememberMe}>
               <input
                 type="checkbox"

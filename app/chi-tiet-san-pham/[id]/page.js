@@ -11,6 +11,8 @@ import {
   useYeuThich,
   YeuThichFunction,
 } from "@/components/YTFunction/sanphamyeuthich";
+import Swal from "sweetalert2";
+import { Icon } from "@iconify/react";
 const cx = classNames.bind(styles);
 
 export default function ProductDetail({ params }) {
@@ -204,12 +206,35 @@ export default function ProductDetail({ params }) {
             >
               <i className="fa-solid fa-cart-shopping"></i> Thêm vào giỏ hàng
             </button>
-            <button className={cx("btn_buynow", "lg:ml-3", "max-lg:ml-[10px]")}>
+            <button
+              onClick={() => {
+                const user = JSON.parse(localStorage.getItem("user"));
+                if (!user) {
+                  Swal.fire({
+                    icon: "error",
+                    title: "Thông báo",
+                    text: "Vui lòng đăng nhập để có thể mua hàng",
+                    showCancelButton: true, // Hiển thị nút "Hủy" (hoặc OK)
+                    confirmButtonText: "Đăng nhập", // Văn bản nút xác nhận
+                    cancelButtonText: "Cancel", // Văn bản nút hủy
+                  }).then((result) => {
+                    if (result.isConfirmed) {
+                      window.location.href = "/dangnhap";
+                    }
+                  });
+                  return;
+                }
+                product.quantity = quantity;
+                localStorage.setItem("buy_now", JSON.stringify([product]));
+
+                window.location.href = "/thanh-toan";
+              }}
+              className={cx("btn_buynow", "lg:ml-3", "max-lg:ml-[10px]")}
+            >
               <i className="fa-solid fa-cart-shopping"></i> Mua ngay
             </button>
           </div>
 
-          {/* Product Description */}
           <div className={cx("product_description")}>
             <h3>Mô tả</h3>
             <p>{product.description || "Không có mô tả"}</p>
@@ -255,7 +280,25 @@ export default function ProductDetail({ params }) {
               <span className={cx("unitofmeasurement")}>
                 ĐVT: {item.unit_of_caculation}
               </span>
-              <h5 className={cx("price_related")}>{formatPrice(item.price)}</h5>
+              <h5
+                className={cx(
+                  "price_related",
+                  "flex",
+                  "justify-between",
+                  "items-center"
+                )}
+              >
+                {formatPrice(item.price)}
+                <div className={cx("flex-grow", "flex", "justify-end")}>
+                  <Icon
+                    onClick={() => {
+                      dispatchYt(new DispatchYt("ADD_ITEM_YEUTHICH", product));
+                    }}
+                    icon="mdi:heart-outline"
+                    className="w-6 h-6 text-red-500"
+                  />
+                </div>
+              </h5>
               <button
                 onClick={() => {
                   item.quantity = 1;
@@ -271,8 +314,6 @@ export default function ProductDetail({ params }) {
           ))}
         </ul>
       </section>
-
-      {/* Comments Section */}
       <h3 className={cx("comment-product", "mt-5")}>Bình luận về sản phẩm</h3>
       <div className={cx("comment-section")}>
         {/* Comment Input Box */}

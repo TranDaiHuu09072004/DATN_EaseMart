@@ -19,8 +19,9 @@ const cx = classNames.bind(styles);
 export default function Header() {
   const { state, dispatch } = useCart();
   const [searchKeyword, setSearchKeyWord] = useState("");
-  const [username, setUsername] = useState(null);
+  const [name, setName] = useState(null);
   const [count, setCount] = useState(0);
+  const [image, setImage] = useState(null);
 
   useEffect(() => {
     let newCount = 0;
@@ -31,14 +32,15 @@ export default function Header() {
   }, [state]);
 
   useEffect(() => {
-    // Lấy tên người dùng từ localStorage nếu đã đăng nhập
-    const name = localStorage.getItem("username");
+    const name = localStorage.getItem("name");
+    const savedImage = localStorage.getItem("image");
     if (name) {
-      let handleUsername = name.split(" ");
-
-      handleUsername = handleUsername[handleUsername.length - 1];
-
-      setUsername(handleUsername);
+      let handlename = name.split(" ");
+      handlename = handlename[handlename.length - 1];
+      setName(handlename);
+    }
+    if (savedImage) {
+      setImage(savedImage);
     }
   }, []);
 
@@ -51,7 +53,8 @@ export default function Header() {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem("username");
+    localStorage.removeItem("name");
+    localStorage.removeItem("user");
     toast.success("Đăng Xuất thành công!", {
       position: "top-right",
       autoClose: 3000,
@@ -95,7 +98,6 @@ export default function Header() {
                 "justify-end",
                 "flex",
                 "lg:gap-5",
-                "gap-12",
                 "lg:w-72"
               )}
             >
@@ -139,18 +141,26 @@ export default function Header() {
               </Link>
               <div className={cx("account", "relative", "group", "py-3")}>
                 <Link
-                  href={username ? "#" : "/dangnhap"}
+                  href={name ? "#" : "/dangnhap"}
                   className="flex items-center space-x-2 truncate whitespace-nowrap overflow-hidden text-ellipsis"
                 >
+                  {/* {name ? (
+                    <img
+                      src={image}
+                      alt="Avatar"
+                      className="w-[100px] h-[50px] rounded-full"
+                    />
+                  ) : ( */}
                   <FontAwesomeIcon
                     icon={faUser}
                     className="text-white sm:w-7 sm:h-7 w-5 h-5"
                   />
+                  {/* )} */}
                   <div className="text-white lg:text-lg text-base font-medium w-full lg:block hidden">
-                    {username ? `Chào, ${username}` : "Đăng nhập"}
+                    {name ? `Chào, ${name}` : "Đăng nhập"}
                   </div>
                 </Link>
-                {username && (
+                {name && (
                   <ul
                     className={cx(
                       "hidden",
@@ -171,19 +181,6 @@ export default function Header() {
                       "bg-white"
                     )}
                   >
-                    <li
-                      className={cx(
-                        "text-black",
-                        "px-3",
-                        "py-4",
-                        "block",
-                        "lg:hidden"
-                      )}
-                    >
-                      <Link href="/thong-tin-ho-so">
-                        {username ? `Chào, ${username}` : "Đăng ký"}
-                      </Link>
-                    </li>
                     <li
                       className={cx(
                         "text-black",

@@ -18,6 +18,11 @@ import { useSearchParams } from "next/navigation";
 import { getProBy2Cate, getProByCate } from "@/service/product";
 import { getBrand } from "@/service/brand";
 import { Dispatch, useCart } from "@/components/CartFunction";
+import { formatPrice } from "@/uilts/formatPrice";
+import {
+  DispatchYt,
+  useYeuThich,
+} from "@/components/YTFunction/sanphamyeuthich";
 
 const cx = classNames.bind(styles);
 
@@ -35,7 +40,9 @@ const Product = () => {
   const name = searchParams.get("name"); // Update to get "name" parameter
   const [resultfilterProduct, setResultFilterProduct] = useState([]);
   const [isSearching, setIsSearching] = useState(false);
-
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [sortOrder, setSortOrder] = useState(""); // "asc" or "desc"
+  const { stateYt, dispatchYt } = useYeuThich();
   useEffect(() => {
     const fetchProducts = async () => {
       if (name) {
@@ -134,6 +141,25 @@ const Product = () => {
 
   console.log(product);
 
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
+  const handleSort = (order) => {
+    setSortOrder(order);
+    setIsDropdownOpen(false);
+
+    const sortedProducts = [...product].sort((a, b) => {
+      if (order === "asc") {
+        return a.sale_price - b.sale_price;
+      } else if (order === "desc") {
+        return b.sale_price - a.sale_price;
+      }
+      return 0;
+    });
+    setProduct(sortedProducts);
+  };
+
   return (
     <div className={cx("max-w-screen-xl", "mx-auto", "p-4")}>
       <div className={cx("page-product")}>
@@ -204,16 +230,31 @@ const Product = () => {
           </div>
 
           <div className={cx("content")}>
-            {/* Category or Brand Title */}
             <div className={cx("title")}>
               {brandChooseCheck ? brandChoose.name : cateChoose.name}
-              <div className={cx("filter")}>
-                <button className={cx("btn-filter")}>
-                  Sắp xếp theo{" "}
-                  <span>
-                    <FontAwesomeIcon icon={faAngleDown} />
-                  </span>
+              <div className="relative inline-block text-left">
+                <button
+                  className="bg-[#3bb77e] text-white px-3 py-1.5 rounded-md flex items-center gap-1 text-sm hover:bg-green-600"
+                  onClick={toggleDropdown}
+                >
+                  Sắp xếp theo <FontAwesomeIcon icon={faAngleDown} />
                 </button>
+                {isDropdownOpen && (
+                  <div className="absolute mt-2 w-full bg-white border border-gray-200 rounded-md shadow-lg z-10">
+                    <div
+                      className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-[#3bb77e] font-medium transition-colors text-sm"
+                      onClick={() => handleSort("asc")}
+                    >
+                      Giá tăng dần
+                    </div>
+                    <div
+                      className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-[#3bb77e] font-medium transition-colors text-sm"
+                      onClick={() => handleSort("desc")}
+                    >
+                      Giá giảm dần
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
 
@@ -274,10 +315,21 @@ const Product = () => {
                       </div>
                       <div className={cx("price")}>
                         <div className={cx("price-reduction")}>
-                          {item.sale_price}đ
+                          {formatPrice(item.sale_price)}đ
                         </div>
                         <div className={cx("original-price")}>
                           {item.price}đ
+                        </div>
+                        <div className={cx("flex-grow", "flex", "justify-end")}>
+                          <Icon
+                            onClick={() => {
+                              dispatchYt(
+                                new DispatchYt("ADD_ITEM_YEUTHICH", item)
+                              );
+                            }}
+                            icon="mdi:heart-outline"
+                            className="w-6 h-6 text-red-500"
+                          />
                         </div>
                       </div>
                       <div className={cx("btn-action")}>
