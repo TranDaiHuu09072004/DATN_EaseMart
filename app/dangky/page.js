@@ -25,9 +25,6 @@ export default function DangKy() {
     password: Yup.string()
       .min(8, "Mật khẩu phải có ít nhất 8 ký tự")
       .required("Vui lòng nhập mật khẩu"),
-    confirmPassword: Yup.string()
-      .oneOf([Yup.ref("password"), null], "Mật khẩu xác nhận không khớp")
-      .required("Bạn phải nhập mật khẩu xác nhận"),
   });
 
   const {
@@ -39,6 +36,7 @@ export default function DangKy() {
   });
 
   const onSubmit = async (data) => {
+    console.log("Submitting data:", data);
     try {
       const response = await axios.post(
         "https://trandainghia.id.vn/api/register",
@@ -57,7 +55,7 @@ export default function DangKy() {
         "Đăng ký thất bại:",
         error.response ? error.response.data : error.message
       );
-      toast.error("Đăng ký thất bại!", {
+      toast.error("Email hoặc tài khoản đã tồn tại!", {
         position: "top-right",
         autoClose: 2000,
       });
@@ -83,7 +81,6 @@ export default function DangKy() {
             {errors.name && (
               <p className={styles.error}>{errors.name.message}</p>
             )}
-
             <input
               type="email"
               className={styles.inputField}
@@ -132,7 +129,6 @@ export default function DangKy() {
           </form>
           <div className={styles.socialLogin}>
             <p>hoặc</p>
-            <button className={styles.facebookBtn}>Facebook</button>
             <button className={styles.googleBtn}>Google</button>
           </div>
           <p className={styles.linkContainer}>
