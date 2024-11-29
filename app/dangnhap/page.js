@@ -84,7 +84,7 @@ export default function DangNhap() {
       } else {
         Swal.fire(
           "Thất bại",
-          "Email hoặc mật khẩu không đúng. Vui lòng thử lại.",
+          "Email hoặc mật khẩu không đúng! Vui lòng thử lại.",
           "error"
         );
       }

@@ -168,10 +168,10 @@ const ProductList = ({ products }) => {
                 </div>
                 <div className={cx("price")}>
                   <div className={cx("original-price")}>
-                    {formatPrice(product.price)}
+                    {formatPrice(product.sale_price)}
                   </div>
                   <div className={cx("price-reduction")}>
-                    {formatPrice(product.sale_price)}
+                    {formatPrice(product.price)}
                   </div>
                   <div className={cx("flex-grow", "flex", "justify-end")}>
                     <Icon
