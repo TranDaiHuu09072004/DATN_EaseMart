@@ -6,9 +6,10 @@ import "react-toastify/dist/ReactToastify.css";
 // import Swal from "sweetalert2";
 import axios from "axios";
 import { toast } from "react-toastify";
-
+import { getInfoCustomer, updateInfoCustomer } from "../../service/customer";
 const cx = classNames.bind(styles);
 export default function CustomerInfoForm() {
+  const [toggleGetInfoUser, setToggleGetInfoUser] = useState(true);
   const [userData, setUserData] = useState({
     name: "",
     email: "",
@@ -16,54 +17,32 @@ export default function CustomerInfoForm() {
     address: "",
     birth_date: "",
     gender: "",
+    image: null,
   });
   const [image, setImage] = useState(null);
 
-  const fetchCustomerData = async () => {
-    try {
-      const getUser = localStorage.getItem("user");
-      const parsedUser = JSON.parse(getUser);
-      const { email, token, name } = parsedUser;
-      // Make the API request using axios
-      const response = await axios.post(
-        "https://trandainghia.id.vn/api/customers",
-        { email },
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
-
-      // Parse the response data
-      const data = response.data;
-
-      if (data.customers && data.customers.email === email) {
-        setUserData({
-          name: data.customers.name || name,
-          email: data.customers.email,
-          phone: data.phone,
-          address: data.address,
-          birth_date: data.birth_date,
-          gender: data.gender,
-        });
-      } else {
-        console.warn("Fetched data does not match the logged-in user email.");
-      }
-    } catch (error) {
-      console.error("An error occurred while fetching customer data:", error);
-    }
-  };
-
   // Call the function only once when the component mounts
   useEffect(() => {
-    fetchCustomerData();
-    setUserData((prevData) => ({
-      ...prevData,
-      name: userData.name,
-      email: userData.email,
-      phone: userData.phone,
-      address: userData.address,
-      birth_date: userData.birth_date,
-      gender: userData.gender,
-    }));
-  }, []);
+    console.log("check");
+    const getUser = localStorage.getItem("user");
+    const parsedUser = JSON.parse(getUser);
+    const { email, token, name } = parsedUser;
+    getInfoCustomer(email, token).then((data) => {
+      console.log(data.customers.image);
+      if (data.customers.image) {
+        setImage(`https://trandainghia.id.vn/${data.customers.image}`);
+      }
+      setUserData((prevData) => ({
+        ...prevData,
+        name: data.customers.name,
+        email: data.customers.email,
+        phone: data.customers.phone,
+        address: data.customers.address,
+        birth_date: data.customers.birth_date,
+        gender: data.customers.gender,
+      }));
+    });
+  }, [toggleGetInfoUser]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -83,49 +62,30 @@ export default function CustomerInfoForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const token = localStorage.getItem("token");
-
+    const token = JSON.parse(localStorage.getItem("user")).token;
     // Log dữ liệu trước khi gửi
+    console.log(userData);
+    console.log(token);
 
-    try {
-      const response = await axios.put(
-        "https://trandainghia.id.vn/api/customers/profile",
-        {
-          name: userData.name,
-          // email: userData.email,
-          phone: userData.phone,
-          address: userData.address,
-          birth_date: userData.birth_date,
-          gender: userData.gender,
-        },
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
+    const formData = new FormData();
+    formData.append("image", userData.image);
+    formData.append("name", userData.name);
+    formData.append("email", userData.email);
+    formData.append("address", userData.address);
+    formData.append("phone", userData.phone);
+    formData.append("birth_date", userData.birth_date);
+    formData.append("gender", userData.gender);
 
-      // Log phản hồi từ API
-      console.log("Response from API:", response.data);
-
-      console.log("Submitting data:", {
-        name: userData.name,
-        email: userData.email,
-        phone: userData.phone,
-        address: userData.address,
-        birth_date: userData.birth_date,
-        gender: userData.gender,
+    updateInfoCustomer(formData, token)
+      .then(() => {
+        toast.success("Cập nhật thành công!");
+        setToggleGetInfoUser(!toggleGetInfoUser);
+      })
+      .catch((err) => {
+        console.log(err);
       });
 
-      if (response.status === 200) {
-        toast.success("Cập nhật thông tin thành công!");
-        setTimeout(() => {
-          window.location.reload(); // Reload the page after a successful update
-        }, 1000);
-      }
-    } catch (error) {
-      console.error("An error occurred while submitting data:", error);
-      const errorMessages = error.response?.data.errors
-        ? Object.values(error.response.data.errors).join(", ")
-        : error.response?.data.message || "Có lỗi xảy ra.";
-      toast.error(`Cập nhật thất bại! ${errorMessages}`);
-    }
+    // Log phản hồi từ API
   };
 
   return (
