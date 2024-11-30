@@ -16,6 +16,7 @@ import {
   DispatchYt,
   useYeuThich,
 } from "@/components/YTFunction/sanphamyeuthich";
+import axios from "axios";
 const cx = classNames.bind(styles);
 
 export default function Home() {
@@ -23,6 +24,7 @@ export default function Home() {
   const [productsPopular, setProductsPopular] = useState([]);
   const [productsFlashSale, setProductsFlashSale] = useState([]);
   const [productsOutstanding, setProductsOutstanding] = useState([]);
+  const [vouchers, setVouchers] = useState([]);
 
   useEffect(() => {
     fetchProducts("Product_Popular").then((popular) => {
@@ -34,15 +36,36 @@ export default function Home() {
     fetchProducts("Product_OutStanding").then((outstanding) => {
       setProductsOutstanding(outstanding.slice(0, 10));
     });
+
+    FetchVoucher();
   }, []);
 
-  const handleCopy = (code) => {
-    navigator.clipboard
-      .writeText(code)
+  const formatPrice = (price) => {
+    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
 
-      .catch((err) => {
-        console.error("Lỗi khi sao chép:", err);
-      });
+  const FetchVoucher = async (data) => {
+    try {
+      const response = await axios.get(
+        "https://trandainghia.id.vn/api/voucher/value",
+        data
+      );
+
+      if (Array.isArray(response.data.data)) {
+        setVouchers(response.data.data);
+      } else {
+        console.error("Dữ liệu không phải là mảng:", response.data.data);
+        setVouchers([]);
+      }
+    } catch (error) {
+      console.error("Lỗi khi lấy voucher:", error);
+    }
+  };
+
+  const handleCopy = (code) => {
+    navigator.clipboard.writeText(code).catch((err) => {
+      console.error("Lỗi khi sao chép:", err);
+    });
   };
 
   return (
@@ -58,21 +81,20 @@ export default function Home() {
             "justify-center"
           )}
         >
-          {[...Array(4)].map((_, index) => (
+          {vouchers.map((voucher, index) => (
             <div className={cx("voucher-item")} key={index}>
               <div className={cx("voucher-item-top")}>
                 <div className={cx("info-left")}>
                   <p
                     className={cx(
-                      "text-xs",
                       "max-h-[150px]",
                       "overflow-hidden",
                       "text-ellipsis",
-                      "line-clamp-3"
+                      "line-clamp-3",
+                      "text-[16px]"
                     )}
                   >
-                    Giảm 50.000đ cho đơn từ 1.500.000đ (không áp dụng với đơn
-                    COD, Trả góp, Thanh toán Payme)
+                    {voucher.description}
                   </p>
                 </div>
                 <div
@@ -81,17 +103,18 @@ export default function Home() {
                     "max-h-[150px]",
                     "overflow-hidden",
                     "text-ellipsis",
-                    "line-clamp-3"
+                    "line-clamp-3",
+                    "text-[20px]"
                   )}
                 >
-                  Giảm 50.000đ cho đơn từ 1.500.000đ
+                  Giảm {formatPrice(voucher.discount_value)}
                 </div>
               </div>
               <div className={cx("voucher-item-bottom")}>
-                <h4>2NZ42HJB</h4>
+                <h4>{voucher.code}</h4>
                 <button
                   onClick={() => {
-                    handleCopy(`test${index}`);
+                    handleCopy(voucher.code);
                   }}
                   className={cx("button-copy")}
                 >
@@ -168,10 +191,10 @@ const ProductList = ({ products }) => {
                 </div>
                 <div className={cx("price")}>
                   <div className={cx("original-price")}>
-                    {formatPrice(product.price)}
+                    {formatPrice(product.sale_price)}
                   </div>
                   <div className={cx("price-reduction")}>
-                    {formatPrice(product.sale_price)}
+                    {formatPrice(product.price)}
                   </div>
                   <div className={cx("flex-grow", "flex", "justify-end")}>
                     <Icon

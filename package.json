@@ -21,6 +21,7 @@
     "classnames": "^2.5.1",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
+    "glob-parent": "^6.0.2",
     "jsonwebtoken": "^9.0.2",
     "my-project": "file:",
     "next": "14.2.5",

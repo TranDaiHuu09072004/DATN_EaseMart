@@ -6,7 +6,6 @@ import * as Yup from "yup"; // Import Yup for validation
 import { useForm } from "react-hook-form"; // Import useForm from react-hook-form
 import { yupResolver } from "@hookform/resolvers/yup"; // Import yupResolver for Yup integration
 import Swal from "sweetalert2";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -18,7 +17,6 @@ const validationSchema = Yup.object().shape({
 });
 
 export default function DangNhap() {
-  const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(true);
@@ -33,7 +31,6 @@ export default function DangNhap() {
   });
 
   useEffect(() => {
-    // Kiểm tra dữ liệu đã lưu trong localStorage cho tính năng "Ghi nhớ mật khẩu"
     const savedEmail = localStorage.getItem("email");
     const savedPassword = localStorage.getItem("password");
     if (savedEmail && savedPassword) {
@@ -64,6 +61,7 @@ export default function DangNhap() {
 
       const name = user.customers.name;
       const customerId = user.customers.id;
+      const point = user.customers.point;
       if (user) {
         setError("");
         Swal.fire("Thành công", "Đăng nhập thành công!", "success");
@@ -71,7 +69,13 @@ export default function DangNhap() {
         if (rememberMe) {
           localStorage.setItem(
             "user",
-            JSON.stringify({ email, token: user.token, name, customerId })
+            JSON.stringify({
+              email,
+              token: user.token,
+              name,
+              customerId,
+              point,
+            })
           );
           localStorage.setItem("name", name);
         } else {
@@ -94,7 +98,6 @@ export default function DangNhap() {
       Swal.fire("Lỗi", "Có lỗi xảy ra. Vui lòng thử lại sau.", "error");
     }
   };
-
   return (
     <div className={styles.pageContainer}>
       <div className={styles.container}>
@@ -117,28 +120,19 @@ export default function DangNhap() {
             {errors.email && (
               <p className={styles.error}>{errors.email.message}</p>
             )}
-            <div className="relative">
-              <input
-                type={showPassword ? "text" : "password"}
-                className={styles.inputField}
-                placeholder="Nhập mật khẩu"
-                {...register("password")}
-                required
-                autoComplete="current-password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              <span
-                className="absolute right-3 mt-7 text-[20px] cursor-pointer text-[#757575]"
-                onClick={() => setShowPassword(!showPassword)}
-              >
-                {showPassword ? <FaEyeSlash /> : <FaEye />}
-              </span>
-              {errors.password && (
-                <p className={styles.error}>{errors.password.message}</p>
-              )}
-            </div>
-
+            <input
+              type="password"
+              className={styles.inputField}
+              placeholder="Nhập mật khẩu"
+              {...register("password")}
+              required
+              autoComplete="current-password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            {errors.password && (
+              <p className={styles.error}>{errors.password.message}</p>
+            )}
             <div className={styles.rememberMe}>
               <input
                 type="checkbox"
@@ -157,9 +151,6 @@ export default function DangNhap() {
           </p>
           <div className={styles.socialLogin}>
             <p>Hoặc</p>
-            <button className={`${styles.socialButton} ${styles.facebookBtn}`}>
-              Facebook
-            </button>
             <button className={`${styles.socialButton} ${styles.googleBtn}`}>
               Google
             </button>

@@ -12,6 +12,7 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
+<<<<<<< HEAD
     "/thong-tin-ho-so/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
@@ -35,6 +36,13 @@
       "static/chunks/main-app.js",
       "static/css/app/san-pham-yeu-thich/page.css",
       "static/chunks/app/san-pham-yeu-thich/page.js"
+=======
+    "/convert/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/convert/page.css",
+      "static/chunks/app/convert/page.js"
+>>>>>>> aa9064943d49cbea8efaa397e2cf09326854de60
     ],
     "/_not-found/page": [
       "static/chunks/webpack.js",
