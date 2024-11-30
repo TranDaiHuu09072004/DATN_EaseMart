@@ -1,8 +1,0 @@
-{
-  "/lich-su-don-hang/page": "app/lich-su-don-hang/page.js",
-  "/thong-tin-ho-so/page": "app/thong-tin-ho-so/page.js",
-  "/chi-tiet-don-hang/[id]/page": "app/chi-tiet-don-hang/[id]/page.js",
-  "/convert/page": "app/convert/page.js",
-  "/lich-su-voucher/page": "app/lich-su-voucher/page.js",
-  "/page": "app/page.js"
-}
