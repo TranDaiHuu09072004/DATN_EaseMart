@@ -68,7 +68,11 @@ export default function CustomerInfoForm() {
     console.log(token);
 
     const formData = new FormData();
-    formData.append("image", userData.image);
+    console.log(userData.image);
+
+    if (userData.image) {
+      formData.append("image", userData.image);
+    }
     formData.append("name", userData.name);
     formData.append("email", userData.email);
     formData.append("address", userData.address);
