@@ -116,7 +116,7 @@ export default function OrderHistory() {
                         className={`${cx("status")} ${
                           order.status.toLowerCase() === "đang giao hàng"
                             ? "text-blue-500 font-bold"
-                            : order.status.toLowerCase() === "đã giao"
+                            : order.status.toLowerCase() === "giao thành công"
                             ? "text-[#3bb77e] font-bold"
                             : order.status.toLowerCase() === "đã hủy"
                             ? "text-red-500 font-bold"

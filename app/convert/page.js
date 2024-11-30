@@ -6,16 +6,49 @@ import { faCopy, faHouse } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import axios from "axios";
-
 const cx = classNames.bind(styles);
 const Convert = () => {
-  const [points, setPoints] = useState("");
+  const [point, setPoints] = useState("");
   const [converts, setConverts] = useState([]);
+  // useEffect(() => {
+  //   const user = JSON.parse(localStorage.getItem("user"));
+  //   console.log(user.point);
+
+  //   setPoints(user.point || "0");
+  // }, []);
+
   useEffect(() => {
-    const getPoint = localStorage.getItem("point");
-    setPoints(getPoint || "0");
     FetchVoucherConvert();
-  });
+  }, []);
+
+  useEffect(() => {
+    const fetchCustomerPoints = async () => {
+      try {
+        const user = JSON.parse(localStorage.getItem("user"));
+        const email = user.email;
+        console.log(email);
+
+        const response = await axios.post(
+          "https://trandainghia.id.vn/api/customers",
+          { email },
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        const point = response.data.customers.point;
+        console.log(response.data);
+        console.log(point);
+
+        setPoints(point !== null ? point : "0");
+      } catch (error) {
+        console.error("Lỗi khi lấy điểm khách hàng:", error);
+      }
+    };
+    fetchCustomerPoints();
+  }, []);
 
   const FetchVoucherConvert = async (data) => {
     try {
@@ -92,7 +125,7 @@ const Convert = () => {
           </div>
           <div className={cx("title-points")}>
             <div className={cx("points")}>
-              Số điểm đang có : <span>{points}đ</span>
+              Số điểm đang có : <span>{point}đ</span>
             </div>
           </div>
           <div className={cx("box-voucher")}>
@@ -104,10 +137,18 @@ const Convert = () => {
                     <div className={cx("info-left")}>
                       <p>{convert.description}</p>
 
-                      <div>
-                        <span className="">Số Lượng:{convert.usage_limit}</span>
-                        <span className="">
-                          Điều kiện:{convert.points_required}đ
+                      <div className="flex justify-between mt-2">
+                        <span className="text-[14px] text-white">
+                          Số Lượng:
+                          <span className="font-bold text-[#FED070] ml-1">
+                            {convert.usage_limit}
+                          </span>
+                        </span>
+                        <span className="text-[14px] text-white">
+                          Điều kiện:{" "}
+                          <span className="font-bold text-[#FED070] ml-1">
+                            {convert.points_required}đ
+                          </span>
                         </span>
                       </div>
                     </div>

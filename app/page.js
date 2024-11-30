@@ -36,10 +36,11 @@ export default function Home() {
     fetchProducts("Product_OutStanding").then((outstanding) => {
       setProductsOutstanding(outstanding.slice(0, 10));
     });
-
-    FetchVoucher();
   }, []);
 
+  useEffect(() => {
+    FetchVoucher(); // Gọi hàm một lần
+  }, []);
   const formatPrice = (price) => {
     return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };

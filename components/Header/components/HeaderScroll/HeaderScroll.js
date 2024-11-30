@@ -210,6 +210,12 @@ const HeaderScroll = () => {
                     <li className={cx("text-black", "px-3", "py-4")}>
                       <Link href="/lich-su-don-hang">Lịch sử đơn hàng</Link>
                     </li>
+                    <li className={cx("text-black", "px-3", "py-4")}>
+                      <Link href="/convert">Quy đổi điểm</Link>
+                    </li>
+                    <li className={cx("text-black", "px-3", "py-4")}>
+                      <Link href="/lich-su-voucher">Voucher của bạn</Link>
+                    </li>
                     <li
                       className={cx(
                         "text-black",

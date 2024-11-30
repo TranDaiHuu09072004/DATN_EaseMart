@@ -229,7 +229,7 @@ const Chitietdonhang = ({ params }) => {
                 " text-gray-900"
               )}
             >
-              Số tiền
+              Thành Tiền
             </th>
           </tr>
         </thead>
