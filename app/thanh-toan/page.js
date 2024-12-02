@@ -459,7 +459,9 @@ export default function Payment() {
                     className="max-xl:w-[320px] h-[40px] xl:w-full max-md:w-full "
                     onChange={(e) => {
                       console.log(e.target.value);
-
+                      if (!JSON.parse(e.target.value)) {
+                        return;
+                      }
                       setSelectedProvince(JSON.parse(e.target.value));
                     }}
                   >
