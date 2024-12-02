@@ -9,20 +9,22 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { useState } from "react";
 
 export default function DangKy() {
-  // Yup validation schema
+  const [showPassword, setShowPassword] = useState(false);
   const validationSchema = Yup.object().shape({
-    name: Yup.string().required("Họ và tên là bắt buộc"),
+    name: Yup.string().required("Vui lòng nhập họ và tên"),
     email: Yup.string()
       .email("Email không hợp lệ")
       .required("Email là bắt buộc"),
+    phone: Yup.string()
+      .required("Vui lòng nhập số điện thoại")
+      .matches(/^[0-9]{10}$/, "Số điện thoại phải có 10 số"),
     password: Yup.string()
       .min(8, "Mật khẩu phải có ít nhất 8 ký tự")
-      .required("Mật khẩu là bắt buộc"),
-    confirmPassword: Yup.string()
-      .oneOf([Yup.ref("password"), null], "Mật khẩu xác nhận không khớp")
-      .required("Xác nhận mật khẩu là bắt buộc"),
+      .required("Vui lòng nhập mật khẩu"),
   });
 
   const {
@@ -34,6 +36,7 @@ export default function DangKy() {
   });
 
   const onSubmit = async (data) => {
+    console.log("Submitting data:", data);
     try {
       const response = await axios.post(
         "https://trandainghia.id.vn/api/register",
@@ -52,7 +55,7 @@ export default function DangKy() {
         "Đăng ký thất bại:",
         error.response ? error.response.data : error.message
       );
-      toast.error("Đăng ký thất bại!", {
+      toast.error("Email hoặc tài khoản đã tồn tại!", {
         position: "top-right",
         autoClose: 2000,
       });
@@ -78,7 +81,6 @@ export default function DangKy() {
             {errors.name && (
               <p className={styles.error}>{errors.name.message}</p>
             )}
-
             <input
               type="email"
               className={styles.inputField}
@@ -90,24 +92,32 @@ export default function DangKy() {
             )}
 
             <input
-              type="password"
+              type="tel"
               className={styles.inputField}
-              placeholder="Nhập mật khẩu"
-              {...register("password")}
+              placeholder="Nhập số điện thoại"
+              {...register("phone")}
             />
-            {errors.password && (
-              <p className={styles.error}>{errors.password.message}</p>
+            {errors.phone && (
+              <p className={styles.error}>{errors.phone.message}</p>
             )}
+            <div className="relative">
+              <input
+                type={showPassword ? "text" : "password"}
+                className={styles.inputField}
+                placeholder="Nhập mật khẩu"
+                {...register("password")}
+              />
+              <span
+                className="absolute right-3 mt-7 text-[20px] cursor-pointer text-[#757575]"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </span>
 
-            <input
-              type="password"
-              className={styles.inputField}
-              placeholder="Nhập lại mật khẩu"
-              {...register("confirmPassword")}
-            />
-            {errors.confirmPassword && (
-              <p className={styles.error}>{errors.confirmPassword.message}</p>
-            )}
+              {errors.password && (
+                <p className={styles.error}>{errors.password.message}</p>
+              )}
+            </div>
 
             <p className={styles.formText}>
               Bằng việc chọn vào Đăng Ký, bạn đồng ý với các điều kiện áp dụng
@@ -119,7 +129,6 @@ export default function DangKy() {
           </form>
           <div className={styles.socialLogin}>
             <p>hoặc</p>
-            <button className={styles.facebookBtn}>Facebook</button>
             <button className={styles.googleBtn}>Google</button>
           </div>
           <p className={styles.linkContainer}>

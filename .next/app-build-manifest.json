@@ -12,11 +12,23 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
-    "/thong-tin-ho-so/page": [
+    "/chi-tiet-san-pham/[id]/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/thong-tin-ho-so/page.css",
-      "static/chunks/app/thong-tin-ho-so/page.js"
+      "static/css/app/chi-tiet-san-pham/[id]/page.css",
+      "static/chunks/app/chi-tiet-san-pham/[id]/page.js"
+    ],
+    "/thanh-toan/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/thanh-toan/page.css",
+      "static/chunks/app/thanh-toan/page.js"
+    ],
+    "/cart/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/cart/page.css",
+      "static/chunks/app/cart/page.js"
     ],
     "/_not-found/page": [
       "static/chunks/webpack.js",

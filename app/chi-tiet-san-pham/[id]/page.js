@@ -114,7 +114,14 @@ export default function ProductDetail({ params }) {
         </div>
 
         {/* Product Information */}
-        <div className={cx("product_content_right", "p-5", "max-md:w-full")}>
+        <div
+          className={cx(
+            "product_content_right",
+            "p-5",
+            "w-[60%]",
+            "max-md:w-full"
+          )}
+        >
           <h3 className={cx("product_name_detail")}>{product.name}</h3>
 
           {/* Price Details */}
@@ -219,7 +226,6 @@ export default function ProductDetail({ params }) {
                     cancelButtonText: "Cancel", // Văn bản nút hủy
                   }).then((result) => {
                     if (result.isConfirmed) {
-                      // Điều hướng đến trang đăng nhập nếu người dùng chọn "Đăng nhập"
                       window.location.href = "/dangnhap";
                     }
                   });
@@ -236,7 +242,6 @@ export default function ProductDetail({ params }) {
             </button>
           </div>
 
-          {/* Product Description */}
           <div className={cx("product_description")}>
             <h3>Mô tả</h3>
             <p>{product.description || "Không có mô tả"}</p>
@@ -316,8 +321,6 @@ export default function ProductDetail({ params }) {
           ))}
         </ul>
       </section>
-
-      {/* Comments Section */}
       <h3 className={cx("comment-product", "mt-5")}>Bình luận về sản phẩm</h3>
       <div className={cx("comment-section")}>
         {/* Comment Input Box */}

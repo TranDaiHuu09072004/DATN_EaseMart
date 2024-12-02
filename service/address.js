@@ -2,13 +2,13 @@ import axios from "axios";
 const url = "https://online-gateway.ghn.vn/shiip/public-api/master-data";
 const token = "949a5ee3-96a8-11ef-bf64-5e16b39c8527";
 
-export const getProvince = async () => {
-  const response = await axios.get(
-    "https://online-gateway.ghn.vn/shiip/public-api/master-data/province",
+export const getProvince = async (token) => {
+  const response = await axios.post(
+    "https://trandainghia.id.vn/api/provinces",
     {
       headers: {
         "Content-Type": "application/json",
-        token: token, // Thay token bằng token thực tế của bạn nếu cần
+        Authorization: `Bearer ${token}`, // Thay token bằng token thực tế của bạn nếu cần
       },
     }
   );
@@ -16,18 +16,18 @@ export const getProvince = async () => {
   return response.data;
 };
 
-export const getDistrict = async (selectedProvince) => {
+export const getDistrict = async (selectedProvince, token) => {
   console.log(selectedProvince);
 
   const province_id = +selectedProvince;
 
   const response = await axios.post(
-    "https://online-gateway.ghn.vn/shiip/public-api/master-data/district",
+    "https://trandainghia.id.vn/api/districts",
     { province_id: province_id },
     {
       headers: {
         "Content-Type": "application/json",
-        token: token,
+        Authorization: `Bearer ${token}`,
       },
     }
   );
@@ -35,16 +35,16 @@ export const getDistrict = async (selectedProvince) => {
   return response.data;
 };
 
-export const getWard = async (id) => {
+export const getWard = async (id, token) => {
   const districtId = +id;
 
   const response = await axios.post(
-    `https://online-gateway.ghn.vn/shiip/public-api/master-data/ward?district_id=${districtId}`,
+    `https://trandainghia.id.vn/api/wards`,
     { district_id: districtId },
     {
       headers: {
         "Content-Type": "application/json",
-        token: token,
+        Authorization: `Bearer ${token}`,
       },
     }
   );
