@@ -61,7 +61,7 @@ export default function DangNhap() {
 
       const name = user.customers.name;
       const customerId = user.customers.id;
-      const point = user.customers.point;
+
       if (user) {
         setError("");
         Swal.fire("Thành công", "Đăng nhập thành công!", "success");
@@ -74,7 +74,6 @@ export default function DangNhap() {
               token: user.token,
               name,
               customerId,
-              point,
             })
           );
           localStorage.setItem("name", name);

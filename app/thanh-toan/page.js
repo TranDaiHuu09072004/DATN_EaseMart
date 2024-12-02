@@ -9,6 +9,7 @@ import { CheckPayment, CreateQr, PostOrder } from "@/service/order";
 // import { log } from "util";
 // import { FALSE } from "sass";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 const cx = classNames.bind(styles);
 export default function Payment() {
@@ -34,6 +35,10 @@ export default function Payment() {
   const [paymentMethod, setPaymentMethod] = useState("COD");
   const [toggleQr, setToggleQr] = useState(false);
   const [linkQr, setLinkQr] = useState(null);
+  const [voucherCode, setVoucherCode] = useState("");
+  const [discountValue, setDiscountValue] = useState(0);
+  const [voucherId, setVoucherId] = useState(null);
+  const [voucherError, setVoucherError] = useState("");
 
   let total = useRef(0);
   let listPaymentMethod = useRef([
@@ -88,6 +93,7 @@ export default function Payment() {
         shipping_address,
         payment_method: paymentMethod,
         total_amount: total.current,
+        voucher_id: voucherId,
         token: user.token,
       };
       PostOrder(data)
@@ -257,6 +263,40 @@ export default function Payment() {
       .catch((error) => console.log(error));
   }, [selectedDistrict]);
 
+  const applyVoucher = async () => {
+    try {
+      const response = await axios.post(
+        `https://trandainghia.id.vn/api/voucher/detail`,
+        { code: voucherCode }
+      );
+
+      if (response.data && response.data.data) {
+        const { discount_value, minimum_order_value, id } = response.data.data;
+
+        if (total.current > minimum_order_value) {
+          total.current -= discount_value;
+          setDiscountValue(discount_value);
+          setVoucherId(id);
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "Đơn hàng không đủ điều kiện",
+            text: `Tổng đơn hàng phải lớn hơn ${formatPrice(
+              minimum_order_value
+            )}đ để áp dụng voucher.`,
+          });
+        }
+      }
+    } catch (error) {
+      console.error("Lỗi khi áp dụng voucher:", error);
+      Swal.fire({
+        icon: "error",
+        title: "Lỗi",
+        text: "Không thể áp dụng voucher. Vui lòng thử lại.",
+      });
+    }
+  };
+
   return (
     <>
       {linkQr && (
@@ -397,7 +437,7 @@ export default function Payment() {
                 Thông Tin Thanh Toán
               </h3>
               <form action="">
-                <div className={cx("flex_nameform", "max-lg:flex-col")}>
+                <div className={cx("flex_nameform", "max-xl:flex-col")}>
                   <div className={cx("name_form")}>
                     <h5>
                       Tên <span class={cx("required")}>*</span>
@@ -530,7 +570,7 @@ export default function Payment() {
                   <input
                     type="number"
                     required
-                    placeholder="Vui lòng nhập số điện thoại"
+                    placeholder="Vui lòng nhp số điện thoại"
                     className="max-xl:w-[320px] xl:w-full max-md:w-full"
                     value={number}
                     onChange={(e) => {
@@ -619,11 +659,18 @@ export default function Payment() {
                   type="text"
                   placeholder="ESM30AB12"
                   className="w-[270px] max-lg:w-[210px] p-[5px] border border-[#cccccc] "
+                  value={voucherCode}
+                  onChange={(e) => setVoucherCode(e.target.value)}
                 />
-                <button className={cx("voucher_link", "px-3")}>Áp ngay</button>
+                <button
+                  className={cx("voucher_link", "px-3")}
+                  onClick={applyVoucher}
+                >
+                  Áp ngay
+                </button>
               </div>
               <div className={cx("order_discount")}>
-                <span>Đã giảm: 15,000đ</span>
+                <span>Đã giảm: {formatPrice(discountValue)}đ</span>
               </div>
               <div className={cx("order_total")}>
                 <span>Tổng tiền:</span>

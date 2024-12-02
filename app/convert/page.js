@@ -10,12 +10,6 @@ const cx = classNames.bind(styles);
 const Convert = () => {
   const [point, setPoints] = useState("");
   const [converts, setConverts] = useState([]);
-  // useEffect(() => {
-  //   const user = JSON.parse(localStorage.getItem("user"));
-  //   console.log(user.point);
-
-  //   setPoints(user.point || "0");
-  // }, []);
 
   useEffect(() => {
     FetchVoucherConvert();
@@ -66,6 +60,10 @@ const Convert = () => {
     } catch (error) {
       console.error("Lỗi khi lấy voucher:", error);
     }
+  };
+
+  const formatPrice = (price) => {
+    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
   return (
     <div className="container">
@@ -153,8 +151,7 @@ const Convert = () => {
                       </div>
                     </div>
                     <div className={cx("info-right")}>
-                      Giảm {convert.discount_value}đ cho khách hàng đủ điều kiện
-                      để quy đổi
+                      Giảm {formatPrice(convert.discount_value)}đ
                     </div>
                   </div>
                   <div className={cx("voucher-item-bottom")}>

@@ -17,6 +17,7 @@ import {
   useYeuThich,
 } from "@/components/YTFunction/sanphamyeuthich";
 import axios from "axios";
+import { toast } from "react-toastify";
 const cx = classNames.bind(styles);
 
 export default function Home() {
@@ -69,6 +70,33 @@ export default function Home() {
     });
   };
 
+  const handleSaveVoucher = async (voucher) => {
+    try {
+      const getUser = JSON.parse(localStorage.getItem("user"));
+      const token = getUser.token;
+      const customerId = getUser.customerId;
+
+      const response = await axios.post(
+        "https://trandainghia.id.vn/api/customer/voucher",
+        {
+          customer_id: customerId,
+          voucher_id: voucher.id,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      console.log("Voucher saved:", response.data);
+      toast.success("Voucher đã được lưu thành công!");
+    } catch (error) {
+      console.error("Lỗi khi lưu voucher:", error);
+      toast.error("Voucher đã được lưu!");
+    }
+  };
+
   return (
     <>
       <Banner />
@@ -111,16 +139,26 @@ export default function Home() {
                   Giảm {formatPrice(voucher.discount_value)}
                 </div>
               </div>
-              <div className={cx("voucher-item-bottom")}>
+              <div
+                className={cx("voucher-item-bottom", "flex", "justify-between")}
+              >
                 <h4>{voucher.code}</h4>
-                <button
-                  onClick={() => {
-                    handleCopy(voucher.code);
-                  }}
-                  className={cx("button-copy")}
-                >
-                  <FontAwesomeIcon icon={faCopy} /> Copy
-                </button>
+                <div className="">
+                  <button
+                    onClick={() => {
+                      handleCopy(voucher.code);
+                    }}
+                    className={cx("button-copy")}
+                  >
+                    <FontAwesomeIcon icon={faCopy} /> Copy
+                  </button>
+                  <button
+                    onClick={() => handleSaveVoucher(voucher)}
+                    className="btn_Save border border-[#1ea3e8] rounded-[10px] px-2 py-2 ml-2 hover:bg-[#267edc] hover:text-white"
+                  >
+                    Lưu
+                  </button>
+                </div>
               </div>
             </div>
           ))}
