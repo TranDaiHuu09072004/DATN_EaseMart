@@ -277,6 +277,7 @@ export default function Payment() {
           total.current -= discount_value;
           setDiscountValue(discount_value);
           setVoucherId(id);
+          setVoucherError("");
         } else {
           Swal.fire({
             icon: "error",
@@ -286,14 +287,14 @@ export default function Payment() {
             )}đ để áp dụng voucher.`,
           });
         }
+      } else {
+        setVoucherError(
+          "Voucher bạn nhập không đúng hoặc không tồn tại!. Vui lòng thử lại."
+        );
       }
     } catch (error) {
       console.error("Lỗi khi áp dụng voucher:", error);
-      Swal.fire({
-        icon: "error",
-        title: "Lỗi",
-        text: "Không thể áp dụng voucher. Vui lòng thử lại.",
-      });
+      setVoucherError("Không thể áp dụng voucher. Vui lòng thử lại.");
     }
   };
 
@@ -669,6 +670,9 @@ export default function Payment() {
                   Áp ngay
                 </button>
               </div>
+              {voucherError && ( // Hiển thị thông báo lỗi nếu có
+                <span className="text-red-500">{voucherError}</span>
+              )}
               <div className={cx("order_discount")}>
                 <span>Đã giảm: {formatPrice(discountValue)}đ</span>
               </div>
