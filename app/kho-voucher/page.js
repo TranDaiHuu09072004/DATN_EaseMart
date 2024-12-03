@@ -74,7 +74,7 @@ const Page = () => {
     <>
       <div className="max-w-screen-xl mx-auto p-4">
         <h3 className="text-center text-[#3E5362] text-[25px] font-bold">
-          Lịch Sử Voucher
+          Kho Voucher
         </h3>
         <div className="flex gap-x-5">
           <button
@@ -110,7 +110,7 @@ const Page = () => {
             "flex",
             "xl:justify-between",
             "justify-center",
-            "mt-2"
+            "mt-5"
           )}
         >
           {(showUsed ? usedVouchers : vouchers).map((voucher, index) => (

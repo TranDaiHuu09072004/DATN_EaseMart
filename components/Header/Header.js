@@ -31,7 +31,8 @@ export default function Header() {
     setCount(newCount);
   }, [state]);
 
-  useEffect(() => {``
+  useEffect(() => {
+    ``;
     const name = localStorage.getItem("name");
     const savedImage = localStorage.getItem("image");
     if (name) {
@@ -205,7 +206,7 @@ export default function Header() {
                       <Link href="/convert">Quy đổi điểm</Link>
                     </li>
                     <li className={cx("text-black", "px-3", "py-4")}>
-                      <Link href="/lich-su-voucher">Voucher của bạn</Link>
+                      <Link href="/kho-voucher">Voucher của bạn</Link>
                     </li>
                     <li
                       className={cx(
