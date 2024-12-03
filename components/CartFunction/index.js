@@ -139,6 +139,20 @@ const cartReducer = (state, action) => {
 
       saveCartToLocalStorage(userEmail, newCart.cartItems);
       return newCart;
+    case "UPDATE_SELECT_All_CART":
+      const newCartItemsSelectAll = [...state.cartItems];
+      newCart = {
+        ...state,
+        cartItems: newCartItemsSelectAll.map((item) => {
+          item.select = true;
+
+          return item;
+        }),
+      };
+
+      saveCartToLocalStorage(userEmail, newCart.cartItems);
+      return newCart;
+
     case "REMOVE_ALL":
       newCart = {
         ...state,

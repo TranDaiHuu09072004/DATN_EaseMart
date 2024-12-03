@@ -124,6 +124,14 @@ const Cart = () => {
         </div>
         <div className={cx("cart-content")}>
           <div className={cx("title")}>Giỏ hàng</div>
+          <button
+            className="mt-5 text-[20px] text-[#3bb77e] font-bold"
+            onClick={() => {
+              dispatch(new Dispatch("UPDATE_SELECT_All_CART"));
+            }}
+          >
+            Chọn tất cả
+          </button>
           {state.cartItems.length > 0 ? (
             <div
               className={cx(
@@ -279,7 +287,6 @@ const Cart = () => {
                     >
                       Xóa tất cả
                     </button>
-                    <Link href={"/"}>Tiếp tục mua hàng</Link>
                   </div>
                 </div>
               </div>
