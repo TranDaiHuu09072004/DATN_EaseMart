@@ -33,6 +33,8 @@ export const CreateQr = async (data) => {
       },
     }
   );
+  console.log(respone.data);
+  
   return respone.data;
 };
 

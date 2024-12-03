@@ -1,8 +1,7 @@
 import { useEffect, useReducer, createContext, useContext } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 // import { usePathname } from "next/navigation";
 import "react-toastify/dist/ReactToastify.css";
-import { useRouter } from "next/router";
 import Swal from "sweetalert2";
 let userEmail = null;
 
@@ -140,6 +139,20 @@ const cartReducer = (state, action) => {
 
       saveCartToLocalStorage(userEmail, newCart.cartItems);
       return newCart;
+    case "UPDATE_SELECT_All_CART":
+      const newCartItemsSelectAll = [...state.cartItems];
+      newCart = {
+        ...state,
+        cartItems: newCartItemsSelectAll.map((item) => {
+          item.select = true;
+
+          return item;
+        }),
+      };
+
+      saveCartToLocalStorage(userEmail, newCart.cartItems);
+      return newCart;
+
     case "REMOVE_ALL":
       newCart = {
         ...state,

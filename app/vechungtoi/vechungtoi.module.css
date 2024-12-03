@@ -6,6 +6,20 @@
   padding: 20px;
 }
 
+.link_home_news {
+  margin: 10px 0;
+}
+
+.list_link {
+  display: flex;
+  justify-content: left;
+  gap: 10px;
+}
+
+.list_link > li > a {
+  text-decoration: none;
+}
+
 /* Breadcrumb */
 .breadcrumb {
   font-size: 14px;
@@ -116,11 +130,11 @@
 }
 
 .subHeading::after {
-  content: '';
+  content: "";
   display: block;
   width: 80px;
   height: 5px;
-  background-color: #2BA84A;
+  background-color: #2ba84a;
   margin: 10px auto 0;
 }
 
@@ -199,7 +213,6 @@
   }
 }
 
-
 /* Phần hiệu suất */
 .performanceSection {
   display: flex;
@@ -245,7 +258,7 @@
 
 .performanceText h2 {
   font-size: 28px;
-  color: #2BA84A;
+  color: #2ba84a;
   margin-bottom: 20px;
 }
 

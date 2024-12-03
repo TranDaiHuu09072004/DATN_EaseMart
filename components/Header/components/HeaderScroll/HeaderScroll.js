@@ -13,7 +13,7 @@ import Link from "next/link";
 import { Icon } from "@iconify/react";
 import MenuMobile from "../MenuMobile";
 import { useCart } from "@/components/CartFunction";
-
+import { toast } from "react-toastify";
 const cx = classNames.bind(styles);
 const HeaderScroll = () => {
   const { state, dispatch } = useCart();
@@ -21,7 +21,7 @@ const HeaderScroll = () => {
   const [showHeaderScroll, setShowHeaderScroll] = useState(true);
   const [count, setCount] = useState(0);
   const [name, setName] = useState(null);
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState("");
   useEffect(() => {
     let newCount = 0;
     state.cartItems.forEach((element) => {
@@ -46,11 +46,14 @@ const HeaderScroll = () => {
 
   useEffect(() => {
     const name = localStorage.getItem("name");
-
+    const savedImage = localStorage.getItem("image");
     if (name) {
       let handlename = name.split(" ");
       handlename = handlename[handlename.length - 1];
       setName(handlename);
+    }
+    if (savedImage) {
+      setImage(savedImage);
     }
   }, []);
 
@@ -150,18 +153,18 @@ const HeaderScroll = () => {
                   href={name ? "#" : "/dangnhap"}
                   className="flex items-center space-x-2 truncate whitespace-nowrap overflow-hidden text-ellipsis"
                 >
-                  {name ? (
+                  {/* {name ? (
                     <img
                       src={image}
                       alt="Avatar"
                       className="w-[100px] h-[50px] rounded-full"
                     />
-                  ) : (
-                    <FontAwesomeIcon
-                      icon={faUser}
-                      className="text-[#3bb77e]  sm:w-7 sm:h-7 w-5 h-5"
-                    />
-                  )}
+                  ) : ( */}
+                  <FontAwesomeIcon
+                    icon={faUser}
+                    className="text-[#3bb77e] sm:w-7 sm:h-7 w-5 h-5"
+                  />
+                  {/* )} */}
                   <div className="text-[#3bb77e] lg:text-lg text-base font-medium w-full lg:block hidden">
                     {name ? `Chào, ${name}` : "Đăng nhập"}
                   </div>

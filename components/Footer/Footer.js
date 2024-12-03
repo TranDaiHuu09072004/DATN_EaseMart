@@ -54,72 +54,76 @@ export default function Footer() {
                 </Link>
               </li>
               <li className={styles.ft_2}>
-                <Link href="#" className={styles.a}>
-                  <div className={styles.footer2}>
-                    <h3
-                      className={styles.footer_company}
-                      style={{ textDecoration: "none", marginTop: 15 }}
-                    >
-                      Tài khoản
-                    </h3>
-                    <h6 className={styles.footer_item}>Đăng nhập</h6>
-                    <h6 className={styles.footer_item}>Xem giỏ hàng</h6>
-                    <h6 className={styles.footer_item}>Danh sách yêu thích</h6>
-                    <h6 className={styles.footer_item}>Theo dõi đơn</h6>
-                    <h6 className={styles.footer_item}>Phiếu hỗ trợ</h6>
-                    <h6 className={styles.footer_item}>Chi tiết đơn hàng</h6>
-                  </div>
-                </Link>
+                <div className={styles.footer2}>
+                  <h3
+                    className={styles.footer_company}
+                    style={{ textDecoration: "none", marginTop: 15 }}
+                  >
+                    <a href="/thong-tin-ho-so">Tài khoản</a>
+                  </h3>
+                  <h6 className={styles.footer_item}>
+                    <a href="/dangnhap">Đăng nhập</a>
+                  </h6>
+                  <h6 className={styles.footer_item}>
+                    <a href="/cart">Xem giỏ hàng</a>
+                  </h6>
+                  <h6 className={styles.footer_item}>
+                    <a href="/san-pham-yeu-thich">Danh sách yêu thích</a>
+                  </h6>
+                  <h6 className={styles.footer_item}>
+                    <a href="/lich-su-don-hang">Theo dõi đơn</a>
+                  </h6>
+                  <h6 className={styles.footer_item}>Phiếu hỗ trợ</h6>
+                  <h6 className={styles.footer_item}>
+                    <a href="/chi-tiet-don-hang">Chi tiết đơn hàng</a>
+                  </h6>
+                </div>
               </li>
               <li className={styles.ft_2}>
-                <Link href="#" className={styles.a}>
-                  <div className={styles.footer2}>
-                    <h3
-                      className={styles.footer_company}
-                      style={{ textDecoration: "none", marginTop: 15 }}
-                    >
-                      Phổ biến
-                    </h3>
-                    <h6 className={styles.footer_item}>Thực phẩm tươi sống</h6>
-                    <h6 className={styles.footer_item}>Thực phẩm chế biến</h6>
-                    <h6 className={styles.footer_item}>
-                      Thực phẩm chế biến sẵn
-                    </h6>
-                    <h6 className={styles.footer_item}>Đồ uống </h6>
-                    <h6 className={styles.footer_item}>Sản phẩm Bestseller</h6>
-                    <h6 className={styles.footer_item}>Sản Phẩm Phổ Biến</h6>
-                  </div>
-                </Link>
+                <div className={styles.footer2}>
+                  <h3
+                    className={styles.footer_company}
+                    style={{ textDecoration: "none", marginTop: 15 }}
+                  >
+                    Phổ biến
+                  </h3>
+                  <h6 className={styles.footer_item}>Thực phẩm tươi sống</h6>
+                  <h6 className={styles.footer_item}>Thực phẩm chế biến</h6>
+                  <h6 className={styles.footer_item}>Thực phẩm chế biến sẵn</h6>
+                  <h6 className={styles.footer_item}>Đồ uống </h6>
+                  <h6 className={styles.footer_item}>
+                    Sản phẩm nhiều lượt xem
+                  </h6>
+                  <h6 className={styles.footer_item}>Sản Phẩm Phổ Biến</h6>
+                </div>
               </li>
               <li className={styles.ft_2}>
-                <Link href="#" className={styles.a}>
-                  <div className={styles.footer2}>
-                    <h3
-                      className={styles.footer_company}
-                      style={{ textDecoration: "none", marginTop: 15 }}
-                    >
-                      Liên Kết
-                    </h3>
-                    <h6 className={styles.footer_item}>Từ mạng xã hội</h6>
-                    <div className={styles.media_social}>
-                      <img
-                        src="/assets/img/ft_fb.svg"
-                        alt=""
-                        className={styles.gg_play}
-                      />
-                      <img
-                        className={styles.app_store}
-                        src="/assets/img/ft_tt.svg"
-                        alt=""
-                      />
-                      <img
-                        className={styles.app_store}
-                        src="/assets/img/ft_ig.svg"
-                        alt=""
-                      />
-                    </div>
+                <div className={styles.footer2}>
+                  <h3
+                    className={styles.footer_company}
+                    style={{ textDecoration: "none", marginTop: 15 }}
+                  >
+                    Liên Kết
+                  </h3>
+                  <h6 className={styles.footer_item}>Từ mạng xã hội</h6>
+                  <div className={styles.media_social}>
+                    <img
+                      src="/assets/img/ft_fb.svg"
+                      alt=""
+                      className={styles.gg_play}
+                    />
+                    <img
+                      className={styles.app_store}
+                      src="/assets/img/ft_tt.svg"
+                      alt=""
+                    />
+                    <img
+                      className={styles.app_store}
+                      src="/assets/img/ft_ig.svg"
+                      alt=""
+                    />
                   </div>
-                </Link>
+                </div>
               </li>
             </ul>
             <hr style={{ color: "#3bb77e", marginTop: 15 }} />

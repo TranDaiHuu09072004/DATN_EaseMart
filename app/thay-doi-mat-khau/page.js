@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
@@ -20,17 +20,6 @@ export default function ChangePassword() {
       .required("Mật khẩu xác nhận là bắt buộc"),
   });
 
-  useEffect(() => {
-    const isValidAccess = sessionStorage.getItem("isValidAccess");
-    if (!isValidAccess) {
-      Swal.fire("Error", "Bạn không có quyền truy cập trang này", "error").then(
-        () => {
-          window.location.href = "/quen-mat-khau";
-        }
-      );
-    }
-  }, []);
-
   const handleChangePassword = async () => {
     const email = sessionStorage.getItem("email");
 
@@ -48,7 +37,7 @@ export default function ChangePassword() {
       );
 
       if (response.status === 200) {
-        Swal.fire("Thành công", "Vui lòng kiểm tra email của bạn", "success");
+        Swal.fire("Thành công", "Vui lòng đăng nhập lại", "success");
         setTimeout(() => {
           window.location.href = "/dangnhap";
         }, 1000);

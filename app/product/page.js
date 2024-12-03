@@ -213,7 +213,7 @@ const Product = () => {
                   "max-md:text-[16px]"
                 )}
               >
-                Cửa hàng
+                Sản Phẩm
               </Link>
             </li>
           </ul>

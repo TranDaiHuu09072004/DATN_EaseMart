@@ -33,11 +33,14 @@ export default function Header() {
 
   useEffect(() => {``
     const name = localStorage.getItem("name");
-
+    const savedImage = localStorage.getItem("image");
     if (name) {
       let handlename = name.split(" ");
       handlename = handlename[handlename.length - 1];
       setName(handlename);
+    }
+    if (savedImage) {
+      setImage(savedImage);
     }
   }, []);
 
@@ -52,7 +55,6 @@ export default function Header() {
   const handleLogout = () => {
     localStorage.removeItem("name");
     localStorage.removeItem("user");
-    localStorage.removeItem("image");
     toast.success("Đăng Xuất thành công!", {
       position: "top-right",
       autoClose: 3000,
@@ -142,18 +144,18 @@ export default function Header() {
                   href={name ? "#" : "/dangnhap"}
                   className="flex items-center space-x-2 truncate whitespace-nowrap overflow-hidden text-ellipsis"
                 >
-                  {name ? (
+                  {/* {name ? (
                     <img
                       src={image}
                       alt="Avatar"
                       className="w-[100px] h-[50px] rounded-full"
                     />
-                  ) : (
-                    <FontAwesomeIcon
-                      icon={faUser}
-                      className="text-white sm:w-7 sm:h-7 w-5 h-5"
-                    />
-                  )}
+                  ) : ( */}
+                  <FontAwesomeIcon
+                    icon={faUser}
+                    className="text-white sm:w-7 sm:h-7 w-5 h-5"
+                  />
+                  {/* )} */}
                   <div className="text-white lg:text-lg text-base font-medium w-full lg:block hidden">
                     {name ? `Chào, ${name}` : "Đăng nhập"}
                   </div>

@@ -6,12 +6,13 @@ import { useCart } from "@/components/CartFunction";
 import { getDistrict, getProvince, getWard } from "@/service/address";
 import { formatPrice } from "@/uilts/formatPrice";
 import { CheckPayment, CreateQr, PostOrder } from "@/service/order";
-import { log } from "util";
-import { FALSE } from "sass";
+// import { log } from "util";
+// import { FALSE } from "sass";
+import { getInfoCustomer } from "@/service/customer";
 import Swal from "sweetalert2";
-
 const cx = classNames.bind(styles);
 export default function Payment() {
+  const [user, setUser] = useState({});
   const [errorProduct, setErrorProduct] = useState([]);
   const [checkAccept, setCheckAccept] = useState(false);
   const [ErrorCheckAccept, setErrorCheckAccept] = useState(false);
@@ -40,6 +41,21 @@ export default function Payment() {
     { method: "COD", des: "Thanh toán khi nhận hàng" },
     { method: "BANK", des: "Thanh toán bằng ngân hàng MB" },
   ]);
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    setUser(user);
+
+    getInfoCustomer(user.email, user.customer).then((data) => {
+      console.log(data);
+      const firstName = data.customers.name.split(" ")[0];
+      const lastName = data.customers.name.split(" ").splice(1, 2).join(" ");
+      setFirstName(firstName);
+      setLastName(lastName);
+      setEmail(data.customers.email);
+      setNumber(data.customers.phone);
+    });
+  }, []);
 
   useEffect(() => {
     return () => {
@@ -132,18 +148,7 @@ export default function Payment() {
                   if (byStatus) {
                     localStorage.removeItem("buy_now");
                   } else {
-                    let getCart = JSON.parse(
-                      localStorage.getItem(`cart_${user.email}`)
-                    );
-                    console.log(getCart);
-
-                    getCart = getCart.filter((item) => {
-                      return !item.select;
-                    });
-                    localStorage.setItem(
-                      `cart_${user.email}`,
-                      JSON.stringify(getCart)
-                    );
+                    localStorage.removeItem(`cart_${user.email}`);
                   }
 
                   Swal.fire({
@@ -224,18 +229,19 @@ export default function Payment() {
   }, [state, byStatus]);
   // thành phố
   useEffect(() => {
-    getProvince().then((province) => {
-      console.log(province.data);
-
-      setlistProvince(province.data);
-    });
-  }, []);
+    if (Object.keys(user).length > 0) {
+      getProvince(user.token).then((province) => {
+        console.log(province.data);
+        setlistProvince(province.data);
+      });
+    }
+  }, [user]);
   // quận
   useEffect(() => {
     if (!selectedProvince) return;
     console.log(selectedProvince);
 
-    getDistrict(selectedProvince.id)
+    getDistrict(selectedProvince.id, user.token)
       .then((province) => {
         console.log(province.data);
 
@@ -248,7 +254,7 @@ export default function Payment() {
   useEffect(() => {
     if (!selectedDistrict) return;
 
-    getWard(selectedDistrict.id)
+    getWard(selectedDistrict.id, user.token)
       .then((province) => {
         console.log(province.data);
 
@@ -453,7 +459,9 @@ export default function Payment() {
                     className="max-xl:w-[320px] h-[40px] xl:w-full max-md:w-full "
                     onChange={(e) => {
                       console.log(e.target.value);
-
+                      if (!JSON.parse(e.target.value)) {
+                        return;
+                      }
                       setSelectedProvince(JSON.parse(e.target.value));
                     }}
                   >
@@ -612,6 +620,7 @@ export default function Payment() {
                   </div>
                 ))}
               </div>
+
               <div className={cx("order_voucher")}>
                 <span className="mt-[5px]">Mã voucher: </span>
                 <input
@@ -630,7 +639,6 @@ export default function Payment() {
                   {formatPrice(total.current)}đ
                 </span>
               </div>
-
               <div className={cx("payment_method")}>
                 <h5 className=" text-2xl mb-3 font-medium ">
                   <i class="fa-solid fa-money-bill-transfer text-[25px] text-[#3bb77e] font-bold pr-1"></i>

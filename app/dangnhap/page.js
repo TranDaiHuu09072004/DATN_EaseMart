@@ -31,7 +31,6 @@ export default function DangNhap() {
   });
 
   useEffect(() => {
-    // Kiểm tra dữ liệu đã lưu trong localStorage cho tính năng "Ghi nhớ mật khẩu"
     const savedEmail = localStorage.getItem("email");
     const savedPassword = localStorage.getItem("password");
     if (savedEmail && savedPassword) {
@@ -62,6 +61,7 @@ export default function DangNhap() {
 
       const name = user.customers.name;
       const customerId = user.customers.id;
+      const point = user.customers.point;
       if (user) {
         setError("");
         Swal.fire("Thành công", "Đăng nhập thành công!", "success");
@@ -69,7 +69,13 @@ export default function DangNhap() {
         if (rememberMe) {
           localStorage.setItem(
             "user",
-            JSON.stringify({ email, token: user.token, name, customerId })
+            JSON.stringify({
+              email,
+              token: user.token,
+              name,
+              customerId,
+              point,
+            })
           );
           localStorage.setItem("name", name);
         } else {
@@ -92,7 +98,6 @@ export default function DangNhap() {
       Swal.fire("Lỗi", "Có lỗi xảy ra. Vui lòng thử lại sau.", "error");
     }
   };
-
   return (
     <div className={styles.pageContainer}>
       <div className={styles.container}>
@@ -146,9 +151,6 @@ export default function DangNhap() {
           </p>
           <div className={styles.socialLogin}>
             <p>Hoặc</p>
-            <button className={`${styles.socialButton} ${styles.facebookBtn}`}>
-              Facebook
-            </button>
             <button className={`${styles.socialButton} ${styles.googleBtn}`}>
               Google
             </button>
