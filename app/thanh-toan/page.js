@@ -106,6 +106,7 @@ export default function Payment() {
         total_amount: total.current,
         token: user.token,
       };
+
       PostOrder(data)
         .then((data) => {
           console.log(data);
