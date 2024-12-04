@@ -183,11 +183,11 @@ export default function Payment() {
           });
         })
         .catch((err) => {
-          console.log(err);
+          console.log(err.response.data.message);
           Swal.fire({
             icon: "error",
             title: "Đặt hàng thất bại",
-            text: "Bạn không đặt hàng được đơn này có thể là do đơn hàng của bạn đã có sản phẩm đã hết hàng !",
+            text: `${err.response.data.message} !`,
             showCancelButton: false, // Hiển thị nút "Hủy" (hoặc OK)
             confirmButtonText: "OK", // Văn bản nút xác nhận
             // Văn bản nút hủy
