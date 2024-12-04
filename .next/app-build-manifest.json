@@ -12,11 +12,34 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
+    "/chi-tiet-san-pham/[id]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/chi-tiet-san-pham/[id]/page.css",
+      "static/chunks/app/chi-tiet-san-pham/[id]/page.js"
+    ],
+    "/thanh-toan/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/thanh-toan/page.css",
+      "static/chunks/app/thanh-toan/page.js"
+    ],
+    "/cart/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/cart/page.css",
+      "static/chunks/app/cart/page.js"
+    ],
     "/kho-voucher/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/css/app/kho-voucher/page.css",
       "static/chunks/app/kho-voucher/page.js"
+    ],
+    "/_not-found/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/_not-found/page.js"
     ]
   }
 }
