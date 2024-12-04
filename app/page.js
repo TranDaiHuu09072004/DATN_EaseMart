@@ -17,7 +17,7 @@ import {
   useYeuThich,
 } from "@/components/YTFunction/sanphamyeuthich";
 import axios from "axios";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 const cx = classNames.bind(styles);
 
 export default function Home() {
@@ -90,7 +90,10 @@ export default function Home() {
         }
       );
       console.log("Voucher saved:", response.data);
-      toast.success("Voucher đã được lưu thành công!");
+      toast.success("Voucher đã được lưu thành công!", {
+        position: "top-right",
+        autoClose: 1000,
+      });
     } catch (error) {
       console.error("Lỗi khi lưu voucher:", error);
       toast.error("Voucher đã được lưu!");
@@ -101,7 +104,6 @@ export default function Home() {
     <>
       <Banner />
       <div className={cx("max-w-screen-xl", "mx-auto", "p-4")}>
-        {/* Voucher section */}
         <div
           className={cx(
             "list-voucher",

@@ -84,7 +84,10 @@ const cartReducer = (state, action) => {
         cartItems: [...state.cartItems, action.data],
       };
       saveCartToLocalStorage(userEmail, newCart.cartItems);
-      toast.success("Sản phẩm đã được thêm vào giỏ hàng!");
+      toast.success("Sản phẩm đã được thêm vào giỏ hàng!", {
+        position: "top-right",
+        autoClose: 1000,
+      });
       return newCart;
     case "UPDATE_MINUS_ITEM_CART":
       const newCartItemsMinus = [...state.cartItems];

@@ -278,21 +278,34 @@ export default function Payment() {
       );
 
       if (response.data && response.data.data) {
-        const { discount_value, minimum_order_value, id } = response.data.data;
+        const { discount_value, minimum_order_value, id, type } =
+          response.data.data;
 
-        if (total.current > minimum_order_value) {
+        console.log("Total:", total.current);
+        console.log("Minimum Order Value:", minimum_order_value);
+        console.log("Discount Value:", discount_value);
+
+        if (type == 1) {
+          if (total.current > minimum_order_value) {
+            total.current -= discount_value;
+            setDiscountValue(discount_value);
+            setVoucherId(id);
+            setVoucherError("");
+            console.log("Discount applied:", discount_value);
+          } else {
+            Swal.fire({
+              icon: "error",
+              title: "Đơn hàng không đủ điều kiện",
+              text: `Tổng đơn hàng phải lớn hơn ${formatPrice(
+                minimum_order_value
+              )}đ để áp dụng voucher.`,
+            });
+          }
+        } else if (type == 0) {
           total.current -= discount_value;
           setDiscountValue(discount_value);
           setVoucherId(id);
           setVoucherError("");
-        } else {
-          Swal.fire({
-            icon: "error",
-            title: "Đơn hàng không đủ điều kiện",
-            text: `Tổng đơn hàng phải lớn hơn ${formatPrice(
-              minimum_order_value
-            )}đ để áp dụng voucher.`,
-          });
         }
       } else {
         setVoucherError(

@@ -59,12 +59,13 @@ const Page = () => {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
-      // console.log("Used Vouchers Response:", response.data);
+      console.log("Used Vouchers Response:", response.data);
       const usedVouchersData = Array.isArray(response.data.data)
         ? response.data.data
         : [];
+
       setUsedVouchers(usedVouchersData);
-      // console.log("Used Vouchers State Set:", usedVouchersData);
+      console.log("Used Vouchers State Set:", usedVouchersData);
     } catch (error) {
       console.error("Error fetching used vouchers:", error);
     }
@@ -161,7 +162,7 @@ const Page = () => {
                     })}
                     disabled={showUsed}
                   >
-                    <FontAwesomeIcon icon={faCopy} /> Copy
+                    {voucher.type == 1 ? "Copy" : "Đã đổi"}
                   </button>
                 </div>
               </div>

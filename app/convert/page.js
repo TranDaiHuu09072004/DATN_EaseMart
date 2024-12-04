@@ -3,6 +3,8 @@ import classNames from "classnames/bind";
 import styles from "./convert.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCopy, faHouse } from "@fortawesome/free-solid-svg-icons";
+import { ToastContainer, toast } from "react-toastify"; // Thêm import cho react-toastify
+import "react-toastify/dist/ReactToastify.css"; //
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -10,7 +12,7 @@ const cx = classNames.bind(styles);
 const Convert = () => {
   const [point, setPoints] = useState("");
   const [converts, setConverts] = useState([]);
-
+  const [usage_limit, SetUsage_limit] = useState("");
   useEffect(() => {
     FetchVoucherConvert();
   }, []);
@@ -52,7 +54,15 @@ const Convert = () => {
       );
 
       if (Array.isArray(response.data.data)) {
-        setConverts(response.data.data);
+        const updatedData = response.data.data.map((item) => {
+          const remainingUsage = item.usage_limit - (item.used_count || 0);
+          return {
+            ...item,
+            isConverted: false,
+            usage_limit: remainingUsage,
+          };
+        });
+        setConverts(updatedData);
       } else {
         console.error("Dữ liệu không phải là mảng:", response.data.data);
         setConverts([]);
@@ -65,8 +75,51 @@ const Convert = () => {
   const formatPrice = (price) => {
     return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
+
+  const handleConvert = async (voucher) => {
+    try {
+      const getUser = JSON.parse(localStorage.getItem("user"));
+      const token = getUser.token;
+      const customerId = getUser.customerId;
+
+      const response = await axios.post(
+        "https://trandainghia.id.vn/api/customer/voucher",
+        {
+          customer_id: customerId,
+          voucher_id: voucher.id,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      toast.success("Voucher đã được đổi thành công!", {
+        position: "top-right",
+        autoClose: 2000,
+      });
+
+      setTimeout(() => window.location.reload(), 1500);
+
+      const updatedConverts = converts.map((item) => {
+        if (item.id === voucher.id) {
+          return {
+            ...item,
+          };
+        }
+        return item;
+      });
+      setConverts(updatedConverts);
+    } catch (error) {
+      console.error("Lỗi khi lưu voucher:", error);
+      toast.error("Không đủ điều kiện để đổi voucher! Vui lòng thử lại");
+    }
+  };
   return (
     <div className="container">
+      <ToastContainer />
       <div className={cx("page-convert")}>
         <div
           className={cx(
@@ -156,7 +209,12 @@ const Convert = () => {
                   </div>
                   <div className={cx("voucher-item-bottom")}>
                     <h4>{convert.code}</h4>
-                    <button className={cx("button-copy")}>Đổi</button>
+                    <button
+                      className={cx("button-copy")}
+                      onClick={() => handleConvert(convert)}
+                    >
+                      đổi
+                    </button>
                   </div>
                 </div>
               ))}
