@@ -1,7 +1,0 @@
-{
-  "/lich-su-don-hang/page": "app/lich-su-don-hang/page.js",
-  "/chi-tiet-don-hang/[id]/page": "app/chi-tiet-don-hang/[id]/page.js",
-  "/thanh-toan/page": "app/thanh-toan/page.js",
-  "/cart/page": "app/cart/page.js",
-  "/page": "app/page.js"
-}
