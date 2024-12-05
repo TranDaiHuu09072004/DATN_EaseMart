@@ -14,15 +14,6 @@ export default function OTP() {
 
     const otpValue = otp.join("");
 
-    if (!email || !registerData) {
-      Swal.fire(
-        "Lỗi",
-        "Không tìm thấy thông tin cần thiết trong session",
-        "error"
-      );
-      return;
-    }
-
     if (!otpValue || otpValue.length !== 4) {
       Swal.fire("Lỗi", "Vui lòng nhập đúng OTP", "error");
       return;
@@ -117,7 +108,7 @@ export default function OTP() {
       <div className="OTP w-[500px] h-full bg-white mx-auto rounded-[10px] p-5 max-md:w-full">
         <div className="verify_email text-center">
           <h1 className="text-[25px] text-[#1B3038] font-semibold mt-5 mb-2">
-            Xác Minh Email
+            Xác Thực OTP Khi Đăng Ký Tài Khoản
           </h1>
           <span className="text-[#C1C1C1] text-[16px] font-bold">
             Chúng tôi đã gửi mã OTP đến email của bạn

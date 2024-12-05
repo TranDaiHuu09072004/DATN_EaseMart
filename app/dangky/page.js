@@ -12,6 +12,7 @@ import { toast } from "react-toastify";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useState } from "react";
 import CryptoJS from "crypto-js";
+import Swal from "sweetalert2";
 
 export default function DangKy() {
   const [showPassword, setShowPassword] = useState(false);
@@ -39,39 +40,51 @@ export default function DangKy() {
   const onSubmit = async (data) => {
     console.log("Submitting data:", data);
 
-    // Hash the password before storing
     const hashedPassword = CryptoJS.SHA256(data.password).toString();
     const dataToStore = { ...data, password: hashedPassword };
+    const responseCheckEmail = await axios.post(
+      "https://trandainghia.id.vn/api/check-email",
+      { email: data.email }
+    );
+    console.log(responseCheckEmail.data);
 
-    try {
-      // Gửi yêu cầu OTP
-      const otpResponse = await axios.post(
-        "https://trandainghia.id.vn/api/email/send-otp",
-        { email: data.email }
+    if (
+      responseCheckEmail.status === 200 &&
+      responseCheckEmail.data.registered === false
+    ) {
+      try {
+        // Gửi yêu cầu OTP
+        const otpResponse = await axios.post(
+          "https://trandainghia.id.vn/api/email/send-otp",
+          { email: data.email }
+        );
+        console.log("OTP Response:", otpResponse.data);
+        localStorage.setItem("registerData", JSON.stringify(dataToStore));
+        // Hiển thị thông báo thành công
+        toast.success("Mã OTP đã được gửi tới email của bạn!", {
+          position: "top-right",
+          autoClose: 2000,
+        });
+        // Chuyển hướng sang trang đăng nhập
+        setTimeout(() => {
+          window.location.href = "/otp-email";
+        }, 2000);
+      } catch (otpError) {
+        console.error(
+          "Gửi OTP thất bại:",
+          otpError.response ? otpError.response.data : otpError.message
+        );
+        toast.error("Không thể gửi mã OTP. Vui lòng thử lại!", {
+          position: "top-right",
+          autoClose: 2000,
+        });
+      }
+    } else if (responseCheckEmail.data.registered === true) {
+      Swal.fire(
+        "Thất bại",
+        "Email này đã tồn tại! Vui lòng đăng ký bằng Email khác",
+        "error"
       );
-
-      console.log("OTP Response:", otpResponse.data);
-      localStorage.setItem("registerData", JSON.stringify(dataToStore));
-
-      // Hiển thị thông báo thành công
-      toast.success("Mã OTP đã được gửi tới email của bạn!", {
-        position: "top-right",
-        autoClose: 2000,
-      });
-
-      // Chuyển hướng sang trang đăng nhập
-      setTimeout(() => {
-        window.location.href = "/otp-email";
-      }, 2000);
-    } catch (otpError) {
-      console.error(
-        "Gửi OTP thất bại:",
-        otpError.response ? otpError.response.data : otpError.message
-      );
-      toast.error("Không thể gửi mã OTP. Vui lòng thử lại!", {
-        position: "top-right",
-        autoClose: 2000,
-      });
     }
   };
 
