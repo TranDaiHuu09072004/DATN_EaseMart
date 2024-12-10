@@ -56,7 +56,6 @@ export default function OrderHistory() {
         }
       )
       .then((response) => {
-        console.log(response);
         console.log(response.data.orders);
 
         setOrder_Id(response.data.orders || []);

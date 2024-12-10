@@ -19,33 +19,42 @@ export default function ProductDetail({ params }) {
   const { state, dispatch } = useCart();
   const { stateYt, dispatchYt } = useYeuThich();
   const { id } = params; // lấy id từ params
-  const [product, setProduct] = useState(null);
+  const [products, setProduct] = useState(null);
   const [product_related, setProduct_Related] = useState(null);
   const [quantity, setQuantity] = useState(1);
+  const [selectedImage, setSelectedImage] = useState(
+    products?.images.image_path
+  );
   const formatPrice = (price) => {
+    if (price === undefined || price === null) {
+      return "0";
+    }
     return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
-
-  useEffect(() => {
-    fetchProducts("Product_Related").then((related) => {
-      setProduct_Related(related.slice(0, 5));
-    });
-  }, []);
 
   useEffect(() => {
     if (id) {
       fetchProductById(id).then((data) => {
         setProduct(data);
+        if (data.images && data.images.length > 0) {
+          setSelectedImage(data.images[0].image_path);
+        }
       });
     }
   }, [id]);
 
-  if (!product) return <p>Loading...</p>;
+  if (!products) return <p>Loading...</p>;
   const handleQuantityChange = (action) => {
     if (quantity <= 1 && action === "minus") return;
     const newQuatity = action === "plus" ? quantity + 1 : quantity - 1;
     setQuantity(newQuatity);
   };
+  // console.log(products);
+
+  products.images && products.images.length > 0
+    ? `https://trandainghia.id.vn/storage/upload/f436k9xwzo_xa_lach_xoong_baby.jpg`
+    : "Ảnh bị lỗi";
+
   return (
     <div className="md:max-w-screen-xl md:mx-auto px-4">
       <div
@@ -80,7 +89,7 @@ export default function ProductDetail({ params }) {
                 "sm:text-[12px]"
               )}
             >
-              {product.name}
+              {products.product.name}
             </a>
           </li>
         </ul>
@@ -95,19 +104,22 @@ export default function ProductDetail({ params }) {
           "max-md:p-4"
         )}
       >
-        <div className={cx("product_img_left")}>
+        <div className={cx("product_img_left", "mt-5")}>
           <img
-            src={`/${product.image}`}
-            alt={product.name}
-            className="w-full h-auto mx-auto"
+            src={`https://trandainghia.id.vn${selectedImage}`}
+            alt={products.name}
+            className=" w-full h-auto"
           />
           <div className={cx("img_small", "flex", "justify-center")}>
-            {[...Array(3)].map((_, index) => (
+            {products.images.map((image, index) => (
               <img
                 key={index}
-                src={`/${product.image}`}
-                alt={`${product.name} thumbnail ${index + 1}`}
-                className="w-[100px]"
+                src={`https://trandainghia.id.vn${image.image_path}`}
+                alt={`${products.name} thumbnail ${index + 1}`}
+                className="w-[100px] mt-2"
+                onClick={() => {
+                  setSelectedImage(image.image_path);
+                }}
               />
             ))}
           </div>
@@ -117,25 +129,28 @@ export default function ProductDetail({ params }) {
         <div
           className={cx(
             "product_content_right",
-            "p-5",
+            "px-5",
             "w-[60%]",
             "max-md:w-full"
           )}
         >
-          <h3 className={cx("product_name_detail")}>{product.name}</h3>
+          <h3 className={cx("product_name_detail")}>
+            {" "}
+            {products.product.name}
+          </h3>
 
           {/* Price Details */}
           <div className={cx("product_price")}>
             <div>
               <span className={cx("price_label")}>Giá niêm yết</span>
-              <span className={cx("price_original")}>
-                {formatPrice(product.price)}
+              <span className={cx("price_discount")}>
+                {formatPrice(products.product_units[0].price)}
               </span>
             </div>
             <div>
               <span className={cx("price_label")}>Giá khuyến mãi</span>
-              <span className={cx("price_discount")}>
-                {formatPrice(product.sale_price)}
+              <span className={cx("price_original")}>
+                {formatPrice(products.product_units[0].price_sale)}
               </span>
             </div>
             <div
@@ -167,11 +182,7 @@ export default function ProductDetail({ params }) {
             </div>
           </div>
 
-          <div className={cx("sku")}>
-            <span className={cx("name")}>Mã hàng</span>
-            <span className={cx("code_sku")}>{product.sku || "ESM12AB30"}</span>
-          </div>
-          <div className={cx("quantity")}>
+          <div className={cx("quantity", "mt-2")}>
             <span className={cx("name")}>Số lượng</span>
             <div className={cx("flex_quantity")}>
               <button
@@ -194,7 +205,7 @@ export default function ProductDetail({ params }) {
           <div className="btn_wishlistProduct my-[10px]">
             <button
               onClick={() => {
-                dispatchYt(new DispatchYt("ADD_ITEM_YEUTHICH", product));
+                dispatchYt(new DispatchYt("ADD_ITEM_YEUTHICH", products));
               }}
               className="border border-red-500 text-red-500 font-semibold text-[18px] w-[145px] h-[35px] rounded-[5px]"
             >
@@ -205,8 +216,8 @@ export default function ProductDetail({ params }) {
           <div className="flex_btn mt-3 max-md:flex max-md:flex-col max-md:gap-y-4">
             <button
               onClick={() => {
-                let data = product;
-                data.quantity = quantity;
+                let data = products;
+                data.products = quantity;
                 dispatch(new Dispatch("ADD_ITEM_CART", data));
               }}
               className={cx("btn_addCart", "font-semibold")}
@@ -231,8 +242,8 @@ export default function ProductDetail({ params }) {
                   });
                   return;
                 }
-                product.quantity = quantity;
-                localStorage.setItem("buy_now", JSON.stringify([product]));
+                products.quantity = quantity;
+                localStorage.setItem("buy_now", JSON.stringify([products]));
 
                 window.location.href = "/thanh-toan";
               }}
@@ -244,7 +255,7 @@ export default function ProductDetail({ params }) {
 
           <div className={cx("product_description")}>
             <h3>Mô tả</h3>
-            <p>{product.description || "Không có mô tả"}</p>
+            <p>{products.product.description || "Không có mô tả"}</p>
           </div>
         </div>
       </section>
@@ -264,16 +275,20 @@ export default function ProductDetail({ params }) {
             "max-md:p-1"
           )}
         >
-          {product_related.map((item) => (
+          {products.related_products.map((item) => (
             <li
-              key={item}
+              key={item.id}
               className={cx("item_productrelate", "h-auto", "justify-between")}
             >
               <Link href={`/chi-tiet-san-pham/${item.id}`} className={cx("a")}>
                 <img
-                  src={`/${item.image}`}
+                  src={
+                    `https://trandainghia.id.vn${item.image_path}` ||
+                    "path/to/default/image.jpg"
+                  }
                   alt={item.name}
                   className="h-full"
+                  onClick={() => setSelectedImage(item.image)}
                 />
               </Link>
               <h3 className={cx("name_productrelated")}>
@@ -285,7 +300,7 @@ export default function ProductDetail({ params }) {
                 </Link>
               </h3>
               <span className={cx("unitofmeasurement")}>
-                ĐVT: {item.unit_of_caculation}
+                ĐVT: {item.unit_name}
               </span>
               <h5
                 className={cx(
@@ -299,7 +314,7 @@ export default function ProductDetail({ params }) {
                 <div className={cx("flex-grow", "flex", "justify-end")}>
                   <Icon
                     onClick={() => {
-                      dispatchYt(new DispatchYt("ADD_ITEM_YEUTHICH", product));
+                      dispatchYt(new DispatchYt("ADD_ITEM_YEUTHICH", item));
                     }}
                     icon="mdi:heart-outline"
                     className="w-6 h-6 text-red-500"

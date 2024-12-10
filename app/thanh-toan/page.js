@@ -686,7 +686,7 @@ export default function Payment() {
                   onChange={(e) => setVoucherCode(e.target.value)}
                 />
                 <button
-                  className={cx("voucher_link", "px-3")}
+                  className={cx("voucher_link", "px-3", "max-sm:text-[12px]")}
                   onClick={applyVoucher}
                 >
                   Áp ngay

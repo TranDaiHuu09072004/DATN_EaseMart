@@ -22,7 +22,7 @@ export default function OTP() {
     try {
       // Gửi yêu cầu xác minh OTP
       const response = await axios.post(
-        "https://trandainghia.id.vn/api/email/verify-otp",
+        "https://trandainghia.id.vn/api/verify-otp",
         { email, otp: otpValue }
       );
 

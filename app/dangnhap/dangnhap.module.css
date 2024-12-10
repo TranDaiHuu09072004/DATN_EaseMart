@@ -111,6 +111,7 @@
 .googleBtn {
   background-color: #db4437;
   color: white;
+  margin-bottom:10px;
 }
 
 .socialLogin button:hover {
@@ -121,6 +122,7 @@
 .linkContainer a {
   color: #2ba84a;
   text-decoration: none;
+
 }
 
 .linkContainer a:hover {
