@@ -12,11 +12,47 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
+    "/convert/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/convert/page.css",
+      "static/chunks/app/convert/page.js"
+    ],
+    "/product/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/product/page.css",
+      "static/chunks/app/product/page.js"
+    ],
+    "/khuyenmai/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/khuyenmai/page.css",
+      "static/chunks/app/khuyenmai/page.js"
+    ],
     "/dangnhap/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/css/app/dangnhap/page.css",
       "static/chunks/app/dangnhap/page.js"
+    ],
+    "/chi-tiet-san-pham/[id]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/chi-tiet-san-pham/[id]/page.css",
+      "static/chunks/app/chi-tiet-san-pham/[id]/page.js"
+    ],
+    "/lich-su-don-hang/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/lich-su-don-hang/page.css",
+      "static/chunks/app/lich-su-don-hang/page.js"
+    ],
+    "/chi-tiet-don-hang/[id]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/chi-tiet-don-hang/[id]/page.css",
+      "static/chunks/app/chi-tiet-don-hang/[id]/page.js"
     ],
     "/cart/page": [
       "static/chunks/webpack.js",
