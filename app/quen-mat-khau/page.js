@@ -23,7 +23,7 @@ export default function ForgotPassword() {
         sessionStorage.setItem("email", email);
         Swal.fire(
           "Thành công",
-          "Email đã gửi vào hòm thư của bạn, vui lòng kiểm tra email",
+          "Mã OTP đã gửi vào hòm thư của bạn, vui lòng kiểm tra email",
           "success"
         ).then(() => {
           window.location.href = "/otp";
@@ -31,12 +31,16 @@ export default function ForgotPassword() {
       } else {
         Swal.fire(
           "Error",
-          response.data.message || "Failed to send email",
+          response.data.message || "Lỗi Khi Gửi Email",
           "error"
         );
       }
     } catch (error) {
-      Swal.fire("Error", "An error occurred", "error");
+      Swal.fire(
+        "Thất Bại",
+        "Email bạn chưa đăng ký hoặc không tồn tại",
+        "error"
+      );
     }
   };
 

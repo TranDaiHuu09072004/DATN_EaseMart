@@ -1,5 +1,5 @@
 import axios from "axios";
-const url = "http://localhost:3000";
+const url = "https://trandainghia.id.vn/api/products";
 
 export const getProByCate = async (idcate) => {
   // let id = toString(idcate);
@@ -37,21 +37,47 @@ export const getProByBrand = async (id) => {
   return respone.data;
 };
 
-export const fetchProducts = async (type) => {
+export const fetchProducts = async (category) => {
   try {
-    const response = await axios.get(
-      `http://localhost:3000/products?type=${type}`
-    );
-    return response.data;
+    const response = await axios.get(`https://trandainghia.id.vn/api/products`);
+    const products = response.data;
+
+    // Filter products based on the category
+    let filteredProducts;
+    switch (category) {
+      case "FlashSale":
+        filteredProducts = products.filter(
+          (product) =>
+            product.product_units[0]?.price_sale !== null &&
+            product.product_units[0]?.price !== null
+        );
+        break;
+      case "Product_Views":
+        filteredProducts = products.filter((product) => product.views > 0);
+        break;
+      case "Product_Popular":
+        filteredProducts = products.filter(
+          (product) =>
+            product.product_units[0]?.price !== null &&  product.product_units[0]?.price_sale == null && product.views == 0
+        );
+        break;
+      default:
+        filteredProducts = products;
+    }
+
+    return filteredProducts;
   } catch (error) {
     console.error("Error fetching products:", error);
+    return [];
   }
 };
 
 // Hàm này lấy sản phẩm theo ID
 export const fetchProductById = async (id) => {
   try {
-    const response = await axios.get(`http://localhost:3000/products/${id}`);
+    const response = await axios.get(
+      `https://trandainghia.id.vn/api/product/detail/${id}`
+    );
     return response.data;
   } catch (error) {
     console.error("Error fetching product by ID:", error);

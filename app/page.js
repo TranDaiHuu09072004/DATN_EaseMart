@@ -17,32 +17,94 @@ import {
   useYeuThich,
 } from "@/components/YTFunction/sanphamyeuthich";
 import axios from "axios";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
+
 const cx = classNames.bind(styles);
 
 export default function Home() {
   const targetDate = new Date("2024-12-31T00:00:00");
   const [productsPopular, setProductsPopular] = useState([]);
   const [productsFlashSale, setProductsFlashSale] = useState([]);
-  const [productsOutstanding, setProductsOutstanding] = useState([]);
+  const [products_Views, setProduct_Viewss] = useState([]);
   const [vouchers, setVouchers] = useState([]);
 
   useEffect(() => {
     fetchProducts("Product_Popular").then((popular) => {
-      setProductsPopular(popular.slice(0, 10));
+      const transformedData = popular.map((product) => ({
+        id: product.id,
+        name: product.name,
+        description: product.description,
+        status: product.status,
+        units: product.product_units.map((unit) => ({
+          unit_id: unit.unit_id,
+          unit_name: unit.unit.unit_name,
+          price: unit.price,
+          price_sale: unit.price_sale ? unit.price_sale : unit.price,
+          status: unit.status,
+        })),
+        primary_image: {
+          path: product.primary_image.image_path,
+          alt_text: product.primary_image.alt_text,
+          is_primary: product.primary_image.is_primakey,
+        },
+      }));
+      setProductsPopular(transformedData.slice(0, 10));
+      console.log("Popular Products:", popular.slice(0, 10));
     });
     fetchProducts("FlashSale").then((flashsale) => {
-      setProductsFlashSale(flashsale.slice(0, 10));
+      const transformedData = flashsale.map((product) => ({
+        id: product.id,
+        name: product.name,
+        description: product.description,
+        status: product.status,
+        units: product.product_units.map((unit) => ({
+          unit_id: unit.unit_id,
+          unit_name: unit.unit.unit_name,
+          price: unit.price,
+          price_sale: unit.price_sale ? unit.price_sale : unit.price,
+          status: unit.status,
+        })),
+        primary_image: {
+          path: product.primary_image.image_path,
+          alt_text: product.primary_image.alt_text,
+          is_primary: product.primary_image.is_primakey,
+        },
+      }));
+      setProductsFlashSale(transformedData.slice(0, 10));
+      console.log("Flash Sale Products:", flashsale.slice(0, 10));
     });
-    fetchProducts("Product_OutStanding").then((outstanding) => {
-      setProductsOutstanding(outstanding.slice(0, 10));
+    fetchProducts("Product_Views").then((productviews) => {
+      const transformedData = productviews.map((product) => ({
+        id: product.id,
+        name: product.name,
+        description: product.description,
+        status: product.status,
+        units: product.product_units.map((unit) => ({
+          unit_id: unit.unit_id,
+          unit_name: unit.unit.unit_name,
+          price: unit.price,
+          price_sale: unit.price_sale ? unit.price_sale : unit.price,
+          status: unit.status,
+        })),
+        primary_image: {
+          path: product.primary_image.image_path,
+          alt_text: product.primary_image.alt_text,
+          is_primary: product.primary_image.is_primakey,
+        },
+      }));
+      setProduct_Viewss(transformedData.slice(0, 10));
+      console.log("Viewed Products:", productviews.slice(0, 10));
     });
   }, []);
 
   useEffect(() => {
-    FetchVoucher(); // Gọi hàm một lần
+    FetchVoucher();
   }, []);
+
   const formatPrice = (price) => {
+    if (price === undefined || price === null) {
+      return "0";
+    }
     return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
 
@@ -62,12 +124,6 @@ export default function Home() {
     } catch (error) {
       console.error("Lỗi khi lấy voucher:", error);
     }
-  };
-
-  const handleCopy = (code) => {
-    navigator.clipboard.writeText(code).catch((err) => {
-      console.error("Lỗi khi sao chép:", err);
-    });
   };
 
   const handleSaveVoucher = async (voucher) => {
@@ -90,7 +146,10 @@ export default function Home() {
         }
       );
       console.log("Voucher saved:", response.data);
-      toast.success("Voucher đã được lưu thành công!");
+      toast.success("Voucher đã được lưu thành công!", {
+        position: "top-right",
+        autoClose: 1000,
+      });
     } catch (error) {
       console.error("Lỗi khi lưu voucher:", error);
       toast.error("Voucher đã được lưu!");
@@ -101,7 +160,6 @@ export default function Home() {
     <>
       <Banner />
       <div className={cx("max-w-screen-xl", "mx-auto", "p-4")}>
-        {/* Voucher section */}
         <div
           className={cx(
             "list-voucher",
@@ -145,14 +203,6 @@ export default function Home() {
                 <h4>{voucher.code}</h4>
                 <div className="">
                   <button
-                    onClick={() => {
-                      handleCopy(voucher.code);
-                    }}
-                    className={cx("button-copy")}
-                  >
-                    <FontAwesomeIcon icon={faCopy} /> Copy
-                  </button>
-                  <button
                     onClick={() => handleSaveVoucher(voucher)}
                     className="btn_Save border border-[#1ea3e8] rounded-[10px] px-2 py-2 ml-2 hover:bg-[#267edc] hover:text-white"
                   >
@@ -175,8 +225,8 @@ export default function Home() {
 
         {/* Outstanding Products section */}
         <div className={cx("max-w-screen-xl", "mx-auto", "gap")}>
-          <div className={cx("title")}>Sản phẩm nổi bật</div>
-          <ProductList products={productsOutstanding} />
+          <div className={cx("title")}>Sản phẩm nhiều người xem</div>
+          <ProductList products={products_Views} />
         </div>
 
         {/* Popular Products section */}
@@ -190,86 +240,111 @@ export default function Home() {
 }
 
 const ProductList = ({ products }) => {
+  const baseUrl = "https://trandainghia.id.vn";
   const { state, dispatch } = useCart();
   const { stateYt, dispatchYt } = useYeuThich();
   const formatPrice = (price) => {
+    if (price === undefined || price === null) {
+      return "0";
+    }
     return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
   const cx = classNames.bind(styles);
   return (
     <div className={cx("box-list-product", "flex", "justify-center")}>
       <div className={cx("list-product", "w-fit", "flex", "justify-stretch")}>
-        {products.map((product) => (
-          <div
-            className={cx(
-              "flex",
-              "flex-col",
-              "lg:basis-1/5",
-              "md:basis-1/3",
-              "xs:basis-1/2",
-              "basis-full",
-              "p-1"
-            )}
-            key={product.id}
-          >
-            <div className="w-full h-full">
-              <div className={cx("product-item")}>
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className={cx("product-image", "h-auto", "object-cover")}
-                />
-                <Link
-                  href={`/chi-tiet-san-pham/${product.id}`}
-                  className={cx("content-product")}
-                >
-                  <h3>{product.name}</h3>
-                </Link>
-                <div className={cx("unit")}>
-                  ĐVT: <span>{product.unit_of_caculation}</span>
+        {products.map((product) => {
+          // Construct full image URL
+          const imageUrl = product.primary_image
+            ? `${baseUrl}${product.primary_image.path}`
+            : "Ảnh bị lỗi"; // Fallback image
+
+          // Access the first product unit to get price and price_sale
+          const productUnit = product.units[0];
+          const priceSale = productUnit ? productUnit.price_sale : null;
+          const originalPrice = productUnit ? productUnit.price : 0;
+          const unitProduct = productUnit.unit;
+          const unit = unitProduct ? unitProduct.unit_name : "0 có đơn vị";
+          return (
+            <div
+              className={cx(
+                "flex",
+                "flex-col",
+                "lg:basis-1/5",
+                "md:basis-1/3",
+                "xs:basis-1/2",
+                "basis-full",
+                "p-1"
+              )}
+              key={product.id}
+            >
+              <div className="w-full h-full">
+                <div className={cx("product-item")}>
+                  <img
+                    src={imageUrl}
+                    alt={product.name || "Product Image"}
+                    className={cx("product-image", "h-auto", "object-cover")}
+                  />
+                  <Link
+                    href={`/chi-tiet-san-pham/${product.id}`}
+                    className={cx("content-product")}
+                  >
+                    <h3>{product.name}</h3>
+                  </Link>
+                  <div className={cx("unit")}>
+                    ĐVT: <span>{unit}</span>
+                  </div>
+                  <div className={cx("price")}>
+                    {priceSale !== null ? (
+                      <>
+                        <div className={cx("original-price")}>
+                          {formatPrice(priceSale)}
+                        </div>
+                        <div className={cx("price-reduction")}>
+                          {formatPrice(originalPrice)}
+                        </div>
+                      </>
+                    ) : (
+                      <div className={cx("original-price")}>
+                        {formatPrice(originalPrice)}
+                      </div>
+                    )}
+                    <div className={cx("flex-grow", "flex", "justify-end")}>
+                      <Icon
+                        onClick={() => {
+                          dispatchYt(
+                            new DispatchYt("ADD_ITEM_YEUTHICH", product)
+                          );
+                        }}
+                        icon="mdi:heart-outline"
+                        className="w-6 h-6 text-red-500"
+                      />
+                    </div>
+                  </div>
+                  <button
+                    className={cx(
+                      "btn",
+                      "addtocart",
+                      "flex",
+                      "justify-center",
+                      "max-h-full",
+                      "items-center"
+                    )}
+                    onClick={() => {
+                      product.quantity = 1;
+                      dispatch(new Dispatch("ADD_ITEM_CART", product));
+                    }}
+                  >
+                    <span className={cx("lg:block", "hidden")}>
+                      <FontAwesomeIcon icon={faCartShopping} />
+                    </span>
+                    Thêm giỏ hàng
+                  </button>
                 </div>
-                <div className={cx("price")}>
-                  <div className={cx("original-price")}>
-                    {formatPrice(product.sale_price)}
-                  </div>
-                  <div className={cx("price-reduction")}>
-                    {formatPrice(product.price)}
-                  </div>
-                  <div className={cx("flex-grow", "flex", "justify-end")}>
-                    <Icon
-                      onClick={() => {
-                        dispatchYt(
-                          new DispatchYt("ADD_ITEM_YEUTHICH", product)
-                        );
-                      }}
-                      icon="mdi:heart-outline"
-                      className="w-6 h-6 text-red-500"
-                    />
-                  </div>
-                </div>
-                <button
-                  className={cx(
-                    "btn",
-                    "addtocart",
-                    "flex",
-                    "justify-center",
-                    "max-h-full",
-                    "items-center"
-                  )}
-                  onClick={() => {
-                    product.quantity = 1;
-                    dispatch(new Dispatch("ADD_ITEM_CART", product));
-                  }}
-                >
-                  <span className={cx("lg:block", "hidden")}>
-                    <FontAwesomeIcon icon={faCartShopping} />
-                  </span>
-                  Thêm giỏ hàng
-                </button>
               </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );

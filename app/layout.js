@@ -1,7 +1,9 @@
 "use client";
 import { usePathname } from "next/navigation";
+import { useState, useEffect } from "react";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
+import Loading from "@/components/Loading/Loading";
 import { Roboto } from "next/font/google";
 import "public/css/list_category.globals.css";
 import "public/css/CardFlashSale.globals.css";
@@ -14,6 +16,7 @@ import "app/globals.css";
 import { CartFunction } from "@/components/CartFunction";
 import "react-toastify/dist/ReactToastify.css";
 import { YeuThichFunction } from "@/components/YTFunction/sanphamyeuthich";
+
 const roboto = Roboto({
   weight: ["400", "700"],
   subsets: ["latin"],
@@ -21,9 +24,16 @@ const roboto = Roboto({
 
 export default function RootLayout({ children }) {
   const pathname = usePathname(); // Lấy đường dẫn hiện tại
+  const [loading, setLoading] = useState(false);
 
   // Kiểm tra nếu là trang đăng ký hoặc đăng nhập
   const hideHeaderFooter = pathname === "/dangky" || pathname === "/dangnhap";
+
+  useEffect(() => {
+    setLoading(true);
+    const timer = setTimeout(() => setLoading(false), 1500);
+    return () => clearTimeout(timer);
+  }, [pathname]);
 
   return (
     <html lang="en">
@@ -35,6 +45,7 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body className={roboto.className}>
+        <Loading loading={loading} />
         <CartFunction>
           <YeuThichFunction>
             {!hideHeaderFooter && <Header />}

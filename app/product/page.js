@@ -100,16 +100,16 @@ const Product = () => {
 
   // list product theo cate
   useEffect(() => {
-    console.log(cateChoose);
     if (Object.keys(cateChoose).length == 0) return;
     console.log(cateChoose);
+
     getProByCate(cateChoose.id).then((data) => {
       console.log(data);
 
       setBrandChooseCheck(false);
       data.products.forEach((element) => {
         if (!element.units[0].price_sale)
-          element.units[0].price_sale = element.units.price;
+          element.units[0].price_sale = element.units[0].price;
       });
       setProduct(data.products);
       getCateChild(cateChoose.id).then((data) => {
@@ -134,7 +134,7 @@ const Product = () => {
     getProByBrand(brandChoose.id).then((data) => {
       data.products.forEach((element) => {
         if (!element.units[0].price_sale)
-          element.units[0].price_sale = element.units.price;
+          element.units[0].price_sale = element.units[0].price;
       });
       setProduct(data.products);
     });
