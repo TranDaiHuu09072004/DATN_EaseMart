@@ -3,9 +3,6 @@ import classNames from "classnames/bind";
 import styles from "../home.module.scss";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCopy } from "@fortawesome/free-regular-svg-icons";
-
 const cx = classNames.bind(styles);
 
 const Page = () => {
@@ -117,60 +114,76 @@ const Page = () => {
           "mt-5"
         )}
       >
-        {(showUsed ? usedVouchers : vouchers).map((voucher, index) => (
-          <div
-            className={cx("voucher-item", {
-              "opacity-50 cursor-not-allowed": showUsed,
-            })}
-            key={index}
-          >
-            <div className={cx("voucher-item-top")}>
-              <div className={cx("info-left")}>
-                <p
+        {(showUsed ? usedVouchers : vouchers).length === 0 ? (
+          <div className="mx-auto my-5">
+            <img
+              src="/assets/chua_voucher/image.png"
+              alt=""
+              className="w-[140px] h-[140px] mx-auto"
+            />
+            <h4 className="text-center  text-gray-900">
+              Bạn chưa có Voucher nào!
+            </h4>
+            <h6 className="text-center text-[#a9a8a8] ">
+              Tìm thêm voucher để sử dụng nhé!
+            </h6>
+          </div>
+        ) : (
+          (showUsed ? usedVouchers : vouchers).map((voucher, index) => (
+            <div
+              className={cx("voucher-item", {
+                "opacity-50 cursor-not-allowed": showUsed,
+              })}
+              key={index}
+            >
+              <div className={cx("voucher-item-top")}>
+                <div className={cx("info-left")}>
+                  <p
+                    className={cx(
+                      "max-h-[150px]",
+                      "overflow-hidden",
+                      "text-ellipsis",
+                      "line-clamp-3",
+                      "text-[16px]"
+                    )}
+                  >
+                    {voucher.description}
+                  </p>
+                </div>
+                <div
                   className={cx(
+                    "info-right",
                     "max-h-[150px]",
                     "overflow-hidden",
                     "text-ellipsis",
                     "line-clamp-3",
-                    "text-[16px]"
+                    "text-[20px]"
                   )}
                 >
-                  {voucher.description}
-                </p>
+                  Giảm {formatPrice(voucher.discount_value)}đ
+                </div>
               </div>
               <div
-                className={cx(
-                  "info-right",
-                  "max-h-[150px]",
-                  "overflow-hidden",
-                  "text-ellipsis",
-                  "line-clamp-3",
-                  "text-[20px]"
-                )}
+                className={cx("voucher-item-bottom", "flex", "justify-between")}
               >
-                Giảm {formatPrice(voucher.discount_value)}đ
+                <h4>{voucher.code}</h4>
+                <div className="">
+                  <button
+                    onClick={() => {
+                      handleCopy(voucher.code);
+                    }}
+                    className={cx("button-copy", {
+                      "cursor-not-allowed": showUsed,
+                    })}
+                    disabled={showUsed}
+                  >
+                    {voucher.type == 1 ? "Copy" : "Đã đổi"}
+                  </button>
+                </div>
               </div>
             </div>
-            <div
-              className={cx("voucher-item-bottom", "flex", "justify-between")}
-            >
-              <h4>{voucher.code}</h4>
-              <div className="">
-                <button
-                  onClick={() => {
-                    handleCopy(voucher.code);
-                  }}
-                  className={cx("button-copy", {
-                    "cursor-not-allowed": showUsed,
-                  })}
-                  disabled={showUsed}
-                >
-                  {voucher.type == 1 ? "Copy" : "Đã đổi"}
-                </button>
-              </div>
-            </div>
-          </div>
-        ))}
+          ))
+        )}
       </div>
     </div>
   );

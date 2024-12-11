@@ -23,6 +23,7 @@ import {
   DispatchYt,
   useYeuThich,
 } from "@/components/YTFunction/sanphamyeuthich";
+import Loading from "@/components/Loading/Loading";
 
 const cx = classNames.bind(styles);
 
@@ -292,7 +293,13 @@ const Product = () => {
               )}
 
               {/* Product List */}
-              <Suspense fallback={<div>Loading products...</div>}>
+              <Suspense
+                fallback={
+                  <div>
+                    <Loading />
+                  </div>
+                }
+              >
                 <div className={cx("product-list")}>
                   {(isSearching ? resultfilterProduct : product).map((item) => (
                     <div

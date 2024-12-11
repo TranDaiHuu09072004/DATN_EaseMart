@@ -5,9 +5,9 @@ import Banner from "../components/Banner/Banner";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCopy } from "@fortawesome/free-regular-svg-icons";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
-import Countdown from "../components/CountDown/CountDown";
 import { useState, useEffect } from "react";
 import { fetchProducts } from "@/service/product";
+import { fetchProductByView } from "@/service/product";
 import Link from "next/link";
 import { Dispatch, useCart } from "../components/CartFunction";
 import { usePathname } from "next/navigation";
@@ -22,7 +22,6 @@ import { toast, ToastContainer } from "react-toastify";
 const cx = classNames.bind(styles);
 
 export default function Home() {
-  const targetDate = new Date("2024-12-31T00:00:00");
   const [productsPopular, setProductsPopular] = useState([]);
   const [productsFlashSale, setProductsFlashSale] = useState([]);
   const [products_Views, setProduct_Viewss] = useState([]);
@@ -37,7 +36,7 @@ export default function Home() {
       setProductsFlashSale(flashsale.slice(0, 10));
       console.log("Flash Sale Products:", flashsale.slice(0, 10));
     });
-    fetchProducts("Product_Views").then((productviews) => {
+    fetchProductByView().then((productviews) => {
       setProduct_Viewss(productviews.slice(0, 10));
       console.log("Viewed Products:", productviews.slice(0, 10));
     });
@@ -164,7 +163,6 @@ export default function Home() {
         <div className={cx("max-w-screen-xl", "mx-auto", "gap")}>
           <div className={cx("flash-sale")}>
             <h4>Flash Sale - Giá Sốc</h4>
-            <Countdown targetDate={targetDate} />
           </div>
           <ProductList products={productsFlashSale} />
         </div>
@@ -226,11 +224,20 @@ const ProductList = ({ products }) => {
             >
               <div className="w-full h-full">
                 <div className={cx("product-item")}>
-                  <img
-                    src={imageUrl}
-                    alt={product.name || "Product Image"}
-                    className={cx("product-image", "h-auto", "object-cover")}
-                  />
+                  <Link
+                    href={`/chi-tiet-san-pham/${product.id}`}
+                    className={cx("content-product")}
+                  >
+                    <img
+                      src={imageUrl}
+                      alt={product.name || "Product Image"}
+                      className={cx(
+                        "product-image",
+                        "h-[151.2px]",
+                        "object-cover"
+                      )}
+                    />
+                  </Link>
                   <Link
                     href={`/chi-tiet-san-pham/${product.id}`}
                     className={cx("content-product")}

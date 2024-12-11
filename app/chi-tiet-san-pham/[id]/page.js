@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import styles from "../productdetail.module.css";
 import { fetchProductById } from "@/service/product";
+import Loading from "@/components/Loading/Loading";
 import { fetchProducts } from "@/service/product";
 import { useCart, CartFunction, Dispatch } from "@/components/CartFunction";
 import {
@@ -13,6 +14,7 @@ import {
 } from "@/components/YTFunction/sanphamyeuthich";
 import Swal from "sweetalert2";
 import { Icon } from "@iconify/react";
+import { format } from "date-fns";
 const cx = classNames.bind(styles);
 
 export default function ProductDetail({ params }) {
@@ -25,6 +27,7 @@ export default function ProductDetail({ params }) {
   const [selectedImage, setSelectedImage] = useState(
     products?.images.image_path
   );
+  const [comments, setComments] = useState([]);
   const formatPrice = (price) => {
     if (price === undefined || price === null) {
       return "0";
@@ -40,10 +43,26 @@ export default function ProductDetail({ params }) {
           setSelectedImage(data.images[0].image_path);
         }
       });
+
+      // Fetch comments
+      fetch("https://trandainghia.id.vn/api/comments-list")
+        .then((response) => response.json())
+        .then((data) => {
+          // Filter comments for the current product
+          const productComments = Object.values(data).filter((comment) =>
+            comment.comments.some((c) => c.product_id === id)
+          );
+          setComments(productComments);
+        });
     }
   }, [id]);
 
-  if (!products) return <p>Loading...</p>;
+  if (!products)
+    return (
+      <p>
+        <Loading />
+      </p>
+    );
   const handleQuantityChange = (action) => {
     if (quantity <= 1 && action === "minus") return;
     const newQuatity = action === "plus" ? quantity + 1 : quantity - 1;
@@ -54,6 +73,12 @@ export default function ProductDetail({ params }) {
   products.images && products.images.length > 0
     ? `https://trandainghia.id.vn/storage/upload/f436k9xwzo_xa_lach_xoong_baby.jpg`
     : "Ảnh bị lỗi";
+
+  // Function to format the date
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return format(date, "dd/MM/yyyy HH:mm");
+  };
 
   return (
     <div className="md:max-w-screen-xl md:mx-auto px-4">
@@ -139,7 +164,6 @@ export default function ProductDetail({ params }) {
             {products.product.name}
           </h3>
 
-          {/* Price Details */}
           <div className={cx("product_price")}>
             <div>
               <span className={cx("price_label")}>Giá niêm yết</span>
@@ -287,7 +311,7 @@ export default function ProductDetail({ params }) {
                     "path/to/default/image.jpg"
                   }
                   alt={item.name}
-                  className="h-full"
+                  className="h-[151.2px] w-[201.6px]"
                   onClick={() => setSelectedImage(item.image)}
                 />
               </Link>
@@ -338,47 +362,43 @@ export default function ProductDetail({ params }) {
       </section>
       <h3 className={cx("comment-product", "mt-5")}>Bình luận về sản phẩm</h3>
       <div className={cx("comment-section")}>
-        {/* Comment Input Box */}
-        <div className={cx("comment-box")}>
-          <div className={cx("user-input")}>
-            <div className={cx("user-avatar")}>
-              <i className="fa-solid fa-circle-user"></i>
-            </div>
-            <div className={cx("comment-input")}>
-              <textarea
-                placeholder="Viết bình luận..."
-                className="p-2"
-              ></textarea>
-              <div className={cx("star-rating")}>
-                {[...Array(5)].map((_, idx) => (
-                  <span key={idx}>&#9733;</span>
+        {comments.length === 0 ? (
+          <p className="py-5">Sản phẩm này chưa có bình luận nào!</p>
+        ) : (
+          comments.map((comment, idx) => (
+            <div key={idx} className={cx("comment-item")}>
+              <div className={cx("comment-content")}>
+                {comment.comments.map((singleComment, idx) => (
+                  <div key={idx} className="border-bottom ">
+                    <div className={cx("user-avatar", "flex", "gap-x-1")}>
+                      <i className="fa-solid fa-circle-user"></i>
+                      <div className="">
+                        <div className="flex-col gap-4">
+                          <p className="text-[14px]">{comment.customer.name}</p>
+                          <div className={cx("star-rating")}>
+                            {[...Array(parseInt(singleComment.rating))].map(
+                              (_, i) => (
+                                <span key={i}>★</span> // Filled star
+                              )
+                            )}
+                          </div>
+                          <p className={cx("comment-time", "text-[#939393]")}>
+                            Thời gian đăng:{" "}
+                            {formatDate(singleComment.created_at)}
+                          </p>
+                        </div>
+                        <h4 className="text-[14px] font-medium text-[#696969] leading-5">
+                          {" "}
+                          {singleComment.content}
+                        </h4>
+                      </div>
+                    </div>
+                  </div>
                 ))}
               </div>
             </div>
-          </div>
-        </div>
-
-        {/* Comment List */}
-        <div className={cx("comment-list")}>
-          {[...Array(2)].map((_, idx) => (
-            <div key={idx} className={cx("comment-item")}>
-              <div className={cx("user-avatar")}>
-                <i className="fa-solid fa-circle-user"></i>
-              </div>
-              <div className={cx("comment-content")}>
-                <p>Người dùng A: ...</p>
-                <div className={cx("star-rating")}>
-                  <span>&#9733;</span>
-                  <span>&#9733;</span>
-                  <span>&#9733;</span>
-                  <span>&#9733;</span>
-                  <span>&#9734;</span>
-                </div>
-                <span className={cx("comment-time")}>Thời gian đăng</span>
-              </div>
-            </div>
-          ))}
-        </div>
+          ))
+        )}
       </div>
     </div>
   );

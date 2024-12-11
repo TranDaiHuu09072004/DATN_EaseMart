@@ -38,13 +38,12 @@ export const fetchProducts = async (category) => {
             product.product_units[0]?.price !== null
         );
         break;
-      case "Product_Views":
-        filteredProducts = products.filter((product) => product.views > 0);
-        break;
       case "Product_Popular":
         filteredProducts = products.filter(
           (product) =>
-            product.product_units[0]?.price !== null &&  product.product_units[0]?.price_sale == null && product.views == 0
+            product.product_units[0]?.price !== null &&
+            product.product_units[0]?.price_sale == null &&
+            product.views == 0
         );
         break;
       default:
@@ -63,6 +62,18 @@ export const fetchProductById = async (id) => {
   try {
     const response = await axios.get(
       `https://trandainghia.id.vn/api/product/detail/${id}`
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching product by ID:", error);
+    return null;
+  }
+};
+
+export const fetchProductByView = async () => {
+  try {
+    const response = await axios.get(
+      "https://trandainghia.id.vn/api/products-top-10-view"
     );
     return response.data;
   } catch (error) {

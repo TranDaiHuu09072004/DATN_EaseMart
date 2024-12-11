@@ -6,12 +6,15 @@ import axios from "axios";
 
 export default function ForgotPassword() {
   const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleContinue = async () => {
     if (!email) {
       Swal.fire("Lỗi", "Vui lòng kiểm tra email của bạn", "error");
       return;
     }
+
+    setLoading(true);
 
     try {
       const response = await axios.post(
@@ -41,6 +44,8 @@ export default function ForgotPassword() {
         "Email bạn chưa đăng ký hoặc không tồn tại",
         "error"
       );
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -68,8 +73,9 @@ export default function ForgotPassword() {
         <button
           className="btn_continue w-full bg-[#3bb77e] h-[45px] text-white rounded-[5px] mt-5"
           onClick={handleContinue}
+          disabled={loading}
         >
-          Tiếp tục
+          {loading ? "Đang tải..." : "Tiếp tục"}
         </button>
         <div className="content_verify flex justify-center gap-3 my-3">
           <h5 className="text-[#9E9D9D]">Hoặc</h5>{" "}
