@@ -113,6 +113,7 @@ export default function Payment() {
         voucher_id: voucherId,
         token: user.token,
       };
+
       PostOrder(data)
         .then((data) => {
           console.log(data);

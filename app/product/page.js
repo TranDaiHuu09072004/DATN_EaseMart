@@ -224,10 +224,13 @@ const Product = () => {
     setIsDropdownOpen(false);
 
     const sortedProducts = [...product].sort((a, b) => {
+      const priceA = a.units[0].price_sale || a.units[0].price;
+      const priceB = b.units[0].price_sale || b.units[0].price;
+
       if (order === "asc") {
-        return a.sale_price - b.sale_price;
+        return priceA - priceB;
       } else if (order === "desc") {
-        return b.sale_price - a.sale_price;
+        return priceB - priceA;
       }
       return 0;
     });

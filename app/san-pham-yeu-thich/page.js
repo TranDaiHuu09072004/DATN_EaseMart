@@ -56,11 +56,11 @@ export default function Wishlist() {
             <div className="product_list grid grid-cols-4 max-lg:grid-cols-3 max-md:grid-cols-2 mt-[15px] gap-4 mx-auto">
               {listShowByPage.map((item) => {
                 return (
-                  <div className="item_product flex flex-col w-full h-full gap-4 border-2 border-solid p-5 border-[#eeeeee] shadow-md relative">
+                  <div className="item_product flex flex-col w-[256px] h-full gap-4 border-2 border-solid p-5 border-[#eeeeee] shadow-md relative rounded-[7px]">
                     <img
                       src={`https://trandainghia.id.vn/${item.primary_image.path}`}
                       alt=""
-                      className="w-full h-auto object-cover "
+                      className="h-[151.2px] w-[201.6px] object-cover mt-5"
                     />
                     <i
                       onClick={() => {

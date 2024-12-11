@@ -261,8 +261,7 @@ const ProductList = ({ products }) => {
           const productUnit = product.units[0];
           const priceSale = productUnit ? productUnit.price_sale : null;
           const originalPrice = productUnit ? productUnit.price : 0;
-          const unitProduct = productUnit.unit;
-          const unit = unitProduct ? unitProduct.unit_name : "0 có đơn vị";
+          const unit = productUnit ? productUnit.unit_name : "0 có đơn vị";
           return (
             <div
               className={cx(

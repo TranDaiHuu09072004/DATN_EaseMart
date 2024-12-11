@@ -47,6 +47,7 @@ const Chitietdonhang = ({ params }) => {
   }, []);
 
   console.log(checkStatusOrder);
+  console.log(orderDetail);
 
   return Object.keys(orderDetail).length === 0 ? (
     "...đang load dữ liệu"
@@ -276,6 +277,22 @@ const Chitietdonhang = ({ params }) => {
           </tr>
           <tr>
             <td className={cx("border", " border-gray-300 ", "px-4", " py-5")}>
+              Mã giảm giá:
+            </td>
+            <td
+              className={cx(
+                "border",
+                " border-gray-300 ",
+                "px-4",
+                " py-5",
+                "hightlight"
+              )}
+            >
+              #1234567
+            </td>
+          </tr>
+          <tr>
+            <td className={cx("border", " border-gray-300 ", "px-4", " py-5")}>
               Trang thái đơn hàng:
             </td>
             <td
@@ -324,55 +341,7 @@ const Chitietdonhang = ({ params }) => {
       </table>
 
       <div className={cx("flex", "flex-wrap")}>
-        <div className={cx("basis-full", "lg:basis-1/2", "", "p-2")}>
-          <div className={cx("border-gray-200", "rounded-lg", "p-4", "w-full")}>
-            <div
-              className={cx(
-                "info-container",
-                "font-bold",
-                "bg-gray-100",
-                "py-2",
-                "px-4",
-                "border-b",
-                "border-gray-200"
-              )}
-            >
-              Địa chỉ thanh toán
-            </div>
-            <div
-              className={cx(
-                "info-container",
-                "py-4",
-                "px-4",
-                "flex",
-                "flex-col",
-                "gap-5"
-              )}
-            >
-              <p className="font-semibold">{orderDetail?.customer?.name}</p>
-              <p>
-                {orderDetail?.customer?.address?.[0]
-                  ? orderDetail?.customer?.address?.[0]
-                  : null}
-              </p>
-              <p>
-                {orderDetail?.customer?.address?.[1]
-                  ? orderDetail?.customer?.address?.[1]
-                  : null}
-              </p>
-              <p className="text-green-500">
-                {orderDetail?.customer?.shipping_address?.[2]
-                  ? orderDetail?.customer?.shipping_address?.[2]
-                  : null}
-              </p>
-              <p className="flex items-center ">
-                <Icon icon="solar:phone-broken" />
-                {orderDetail?.customer?.phone}
-              </p>
-            </div>
-          </div>
-        </div>
-        <div className={cx("basis-full", "lg:basis-1/2", "", "p-2")}>
+        <div className={cx("basis-full", "", "p-2")}>
           <div className={cx("border-gray-200", "rounded-lg", "p-4", "w-full")}>
             <div
               className={cx(
