@@ -29,15 +29,69 @@ export default function Home() {
 
   useEffect(() => {
     fetchProducts("Product_Popular").then((popular) => {
-      setProductsPopular(popular.slice(0, 10));
+      const transformedData = popular.map((product) => ({
+        id: product.id,
+        name: product.name,
+        description: product.description,
+        status: product.status,
+        units: product.product_units.map((unit) => ({
+          unit_id: unit.unit_id,
+          unit_name: unit.unit.unit_name,
+          price: unit.price,
+          price_sale: unit.price_sale ? unit.price_sale : unit.price,
+          status: unit.status,
+        })),
+        primary_image: {
+          path: product.primary_image.image_path,
+          alt_text: product.primary_image.alt_text,
+          is_primary: product.primary_image.is_primakey,
+        },
+      }));
+      setProductsPopular(transformedData.slice(0, 10));
       console.log("Popular Products:", popular.slice(0, 10));
     });
     fetchProducts("FlashSale").then((flashsale) => {
-      setProductsFlashSale(flashsale.slice(0, 10));
+      const transformedData = flashsale.map((product) => ({
+        id: product.id,
+        name: product.name,
+        description: product.description,
+        status: product.status,
+        units: product.product_units.map((unit) => ({
+          unit_id: unit.unit_id,
+          unit_name: unit.unit.unit_name,
+          price: unit.price,
+          price_sale: unit.price_sale ? unit.price_sale : unit.price,
+          status: unit.status,
+        })),
+        primary_image: {
+          path: product.primary_image.image_path,
+          alt_text: product.primary_image.alt_text,
+          is_primary: product.primary_image.is_primakey,
+        },
+      }));
+      setProductsFlashSale(transformedData.slice(0, 10));
       console.log("Flash Sale Products:", flashsale.slice(0, 10));
     });
-    fetchProductByView().then((productviews) => {
-      setProduct_Viewss(productviews.slice(0, 10));
+    fetchProductByView("Product_Views").then((productviews) => {
+      const transformedData = productviews.map((product) => ({
+        id: product.id,
+        name: product.name,
+        description: product.description,
+        status: product.status,
+        units: product.product_units.map((unit) => ({
+          unit_id: unit.unit_id,
+          unit_name: unit.unit.unit_name,
+          price: unit.price,
+          price_sale: unit.price_sale ? unit.price_sale : unit.price,
+          status: unit.status,
+        })),
+        primary_image: {
+          path: product.primary_image.image_path,
+          alt_text: product.primary_image.alt_text,
+          is_primary: product.primary_image.is_primakey,
+        },
+      }));
+      setProduct_Viewss(transformedData.slice(0, 10));
       console.log("Viewed Products:", productviews.slice(0, 10));
     });
   }, []);
@@ -200,11 +254,11 @@ const ProductList = ({ products }) => {
         {products.map((product) => {
           // Construct full image URL
           const imageUrl = product.primary_image
-            ? `${baseUrl}${product.primary_image.image_path}`
+            ? `${baseUrl}${product.primary_image.path}`
             : "Ảnh bị lỗi"; // Fallback image
 
           // Access the first product unit to get price and price_sale
-          const productUnit = product.product_units[0];
+          const productUnit = product.units[0];
           const priceSale = productUnit ? productUnit.price_sale : null;
           const originalPrice = productUnit ? productUnit.price : 0;
           const unitProduct = productUnit.unit;

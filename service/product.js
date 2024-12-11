@@ -1,26 +1,40 @@
 import axios from "axios";
 const url = "https://trandainghia.id.vn/api/products";
 
-export const getProByCate = async (category_id, idcate) => {
-  const respone = await axios.get(`${url}/products?${category_id}=${idcate}`);
-  const filteredData = respone.data.filter(
-    (product) => product.type === undefined
-  );
-  console.log(filteredData);
+export const getProByCate = async (idcate) => {
+  // let id = toString(idcate);
+  console.log(idcate);
 
-  return filteredData;
+  console.log(idcate);
+  const respone = await axios.get(
+    `https://trandainghia.id.vn/api/products-by-parent/${idcate}`
+  );
+  console.log("respone.data", respone.data);
+
+  return respone.data;
 };
 
-export const getProBy2Cate = async (category1, category2) => {
-  const respone = await axios.get(
-    `${url}/products?${category1.name}=${category1.id}&${category2.name}=${category2.id}`
-  );
-  const filteredData = respone.data.filter(
-    (product) => product.type === undefined
-  );
-  console.log(filteredData);
+export const getProBySubCate = async (category1) => {
+  if (!category1) {
+    category1 = 1;
+  }
 
-  return filteredData;
+  const respone = await axios.get(
+    `https://trandainghia.id.vn/api/products-by-categories/${category1}`
+  );
+
+  return respone.data;
+};
+
+export const getProByBrand = async (id) => {
+  console.log(id);
+
+  const respone = await axios.get(
+    `https://trandainghia.id.vn/api/products-by-brand/${id}`
+  );
+  console.log(respone.data);
+
+  return respone.data;
 };
 
 export const fetchProducts = async (category) => {
@@ -79,5 +93,21 @@ export const fetchProductByView = async () => {
   } catch (error) {
     console.error("Error fetching product by ID:", error);
     return null;
+  }
+};
+// Hàm lấy sp theo khoản giá
+export const fetchProductsByMinMax = async (data) => {
+  console.log(data);
+
+  try {
+    const response = await axios.post(
+      `https://trandainghia.id.vn/api/products/category/filter`,
+      data
+    );
+    console.log(response.data);
+
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching products:", error);
   }
 };

@@ -1,4 +1,3 @@
-
 .page-product {
   width: 100%;
   margin-top: 5px;
@@ -159,19 +158,25 @@
           flex-wrap: wrap;
           margin-top: 10px;
           .box-product {
+            width: 100%;
             box-sizing: border-box;
             padding: 12px;
             background-color: #fff;
             border-radius: 5px;
             box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 4px;
             .product {
+              width: 100%;
               height: fit-content;
               display: flex;
               flex-direction: column;
               gap: 10px;
               justify-content: space-between;
               .thumb {
-                // width: 100%;
+                width: 100%;
+                height: 157px;
+                display: flex;
+                align-items: center;
+                overflow: hidden;
                 img {
                   width: 100%;
                 }
@@ -285,8 +290,3 @@
     padding: 5px;
   }
 }
-
-
- 
-
-  

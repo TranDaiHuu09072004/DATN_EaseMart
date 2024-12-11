@@ -12,10 +12,16 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Sidebar from "./components/sidebar/sidebar";
 import { Icon } from "@iconify/react";
-import { getCate, getCateById } from "@/service/category";
-import { useEffect, useState, Suspense } from "react";
+import { getCate, getCateById, getCateChild } from "@/service/category";
+import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { getProBy2Cate, getProByCate } from "@/service/product";
+import {
+  getProBy2Cate,
+  getProByBrand,
+  getProByCate,
+  getProBySubCate,
+  fetchProductsByMinMax,
+} from "@/service/product";
 import { getBrand } from "@/service/brand";
 import { Dispatch, useCart } from "@/components/CartFunction";
 import { formatPrice } from "@/uilts/formatPrice";
@@ -46,32 +52,28 @@ const Product = () => {
   const { stateYt, dispatchYt } = useYeuThich();
   useEffect(() => {
     const fetchProducts = async () => {
-      if (!name) {
+      if (name) {
+        setIsSearching(true); // Đặt trạng thái đang tìm kiếm
+        try {
+          const response = await axios.get(
+            `http://localhost:3000/products?name_like=${encodeURIComponent(
+              name
+            )}`
+          );
+
+          const searchResults = response.data;
+          const filteredProducts = searchResults.filter((product) =>
+            product.name.toLowerCase().includes(name.toLowerCase())
+          );
+
+          console.log(filteredProducts);
+          setResultFilterProduct(filteredProducts);
+        } catch (error) {
+          console.error("Error fetching search results:", error);
+        }
+      } else {
         setResultFilterProduct([]);
-        setIsSearching(false);
-        return;
-      }
-
-      setIsSearching(true); // Đặt trạng thái đang tìm kiếm
-
-      try {
-        // Thực hiện gọi API tìm kiếm
-        const response = await axios.get(
-          `http://localhost:3000/products?name_like=${encodeURIComponent(name)}`
-        );
-
-        const searchResults = response.data || [];
-        const filteredProducts = searchResults.filter((product) =>
-          product.name.toLowerCase().includes(name.toLowerCase())
-        );
-
-        console.log(filteredProducts); // Debug kết quả
-        setResultFilterProduct(filteredProducts);
-      } catch (error) {
-        console.error("Error fetching search results:", error);
-        // Xử lý nếu cần, ví dụ hiển thị thông báo lỗi UI
-      } finally {
-        setIsSearching(false); // Hoàn tất tìm kiếm
+        setIsSearching(false); // Không tìm kiếm
       }
     };
 
@@ -81,22 +83,41 @@ const Product = () => {
   useEffect(() => {
     // list cate
     getCate().then((data) => {
-      setCate(data);
-      setCateChoose({ id: data[0].id, name: data[0].name });
-      setCateSub(data[0].subcategories);
+      console.log(data);
+      getCateChild(data[0].id).then((cate) => {
+        console.log(cate);
+
+        setCate(data);
+        setCateChoose({
+          id: data[0].id,
+          name: data[0].categories_parents_name,
+        });
+        setCateSub(cate.categories);
+      });
     });
   }, []);
 
+  console.log(cateChoose);
+
   // list product theo cate
   useEffect(() => {
-    if (!cateChoose) return;
+    if (Object.keys(cateChoose).length == 0) return;
+    console.log(cateChoose);
 
-    getProByCate("category_id", cateChoose.id).then((data) => {
+    getProByCate(cateChoose.id).then((data) => {
+      console.log(data);
+
       setBrandChooseCheck(false);
-      setProduct(data);
-      getCateById(cateChoose.id).then((data) => {
-        if (data.length > 0) {
-          setCateSub(data[0].subcategories);
+      data.products.forEach((element) => {
+        if (!element.units[0].price_sale)
+          element.units[0].price_sale = element.units[0].price;
+      });
+      setProduct(data.products);
+      getCateChild(cateChoose.id).then((data) => {
+        console.log(data);
+
+        if (data.categories.length > 0) {
+          setCateSub(data.categories);
         }
       });
     });
@@ -110,30 +131,78 @@ const Product = () => {
   }, []);
   //đổi sản phẩm khi nhấp vào brand
   useEffect(() => {
-    if (!brandChoose) return;
-    getProByCate("brand_id", brandChoose.id).then((data) => {
-      setProduct(data);
+    if (Object.keys(brandChoose).length <= 0) return;
+    getProByBrand(brandChoose.id).then((data) => {
+      data.products.forEach((element) => {
+        if (!element.units[0].price_sale)
+          element.units[0].price_sale = element.units[0].price;
+      });
+      setProduct(data.products);
     });
-
     setBrandChooseCheck(true);
   }, [brandChoose]);
 
   //đổi sản phẩm khi nhấp vào cate con
   useEffect(() => {
-    getProBy2Cate(
-      { name: "subcategory_id", id: cateSubChoose.id },
-      { name: "category_id", id: cateChoose.id }
-    ).then((data) => {
-      setProduct(data);
+    getProBySubCate(cateSubChoose.id).then((data) => {
+      console.log(data);
+
+      data.products.forEach((element) => {
+        if (!element.units[0].price_sale)
+          element.units[0].price_sale = element.units[0].price;
+      });
+      console.log(data);
+
+      setProduct(data.products);
     });
   }, [cateSubChoose]);
+
+  const handleFilterProduct = (min, max) => {
+    let data = {
+      min: min,
+      max: max,
+      category_parent: cateChoose.id,
+    };
+    if (Object.keys(cateSubChoose).length > 0) {
+      data.categories = cateSubChoose.id;
+    }
+    if (Object.keys(brandChoose).length > 0) {
+      data.categories = brandChoose.id;
+    }
+
+    fetchProductsByMinMax(data).then((data) => {
+      console.log(data);
+
+      const transformedData = data.data.map((product) => ({
+        id: product.id,
+        name: product.name,
+        description: product.description,
+        status: product.status,
+        units: product.product_units.map((unit) => ({
+          unit_id: unit.unit_id,
+          unit_name: unit.unit.unit_name,
+          price: unit.price,
+          price_sale: unit.price_sale ? unit.price_sale : unit.price,
+          status: unit.status,
+        })),
+        primary_image: {
+          path: product.primary_image.image_path,
+          alt_text: product.primary_image.alt_text,
+          is_primary: product.primary_image.is_primakey,
+        },
+      }));
+      console.log(transformedData);
+
+      setProduct(transformedData);
+    });
+  };
 
   const handleChooseSubCate = (id) => {
     setCateSubChoose(id);
   };
 
-  const handleChooseCate = (id) => {
-    setCateChoose(id);
+  const handleChooseCate = ({ id, name }) => {
+    setCateChoose({ id, name });
     setIsSearching(false); // Đặt lại trạng thái khi chọn cate
     setResultFilterProduct([]); // Xóa kết quả tìm kiếm
   };
@@ -227,6 +296,7 @@ const Product = () => {
         <div className={cx("product-content")}>
           <div className={cx("sidebar", "hidden", "lg:block")}>
             <Sidebar
+              filterProduct={handleFilterProduct}
               listCate={cate}
               updateCate={handleChooseCate}
               listBrand={brand}
@@ -272,19 +342,17 @@ const Product = () => {
                       <li
                         key={item.id}
                         className={cx("item")}
-                        onClick={() =>
-                          handleChooseSubCate({ id: item.id, name: item.name })
-                        }
+                        onClick={() => handleChooseSubCate({ id: item.id })}
                       >
                         <div className={cx("item-thumbnail")}>
                           <img
-                            src={item.image}
-                            alt={item.name}
+                            src={`https://trandainghia.id.vn/${item.image}`}
+                            alt={item.categories_name}
                             className="w-full object-cover h-full rounded-full"
                           />
                         </div>
                         <Link className={cx("item-name", "w-full")} href="#">
-                          {item.name}
+                          {item.categories_name}
                         </Link>
                       </li>
                     ))}
@@ -293,99 +361,94 @@ const Product = () => {
               )}
 
               {/* Product List */}
-              <Suspense
-                fallback={
-                  <div>
-                    <Loading />
-                  </div>
-                }
-              >
-                <div className={cx("product-list")}>
-                  {(isSearching ? resultfilterProduct : product).map((item) => (
-                    <div
-                      key={item.id}
-                      className={cx(
-                        "xl:basis-1/5",
-                        "lg:basis-1/4",
-                        "sm:basis-1/3",
-                        "xs:basis-1/2",
-                        "basis-full",
-                        "p-[2px]"
-                      )}
-                    >
-                      <div className={cx("box-product", "h-full")}>
-                        <div className={cx("product")}>
-                          <div className={cx("thumb")}>
-                            <img src={item.image} />
-                          </div>
-                          <Link
-                            href={`/chi-tiet-san-pham/${item.id}`}
-                            className={cx("name")}
-                          >
-                            {item.name}
-                          </Link>
-                          <div
-                            className={cx("unit", "text-sm", "text-gray-400")}
-                          >
-                            ĐVT: <span>{item.unit_of_caculation}</span>
-                          </div>
-                          <div className={cx("price")}>
+              <div className={cx("product-list")}>
+                {(isSearching ? resultfilterProduct : product).map((item) => (
+                  <div
+                    key={item.id}
+                    className={cx(
+                      "box-border",
+                      "xl:basis-1/5",
+                      "lg:basis-1/4",
+                      "sm:basis-1/3",
+                      "xs:basis-1/2",
+                      "basis-full",
+                      "p-[2px]"
+                    )}
+                  >
+                    <div className={cx("box-product", "h-full")}>
+                      <div className={cx("product")}>
+                        <div className={cx("thumb")}>
+                          <img
+                            src={`https://trandainghia.id.vn/${item.primary_image.path}`}
+                          />
+                        </div>
+                        <Link
+                          href={`/chi-tiet-san-pham/${item.id}`}
+                          className={cx("name")}
+                        >
+                          {item.name}
+                        </Link>
+                        <div className={cx("unit", "text-sm", "text-gray-400")}>
+                          ĐVT: <span>{item.units[0].unit_name}</span>
+                        </div>
+                        <div className={cx("price")}>
+                          <div>
                             <div className={cx("price-reduction")}>
-                              {formatPrice(item.sale_price)}đ
+                              {item.units[0]?.price_sale || item.units[0].price}
+                              đ
                             </div>
                             <div className={cx("original-price")}>
-                              {item.price}đ
+                              {item.units[0].price}đ
                             </div>
-                            <div
-                              className={cx("flex-grow", "flex", "justify-end")}
-                            >
+                          </div>
+                          <div
+                            className={cx("flex-grow", "flex", "justify-end")}
+                          ></div>
+                          <Icon
+                            onClick={() => {
+                              dispatchYt(
+                                new DispatchYt("ADD_ITEM_YEUTHICH", item)
+                              );
+                            }}
+                            icon="mdi:heart-outline"
+                            className="w-6 h-6 text-red-500"
+                          />
+                        </div>
+                        <div className={cx("btn-action")}>
+                          <button
+                            className={cx(
+                              "btn",
+                              "addtocart",
+                              "flex",
+                              "items-center",
+                              "justify-center",
+                              "gap-1",
+                              "text-base",
+                              "basis-full"
+                            )}
+                            onClick={() => {
+                              dispatch(
+                                new Dispatch("ADD_ITEM_CART", {
+                                  ...item,
+                                  quantity: 1,
+                                })
+                              );
+                            }}
+                          >
+                            <span>
                               <Icon
-                                onClick={() => {
-                                  dispatchYt(
-                                    new DispatchYt("ADD_ITEM_YEUTHICH", item)
-                                  );
-                                }}
-                                icon="mdi:heart-outline"
-                                className="w-6 h-6 text-red-500"
+                                icon="humbleicons:cart"
+                                className={cx("w-5", "h-6")}
                               />
-                            </div>
-                          </div>
-                          <div className={cx("btn-action")}>
-                            <button
-                              className={cx(
-                                "btn",
-                                "addtocart",
-                                "flex",
-                                "items-center",
-                                "justify-center",
-                                "gap-1",
-                                "text-base",
-                                "basis-full"
-                              )}
-                              onClick={() => {
-                                dispatch(
-                                  new Dispatch("ADD_ITEM_CART", {
-                                    ...item,
-                                    quantity: 1,
-                                  })
-                                );
-                              }}
-                            >
-                              <span>
-                                <Icon
-                                  icon="humbleicons:cart"
-                                  className={cx("w-5", "h-6")}
-                                />
-                              </span>
-                              Thêm vào giỏ
-                            </button>
-                          </div>
+                            </span>
+                            Thêm vào giỏ
+                          </button>
                         </div>
                       </div>
                     </div>
-                  ))}
-                </div>
-              </Suspense>
+                  </div>
+                ))}
+              </div>
 
               {/* Pagination */}
               <div className={cx("pagination")}>

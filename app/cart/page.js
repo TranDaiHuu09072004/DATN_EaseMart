@@ -44,7 +44,7 @@ const Cart = () => {
     let total = 0;
     state.cartItems.forEach((item) => {
       if (item.select) {
-        total += item.quantity * item.sale_price;
+        total += item.quantity * item.units[0].price_sale;
       }
     });
     setTotal(total);
@@ -201,7 +201,7 @@ const Cart = () => {
                         </label>
                         <div className={cx("thumb", "w-20", "flex-shrink-0")}>
                           <img
-                            src={item.image}
+                            src={`https://trandainghia.id.vn/${item.primary_image.path}`}
                             alt="Sản phẩm"
                             className={cx("product-image", "w-full")}
                           />
@@ -220,12 +220,12 @@ const Cart = () => {
                           <div className={cx("info", "lg:w-96", "w-full")}>
                             <div className={cx("name")}>{item.name}</div>
                             <div className={cx("unit", "mb-3")}>
-                              ĐVT: <span>{item.unit_of_caculation}</span>
+                              ĐVT: <span>{item.units[0].unit_name}</span>
                             </div>
                           </div>
 
                           <div className={cx("price", "w-24")}>
-                            {formatPrice(item.sale_price)}đ
+                            {formatPrice(item.units[0].price_sale)}đ
                           </div>
                           <div className={cx("box-quantity")}>
                             <div className={cx("quantity")}>
@@ -262,7 +262,10 @@ const Cart = () => {
                             </div>
                           </div>
                           <div className={cx("price", "w-24")}>
-                            {formatPrice(item.quantity * item.sale_price)}đ
+                            {formatPrice(
+                              item.quantity * item.units[0].price_sale
+                            )}
+                            đ
                           </div>
                         </div>
                         <div className={cx("delete")}>
