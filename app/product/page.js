@@ -96,11 +96,13 @@ const Product = () => {
     });
   }, []);
 
+  console.log(cateChoose);
+
   // list product theo cate
   useEffect(() => {
+    console.log(cateChoose);
     if (Object.keys(cateChoose).length == 0) return;
     console.log(cateChoose);
-
     getProByCate(cateChoose.id).then((data) => {
       console.log(data);
 

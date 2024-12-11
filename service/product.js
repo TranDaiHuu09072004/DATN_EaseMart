@@ -4,12 +4,10 @@ const url = "http://localhost:3000";
 export const getProByCate = async (idcate) => {
   // let id = toString(idcate);
   console.log(idcate);
-  if (!idcate) {
-    idcate = 1;
-  }
+
   console.log(idcate);
   const respone = await axios.get(
-    `https://trandainghia.id.vn/api/products-by-parent/1`
+    `https://trandainghia.id.vn/api/products-by-parent/${idcate}`
   );
   console.log("respone.data", respone.data);
 
