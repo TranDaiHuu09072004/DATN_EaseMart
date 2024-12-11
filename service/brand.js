@@ -1,8 +1,7 @@
 import axios from "axios";
-const url = "http://localhost:3000";
 
 export const getBrand = async () => {
-  const respone = await axios.get(`${url}/brand`);
+  const respone = await axios.get(`https://trandainghia.id.vn/api/brand-list`);
 
   return respone.data;
 };

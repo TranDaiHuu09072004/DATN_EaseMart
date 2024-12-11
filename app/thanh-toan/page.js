@@ -100,9 +100,9 @@ export default function Payment() {
         : listProductCart.filter((item) => item.select);
       const items = listProductPayment.map((item) => {
         return {
-          product_id: 23,
+          product_id: item.id,
           quantity: item.quantity,
-          unit_code: "THUNG",
+          unit_id: item.units[0].unit_id,
         };
       });
       const data = {
@@ -183,11 +183,14 @@ export default function Payment() {
           });
         })
         .catch((err) => {
-          console.log(err.response.data.message);
+          let message = "Lỗi trong quá trình đặt hàng";
+          if (err?.response?.data?.message) {
+            message = err?.response?.data?.message;
+          }
           Swal.fire({
             icon: "error",
             title: "Đặt hàng thất bại",
-            text: `${err.response.data.message} !`,
+            text: `${message} !`,
             showCancelButton: false, // Hiển thị nút "Hủy" (hoặc OK)
             confirmButtonText: "OK", // Văn bản nút xác nhận
             // Văn bản nút hủy
@@ -217,19 +220,25 @@ export default function Payment() {
       }
     };
   }, [byStatus]);
-  console.log(byStatus);
+  console.log();
 
   useEffect(() => {
     setListPayment(() => {
       if (byStatus) {
         const by_status = JSON.parse(localStorage.getItem("buy_now"));
+        console.log(by_status);
+
         return by_status.filter((item) => {
-          total.current += item.quantity * item.sale_price;
+          console.log(item.units[0].price_sale);
+
+          total.current += item.quantity * item.units[0].price_sale;
           return item;
         });
       }
       return state.cartItems.filter((item) => {
-        if (item.select) total.current += item.quantity * item.sale_price;
+        if (item.select) console.log(item.units[0].price_sale);
+
+        total.current += item.quantity * item.units[0].price_sale;
         return item.select;
       });
     });
@@ -653,11 +662,15 @@ export default function Payment() {
               <div className={cx("product_list")}>
                 {listPayment.map((item) => (
                   <div className={cx("product")}>
-                    <img src={item.image} alt="" width={80} />
+                    <img
+                      src={`https://trandainghia.id.vn${item.primary_image.path}`}
+                      alt=""
+                      width={80}
+                    />
                     <p>{item.name}</p>
                     <span>(X{item.quantity})</span>
                     <span className={cx("price_payment")}>
-                      {formatPrice(item.quantity * item.sale_price)}đ
+                      {formatPrice(item.quantity * item.units[0].price_sale)}đ
                     </span>
                   </div>
                 ))}
@@ -688,7 +701,7 @@ export default function Payment() {
               <div className={cx("order_total")}>
                 <span>Tổng tiền:</span>
                 <span className={cx("price_payment")}>
-                  {formatPrice(total.current)}đ
+                  {formatPrice(Number(total.current))}đ
                 </span>
               </div>
               <div className={cx("payment_method")}>

@@ -11,19 +11,21 @@ import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useState } from "react";
+import CryptoJS from "crypto-js";
+import Swal from "sweetalert2";
 
 export default function DangKy() {
   const [showPassword, setShowPassword] = useState(false);
   const validationSchema = Yup.object().shape({
     name: Yup.string().required("Vui lòng nhập họ và tên"),
     email: Yup.string()
-      .email("Email không hợp lệ")
-      .required("Email là bắt buộc"),
+      .email("Email không đúng!")
+      .required("Vui lòng nhập Email"),
     phone: Yup.string()
-      .required("Vui lòng nhập số điện thoại")
-      .matches(/^[0-9]{10}$/, "Số điện thoại phải có 10 số"),
+      .matches(/^[0-9]{10}$/, "Số điện thoại bắt buộc phải 10 số")
+      .required("Vui lòng nhập mật khẩu"),
     password: Yup.string()
-      .min(8, "Mật khẩu phải có ít nhất 8 ký tự")
+      .min(8, "Mật khẩu ít nhất từ 8 kí tự")
       .required("Vui lòng nhập mật khẩu"),
   });
 
@@ -37,28 +39,56 @@ export default function DangKy() {
 
   const onSubmit = async (data) => {
     console.log("Submitting data:", data);
-    try {
-      const response = await axios.post(
-        "https://trandainghia.id.vn/api/register",
-        data
+    // Tạo một chuỗi salt (salt) để thêm vào mật khẩu trước khi băm
+    const salt = "randomSalt123";
+    // Băm mật khẩu kết hợp với salt bằng thuật toán SHA-256
+    const hashedPassword = CryptoJS.SHA256(salt + data.password).toString();
+    // Tạo một đối tượng mới chứa dữ liệu đăng ký, thay thế mật khẩu bằng mật khẩu đã băm
+    const register = { ...data, password: hashedPassword };
+    const responseCheckEmail = await axios.post(
+      "https://trandainghia.id.vn/api/check-email",
+      { email: data.email }
+    );
+    console.log(responseCheckEmail.data);
+
+    if (
+      responseCheckEmail.status === 200 &&
+      responseCheckEmail.data.registered === false
+    ) {
+      try {
+        // Gửi yêu cầu OTP
+        const otpResponse = await axios.post(
+          "https://trandainghia.id.vn/api/email/send-otp",
+          { email: data.email }
+        );
+        console.log("OTP Response:", otpResponse.data);
+        // Lưu trữ dữ liệu đăng ký vào localStorage dưới dạng chuỗi JSON
+        localStorage.setItem("registerData", JSON.stringify(register));
+        // Hiển thị thông báo thành công
+        toast.success("Mã OTP đã được gửi tới email của bạn!", {
+          position: "top-right",
+          autoClose: 2000,
+        });
+        // Chuyển hướng sang trang đăng nhập
+        setTimeout(() => {
+          window.location.href = "/otp-email";
+        }, 2000);
+      } catch (otpError) {
+        console.error(
+          "Gửi OTP thất bại:",
+          otpError.response ? otpError.response.data : otpError.message
+        );
+        toast.error("Không thể gửi mã OTP. Vui lòng thử lại!", {
+          position: "top-right",
+          autoClose: 2000,
+        });
+      }
+    } else if (responseCheckEmail.data.registered === true) {
+      Swal.fire(
+        "Thất bại",
+        "Email này đã tồn tại! Vui lòng đăng ký bằng Email khác",
+        "error"
       );
-      console.log(response.data);
-      toast.success("Đăng ký thành công!", {
-        position: "top-right",
-        autoClose: 2000,
-      });
-      setTimeout(() => {
-        window.location.href = "/dangnhap";
-      }, 2000);
-    } catch (error) {
-      console.error(
-        "Đăng ký thất bại:",
-        error.response ? error.response.data : error.message
-      );
-      toast.error("Email hoặc tài khoản đã tồn tại!", {
-        position: "top-right",
-        autoClose: 2000,
-      });
     }
   };
 
@@ -102,14 +132,14 @@ export default function DangKy() {
             )}
             <div className="relative">
               <input
-                type={showPassword ? "text" : "password"}
-                className={styles.inputField}
-                placeholder="Nhập mật khẩu"
-                {...register("password")}
+                type={showPassword ? "text" : "password"} // Dòng này đặt loại input là "text" nếu showPassword là true, ngược lại đặt là "password"
+                className={styles.inputField} // Dòng này áp dụng kiểu dáng inputField cho phần tử input
+                placeholder="Nhập mật khẩu" // Dòng này đặt văn bản gợi ý là "Nhập mật khẩu"
+                {...register("password")} // Dòng này đăng ký trường input với tên "password" bằng cách sử dụng hàm register từ react-hook-form
               />
               <span
-                className="absolute right-3 mt-7 text-[20px] cursor-pointer text-[#757575]"
-                onClick={() => setShowPassword(!showPassword)}
+                className="absolute right-3 mt-7 text-[20px] cursor-pointer text-[#757575]" // Dòng này đặt kiểu dáng cho phần tử span, định vị nó tuyệt đối và tạo kiểu như một biểu tượng có thể nhấp
+                onClick={() => setShowPassword(!showPassword)} // Dòng này chuyển đổi trạng thái showPassword khi phần tử span được nhấp
               >
                 {showPassword ? <FaEyeSlash /> : <FaEye />}
               </span>

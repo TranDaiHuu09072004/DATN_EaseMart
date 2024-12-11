@@ -12,10 +12,16 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Sidebar from "./components/sidebar/sidebar";
 import { Icon } from "@iconify/react";
-import { getCate, getCateById } from "@/service/category";
+import { getCate, getCateById, getCateChild } from "@/service/category";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { getProBy2Cate, getProByCate } from "@/service/product";
+import {
+  getProBy2Cate,
+  getProByBrand,
+  getProByCate,
+  getProBySubCate,
+  fetchProductsByMinMax,
+} from "@/service/product";
 import { getBrand } from "@/service/brand";
 import { Dispatch, useCart } from "@/components/CartFunction";
 import { formatPrice } from "@/uilts/formatPrice";
@@ -76,22 +82,39 @@ const Product = () => {
   useEffect(() => {
     // list cate
     getCate().then((data) => {
-      setCate(data);
-      setCateChoose({ id: data[0].id, name: data[0].name });
-      setCateSub(data[0].subcategories);
+      console.log(data);
+      getCateChild(data[0].id).then((cate) => {
+        console.log(cate);
+
+        setCate(data);
+        setCateChoose({
+          id: data[0].id,
+          name: data[0].categories_parents_name,
+        });
+        setCateSub(cate.categories);
+      });
     });
   }, []);
 
   // list product theo cate
   useEffect(() => {
-    if (!cateChoose) return;
+    if (Object.keys(cateChoose).length == 0) return;
+    console.log(cateChoose);
 
-    getProByCate("category_id", cateChoose.id).then((data) => {
+    getProByCate(cateChoose.id).then((data) => {
+      console.log(data);
+
       setBrandChooseCheck(false);
-      setProduct(data);
-      getCateById(cateChoose.id).then((data) => {
-        if (data.length > 0) {
-          setCateSub(data[0].subcategories);
+      data.products.forEach((element) => {
+        if (!element.units[0].price_sale)
+          element.units[0].price_sale = element.units.price;
+      });
+      setProduct(data.products);
+      getCateChild(cateChoose.id).then((data) => {
+        console.log(data);
+
+        if (data.categories.length > 0) {
+          setCateSub(data.categories);
         }
       });
     });
@@ -105,30 +128,78 @@ const Product = () => {
   }, []);
   //đổi sản phẩm khi nhấp vào brand
   useEffect(() => {
-    if (!brandChoose) return;
-    getProByCate("brand_id", brandChoose.id).then((data) => {
-      setProduct(data);
+    if (Object.keys(brandChoose).length <= 0) return;
+    getProByBrand(brandChoose.id).then((data) => {
+      data.products.forEach((element) => {
+        if (!element.units[0].price_sale)
+          element.units[0].price_sale = element.units.price;
+      });
+      setProduct(data.products);
     });
-
     setBrandChooseCheck(true);
   }, [brandChoose]);
 
   //đổi sản phẩm khi nhấp vào cate con
   useEffect(() => {
-    getProBy2Cate(
-      { name: "subcategory_id", id: cateSubChoose.id },
-      { name: "category_id", id: cateChoose.id }
-    ).then((data) => {
-      setProduct(data);
+    getProBySubCate(cateSubChoose.id).then((data) => {
+      console.log(data);
+
+      data.products.forEach((element) => {
+        if (!element.units[0].price_sale)
+          element.units[0].price_sale = element.units[0].price;
+      });
+      console.log(data);
+
+      setProduct(data.products);
     });
   }, [cateSubChoose]);
+
+  const handleFilterProduct = (min, max) => {
+    let data = {
+      min: min,
+      max: max,
+      category_parent: cateChoose.id,
+    };
+    if (Object.keys(cateSubChoose).length > 0) {
+      data.categories = cateSubChoose.id;
+    }
+    if (Object.keys(brandChoose).length > 0) {
+      data.categories = brandChoose.id;
+    }
+
+    fetchProductsByMinMax(data).then((data) => {
+      console.log(data);
+
+      const transformedData = data.data.map((product) => ({
+        id: product.id,
+        name: product.name,
+        description: product.description,
+        status: product.status,
+        units: product.product_units.map((unit) => ({
+          unit_id: unit.unit_id,
+          unit_name: unit.unit.unit_name,
+          price: unit.price,
+          price_sale: unit.price_sale ? unit.price_sale : unit.price,
+          status: unit.status,
+        })),
+        primary_image: {
+          path: product.primary_image.image_path,
+          alt_text: product.primary_image.alt_text,
+          is_primary: product.primary_image.is_primakey,
+        },
+      }));
+      console.log(transformedData);
+
+      setProduct(transformedData);
+    });
+  };
 
   const handleChooseSubCate = (id) => {
     setCateSubChoose(id);
   };
 
-  const handleChooseCate = (id) => {
-    setCateChoose(id);
+  const handleChooseCate = ({ id, name }) => {
+    setCateChoose({ id, name });
     setIsSearching(false); // Đặt lại trạng thái khi chọn cate
     setResultFilterProduct([]); // Xóa kết quả tìm kiếm
   };
@@ -222,6 +293,7 @@ const Product = () => {
         <div className={cx("product-content")}>
           <div className={cx("sidebar", "hidden", "lg:block")}>
             <Sidebar
+              filterProduct={handleFilterProduct}
               listCate={cate}
               updateCate={handleChooseCate}
               listBrand={brand}
@@ -267,19 +339,17 @@ const Product = () => {
                       <li
                         key={item.id}
                         className={cx("item")}
-                        onClick={() =>
-                          handleChooseSubCate({ id: item.id, name: item.name })
-                        }
+                        onClick={() => handleChooseSubCate({ id: item.id })}
                       >
                         <div className={cx("item-thumbnail")}>
                           <img
-                            src={item.image}
-                            alt={item.name}
+                            src={`https://trandainghia.id.vn/${item.image}`}
+                            alt={item.categories_name}
                             className="w-full object-cover h-full rounded-full"
                           />
                         </div>
                         <Link className={cx("item-name", "w-full")} href="#">
-                          {item.name}
+                          {item.categories_name}
                         </Link>
                       </li>
                     ))}
@@ -293,6 +363,7 @@ const Product = () => {
                   <div
                     key={item.id}
                     className={cx(
+                      "box-border",
                       "xl:basis-1/5",
                       "lg:basis-1/4",
                       "sm:basis-1/3",
@@ -304,7 +375,9 @@ const Product = () => {
                     <div className={cx("box-product", "h-full")}>
                       <div className={cx("product")}>
                         <div className={cx("thumb")}>
-                          <img src={item.image} />
+                          <img
+                            src={`https://trandainghia.id.vn/${item.primary_image.path}`}
+                          />
                         </div>
                         <Link
                           href={`/chi-tiet-san-pham/${item.id}`}
@@ -313,28 +386,30 @@ const Product = () => {
                           {item.name}
                         </Link>
                         <div className={cx("unit", "text-sm", "text-gray-400")}>
-                          ĐVT: <span>{item.unit_of_caculation}</span>
+                          ĐVT: <span>{item.units[0].unit_name}</span>
                         </div>
                         <div className={cx("price")}>
-                          <div className={cx("price-reduction")}>
-                            {formatPrice(item.sale_price)}đ
-                          </div>
-                          <div className={cx("original-price")}>
-                            {item.price}đ
+                          <div>
+                            <div className={cx("price-reduction")}>
+                              {item.units[0]?.price_sale || item.units[0].price}
+                              đ
+                            </div>
+                            <div className={cx("original-price")}>
+                              {item.units[0].price}đ
+                            </div>
                           </div>
                           <div
                             className={cx("flex-grow", "flex", "justify-end")}
-                          >
-                            <Icon
-                              onClick={() => {
-                                dispatchYt(
-                                  new DispatchYt("ADD_ITEM_YEUTHICH", item)
-                                );
-                              }}
-                              icon="mdi:heart-outline"
-                              className="w-6 h-6 text-red-500"
-                            />
-                          </div>
+                          ></div>
+                          <Icon
+                            onClick={() => {
+                              dispatchYt(
+                                new DispatchYt("ADD_ITEM_YEUTHICH", item)
+                              );
+                            }}
+                            icon="mdi:heart-outline"
+                            className="w-6 h-6 text-red-500"
+                          />
                         </div>
                         <div className={cx("btn-action")}>
                           <button

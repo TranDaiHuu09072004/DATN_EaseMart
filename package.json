@@ -20,6 +20,7 @@
     "bootstrap": "^5.3.3",
     "classnames": "^2.5.1",
     "cors": "^2.8.5",
+    "crypto-js": "^4.2.0",
     "dotenv": "^16.4.5",
     "glob-parent": "^6.0.2",
     "jsonwebtoken": "^9.0.2",

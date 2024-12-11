@@ -58,7 +58,7 @@ export default function Wishlist() {
                 return (
                   <div className="item_product flex flex-col w-full h-full gap-4 border-2 border-solid p-5 border-[#eeeeee] shadow-md relative">
                     <img
-                      src={item.image}
+                      src={`https://trandainghia.id.vn/${item.primary_image.path}`}
                       alt=""
                       className="w-full h-auto object-cover "
                     />
@@ -77,14 +77,14 @@ export default function Wishlist() {
                       {item.name}
                     </a>
                     <span className="text-[#cccccc] text-[16px] font-medium">
-                      ĐVT: {item.unit_of_caculation}
+                      ĐVT: {item.units[0].unit_name}
                     </span>
                     <div className="price flex gap-5">
                       <span className="sale_price text-[20px] max-md:text-[16px] text-[#3bb77e] font-semibold">
-                        {item.sale_price}đ
+                        {item.units[0].price_sale || item.units[0].price}đ
                       </span>
                       <span className="sale text-[18px] max-md:text-[14px] text-[#cccccc] font-medium line-through">
-                        {item.price}đ
+                        {item.units[0].price}đ
                       </span>
                     </div>
                     <button
