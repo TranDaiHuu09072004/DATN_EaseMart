@@ -5,6 +5,7 @@ import styles from "./orderHistory.module.css";
 import classNames from "classnames/bind";
 import Link from "next/link";
 import Swal from "sweetalert2";
+import Loading from "@/components/Loading/Loading";
 const cx = classNames.bind(styles);
 export default function OrderHistory() {
   const [order_id, setOrder_Id] = useState([]);
@@ -68,7 +69,11 @@ export default function OrderHistory() {
   }, []);
 
   if (loading) {
-    return <p>Đang tải...</p>;
+    return (
+      <p>
+        <Loading />
+      </p>
+    );
   }
 
   return (

@@ -30,10 +30,14 @@ import {
   useYeuThich,
 } from "@/components/YTFunction/sanphamyeuthich";
 import Loading from "@/components/Loading/Loading";
-
+import { useRouter } from "next/navigation";
+import { searchProducts } from "@/service/search";
 const cx = classNames.bind(styles);
 
 const Product = () => {
+  const router = useRouter();
+  const { query } = router;
+  const keyword = query?.keyword;
   const { state, dispatch } = useCart();
   const [cate, setCate] = useState([]);
   const [cateChoose, setCateChoose] = useState({});
@@ -43,42 +47,11 @@ const Product = () => {
   const [brand, setBrand] = useState([]);
   const [brandChoose, setBrandChoose] = useState({});
   const [brandChooseCheck, setBrandChooseCheck] = useState(false);
-  const searchParams = useSearchParams();
-  const name = searchParams.get("name"); // Update to get "name" parameter
   const [resultfilterProduct, setResultFilterProduct] = useState([]);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [sortOrder, setSortOrder] = useState("");
   const [isSearching, setIsSearching] = useState(false);
   const { stateYt, dispatchYt } = useYeuThich();
-  useEffect(() => {
-    const fetchProducts = async () => {
-      if (name) {
-        setIsSearching(true); // Đặt trạng thái đang tìm kiếm
-        try {
-          const response = await axios.get(
-            `http://localhost:3000/products?name_like=${encodeURIComponent(
-              name
-            )}`
-          );
-
-          const searchResults = response.data;
-          const filteredProducts = searchResults.filter((product) =>
-            product.name.toLowerCase().includes(name.toLowerCase())
-          );
-
-          console.log(filteredProducts);
-          setResultFilterProduct(filteredProducts);
-        } catch (error) {
-          console.error("Error fetching search results:", error);
-        }
-      } else {
-        setResultFilterProduct([]);
-        setIsSearching(false); // Không tìm kiếm
-      }
-    };
-
-    fetchProducts();
-  }, [name]);
 
   useEffect(() => {
     // list cate
@@ -99,6 +72,16 @@ const Product = () => {
 
   console.log(cateChoose);
 
+  useEffect(() => {
+    if (keyword) {
+      // Gọi API để lấy danh sách sản phẩm
+      searchProducts(keyword).then((result) => {
+        if (result) {
+          setResultFilterProduct(result.products);
+        }
+      });
+    }
+  }, [keyword]);
   // list product theo cate
   useEffect(() => {
     if (Object.keys(cateChoose).length == 0) return;
@@ -451,6 +434,10 @@ const Product = () => {
                     </div>
                   </div>
                 ))}
+                {/* Add a message for no results found */}
+                {!isSearching && product.length === 0 && (
+                  <div className={cx("no-results")}>Không có sản phẩm nào.</div>
+                )}
               </div>
 
               {/* Pagination */}

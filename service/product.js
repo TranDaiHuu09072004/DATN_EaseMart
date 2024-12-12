@@ -56,7 +56,7 @@ export const fetchProducts = async (category) => {
         filteredProducts = products.filter(
           (product) =>
             product.product_units[0]?.price !== null &&
-            product.product_units[0]?.price_sale == null &&
+            product.product_units[0]?.price_sale === null &&
             product.views == 0
         );
         break;

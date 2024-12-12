@@ -171,12 +171,14 @@ export default function ProductDetail({ params }) {
                 {formatPrice(products.product_units[0].price)}
               </span>
             </div>
-            <div>
-              <span className={cx("price_label")}>Giá khuyến mãi</span>
-              <span className={cx("price_original")}>
-                {formatPrice(products.product_units[0].price_sale)}
-              </span>
-            </div>
+            {products.product_units[0].price_sale !== null && (
+              <div>
+                <span className={cx("price_label")}>Giá khuyến mãi</span>
+                <span className={cx("price_original")}>
+                  {formatPrice(products.product_units[0].price_sale)}
+                </span>
+              </div>
+            )}
             <div
               style={{
                 paddingBottom: 10,
@@ -311,7 +313,7 @@ export default function ProductDetail({ params }) {
                     "path/to/default/image.jpg"
                   }
                   alt={item.name}
-                  className="h-[151.2px] w-[201.6px]"
+                  className="h-[190px] w-[190px]"
                   onClick={() => setSelectedImage(item.image)}
                 />
               </Link>

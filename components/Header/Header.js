@@ -13,6 +13,8 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
 import { useCart } from "../CartFunction";
+import { searchProducts } from "@/service/search";
+import { useRouter } from "next/router";
 
 const cx = classNames.bind(styles);
 
@@ -22,6 +24,8 @@ export default function Header() {
   const [name, setName] = useState(null);
   const [count, setCount] = useState(0);
   const [image, setImage] = useState(null);
+  const [searchResults, setSearchResults] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     let newCount = 0;
@@ -44,14 +48,6 @@ export default function Header() {
     }
   }, []);
 
-  const handleSearch = (e) => {
-    e.preventDefault();
-    if (searchKeyword.trim()) {
-      const encodedKeyword = encodeURIComponent(searchKeyword.trim());
-      window.location.href = `/product?name=${encodedKeyword}`;
-    }
-  };
-
   const handleLogout = () => {
     localStorage.removeItem("name");
     localStorage.removeItem("user");
@@ -62,6 +58,24 @@ export default function Header() {
     setTimeout(() => {
       window.location.reload();
     }, 1000);
+  };
+
+  const handleSearch = async (e) => {
+    e.preventDefault();
+    if (!searchKeyword) return;
+
+    setLoading(true); // Start loading while fetching results
+    const result = await searchProducts(searchKeyword);
+    console.log("Search:", result);
+
+    // Redirect to the product page with the search keyword as a query parameter
+    if (result) {
+      setSearchResults(result.products);
+      router.push(`/product?search=${searchKeyword}`);
+    } else {
+      setSearchResults([]);
+    }
+    setLoading(false);
   };
 
   return (
@@ -90,6 +104,7 @@ export default function Header() {
                 />
               </button>
             </form>
+
             <div
               className={cx(
                 "cart-info",

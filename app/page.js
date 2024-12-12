@@ -38,7 +38,7 @@ export default function Home() {
           unit_id: unit.unit_id,
           unit_name: unit.unit.unit_name,
           price: unit.price,
-          price_sale: unit.price_sale ? unit.price_sale : unit.price,
+          price_sale: unit.price_sale,
           status: unit.status,
         })),
         primary_image: {
@@ -47,9 +47,16 @@ export default function Home() {
           is_primary: product.primary_image.is_primakey,
         },
       }));
-      setProductsPopular(transformedData.slice(0, 10));
-      console.log("Popular Products:", popular.slice(0, 10));
+
+      // Shuffle the array and take the first 10 items
+      const shuffledPopular = transformedData
+        .sort(() => 0.5 - Math.random())
+        .slice(0, 10);
+
+      setProductsPopular(shuffledPopular);
+      console.log("Popular Products:", shuffledPopular);
     });
+
     fetchProducts("FlashSale").then((flashsale) => {
       const transformedData = flashsale.map((product) => ({
         id: product.id,
@@ -60,7 +67,7 @@ export default function Home() {
           unit_id: unit.unit_id,
           unit_name: unit.unit.unit_name,
           price: unit.price,
-          price_sale: unit.price_sale ? unit.price_sale : unit.price,
+          price_sale: unit.price_sale,
           status: unit.status,
         })),
         primary_image: {
@@ -69,9 +76,16 @@ export default function Home() {
           is_primary: product.primary_image.is_primakey,
         },
       }));
-      setProductsFlashSale(transformedData.slice(0, 10));
-      console.log("Flash Sale Products:", flashsale.slice(0, 10));
+
+      // Shuffle the array and take the first 10 items
+      const shuffledFlashSale = transformedData
+        .sort(() => 0.5 - Math.random())
+        .slice(0, 10);
+
+      setProductsFlashSale(shuffledFlashSale);
+      console.log("Flash Sale Products:", shuffledFlashSale);
     });
+
     fetchProductByView("Product_Views").then((productviews) => {
       const transformedData = productviews.map((product) => ({
         id: product.id,
@@ -82,7 +96,7 @@ export default function Home() {
           unit_id: unit.unit_id,
           unit_name: unit.unit.unit_name,
           price: unit.price,
-          price_sale: unit.price_sale ? unit.price_sale : unit.price,
+          price_sale: unit.price_sale,
           status: unit.status,
         })),
         primary_image: {
@@ -91,8 +105,14 @@ export default function Home() {
           is_primary: product.primary_image.is_primakey,
         },
       }));
-      setProduct_Viewss(transformedData.slice(0, 10));
-      console.log("Viewed Products:", productviews.slice(0, 10));
+
+      // Shuffle the array and take the first 10 items
+      const shuffledViews = transformedData
+        .sort(() => 0.5 - Math.random())
+        .slice(0, 10);
+
+      setProduct_Viewss(shuffledViews);
+      console.log("Viewed Products:", shuffledViews);
     });
   }, []);
 
@@ -286,7 +306,8 @@ const ProductList = ({ products }) => {
                       alt={product.name || "Product Image"}
                       className={cx(
                         "product-image",
-                        "h-[151.2px]",
+                        "w-[190px]",
+                        "h-[190px]",
                         "object-cover"
                       )}
                     />
