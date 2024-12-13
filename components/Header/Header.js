@@ -34,11 +34,14 @@ export default function Header() {
   }, [state]);
 
   useEffect(() => {
-    const name = localStorage.getItem("name");
+    console.log();
+
+    const name = JSON.parse(localStorage.getItem("name"));
     const savedImage = localStorage.getItem("image");
     if (name) {
       let handlename = name.split(" ");
       handlename = handlename[handlename.length - 1];
+
       setName(handlename);
     }
     if (savedImage) {
@@ -117,6 +120,7 @@ export default function Header() {
                   "cart",
                   "flex",
                   "py-3",
+                  "max-lg:pr-7",
                   "gap-2",
                   "sm:flex",
                   "hidden"

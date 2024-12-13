@@ -165,10 +165,18 @@ export default function VeChungToi() {
           </div>
         </div>
 
-        {/* Hiệu suất */}
-        <div className={styles.performanceSection}>
-          <div className={styles.performanceImage}>
-            <img src="/assets/img/about-5 1.png" alt="Hiệu suất" />
+        {/* Performance Section */}
+        <div
+          className={`${styles.performanceSection} flex flex-col lg:flex-row items-center gap-8 py-8`}
+        >
+          <div
+            className={`${styles.performanceImage} w-full lg:w-1/2 flex justify-center`}
+          >
+            <img
+              src="/assets/img/about-5 1.png"
+              alt="Hiệu suất"
+              className="w-full lg:w-4/5 object-cover"
+            />
           </div>
           <div className={styles.performanceText}>
             <h2>Hiệu suất của chúng tôi</h2>

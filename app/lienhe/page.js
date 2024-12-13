@@ -1,13 +1,70 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import styles from "./lienhe.module.css"; // Import CSS module
+import Swal from "sweetalert2"; // Import SweetAlert2
 
 export default function LienHe() {
+  // State để lưu thông tin form
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    message: "",
+  });
+
+  // Hàm xử lý thay đổi input
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  // Hàm gửi form
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch("https://trandainghia.id.vn/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        // Use SweetAlert2 for success message
+        Swal.fire({
+          icon: "success",
+          title: "Gửi thành công!",
+          confirmButtonText: "OK",
+        });
+        setFormData({ name: "", phone: "", email: "", message: "" });
+      } else {
+        // Use SweetAlert2 for error message
+        Swal.fire({
+          icon: "error",
+          title: "Gửi thất bại",
+          text: "Vui lòng thử lại.",
+          confirmButtonText: "OK",
+        });
+      }
+    } catch (error) {
+      console.error("Lỗi gửi dữ liệu:", error);
+      // Use SweetAlert2 for catch error message
+      Swal.fire({
+        icon: "error",
+        title: "Đã xảy ra lỗi",
+        text: "Vui lòng thử lại.",
+        confirmButtonText: "OK",
+      });
+    }
+  };
+
   return (
     <div className="container">
       <div className={styles.container}>
         {/* Breadcrumb - Đường dẫn */}
         <div className={styles.breadcrumbContainer}></div>
+
         {/* Banner */}
         <div className={styles.banner}>
           <img
@@ -44,13 +101,39 @@ export default function LienHe() {
 
           {/* Phần form liên hệ */}
           <div className={styles.contactForm}>
-            <form>
-              <div className={styles.nameFields}></div>
-              <input type="text" placeholder="Họ" required />
-              <input type="text" placeholder="Tên" required />
-              <input type="email" placeholder="Email" required />
-              <input type="tel" placeholder="Số điện thoại" required />
-              <textarea placeholder="Lời nhắn" rows="4"></textarea>
+            <form onSubmit={handleSubmit}>
+              <input
+                type="text"
+                name="name"
+                placeholder="Tên"
+                value={formData.name}
+                onChange={handleChange}
+                required
+              />
+              <input
+                type="tel"
+                name="phone"
+                placeholder="Số điện thoại"
+                value={formData.phone}
+                onChange={handleChange}
+                required
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
+              <textarea
+                name="message"
+                placeholder="Lời nhắn"
+                rows="4"
+                value={formData.message}
+                onChange={handleChange}
+                required
+              ></textarea>
               <button type="submit">Gửi</button>
             </form>
           </div>

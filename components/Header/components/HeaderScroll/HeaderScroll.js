@@ -45,7 +45,7 @@ const HeaderScroll = () => {
   }, []);
 
   useEffect(() => {
-    const name = localStorage.getItem("name");
+    const name = JSON.parse(localStorage.getItem("name"));
     const savedImage = localStorage.getItem("image");
     if (name) {
       let handlename = name.split(" ");

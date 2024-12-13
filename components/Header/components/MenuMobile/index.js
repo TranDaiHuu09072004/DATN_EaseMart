@@ -19,11 +19,14 @@ import styles from "./MenuMobile.module.css";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Icon } from "@iconify/react/dist/iconify.js";
+import { useRouter } from "next/navigation";
+import axios from "axios";
 const cx = classNames.bind(styles);
 
 const MenuMobile = ({ color = false }) => {
   const [showSidebar, setShowSidebar] = useState(false);
-  const [searchKeyword, setSearchKeyWord] = useState("");
+  const [searchKeyword, setSearchKeyword] = useState([]);
+  const router = useRouter();
   useEffect(() => {
     if (showSidebar) {
       document.body.style.overflow = "hidden";
@@ -32,11 +35,18 @@ const MenuMobile = ({ color = false }) => {
     }
   }, [showSidebar]);
 
-  const handleSearch = (e) => {
+  const handleSearch = async (e) => {
     e.preventDefault();
-    if (searchKeyword.trim()) {
-      const encodedKeyword = encodeURIComponent(searchKeyword.trim());
-      window.location.href = `/product?name=${encodedKeyword}`;
+    try {
+      const response = await axios.post(
+        "https://trandainghia.id.vn/api/products/search",
+        { keyword: searchKeyword }
+      );
+      console.log("Search", response.data);
+      router.replace(`/product?keyword=${searchKeyword}`);
+      setSearchKeyword("");
+    } catch (error) {
+      console.error("Error fetching search results:", error);
     }
   };
   return (
@@ -120,7 +130,8 @@ const MenuMobile = ({ color = false }) => {
                     type="text"
                     placeholder="Tìm kiếm..."
                     className={cx("input-search", "w-full", "h-10", "pl-2")}
-                    onChange={(e) => setSearchKeyWord(e.target.value)}
+                    value={searchKeyword}
+                    onChange={(e) => setSearchKeyword(e.target.value)}
                   />
                   <button
                     type="submit"

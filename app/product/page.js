@@ -1,12 +1,12 @@
 "use client";
 import classNames from "classnames/bind";
 import styles from "./product.module.scss";
-import axios from "axios";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faAngleDown,
   faCartShopping,
+  faChevronLeft,
   faChevronRight,
   faHouse,
 } from "@fortawesome/free-solid-svg-icons";
@@ -24,13 +24,13 @@ import {
 } from "@/service/product";
 import { getBrand } from "@/service/brand";
 import { Dispatch, useCart } from "@/components/CartFunction";
-import { formatPrice } from "@/uilts/formatPrice";
 import {
   DispatchYt,
   useYeuThich,
 } from "@/components/YTFunction/sanphamyeuthich";
 import Loading from "@/components/Loading/Loading";
 import { useRouter } from "next/navigation";
+import { formatPrice } from "@/uilts/formatPrice";
 import { searchProducts } from "@/service/search";
 const cx = classNames.bind(styles);
 
@@ -52,6 +52,9 @@ const Product = () => {
   const [sortOrder, setSortOrder] = useState("");
   const [isSearching, setIsSearching] = useState(false);
   const { stateYt, dispatchYt } = useYeuThich();
+  const [currentPage, setCurrentPage] = useState(1);
+  const [currentProducts, setCurrentProducts] = useState([]);
+  const productsPerPage = 15; // Số sản phẩm mỗi trang
 
   useEffect(() => {
     // list cate
@@ -83,6 +86,10 @@ const Product = () => {
     }
   }, [keyword]);
 
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [product]);
+
   // list product theo cate
   useEffect(() => {
     if (Object.keys(cateChoose).length == 0) return;
@@ -110,6 +117,12 @@ const Product = () => {
       });
     });
   }, [cateChoose]);
+
+  useEffect(() => {
+    const indexOfLastProduct = currentPage * productsPerPage;
+    const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+    setCurrentProducts(product.slice(indexOfFirstProduct, indexOfLastProduct));
+  }, [product, currentPage]);
 
   //list brand
   useEffect(() => {
@@ -228,6 +241,30 @@ const Product = () => {
       return 0;
     });
     setProduct(sortedProducts);
+  };
+  // chức năng phân trang
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  const handleNextPage = () => {
+    if (currentPage < Math.ceil(product.length / productsPerPage)) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  // Hàm giảm trang
+  const handlePrevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const formatPrice = (price) => {
+    if (price === undefined || price === null) {
+      return "0";
+    }
+    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
 
   return (
@@ -385,6 +422,7 @@ const Product = () => {
                               <div className={cx("thumb")}>
                                 <img
                                   src={`https://trandainghia.id.vn/${item.primary_image.path}`}
+                                  className="w-auto h-auto xs:h-full"
                                 />
                               </div>
                               <Link
@@ -405,12 +443,12 @@ const Product = () => {
                               <div className={cx("price")}>
                                 <div>
                                   <div className={cx("price-reduction")}>
-                                    {item.units[0].price_sale}đ
+                                    {formatPrice(item.units[0].price_sale)}đ
                                   </div>
 
                                   {item.units[0].price_sale_value && (
                                     <div className={cx("original-price")}>
-                                      {item.units[0].price}đ
+                                      {formatPrice(item.units[0].price)}đ
                                     </div>
                                   )}
                                 </div>
@@ -465,7 +503,7 @@ const Product = () => {
                           </div>
                         </div>
                       ))
-                    : product.map((item) => (
+                    : currentProducts.map((item) => (
                         <div
                           key={item.id}
                           className={cx(
@@ -503,12 +541,12 @@ const Product = () => {
                               <div className={cx("price")}>
                                 <div>
                                   <div className={cx("price-reduction")}>
-                                    {item.units[0].price_sale}đ
+                                    {formatPrice(item.units[0].price_sale)}đ
                                   </div>
 
                                   {item.units[0].price_sale_value && (
                                     <div className={cx("original-price")}>
-                                      {item.units[0].price}đ
+                                      {formatPrice(item.units[0].price)}đ
                                     </div>
                                   )}
                                 </div>
@@ -571,15 +609,32 @@ const Product = () => {
                   )}
                 </div>
               </Suspense>
-
               {/* Pagination */}
               <div className={cx("pagination")}>
-                <div className={cx("page-number", "active")}>1</div>
-                <div className={cx("page-number")}>2</div>
-                <div className={cx("page-number")}>3</div>
-                <div className={cx("page-change")}>
-                  <FontAwesomeIcon icon={faChevronRight} />
-                </div>
+                {currentPage > 1 && (
+                  <div onClick={handlePrevPage} className={cx("page-change")}>
+                    <FontAwesomeIcon icon={faChevronLeft} />
+                  </div>
+                )}
+                {Array.from(
+                  { length: Math.ceil(product.length / productsPerPage) },
+                  (_, index) => (
+                    <div
+                      key={index + 1}
+                      className={cx("page-number", {
+                        active: currentPage === index + 1,
+                      })}
+                      onClick={() => handlePageChange(index + 1)}
+                    >
+                      {index + 1}
+                    </div>
+                  )
+                )}
+                {currentPage < Math.ceil(product.length / productsPerPage) && (
+                  <div onClick={handleNextPage} className={cx("page-change")}>
+                    <FontAwesomeIcon icon={faChevronRight} />
+                  </div>
+                )}
               </div>
             </div>
           </div>
