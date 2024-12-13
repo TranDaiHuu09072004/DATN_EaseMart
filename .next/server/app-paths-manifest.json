@@ -1,8 +1,0 @@
-{
-  "/_not-found/page": "app/_not-found/page.js",
-  "/dangnhap/page": "app/dangnhap/page.js",
-  "/dangky/page": "app/dangky/page.js",
-  "/otp-email/page": "app/otp-email/page.js",
-  "/otp/page": "app/otp/page.js",
-  "/page": "app/page.js"
-}
