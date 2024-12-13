@@ -237,10 +237,10 @@ export default function Payment() {
         });
       }
       return state.cartItems.filter((item) => {
-        if (item.select) console.log(item.units[0].price_sale);
-
-        total.current += item.quantity * item.units[0].price_sale;
-        return item.select;
+        if (item.select){
+          total.current += item.quantity * item.units[0].price_sale;
+          return item.select;
+        };
       });
     });
   }, [state, byStatus]);

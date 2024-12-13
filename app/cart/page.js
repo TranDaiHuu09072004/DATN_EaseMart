@@ -23,7 +23,6 @@ const Cart = () => {
   const formatPrice = (price) => {
     return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
-
   const handleRemoveCart = (data) => {
     Swal.fire({
       icon: "warning",
@@ -40,8 +39,10 @@ const Cart = () => {
       // Nếu người dùng nhấn "OK", popup sẽ đóng mà không có thêm hành động nào.
     });
   };
+
   useEffect(() => {
     let total = 0;
+    console.log(state.cartItems);
     state.cartItems.forEach((item) => {
       if (item.select) {
         total += item.quantity * item.units[0].price_sale;

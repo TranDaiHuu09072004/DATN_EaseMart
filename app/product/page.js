@@ -13,7 +13,7 @@ import {
 import Sidebar from "./components/sidebar/sidebar";
 import { Icon } from "@iconify/react";
 import { getCate, getCateById, getCateChild } from "@/service/category";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import {
   getProBy2Cate,
@@ -31,7 +31,7 @@ import {
 } from "@/components/YTFunction/sanphamyeuthich";
 import Loading from "@/components/Loading/Loading";
 import { useRouter } from "next/navigation";
-// import { searchProducts } from "@/service/search";
+import { searchProducts } from "@/service/search";
 const cx = classNames.bind(styles);
 
 const Product = () => {
@@ -83,11 +83,6 @@ const Product = () => {
     }
   }, [keyword]);
 
-  // Theo dõi sự thay đổi của resultFilterProduct
-  useEffect(() => {
-    console.log(resultfilterProduct); // In ra giá trị mới của resultFilterProduct
-  }, [resultfilterProduct]);
-
   // list product theo cate
   useEffect(() => {
     if (Object.keys(cateChoose).length == 0) return;
@@ -97,11 +92,15 @@ const Product = () => {
       // console.log(data);
 
       setBrandChooseCheck(false);
-      data.products.forEach((element) => {
-        if (!element.units[0].price_sale)
-          element.units[0].price_sale = element.units[0].price;
+
+      const listProduct = data.products.map((item) => {
+        item.units[0].price_sale_value = item.units[0].price_sale;
+        item.units[0].price_sale =
+          item.units[0].price_sale || item.units[0].price;
+        return item;
       });
-      setProduct(data.products);
+
+      setProduct(listProduct);
       getCateChild(cateChoose.id).then((data) => {
         // console.log(data);
 
@@ -122,11 +121,14 @@ const Product = () => {
   useEffect(() => {
     if (Object.keys(brandChoose).length <= 0) return;
     getProByBrand(brandChoose.id).then((data) => {
-      data.products.forEach((element) => {
-        if (!element.units[0].price_sale)
-          element.units[0].price_sale = element.units[0].price;
+      const listProduct = data.products.map((item) => {
+        item.units[0].price_sale_value = item.units[0].price_sale;
+        item.units[0].price_sale =
+          item.units[0].price_sale || item.units[0].price;
+        return item;
       });
-      setProduct(data.products);
+
+      setProduct(listProduct);
     });
     setBrandChooseCheck(true);
   }, [brandChoose]);
@@ -134,15 +136,16 @@ const Product = () => {
   //đổi sản phẩm khi nhấp vào cate con
   useEffect(() => {
     getProBySubCate(cateSubChoose.id).then((data) => {
-      // console.log(data);
+      console.log(data);
 
-      data.products.forEach((element) => {
-        if (!element.units[0].price_sale)
-          element.units[0].price_sale = element.units[0].price;
+      const listProduct = data.products.map((item) => {
+        item.units[0].price_sale_value = item.units[0].price_sale;
+        item.units[0].price_sale =
+          item.units[0].price_sale || item.units[0].price;
+        return item;
       });
-      // console.log(data);
 
-      setProduct(data.products);
+      setProduct(listProduct);
     });
   }, [cateSubChoose]);
 
@@ -171,7 +174,8 @@ const Product = () => {
           unit_id: unit.unit_id,
           unit_name: unit.unit.unit_name,
           price: unit.price,
-          price_sale: unit.price_sale ? unit.price_sale : unit.price,
+          price_sale_value: unit.price_sale,
+          price_sale: unit.price_sale || unit.price,
           status: unit.status,
         })),
         primary_image: {
@@ -353,102 +357,220 @@ const Product = () => {
               )}
 
               {/* Product List */}
-              <div className={cx("product-list")}>
-                {Array.isArray(isSearching ? resultfilterProduct : product) &&
-                  (isSearching ? resultfilterProduct : product).map((item) => (
-                    <div
-                      key={item.id}
-                      className={cx(
-                        "box-border",
-                        "xl:basis-1/5",
-                        "lg:basis-1/4",
-                        "sm:basis-1/3",
-                        "xs:basis-1/2",
-                        "basis-full",
-                        "p-[2px]"
-                      )}
-                    >
-                      <div className={cx("box-product", "h-full")}>
-                        <div className={cx("product")}>
-                          <div className={cx("thumb")}>
-                            <img
-                              src={`https://trandainghia.id.vn/${item.primary_image.path}`}
-                            />
-                          </div>
-                          <Link
-                            href={`/chi-tiet-san-pham/${item.id}`}
-                            className={cx("name")}
-                          >
-                            {item.name}
-                          </Link>
-                          <div
-                            className={cx("unit", "text-sm", "text-gray-400")}
-                          >
-                            ĐVT: <span>{item.units[0].unit_name}</span>
-                          </div>
-                          <div className={cx("price")}>
-                            <div>
-                              <div className={cx("price-reduction")}>
-                                {item.units[0]?.price_sale ||
-                                  item.units[0].price}
-                                đ
+              <Suspense
+                fallback={
+                  <div>
+                    <Loading />
+                  </div>
+                }
+              >
+                <div className={cx("product-list")}>
+                  {Array.isArray(resultfilterProduct) &&
+                  resultfilterProduct.length > 0
+                    ? resultfilterProduct.map((item) => (
+                        <div
+                          key={item.id}
+                          className={cx(
+                            "box-border",
+                            "xl:basis-1/5",
+                            "lg:basis-1/4",
+                            "sm:basis-1/3",
+                            "xs:basis-1/2",
+                            "basis-full",
+                            "p-[2px]"
+                          )}
+                        >
+                          <div className={cx("box-product", "h-full")}>
+                            <div className={cx("product")}>
+                              <div className={cx("thumb")}>
+                                <img
+                                  src={`https://trandainghia.id.vn/${item.primary_image.path}`}
+                                />
                               </div>
-                              <div className={cx("original-price")}>
-                                {item.units[0].price}đ
+                              <Link
+                                href={`/chi-tiet-san-pham/${item.id}`}
+                                className={cx("name")}
+                              >
+                                {item.name}
+                              </Link>
+                              <div
+                                className={cx(
+                                  "unit",
+                                  "text-sm",
+                                  "text-gray-400"
+                                )}
+                              >
+                                ĐVT: <span>{item.units[0].unit_name}</span>
+                              </div>
+                              <div className={cx("price")}>
+                                <div>
+                                  <div className={cx("price-reduction")}>
+                                    {item.units[0].price_sale}đ
+                                  </div>
+
+                                  {item.units[0].price_sale_value && (
+                                    <div className={cx("original-price")}>
+                                      {item.units[0].price}đ
+                                    </div>
+                                  )}
+                                </div>
+                                <div
+                                  className={cx(
+                                    "flex-grow",
+                                    "flex",
+                                    "justify-end"
+                                  )}
+                                ></div>
+                                <Icon
+                                  onClick={() => {
+                                    dispatchYt(
+                                      new DispatchYt("ADD_ITEM_YEUTHICH", item)
+                                    );
+                                  }}
+                                  icon="mdi:heart-outline"
+                                  className="w-6 h-6 text-red-500"
+                                />
+                              </div>
+                              <div className={cx("btn-action")}>
+                                <button
+                                  className={cx(
+                                    "btn",
+                                    "addtocart",
+                                    "flex",
+                                    "items-center",
+                                    "justify-center",
+                                    "gap-1",
+                                    "text-base",
+                                    "basis-full"
+                                  )}
+                                  onClick={() => {
+                                    dispatch(
+                                      new Dispatch("ADD_ITEM_CART", {
+                                        ...item,
+                                        quantity: 1,
+                                      })
+                                    );
+                                  }}
+                                >
+                                  <span>
+                                    <Icon
+                                      icon="humbleicons:cart"
+                                      className={cx("w-5", "h-6")}
+                                    />
+                                  </span>
+                                  Thêm vào giỏ
+                                </button>
                               </div>
                             </div>
-                            <div
-                              className={cx("flex-grow", "flex", "justify-end")}
-                            ></div>
-                            <Icon
-                              onClick={() => {
-                                dispatchYt(
-                                  new DispatchYt("ADD_ITEM_YEUTHICH", item)
-                                );
-                              }}
-                              icon="mdi:heart-outline"
-                              className="w-6 h-6 text-red-500"
-                            />
-                          </div>
-                          <div className={cx("btn-action")}>
-                            <button
-                              className={cx(
-                                "btn",
-                                "addtocart",
-                                "flex",
-                                "items-center",
-                                "justify-center",
-                                "gap-1",
-                                "text-base",
-                                "basis-full"
-                              )}
-                              onClick={() => {
-                                dispatch(
-                                  new Dispatch("ADD_ITEM_CART", {
-                                    ...item,
-                                    quantity: 1,
-                                  })
-                                );
-                              }}
-                            >
-                              <span>
-                                <Icon
-                                  icon="humbleicons:cart"
-                                  className={cx("w-5", "h-6")}
-                                />
-                              </span>
-                              Thêm vào giỏ
-                            </button>
                           </div>
                         </div>
-                      </div>
+                      ))
+                    : product.map((item) => (
+                        <div
+                          key={item.id}
+                          className={cx(
+                            "box-border",
+                            "xl:basis-1/5",
+                            "lg:basis-1/4",
+                            "sm:basis-1/3",
+                            "xs:basis-1/2",
+                            "basis-full",
+                            "p-[2px]"
+                          )}
+                        >
+                          <div className={cx("box-product", "h-full")}>
+                            <div className={cx("product")}>
+                              <div className={cx("thumb")}>
+                                <img
+                                  src={`https://trandainghia.id.vn/${item.primary_image.path}`}
+                                />
+                              </div>
+                              <Link
+                                href={`/chi-tiet-san-pham/${item.id}`}
+                                className={cx("name")}
+                              >
+                                {item.name}
+                              </Link>
+                              <div
+                                className={cx(
+                                  "unit",
+                                  "text-sm",
+                                  "text-gray-400"
+                                )}
+                              >
+                                ĐVT: <span>{item.units[0].unit_name}</span>
+                              </div>
+                              <div className={cx("price")}>
+                                <div>
+                                  <div className={cx("price-reduction")}>
+                                    {item.units[0].price_sale}đ
+                                  </div>
+
+                                  {item.units[0].price_sale_value && (
+                                    <div className={cx("original-price")}>
+                                      {item.units[0].price}đ
+                                    </div>
+                                  )}
+                                </div>
+                                <div
+                                  className={cx(
+                                    "flex-grow",
+                                    "flex",
+                                    "justify-end"
+                                  )}
+                                ></div>
+                                <Icon
+                                  onClick={() => {
+                                    dispatchYt(
+                                      new DispatchYt("ADD_ITEM_YEUTHICH", item)
+                                    );
+                                  }}
+                                  icon="mdi:heart-outline"
+                                  className="w-6 h-6 text-red-500"
+                                />
+                              </div>
+                              <div className={cx("btn-action")}>
+                                <button
+                                  className={cx(
+                                    "btn",
+                                    "addtocart",
+                                    "flex",
+                                    "items-center",
+                                    "justify-center",
+                                    "gap-1",
+                                    "text-base",
+                                    "basis-full"
+                                  )}
+                                  onClick={() => {
+                                    dispatch(
+                                      new Dispatch("ADD_ITEM_CART", {
+                                        ...item,
+                                        quantity: 1,
+                                      })
+                                    );
+                                  }}
+                                >
+                                  <span>
+                                    <Icon
+                                      icon="humbleicons:cart"
+                                      className={cx("w-5", "h-6")}
+                                    />
+                                  </span>
+                                  Thêm vào giỏ
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+
+                  {!isSearching && product.length === 0 && (
+                    <div className={cx("no-results")}>
+                      Không có sản phẩm nào.
                     </div>
-                  ))}
-                {/* Add a message for no results found */}
-                {!isSearching && product.length === 0 && (
-                  <div className={cx("no-results")}>Không có sản phẩm nào.</div>
-                )}
-              </div>
+                  )}
+                </div>
+              </Suspense>
 
               {/* Pagination */}
               <div className={cx("pagination")}>
