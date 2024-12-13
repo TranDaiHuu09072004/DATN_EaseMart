@@ -66,10 +66,32 @@
       "static/css/app/san-pham-yeu-thich/page.css",
       "static/chunks/app/san-pham-yeu-thich/page.js"
     ],
-    "/_not-found/page": [
+    "/dangnhap/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/_not-found/page.js"
+      "static/css/app/dangnhap/page.css",
+      "static/chunks/app/dangnhap/page.js"
+    ],
+    "/quen-mat-khau/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/quen-mat-khau/page.js"
+    ],
+    "/dangky/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/dangky/page.css",
+      "static/chunks/app/dangky/page.js"
+    ],
+    "/otp-email/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/otp-email/page.js"
+    ],
+    "/otp/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/otp/page.js"
     ]
   }
 }

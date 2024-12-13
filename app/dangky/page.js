@@ -13,10 +13,6 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useState } from "react";
 import CryptoJS from "crypto-js";
 import Swal from "sweetalert2";
-<<<<<<< HEAD
-=======
-import { signIn } from "next-auth/react";
->>>>>>> 81bc34f5984230d54b38a8289dbd1e926bf13317
 
 export default function DangKy() {
   const [showPassword, setShowPassword] = useState(false);
@@ -62,11 +58,7 @@ export default function DangKy() {
       try {
         // Gửi yêu cầu OTP
         const otpResponse = await axios.post(
-<<<<<<< HEAD
-          "https://trandainghia.id.vn/api/email/send-otp",
-=======
           "https://trandainghia.id.vn/api/send-otp",
->>>>>>> 81bc34f5984230d54b38a8289dbd1e926bf13317
           { email: data.email }
         );
         console.log("OTP Response:", otpResponse.data);

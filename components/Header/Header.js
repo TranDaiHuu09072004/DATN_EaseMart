@@ -67,6 +67,7 @@ export default function Header() {
       );
       console.log("Search", response.data);
       router.replace(`/product?keyword=${searchKeyword}`);
+      setSearchKeyword("");
     } catch (error) {
       console.error("Error fetching search results:", error);
     }

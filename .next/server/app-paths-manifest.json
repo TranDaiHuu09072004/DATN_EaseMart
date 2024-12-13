@@ -1,9 +1,8 @@
 {
   "/_not-found/page": "app/_not-found/page.js",
-  "/page": "app/page.js",
-  "/chi-tiet-don-hang/[id]/page": "app/chi-tiet-don-hang/[id]/page.js",
-  "/chi-tiet-san-pham/[id]/page": "app/chi-tiet-san-pham/[id]/page.js",
-  "/san-pham-yeu-thich/page": "app/san-pham-yeu-thich/page.js",
-  "/product/page": "app/product/page.js",
-  "/favicon.ico/route": "app/favicon.ico/route.js"
+  "/dangnhap/page": "app/dangnhap/page.js",
+  "/dangky/page": "app/dangky/page.js",
+  "/otp-email/page": "app/otp-email/page.js",
+  "/otp/page": "app/otp/page.js",
+  "/page": "app/page.js"
 }

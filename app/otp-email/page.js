@@ -1,11 +1,13 @@
 "use client";
 import Link from "next/link";
 import Swal from "sweetalert2";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import axios from "axios";
+
 export default function OTP() {
   const [otp, setOtp] = useState(["", "", "", ""]);
   const [isCooldown, setIsCooldown] = useState(false);
+  const inputRefs = useRef([]);
 
   const handleVerify = async () => {
     const registerData = JSON.parse(localStorage.getItem("registerData"));
@@ -20,7 +22,6 @@ export default function OTP() {
     }
 
     try {
-      // Gửi yêu cầu xác minh OTP
       const response = await axios.post(
         "https://trandainghia.id.vn/api/verify-otp",
         { email, otp: otpValue }
@@ -28,8 +29,6 @@ export default function OTP() {
 
       if (response.status === 200) {
         console.log("OTP verified:", response.data);
-
-        // Sau khi xác minh OTP thành công, gọi API đăng ký
         try {
           const registerResponse = await axios.post(
             "https://trandainghia.id.vn/api/register",
@@ -81,6 +80,44 @@ export default function OTP() {
     const newOtp = [...otp];
     newOtp[index] = value;
     setOtp(newOtp);
+
+    // Khi nhập giá trị, viền ô sẽ chuyển sang màu xanh
+    if (value !== "") {
+      inputRefs.current[index].style.borderColor = "#3bb77e"; // Viền màu xanh khi có giá trị
+    } else {
+      inputRefs.current[index].style.borderColor = "#cccccc"; // Viền màu xám khi không có giá trị
+    }
+
+    // Tự động chuyển sang ô tiếp theo nếu người dùng đã nhập giá trị
+    if (value !== "" && index < otp.length - 1) {
+      inputRefs.current[index + 1].focus();
+    }
+  };
+
+  const handleOtpBackspace = (index) => {
+    const newOtp = [...otp];
+    newOtp[index] = ""; // Xóa giá trị ô hiện tại
+    setOtp(newOtp);
+
+    // Khi xóa, viền ô sẽ quay lại màu xám
+    inputRefs.current[index].style.borderColor = "#cccccc"; // Viền xám khi xóa giá trị
+
+    // Chuyển focus về ô trước đó nếu có
+    if (index > 0) {
+      inputRefs.current[index - 1].focus();
+    }
+  };
+
+  const handleFocus = (index) => {
+    // Khi focus vào ô, viền sẽ chuyển sang xanh
+    inputRefs.current[index].style.borderColor = "#3bb77e"; // Viền xanh khi focus vào ô
+  };
+
+  const handleBlur = (index) => {
+    // Khi blur và ô không có giá trị, viền sẽ quay lại màu xám
+    if (otp[index] === "") {
+      inputRefs.current[index].style.borderColor = "#cccccc"; // Viền xám khi không có giá trị
+    }
   };
 
   const handleResendOtp = async () => {
@@ -118,10 +155,16 @@ export default function OTP() {
           {otp.map((value, index) => (
             <input
               key={index}
+              ref={(el) => (inputRefs.current[index] = el)}
               type="text"
               maxLength="1"
               value={value}
               onChange={(e) => handleOtpChange(index, e.target.value)}
+              onKeyDown={(e) =>
+                e.key === "Backspace" && handleOtpBackspace(index)
+              }
+              onFocus={() => handleFocus(index)}
+              onBlur={() => handleBlur(index)}
               className="w-[80px] h-[80px] border-2 border-solid border-[#cccccc] rounded-[10px] outline-none pl-8 text-[30px] font-semibold"
             />
           ))}

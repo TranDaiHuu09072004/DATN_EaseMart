@@ -6,6 +6,7 @@ import * as Yup from "yup"; // Import Yup for validation
 import { useForm } from "react-hook-form"; // Import useForm from react-hook-form
 import { yupResolver } from "@hookform/resolvers/yup"; // Import yupResolver for Yup integration
 import Swal from "sweetalert2";
+import CryptoJS from "crypto-js";
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -43,13 +44,16 @@ export default function DangNhap() {
   const handleLogin = async (data) => {
     const { email, password } = data;
 
+    const salt = "randomSalt123";
+    const hashedPassword = CryptoJS.SHA256(salt + password).toString();
+
     try {
       const response = await fetch("https://trandainghia.id.vn/api/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ email, password: hashedPassword }),
       });
 
       if (!response.ok) {
