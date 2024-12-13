@@ -13,19 +13,17 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
 import { useCart } from "../CartFunction";
-import { searchProducts } from "@/service/search";
-import { useRouter } from "next/router";
-
+import { useRouter } from "next/navigation";
+import axios from "axios";
 const cx = classNames.bind(styles);
 
 export default function Header() {
   const { state, dispatch } = useCart();
-  const [searchKeyword, setSearchKeyWord] = useState("");
+  const [searchKeyword, setSearchKeyword] = useState([]);
   const [name, setName] = useState(null);
   const [count, setCount] = useState(0);
-  const [image, setImage] = useState(null);
-  const [searchResults, setSearchResults] = useState([]);
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     let newCount = 0;
@@ -62,20 +60,16 @@ export default function Header() {
 
   const handleSearch = async (e) => {
     e.preventDefault();
-    if (!searchKeyword) return;
-
-    setLoading(true); // Start loading while fetching results
-    const result = await searchProducts(searchKeyword);
-    console.log("Search:", result);
-
-    // Redirect to the product page with the search keyword as a query parameter
-    if (result) {
-      setSearchResults(result.products);
-      router.push(`/product?search=${searchKeyword}`);
-    } else {
-      setSearchResults([]);
+    try {
+      const response = await axios.post(
+        "https://trandainghia.id.vn/api/products/search",
+        { keyword: searchKeyword }
+      );
+      console.log("Search", response.data);
+      router.replace(`/product?keyword=${searchKeyword}`);
+    } catch (error) {
+      console.error("Error fetching search results:", error);
     }
-    setLoading(false);
   };
 
   return (
@@ -94,8 +88,9 @@ export default function Header() {
             >
               <input
                 type="text"
-                onChange={(e) => setSearchKeyWord(e.target.value)}
                 placeholder="Bạn muốn mua gì ..."
+                value={searchKeyword}
+                onChange={(e) => setSearchKeyword(e.target.value)}
               />
               <button type="submit">
                 <FontAwesomeIcon
@@ -104,7 +99,6 @@ export default function Header() {
                 />
               </button>
             </form>
-
             <div
               className={cx(
                 "cart-info",

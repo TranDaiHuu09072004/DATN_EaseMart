@@ -3,13 +3,13 @@ const url = "https://trandainghia.id.vn/api/products";
 
 export const getProByCate = async (idcate) => {
   // let id = toString(idcate);
-  console.log(idcate);
+  // console.log(idcate);
 
-  console.log(idcate);
+  // console.log(idcate);
   const respone = await axios.get(
     `https://trandainghia.id.vn/api/products-by-parent/${idcate}`
   );
-  console.log("respone.data", respone.data);
+  // console.log("respone.data", respone.data);
 
   return respone.data;
 };
@@ -32,7 +32,7 @@ export const getProByBrand = async (id) => {
   const respone = await axios.get(
     `https://trandainghia.id.vn/api/products-by-brand/${id}`
   );
-  console.log(respone.data);
+  // console.log(respone.data);
 
   return respone.data;
 };
@@ -97,14 +97,14 @@ export const fetchProductByView = async () => {
 };
 // Hàm lấy sp theo khoản giá
 export const fetchProductsByMinMax = async (data) => {
-  console.log(data);
+  // console.log(data);
 
   try {
     const response = await axios.post(
       `https://trandainghia.id.vn/api/products/category/filter`,
       data
     );
-    console.log(response.data);
+    // console.log(response.data);
 
     return response.data;
   } catch (error) {

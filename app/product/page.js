@@ -31,13 +31,13 @@ import {
 } from "@/components/YTFunction/sanphamyeuthich";
 import Loading from "@/components/Loading/Loading";
 import { useRouter } from "next/navigation";
-import { searchProducts } from "@/service/search";
+// import { searchProducts } from "@/service/search";
 const cx = classNames.bind(styles);
 
 const Product = () => {
   const router = useRouter();
-  const { query } = router;
-  const keyword = query?.keyword;
+  const searchParams = useSearchParams();
+  const keyword = searchParams.get("keyword");
   const { state, dispatch } = useCart();
   const [cate, setCate] = useState([]);
   const [cateChoose, setCateChoose] = useState({});
@@ -47,7 +47,7 @@ const Product = () => {
   const [brand, setBrand] = useState([]);
   const [brandChoose, setBrandChoose] = useState({});
   const [brandChooseCheck, setBrandChooseCheck] = useState(false);
-  const [resultfilterProduct, setResultFilterProduct] = useState([]);
+  const [resultfilterProduct, setResultFilterProduct] = useState("");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [sortOrder, setSortOrder] = useState("");
   const [isSearching, setIsSearching] = useState(false);
@@ -56,9 +56,9 @@ const Product = () => {
   useEffect(() => {
     // list cate
     getCate().then((data) => {
-      console.log(data);
+      // console.log(data);
       getCateChild(data[0].id).then((cate) => {
-        console.log(cate);
+        // console.log(cate);
 
         setCate(data);
         setCateChoose({
@@ -70,25 +70,31 @@ const Product = () => {
     });
   }, []);
 
-  console.log(cateChoose);
+  // console.log(cateChoose);
 
   useEffect(() => {
     if (keyword) {
-      // Gọi API để lấy danh sách sản phẩm
       searchProducts(keyword).then((result) => {
+        console.log(result); // Log kết quả API
         if (result) {
-          setResultFilterProduct(result.products);
+          setResultFilterProduct(result);
         }
       });
     }
   }, [keyword]);
+
+  // Theo dõi sự thay đổi của resultFilterProduct
+  useEffect(() => {
+    console.log(resultfilterProduct); // In ra giá trị mới của resultFilterProduct
+  }, [resultfilterProduct]);
+
   // list product theo cate
   useEffect(() => {
     if (Object.keys(cateChoose).length == 0) return;
     console.log(cateChoose);
 
     getProByCate(cateChoose.id).then((data) => {
-      console.log(data);
+      // console.log(data);
 
       setBrandChooseCheck(false);
       data.products.forEach((element) => {
@@ -97,7 +103,7 @@ const Product = () => {
       });
       setProduct(data.products);
       getCateChild(cateChoose.id).then((data) => {
-        console.log(data);
+        // console.log(data);
 
         if (data.categories.length > 0) {
           setCateSub(data.categories);
@@ -128,13 +134,13 @@ const Product = () => {
   //đổi sản phẩm khi nhấp vào cate con
   useEffect(() => {
     getProBySubCate(cateSubChoose.id).then((data) => {
-      console.log(data);
+      // console.log(data);
 
       data.products.forEach((element) => {
         if (!element.units[0].price_sale)
           element.units[0].price_sale = element.units[0].price;
       });
-      console.log(data);
+      // console.log(data);
 
       setProduct(data.products);
     });
@@ -154,7 +160,7 @@ const Product = () => {
     }
 
     fetchProductsByMinMax(data).then((data) => {
-      console.log(data);
+      // console.log(data);
 
       const transformedData = data.data.map((product) => ({
         id: product.id,
@@ -174,7 +180,7 @@ const Product = () => {
           is_primary: product.primary_image.is_primakey,
         },
       }));
-      console.log(transformedData);
+      // console.log(transformedData);
 
       setProduct(transformedData);
     });
@@ -196,7 +202,7 @@ const Product = () => {
     setResultFilterProduct([]); // Xóa kết quả tìm kiếm
   };
 
-  console.log(product);
+  // console.log(product);
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -348,92 +354,96 @@ const Product = () => {
 
               {/* Product List */}
               <div className={cx("product-list")}>
-                {(isSearching ? resultfilterProduct : product).map((item) => (
-                  <div
-                    key={item.id}
-                    className={cx(
-                      "box-border",
-                      "xl:basis-1/5",
-                      "lg:basis-1/4",
-                      "sm:basis-1/3",
-                      "xs:basis-1/2",
-                      "basis-full",
-                      "p-[2px]"
-                    )}
-                  >
-                    <div className={cx("box-product", "h-full")}>
-                      <div className={cx("product")}>
-                        <div className={cx("thumb")}>
-                          <img
-                            src={`https://trandainghia.id.vn/${item.primary_image.path}`}
-                          />
-                        </div>
-                        <Link
-                          href={`/chi-tiet-san-pham/${item.id}`}
-                          className={cx("name")}
-                        >
-                          {item.name}
-                        </Link>
-                        <div className={cx("unit", "text-sm", "text-gray-400")}>
-                          ĐVT: <span>{item.units[0].unit_name}</span>
-                        </div>
-                        <div className={cx("price")}>
-                          <div>
-                            <div className={cx("price-reduction")}>
-                              {item.units[0]?.price_sale || item.units[0].price}
-                              đ
-                            </div>
-                            <div className={cx("original-price")}>
-                              {item.units[0].price}đ
-                            </div>
+                {Array.isArray(isSearching ? resultfilterProduct : product) &&
+                  (isSearching ? resultfilterProduct : product).map((item) => (
+                    <div
+                      key={item.id}
+                      className={cx(
+                        "box-border",
+                        "xl:basis-1/5",
+                        "lg:basis-1/4",
+                        "sm:basis-1/3",
+                        "xs:basis-1/2",
+                        "basis-full",
+                        "p-[2px]"
+                      )}
+                    >
+                      <div className={cx("box-product", "h-full")}>
+                        <div className={cx("product")}>
+                          <div className={cx("thumb")}>
+                            <img
+                              src={`https://trandainghia.id.vn/${item.primary_image.path}`}
+                            />
                           </div>
-                          <div
-                            className={cx("flex-grow", "flex", "justify-end")}
-                          ></div>
-                          <Icon
-                            onClick={() => {
-                              dispatchYt(
-                                new DispatchYt("ADD_ITEM_YEUTHICH", item)
-                              );
-                            }}
-                            icon="mdi:heart-outline"
-                            className="w-6 h-6 text-red-500"
-                          />
-                        </div>
-                        <div className={cx("btn-action")}>
-                          <button
-                            className={cx(
-                              "btn",
-                              "addtocart",
-                              "flex",
-                              "items-center",
-                              "justify-center",
-                              "gap-1",
-                              "text-base",
-                              "basis-full"
-                            )}
-                            onClick={() => {
-                              dispatch(
-                                new Dispatch("ADD_ITEM_CART", {
-                                  ...item,
-                                  quantity: 1,
-                                })
-                              );
-                            }}
+                          <Link
+                            href={`/chi-tiet-san-pham/${item.id}`}
+                            className={cx("name")}
                           >
-                            <span>
-                              <Icon
-                                icon="humbleicons:cart"
-                                className={cx("w-5", "h-6")}
-                              />
-                            </span>
-                            Thêm vào giỏ
-                          </button>
+                            {item.name}
+                          </Link>
+                          <div
+                            className={cx("unit", "text-sm", "text-gray-400")}
+                          >
+                            ĐVT: <span>{item.units[0].unit_name}</span>
+                          </div>
+                          <div className={cx("price")}>
+                            <div>
+                              <div className={cx("price-reduction")}>
+                                {item.units[0]?.price_sale ||
+                                  item.units[0].price}
+                                đ
+                              </div>
+                              <div className={cx("original-price")}>
+                                {item.units[0].price}đ
+                              </div>
+                            </div>
+                            <div
+                              className={cx("flex-grow", "flex", "justify-end")}
+                            ></div>
+                            <Icon
+                              onClick={() => {
+                                dispatchYt(
+                                  new DispatchYt("ADD_ITEM_YEUTHICH", item)
+                                );
+                              }}
+                              icon="mdi:heart-outline"
+                              className="w-6 h-6 text-red-500"
+                            />
+                          </div>
+                          <div className={cx("btn-action")}>
+                            <button
+                              className={cx(
+                                "btn",
+                                "addtocart",
+                                "flex",
+                                "items-center",
+                                "justify-center",
+                                "gap-1",
+                                "text-base",
+                                "basis-full"
+                              )}
+                              onClick={() => {
+                                dispatch(
+                                  new Dispatch("ADD_ITEM_CART", {
+                                    ...item,
+                                    quantity: 1,
+                                  })
+                                );
+                              }}
+                            >
+                              <span>
+                                <Icon
+                                  icon="humbleicons:cart"
+                                  className={cx("w-5", "h-6")}
+                                />
+                              </span>
+                              Thêm vào giỏ
+                            </button>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
                 {/* Add a message for no results found */}
                 {!isSearching && product.length === 0 && (
                   <div className={cx("no-results")}>Không có sản phẩm nào.</div>

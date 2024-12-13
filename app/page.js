@@ -54,7 +54,7 @@ export default function Home() {
         .slice(0, 10);
 
       setProductsPopular(shuffledPopular);
-      console.log("Popular Products:", shuffledPopular);
+      // console.log("Popular Products:", shuffledPopular);
     });
 
     fetchProducts("FlashSale").then((flashsale) => {
@@ -83,7 +83,7 @@ export default function Home() {
         .slice(0, 10);
 
       setProductsFlashSale(shuffledFlashSale);
-      console.log("Flash Sale Products:", shuffledFlashSale);
+      // console.log("Flash Sale Products:", shuffledFlashSale);
     });
 
     fetchProductByView("Product_Views").then((productviews) => {
@@ -112,7 +112,7 @@ export default function Home() {
         .slice(0, 10);
 
       setProduct_Viewss(shuffledViews);
-      console.log("Viewed Products:", shuffledViews);
+      // console.log("Viewed Products:", shuffledViews);
     });
   }, []);
 
@@ -295,7 +295,7 @@ const ProductList = ({ products }) => {
               )}
               key={product.id}
             >
-              <div className="w-full h-full">
+              <div className="w-auto h-full">
                 <div className={cx("product-item")}>
                   <Link
                     href={`/chi-tiet-san-pham/${product.id}`}
@@ -306,8 +306,8 @@ const ProductList = ({ products }) => {
                       alt={product.name || "Product Image"}
                       className={cx(
                         "product-image",
-                        "w-[190px]",
-                        "h-[190px]",
+                        "w-auto",
+                        "h-[200px]",
                         "object-cover"
                       )}
                     />
