@@ -45,7 +45,7 @@ export default function Payment() {
   let total = useRef(0);
   let listPaymentMethod = useRef([
     { method: "COD", des: "Thanh toán khi nhận hàng" },
-    { method: "BANK", des: "Thanh toán bằng ngân hàng MB" },
+    { method: "BANK", des: "Thanh toán bằng ngân hàng" },
   ]);
 
   useEffect(() => {
@@ -237,10 +237,10 @@ export default function Payment() {
         });
       }
       return state.cartItems.filter((item) => {
-        if (item.select){
+        if (item.select) {
           total.current += item.quantity * item.units[0].price_sale;
           return item.select;
-        };
+        }
       });
     });
   }, [state, byStatus]);
@@ -282,9 +282,9 @@ export default function Payment() {
 
   const applyVoucher = async () => {
     try {
-      const response = await axios.post(
+      const response = await axios.get(
         `https://trandainghia.id.vn/api/voucher/detail`,
-        { code: voucherCode }
+        { params: { code: voucherCode } }
       );
 
       if (response.data && response.data.data) {

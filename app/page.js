@@ -39,13 +39,15 @@ export default function Home() {
           unit_name: unit.unit.unit_name,
           price: unit.price,
           price_sale_value: unit.price_sale,
-          price_sale: unit.price_sale || unit.price ,
+          price_sale: unit.price_sale || unit.price,
           status: unit.status,
         })),
         primary_image: {
-          path: product.primary_image.image_path,
-          alt_text: product.primary_image.alt_text,
-          is_primary: product.primary_image.is_primakey,
+          path: product.primary_image ? product.primary_image.image_path : "",
+          alt_text: product.primary_image ? product.primary_image.alt_text : "",
+          is_primary: product.primary_image
+            ? product.primary_image.is_primakey
+            : false,
         },
       }));
 
@@ -69,13 +71,15 @@ export default function Home() {
           unit_name: unit.unit.unit_name,
           price: unit.price,
           price_sale_value: unit.price_sale,
-          price_sale: unit.price_sale || unit.price ,
+          price_sale: unit.price_sale || unit.price,
           status: unit.status,
         })),
         primary_image: {
-          path: product.primary_image.image_path,
-          alt_text: product.primary_image.alt_text,
-          is_primary: product.primary_image.is_primakey,
+          path: product.primary_image ? product.primary_image.image_path : "",
+          alt_text: product.primary_image ? product.primary_image.alt_text : "",
+          is_primary: product.primary_image
+            ? product.primary_image.is_primakey
+            : false,
         },
       }));
 
@@ -99,13 +103,15 @@ export default function Home() {
           unit_name: unit.unit.unit_name,
           price: unit.price,
           price_sale_value: unit.price_sale,
-          price_sale: unit.price_sale || unit.price ,
+          price_sale: unit.price_sale || unit.price,
           status: unit.status,
         })),
         primary_image: {
-          path: product.primary_image.image_path,
-          alt_text: product.primary_image.alt_text,
-          is_primary: product.primary_image.is_primakey,
+          path: product.primary_image ? product.primary_image.image_path : "",
+          alt_text: product.primary_image ? product.primary_image.alt_text : "",
+          is_primary: product.primary_image
+            ? product.primary_image.is_primakey
+            : false,
         },
       }));
 
@@ -260,25 +266,25 @@ export default function Home() {
   );
 }
 
-  // const transformedData = productviews.map((product) => ({
-  //   id: product.id,
-  //   name: product.name,
-  //   description: product.description,
-  //   status: product.status,
-  //   units: product.product_units.map((unit) => ({
-  //     unit_id: unit.unit_id,
-  //     unit_name: unit.unit.unit_name,
-  //     price: unit.price,
-  //     price_sale_value: unit.price_sale,
-  //     price_sale: unit.price_sale || unit.price ,
-  //     status: unit.status,
-  //   })),
-  //   primary_image: {
-  //     path: product.primary_image.image_path,
-  //     alt_text: product.primary_image.alt_text,
-  //     is_primary: product.primary_image.is_primakey,
-  //   },
-  // }));
+// const transformedData = productviews.map((product) => ({
+//   id: product.id,
+//   name: product.name,
+//   description: product.description,
+//   status: product.status,
+//   units: product.product_units.map((unit) => ({
+//     unit_id: unit.unit_id,
+//     unit_name: unit.unit.unit_name,
+//     price: unit.price,
+//     price_sale_value: unit.price_sale,
+//     price_sale: unit.price_sale || unit.price ,
+//     status: unit.status,
+//   })),
+//   primary_image: {
+//     path: product.primary_image.image_path,
+//     alt_text: product.primary_image.alt_text,
+//     is_primary: product.primary_image.is_primakey,
+//   },
+// }));
 
 const ProductList = ({ products }) => {
   const baseUrl = "https://trandainghia.id.vn";
@@ -302,7 +308,7 @@ const ProductList = ({ products }) => {
 
           // Access the first product unit to get price and price_sale
           const productUnit = product.units[0];
-          const priceSale = productUnit ? productUnit. price_sale_value : null;
+          const priceSale = productUnit ? productUnit.price_sale_value : null;
           const originalPrice = productUnit ? productUnit.price : 0;
           const unit = productUnit ? productUnit.unit_name : "0 có đơn vị";
           return (

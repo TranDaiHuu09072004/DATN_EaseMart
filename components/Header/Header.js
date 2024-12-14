@@ -36,16 +36,13 @@ export default function Header() {
   useEffect(() => {
     console.log();
 
-    const name = JSON.parse(localStorage.getItem("name"));
-    const savedImage = localStorage.getItem("image");
+    const user = JSON.parse(localStorage.getItem("user"));
+    const name = user ? user.name : null;
     if (name) {
       let handlename = name.split(" ");
       handlename = handlename[handlename.length - 1];
 
       setName(handlename);
-    }
-    if (savedImage) {
-      setImage(savedImage);
     }
   }, []);
 

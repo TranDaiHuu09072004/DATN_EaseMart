@@ -45,18 +45,19 @@ const HeaderScroll = () => {
   }, []);
 
   useEffect(() => {
-    const name = JSON.parse(localStorage.getItem("name"));
+    const user = JSON.parse(localStorage.getItem("user"));
+    const name = user ? user.name : null;
     const savedImage = localStorage.getItem("image");
     if (name) {
       let handlename = name.split(" ");
       handlename = handlename[handlename.length - 1];
+
       setName(handlename);
     }
     if (savedImage) {
       setImage(savedImage);
     }
   }, []);
-
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 150) {
