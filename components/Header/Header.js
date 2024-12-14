@@ -62,18 +62,61 @@ export default function Header() {
   };
 
   const handleSearch = async (e) => {
-    e.preventDefault();
+    if (e) {
+      e.preventDefault();
+    }
     try {
       const response = await axios.post(
         "https://trandainghia.id.vn/api/products/search",
         { keyword: searchKeyword }
       );
       console.log("Search", response.data);
-      router.replace(`/product?keyword=${searchKeyword}`);
       setSearchKeyword("");
     } catch (error) {
       console.error("Error fetching search results:", error);
     }
+  };
+
+  const handleVoiceSearch = () => {
+    // Kiểm tra trình duyệt có hỗ trợ SpeechRecognition hay không
+    const SpeechRecognition =
+      window.SpeechRecognition || window.webkitSpeechRecognition;
+
+    if (!SpeechRecognition) {
+      toast.error("Trình duyệt của bạn không hỗ trợ tìm kiếm bằng giọng nói");
+      return;
+    }
+
+    const recognition = new SpeechRecognition();
+    recognition.lang = "vi-VN"; // Ngôn ngữ tiếng Việt
+    recognition.interimResults = false;
+
+    recognition.onstart = () => {
+      setLoading(true); // Hiển thị trạng thái "Đang lắng nghe..."
+      setTimeout(() => {
+        recognition.stop(); // Dừng nhận diện
+      }, 3000);
+    };
+
+    recognition.onresult = (event) => {
+      const transcript = event.results[0][0].transcript;
+      setSearchKeyword(transcript); // Gán từ khóa từ giọng nói
+      setLoading(false); // Ẩn trạng thái "Đang lắng nghe..."
+      handleSearch({ preventDefault: () => {} }); // Tự động gọi API tìm kiếm với từ khóa
+      router.replace(`/product?keyword=${transcript}`); // Cập nhật để sử dụng transcript
+    };
+
+    recognition.onerror = (event) => {
+      console.error("Lỗi giọng nói:", event.error);
+      toast.error("Lỗi khi nhận diện giọng nói");
+      setLoading(false);
+    };
+
+    recognition.onend = () => {
+      setLoading(false); // Dừng trạng thái "Đang lắng nghe..."
+    };
+
+    recognition.start(); // Bắt đầu nghe
   };
 
   return (
@@ -96,11 +139,13 @@ export default function Header() {
                 value={searchKeyword}
                 onChange={(e) => setSearchKeyword(e.target.value)}
               />
-              <button type="submit">
-                <FontAwesomeIcon
-                  className={cx("icon-search")}
-                  icon={faSearch}
-                />
+              {loading && (
+                <p className="text-[#3bb77e] font-bold animate-bounce">
+                  Đang lắng nghe...
+                </p>
+              )}
+              <button type="button" onClick={handleVoiceSearch}>
+                <i className="fa-solid fa-microphone text-[20px]"></i>
               </button>
             </form>
             <div

@@ -268,24 +268,38 @@ const Product = () => {
   };
 
   return (
-    <div className={cx("max-w-screen-xl", "mx-auto", "p-4")}>
-      <div className={cx("page-product")}>
-        {/* Breadcrumb */}
-        <div
-          className={cx(
-            "link_home_news",
-            "max-md:px-3",
-            "max-md:p-1",
-            "md:px-3",
-            "items-center"
-          )}
-        >
-          <ul className={cx("list_link")}>
-            <li>
-              <Link
-                href="/"
+    <Suspense fallback={<Loading />}>
+      <div className={cx("max-w-screen-xl", "mx-auto", "p-4")}>
+        <div className={cx("page-product")}>
+          {/* Breadcrumb */}
+          <div
+            className={cx(
+              "link_home_news",
+              "max-md:px-3",
+              "max-md:p-1",
+              "md:px-3",
+              "items-center"
+            )}
+          >
+            <ul className={cx("list_link")}>
+              <li>
+                <Link
+                  href="/"
+                  className={cx(
+                    "link_item",
+                    "xl:text-xl",
+                    "lg:text-[#585757]",
+                    "lg:no-underline",
+                    "max-lg:text-[18px]",
+                    "max-md:text-[16px]"
+                  )}
+                >
+                  Trang Chủ
+                </Link>
+              </li>
+              <li
                 className={cx(
-                  "link_item",
+                  "separator",
                   "xl:text-xl",
                   "lg:text-[#585757]",
                   "lg:no-underline",
@@ -293,354 +307,349 @@ const Product = () => {
                   "max-md:text-[16px]"
                 )}
               >
-                Trang Chủ
-              </Link>
-            </li>
-            <li
-              className={cx(
-                "separator",
-                "xl:text-xl",
-                "lg:text-[#585757]",
-                "lg:no-underline",
-                "max-lg:text-[18px]",
-                "max-md:text-[16px]"
-              )}
-            >
-              /
-            </li>
-            <li>
-              <Link
-                href="#"
-                className={cx(
-                  "link_item",
-                  "xl:text-xl",
-                  "lg:text-[#585757]",
-                  "lg:no-underline",
-                  "max-lg:text-[18px]",
-                  "max-md:text-[16px]"
-                )}
-              >
-                Sản Phẩm
-              </Link>
-            </li>
-          </ul>
-        </div>
-
-        <div className={cx("product-content")}>
-          <div className={cx("sidebar", "hidden", "lg:block")}>
-            <Sidebar
-              filterProduct={handleFilterProduct}
-              listCate={cate}
-              updateCate={handleChooseCate}
-              listBrand={brand}
-              updateBrand={handleChooseBrand}
-            />
+                /
+              </li>
+              <li>
+                <Link
+                  href="#"
+                  className={cx(
+                    "link_item",
+                    "xl:text-xl",
+                    "lg:text-[#585757]",
+                    "lg:no-underline",
+                    "max-lg:text-[18px]",
+                    "max-md:text-[16px]"
+                  )}
+                >
+                  Sản Phẩm
+                </Link>
+              </li>
+            </ul>
           </div>
 
-          <div className={cx("wrapper-content")}>
-            <div className={cx("content")}>
-              <div className={cx("title")}>
-                {brandChooseCheck ? brandChoose.name : cateChoose.name}
-                <div className="relative inline-block text-left">
-                  <button
-                    className="bg-[#3bb77e] text-white px-3 py-1.5 rounded-md flex items-center gap-1 text-sm hover:bg-green-600"
-                    onClick={toggleDropdown}
-                  >
-                    Sắp xếp theo <FontAwesomeIcon icon={faAngleDown} />
-                  </button>
-                  {isDropdownOpen && (
-                    <div className="absolute mt-2 w-full bg-white border border-gray-200 rounded-md shadow-lg z-10">
-                      <div
-                        className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-[#3bb77e] font-medium transition-colors text-sm"
-                        onClick={() => handleSort("asc")}
-                      >
-                        Giá tăng dần
-                      </div>
-                      <div
-                        className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-[#3bb77e] font-medium transition-colors text-sm"
-                        onClick={() => handleSort("desc")}
-                      >
-                        Giá giảm dần
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </div>
+          <div className={cx("product-content")}>
+            <div className={cx("sidebar", "hidden", "lg:block")}>
+              <Sidebar
+                filterProduct={handleFilterProduct}
+                listCate={cate}
+                updateCate={handleChooseCate}
+                listBrand={brand}
+                updateBrand={handleChooseBrand}
+              />
+            </div>
 
-              {/* Subcategories */}
-              {!brandChooseCheck && (
-                <div className={cx("type")}>
-                  <ul className={cx("menu-type")}>
-                    {cateSub.map((item) => (
-                      <li
-                        key={item.id}
-                        className={cx("item")}
-                        onClick={() => handleChooseSubCate({ id: item.id })}
-                      >
-                        <div className={cx("item-thumbnail")}>
-                          <img
-                            src={`https://trandainghia.id.vn/${item.image}`}
-                            alt={item.categories_name}
-                            className="w-full object-cover h-full rounded-full"
-                          />
-                        </div>
-                        <Link className={cx("item-name", "w-full")} href="#">
-                          {item.categories_name}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-
-              {/* Product List */}
-              <Suspense
-                fallback={
-                  <div>
-                    <Loading />
-                  </div>
-                }
-              >
-                <div className={cx("product-list")}>
-                  {Array.isArray(resultfilterProduct) &&
-                  resultfilterProduct.length > 0
-                    ? resultfilterProduct.map((item) => (
-                        <div
-                          key={item.id}
-                          className={cx(
-                            "box-border",
-                            "xl:basis-1/5",
-                            "lg:basis-1/4",
-                            "sm:basis-1/3",
-                            "xs:basis-1/2",
-                            "basis-full",
-                            "p-[2px]"
-                          )}
-                        >
-                          <div className={cx("box-product", "h-full")}>
-                            <div className={cx("product")}>
-                              <div className={cx("thumb")}>
-                                <img
-                                  src={`https://trandainghia.id.vn/${item.primary_image.path}`}
-                                  className="w-auto h-auto xs:h-full"
-                                />
-                              </div>
-                              <Link
-                                href={`/chi-tiet-san-pham/${item.id}`}
-                                className={cx("name")}
-                              >
-                                {item.name}
-                              </Link>
-                              <div
-                                className={cx(
-                                  "unit",
-                                  "text-sm",
-                                  "text-gray-400"
-                                )}
-                              >
-                                ĐVT: <span>{item.units[0].unit_name}</span>
-                              </div>
-                              <div className={cx("price")}>
-                                <div>
-                                  <div className={cx("price-reduction")}>
-                                    {formatPrice(item.units[0].price_sale)}đ
-                                  </div>
-
-                                  {item.units[0].price_sale_value && (
-                                    <div className={cx("original-price")}>
-                                      {formatPrice(item.units[0].price)}đ
-                                    </div>
-                                  )}
-                                </div>
-                                <div
-                                  className={cx(
-                                    "flex-grow",
-                                    "flex",
-                                    "justify-end"
-                                  )}
-                                ></div>
-                                <Icon
-                                  onClick={() => {
-                                    dispatchYt(
-                                      new DispatchYt("ADD_ITEM_YEUTHICH", item)
-                                    );
-                                  }}
-                                  icon="mdi:heart-outline"
-                                  className="w-6 h-6 text-red-500"
-                                />
-                              </div>
-                              <div className={cx("btn-action")}>
-                                <button
-                                  className={cx(
-                                    "btn",
-                                    "addtocart",
-                                    "flex",
-                                    "items-center",
-                                    "justify-center",
-                                    "gap-1",
-                                    "text-base",
-                                    "basis-full"
-                                  )}
-                                  onClick={() => {
-                                    dispatch(
-                                      new Dispatch("ADD_ITEM_CART", {
-                                        ...item,
-                                        quantity: 1,
-                                      })
-                                    );
-                                  }}
-                                >
-                                  <span>
-                                    <Icon
-                                      icon="humbleicons:cart"
-                                      className={cx("w-5", "h-6")}
-                                    />
-                                  </span>
-                                  Thêm vào giỏ
-                                </button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      ))
-                    : currentProducts.map((item) => (
-                        <div
-                          key={item.id}
-                          className={cx(
-                            "box-border",
-                            "xl:basis-1/5",
-                            "lg:basis-1/4",
-                            "sm:basis-1/3",
-                            "xs:basis-1/2",
-                            "basis-full",
-                            "p-[2px]"
-                          )}
-                        >
-                          <div className={cx("box-product", "h-full")}>
-                            <div className={cx("product")}>
-                              <div className={cx("thumb")}>
-                                <img
-                                  src={`https://trandainghia.id.vn/${item.primary_image.path}`}
-                                />
-                              </div>
-                              <Link
-                                href={`/chi-tiet-san-pham/${item.id}`}
-                                className={cx("name")}
-                              >
-                                {item.name}
-                              </Link>
-                              <div
-                                className={cx(
-                                  "unit",
-                                  "text-sm",
-                                  "text-gray-400"
-                                )}
-                              >
-                                ĐVT: <span>{item.units[0].unit_name}</span>
-                              </div>
-                              <div className={cx("price")}>
-                                <div>
-                                  <div className={cx("price-reduction")}>
-                                    {formatPrice(item.units[0].price_sale)}đ
-                                  </div>
-
-                                  {item.units[0].price_sale_value && (
-                                    <div className={cx("original-price")}>
-                                      {formatPrice(item.units[0].price)}đ
-                                    </div>
-                                  )}
-                                </div>
-                                <div
-                                  className={cx(
-                                    "flex-grow",
-                                    "flex",
-                                    "justify-end"
-                                  )}
-                                ></div>
-                                <Icon
-                                  onClick={() => {
-                                    dispatchYt(
-                                      new DispatchYt("ADD_ITEM_YEUTHICH", item)
-                                    );
-                                  }}
-                                  icon="mdi:heart-outline"
-                                  className="w-6 h-6 text-red-500"
-                                />
-                              </div>
-                              <div className={cx("btn-action")}>
-                                <button
-                                  className={cx(
-                                    "btn",
-                                    "addtocart",
-                                    "flex",
-                                    "items-center",
-                                    "justify-center",
-                                    "gap-1",
-                                    "text-base",
-                                    "basis-full"
-                                  )}
-                                  onClick={() => {
-                                    dispatch(
-                                      new Dispatch("ADD_ITEM_CART", {
-                                        ...item,
-                                        quantity: 1,
-                                      })
-                                    );
-                                  }}
-                                >
-                                  <span>
-                                    <Icon
-                                      icon="humbleicons:cart"
-                                      className={cx("w-5", "h-6")}
-                                    />
-                                  </span>
-                                  Thêm vào giỏ
-                                </button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      ))}
-
-                  {!isSearching && product.length === 0 && (
-                    <div className={cx("no-results")}>
-                      Không có sản phẩm nào.
-                    </div>
-                  )}
-                </div>
-              </Suspense>
-              {/* Pagination */}
-              <div className={cx("pagination")}>
-                {currentPage > 1 && (
-                  <div onClick={handlePrevPage} className={cx("page-change")}>
-                    <FontAwesomeIcon icon={faChevronLeft} />
-                  </div>
-                )}
-                {Array.from(
-                  { length: Math.ceil(product.length / productsPerPage) },
-                  (_, index) => (
-                    <div
-                      key={index + 1}
-                      className={cx("page-number", {
-                        active: currentPage === index + 1,
-                      })}
-                      onClick={() => handlePageChange(index + 1)}
+            <div className={cx("wrapper-content")}>
+              <div className={cx("content")}>
+                <div className={cx("title")}>
+                  {brandChooseCheck ? brandChoose.name : cateChoose.name}
+                  <div className="relative inline-block text-left">
+                    <button
+                      className="bg-[#3bb77e] text-white px-3 py-1.5 rounded-md flex items-center gap-1 text-sm hover:bg-green-600"
+                      onClick={toggleDropdown}
                     >
-                      {index + 1}
-                    </div>
-                  )
-                )}
-                {currentPage < Math.ceil(product.length / productsPerPage) && (
-                  <div onClick={handleNextPage} className={cx("page-change")}>
-                    <FontAwesomeIcon icon={faChevronRight} />
+                      Sắp xếp theo <FontAwesomeIcon icon={faAngleDown} />
+                    </button>
+                    {isDropdownOpen && (
+                      <div className="absolute mt-2 w-full bg-white border border-gray-200 rounded-md shadow-lg z-10">
+                        <div
+                          className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-[#3bb77e] font-medium transition-colors text-sm"
+                          onClick={() => handleSort("asc")}
+                        >
+                          Giá tăng dần
+                        </div>
+                        <div
+                          className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-[#3bb77e] font-medium transition-colors text-sm"
+                          onClick={() => handleSort("desc")}
+                        >
+                          Giá giảm dần
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {/* Subcategories */}
+                {!brandChooseCheck && (
+                  <div className={cx("type")}>
+                    <ul className={cx("menu-type")}>
+                      {cateSub.map((item) => (
+                        <li
+                          key={item.id}
+                          className={cx("item")}
+                          onClick={() => handleChooseSubCate({ id: item.id })}
+                        >
+                          <div className={cx("item-thumbnail")}>
+                            <img
+                              src={`https://trandainghia.id.vn/${item.image}`}
+                              alt={item.categories_name}
+                              className="w-full object-cover h-full rounded-full"
+                            />
+                          </div>
+                          <Link className={cx("item-name", "w-full")} href="#">
+                            {item.categories_name}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 )}
+
+                {/* Product List */}
+                <Suspense
+                  fallback={
+                    <div>
+                      <Loading />
+                    </div>
+                  }
+                >
+                  <div className={cx("product-list")}>
+                    {Array.isArray(resultfilterProduct) &&
+                    resultfilterProduct.length > 0
+                      ? resultfilterProduct.map((item) => (
+                          <div
+                            key={item.id}
+                            className={cx(
+                              "box-border",
+                              "xl:basis-1/5",
+                              "lg:basis-1/4",
+                              "sm:basis-1/3",
+                              "xs:basis-1/2",
+                              "basis-full",
+                              "p-[2px]"
+                            )}
+                          >
+                            <div className={cx("box-product", "h-full")}>
+                              <div className={cx("product")}>
+                                <div className={cx("thumb")}>
+                                  <img
+                                    src={`https://trandainghia.id.vn/${item.primary_image.path}`}
+                                    className="w-auto h-auto xs:h-full"
+                                  />
+                                </div>
+                                <Link
+                                  href={`/chi-tiet-san-pham/${item.id}`}
+                                  className={cx("name")}
+                                >
+                                  {item.name}
+                                </Link>
+                                <div
+                                  className={cx(
+                                    "unit",
+                                    "text-sm",
+                                    "text-gray-400"
+                                  )}
+                                >
+                                  ĐVT: <span>{item.units[0].unit_name}</span>
+                                </div>
+                                <div className={cx("price")}>
+                                  <div>
+                                    <div className={cx("price-reduction")}>
+                                      {formatPrice(item.units[0].price_sale)}đ
+                                    </div>
+
+                                    {item.units[0].price_sale_value && (
+                                      <div className={cx("original-price")}>
+                                        {formatPrice(item.units[0].price)}đ
+                                      </div>
+                                    )}
+                                  </div>
+                                  <div
+                                    className={cx(
+                                      "flex-grow",
+                                      "flex",
+                                      "justify-end"
+                                    )}
+                                  ></div>
+                                  <Icon
+                                    onClick={() => {
+                                      dispatchYt(
+                                        new DispatchYt(
+                                          "ADD_ITEM_YEUTHICH",
+                                          item
+                                        )
+                                      );
+                                    }}
+                                    icon="mdi:heart-outline"
+                                    className="w-6 h-6 text-red-500"
+                                  />
+                                </div>
+                                <div className={cx("btn-action")}>
+                                  <button
+                                    className={cx(
+                                      "btn",
+                                      "addtocart",
+                                      "flex",
+                                      "items-center",
+                                      "justify-center",
+                                      "gap-1",
+                                      "text-base",
+                                      "basis-full"
+                                    )}
+                                    onClick={() => {
+                                      dispatch(
+                                        new Dispatch("ADD_ITEM_CART", {
+                                          ...item,
+                                          quantity: 1,
+                                        })
+                                      );
+                                    }}
+                                  >
+                                    <span>
+                                      <Icon
+                                        icon="humbleicons:cart"
+                                        className={cx("w-5", "h-6")}
+                                      />
+                                    </span>
+                                    Thêm vào giỏ
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        ))
+                      : currentProducts.map((item) => (
+                          <div
+                            key={item.id}
+                            className={cx(
+                              "box-border",
+                              "xl:basis-1/5",
+                              "lg:basis-1/4",
+                              "sm:basis-1/3",
+                              "xs:basis-1/2",
+                              "basis-full",
+                              "p-[2px]"
+                            )}
+                          >
+                            <div className={cx("box-product", "h-full")}>
+                              <div className={cx("product")}>
+                                <div className={cx("thumb")}>
+                                  <img
+                                    src={`https://trandainghia.id.vn/${item.primary_image.path}`}
+                                  />
+                                </div>
+                                <Link
+                                  href={`/chi-tiet-san-pham/${item.id}`}
+                                  className={cx("name")}
+                                >
+                                  {item.name}
+                                </Link>
+                                <div
+                                  className={cx(
+                                    "unit",
+                                    "text-sm",
+                                    "text-gray-400"
+                                  )}
+                                >
+                                  ĐVT: <span>{item.units[0].unit_name}</span>
+                                </div>
+                                <div className={cx("price")}>
+                                  <div>
+                                    <div className={cx("price-reduction")}>
+                                      {formatPrice(item.units[0].price_sale)}đ
+                                    </div>
+
+                                    {item.units[0].price_sale_value && (
+                                      <div className={cx("original-price")}>
+                                        {formatPrice(item.units[0].price)}đ
+                                      </div>
+                                    )}
+                                  </div>
+                                  <div
+                                    className={cx(
+                                      "flex-grow",
+                                      "flex",
+                                      "justify-end"
+                                    )}
+                                  ></div>
+                                  <Icon
+                                    onClick={() => {
+                                      dispatchYt(
+                                        new DispatchYt(
+                                          "ADD_ITEM_YEUTHICH",
+                                          item
+                                        )
+                                      );
+                                    }}
+                                    icon="mdi:heart-outline"
+                                    className="w-6 h-6 text-red-500"
+                                  />
+                                </div>
+                                <div className={cx("btn-action")}>
+                                  <button
+                                    className={cx(
+                                      "btn",
+                                      "addtocart",
+                                      "flex",
+                                      "items-center",
+                                      "justify-center",
+                                      "gap-1",
+                                      "text-base",
+                                      "basis-full"
+                                    )}
+                                    onClick={() => {
+                                      dispatch(
+                                        new Dispatch("ADD_ITEM_CART", {
+                                          ...item,
+                                          quantity: 1,
+                                        })
+                                      );
+                                    }}
+                                  >
+                                    <span>
+                                      <Icon
+                                        icon="humbleicons:cart"
+                                        className={cx("w-5", "h-6")}
+                                      />
+                                    </span>
+                                    Thêm vào giỏ
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+
+                    {!isSearching && product.length === 0 && (
+                      <div className={cx("no-results")}>
+                        Không có sản phẩm nào.
+                      </div>
+                    )}
+                  </div>
+                </Suspense>
+                {/* Pagination */}
+                <div className={cx("pagination")}>
+                  {currentPage > 1 && (
+                    <div onClick={handlePrevPage} className={cx("page-change")}>
+                      <FontAwesomeIcon icon={faChevronLeft} />
+                    </div>
+                  )}
+                  {Array.from(
+                    { length: Math.ceil(product.length / productsPerPage) },
+                    (_, index) => (
+                      <div
+                        key={index + 1}
+                        className={cx("page-number", {
+                          active: currentPage === index + 1,
+                        })}
+                        onClick={() => handlePageChange(index + 1)}
+                      >
+                        {index + 1}
+                      </div>
+                    )
+                  )}
+                  {currentPage <
+                    Math.ceil(product.length / productsPerPage) && (
+                    <div onClick={handleNextPage} className={cx("page-change")}>
+                      <FontAwesomeIcon icon={faChevronRight} />
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </Suspense>
   );
 };
 
