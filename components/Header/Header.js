@@ -71,9 +71,17 @@ export default function Header() {
         { keyword: searchKeyword }
       );
       console.log("Search", response.data);
+
+      if (response.data.length === 0) {
+        toast.error("Sản phẩm này không tồn tại!");
+      } else {
+        router.replace(`/product?keyword=${searchKeyword}`);
+      }
+
       setSearchKeyword("");
     } catch (error) {
       console.error("Error fetching search results:", error);
+      toast.error("Đã xảy ra lỗi khi tìm kiếm!");
     }
   };
 
@@ -98,12 +106,28 @@ export default function Header() {
       }, 3000);
     };
 
-    recognition.onresult = (event) => {
+    recognition.onresult = async (event) => {
       const transcript = event.results[0][0].transcript;
       setSearchKeyword(transcript); // Gán từ khóa từ giọng nói
       setLoading(false); // Ẩn trạng thái "Đang lắng nghe..."
-      handleSearch({ preventDefault: () => {} }); // Tự động gọi API tìm kiếm với từ khóa
-      router.replace(`/product?keyword=${transcript}`); // Cập nhật để sử dụng transcript
+
+      // Gọi API tìm kiếm với từ khóa
+      try {
+        const response = await axios.post(
+          "https://trandainghia.id.vn/api/products/search",
+          { keyword: transcript }
+        );
+
+        if (response.data.length === 0) {
+          toast.error("Sản phẩm này không tồn tại!");
+          setSearchKeyword(""); // Gán thanh input rỗng nếu không tìm thấy sản phẩm
+        } else {
+          router.replace(`/product?keyword=${transcript}`); // Cập nhật để sử dụng transcript
+        }
+      } catch (error) {
+        console.error("Error fetching search results:", error);
+        toast.error("Đã xảy ra lỗi khi tìm kiếm!");
+      }
     };
 
     recognition.onerror = (event) => {
