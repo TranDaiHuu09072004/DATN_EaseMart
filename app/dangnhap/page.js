@@ -53,7 +53,7 @@ export default function DangNhap() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email, password: hashedPassword }),
+        body: JSON.stringify({ email, password }),
       });
 
       if (!response.ok) {

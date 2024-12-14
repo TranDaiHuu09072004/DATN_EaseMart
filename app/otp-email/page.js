@@ -125,7 +125,7 @@ export default function OTP() {
     const registerData = JSON.parse(localStorage.getItem("registerData"));
     const email = registerData.email;
     try {
-      await axios.post("https://trandainghia.id.vn/api/email/send-otp", {
+      await axios.post("https://trandainghia.id.vn/api/send-otp", {
         email,
       });
       Swal.fire(

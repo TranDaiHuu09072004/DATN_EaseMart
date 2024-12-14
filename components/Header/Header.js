@@ -49,6 +49,7 @@ export default function Header() {
   const handleLogout = () => {
     localStorage.removeItem("name");
     localStorage.removeItem("user");
+    localStorage.removeItem("registerData");
     toast.success("Đăng Xuất thành công!", {
       position: "top-right",
       autoClose: 3000,

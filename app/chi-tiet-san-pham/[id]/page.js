@@ -27,6 +27,7 @@ export default function ProductDetail({ params }) {
   const [selectedImage, setSelectedImage] = useState(
     products?.images.image_path
   );
+  const [proToCart, setProToCart] = useState({});
   const [comments, setComments] = useState([]);
   const formatPrice = (price) => {
     if (price === undefined || price === null) {
@@ -36,9 +37,41 @@ export default function ProductDetail({ params }) {
   };
 
   useEffect(() => {
+    setProToCart((pre) => {
+      const newPro = JSON.parse(JSON.stringify(pre));
+      return { ...newPro, quantity };
+    });
+  }, [quantity]);
+
+  useEffect(() => {
     if (id) {
       fetchProductById(id).then((data) => {
         setProduct(data);
+        console.log(data);
+        setProToCart({
+          id: data.product.id,
+          name: data.product.name,
+          description: data.product.description,
+          status: data.product.status,
+          quantity: quantity,
+          units: data.product_units.map((unit) => ({
+            unit_id: unit.unit_id,
+            unit_name: "kg", // Giả sử đơn vị là "kg", bạn có thể thay đổi theo nhu cầu
+            price: unit.price,
+            price_sale_value: unit.price_sale,
+            price_sale: unit.price_sale || unit.price,
+            status: unit.status, // Giả sử trạng thái là "available", bạn có thể thay đổi theo nhu cầu
+          })),
+          primary_image: {
+            path: data.images.length > 0 ? data.images[0].image_path : "",
+            alt_text: data.images.length > 0 ? data.images[0].alt_text : "",
+            is_primary:
+              data.images.length > 0
+                ? data.images[0].is_primakey === "1"
+                : false,
+          },
+        });
+
         if (data.images && data.images.length > 0) {
           setSelectedImage(data.images[0].image_path);
         }
@@ -166,19 +199,32 @@ export default function ProductDetail({ params }) {
 
           <div className={cx("product_price")}>
             <div>
-              <span className={cx("price_label")}>Giá niêm yết</span>
-              <span className={cx("price_discount")}>
-                {formatPrice(products.product_units[0].price)}
-              </span>
+              {products.product_units[0].price_sale !== null ? (
+                <>
+                  <span className={cx("price_label")}>Giá niêm yết</span>
+                  <span
+                    className={cx(
+                      "price_original line-through ml-12 text-[16px]"
+                    )}
+                  >
+                    {formatPrice(products.product_units[0].price)}
+                  </span>
+                  <div>
+                    <span className={cx("price_label")}>Giá khuyến mãi</span>
+                    <span className={cx("price_discount")}>
+                      {formatPrice(products.product_units[0].price_sale)}
+                    </span>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <span className={cx("price_label")}>Giá niêm yết</span>
+                  <span className={cx("price_discount")}>
+                    {formatPrice(products.product_units[0].price)}
+                  </span>
+                </>
+              )}
             </div>
-            {products.product_units[0].price_sale !== null && (
-              <div>
-                <span className={cx("price_label")}>Giá khuyến mãi</span>
-                <span className={cx("price_original")}>
-                  {formatPrice(products.product_units[0].price_sale)}
-                </span>
-              </div>
-            )}
             <div
               style={{
                 paddingBottom: 10,
@@ -231,7 +277,7 @@ export default function ProductDetail({ params }) {
           <div className="btn_wishlistProduct my-[10px]">
             <button
               onClick={() => {
-                dispatchYt(new DispatchYt("ADD_ITEM_YEUTHICH", products));
+                dispatchYt(new DispatchYt("ADD_ITEM_YEUTHICH", proToCart));
               }}
               className="border border-red-500 text-red-500 font-semibold text-[18px] w-[145px] h-[35px] rounded-[5px]"
             >
@@ -242,7 +288,7 @@ export default function ProductDetail({ params }) {
           <div className="flex_btn mt-3 max-md:flex max-md:flex-col max-md:gap-y-4">
             <button
               onClick={() => {
-                let data = products;
+                let data = proToCart;
                 data.products = quantity;
                 dispatch(new Dispatch("ADD_ITEM_CART", data));
               }}
@@ -268,8 +314,8 @@ export default function ProductDetail({ params }) {
                   });
                   return;
                 }
-                products.quantity = quantity;
-                localStorage.setItem("buy_now", JSON.stringify([products]));
+                proToCart.quantity = quantity;
+                localStorage.setItem("buy_now", JSON.stringify([proToCart]));
 
                 window.location.href = "/thanh-toan";
               }}

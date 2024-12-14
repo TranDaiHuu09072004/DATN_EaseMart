@@ -522,7 +522,7 @@ const Product = () => {
                           >
                             <div className={cx("box-product", "h-full")}>
                               <div className={cx("product")}>
-                                <div className={cx("thumb")}>
+                                <div className={cx("thumb", "")}>
                                   <img
                                     src={`https://trandainghia.id.vn/${item.primary_image.path}`}
                                   />

@@ -39,12 +39,12 @@ export default function DangKy() {
 
   const onSubmit = async (data) => {
     console.log("Submitting data:", data);
-    // Tạo một chuỗi salt (salt) để thêm vào mật khẩu trước khi băm
-    const salt = "randomSalt123";
-    // Băm mật khẩu kết hợp với salt bằng thuật toán SHA-256
-    const hashedPassword = CryptoJS.SHA256(salt + data.password).toString();
-    // Tạo một đối tượng mới chứa dữ liệu đăng ký, thay thế mật khẩu bằng mật khẩu đã băm
-    const register = { ...data, password: hashedPassword };
+    // Bỏ qua mã hóa mật khẩu
+    // const salt = "randomSalt123";
+    // const hashedPassword = CryptoJS.SHA256(salt + data.password).toString();
+    // Tạo một đối tượng mới chứa dữ liệu đăng ký, không thay thế mật khẩu
+    const register = { ...data }; // Không mã hóa mật khẩu
+
     const responseCheckEmail = await axios.post(
       "https://trandainghia.id.vn/api/check-email",
       { email: data.email }
@@ -62,8 +62,8 @@ export default function DangKy() {
           { email: data.email }
         );
         console.log("OTP Response:", otpResponse.data);
-        // Lưu trữ dữ liệu đăng ký vào localStorage dưới dạng chuỗi JSON
-        localStorage.setItem("registerData", JSON.stringify(register));
+        // Bỏ qua lưu trữ mật khẩu vào localStorage
+        localStorage.setItem("registerData", JSON.stringify(register)); // Không lưu mật khẩu
         // Hiển thị thông báo thành công
         toast.success("Mã OTP đã được gửi tới email của bạn!", {
           position: "top-right",

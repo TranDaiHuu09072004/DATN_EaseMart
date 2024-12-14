@@ -50,7 +50,6 @@
 }
 
 .price_original {
-  text-decoration: line-through;
   color: rgb(102, 102, 102);
   margin-left: 15px;
 }
