@@ -3,13 +3,13 @@ const url = "https://trandainghia.id.vn/api/products";
 
 export const getProByCate = async (idcate) => {
   // let id = toString(idcate);
-  console.log(idcate);
+  // console.log(idcate);
 
-  console.log(idcate);
+  // console.log(idcate);
   const respone = await axios.get(
     `https://trandainghia.id.vn/api/products-by-parent/${idcate}`
   );
-  console.log("respone.data", respone.data);
+  // console.log("respone.data", respone.data);
 
   return respone.data;
 };
@@ -32,7 +32,7 @@ export const getProByBrand = async (id) => {
   const respone = await axios.get(
     `https://trandainghia.id.vn/api/products-by-brand/${id}`
   );
-  console.log(respone.data);
+  // console.log(respone.data);
 
   return respone.data;
 };
@@ -52,13 +52,12 @@ export const fetchProducts = async (category) => {
             product.product_units[0]?.price !== null
         );
         break;
-      case "Product_Views":
-        filteredProducts = products.filter((product) => product.views > 0);
-        break;
       case "Product_Popular":
         filteredProducts = products.filter(
           (product) =>
-            product.product_units[0]?.price !== null &&  product.product_units[0]?.price_sale == null && product.views == 0
+            product.product_units[0]?.price !== null &&
+            product.product_units[0]?.price_sale === null &&
+            product.views == 0
         );
         break;
       default:
@@ -85,16 +84,27 @@ export const fetchProductById = async (id) => {
   }
 };
 
+export const fetchProductByView = async () => {
+  try {
+    const response = await axios.get(
+      "https://trandainghia.id.vn/api/products-top-10-view"
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching product by ID:", error);
+    return null;
+  }
+};
 // Hàm lấy sp theo khoản giá
 export const fetchProductsByMinMax = async (data) => {
-  console.log(data);
+  // console.log(data);
 
   try {
     const response = await axios.post(
       `https://trandainghia.id.vn/api/products/category/filter`,
       data
     );
-    console.log(response.data);
+    // console.log(response.data);
 
     return response.data;
   } catch (error) {

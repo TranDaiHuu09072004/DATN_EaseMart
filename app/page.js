@@ -5,9 +5,9 @@ import Banner from "../components/Banner/Banner";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCopy } from "@fortawesome/free-regular-svg-icons";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
-import Countdown from "../components/CountDown/CountDown";
 import { useState, useEffect } from "react";
 import { fetchProducts } from "@/service/product";
+import { fetchProductByView } from "@/service/product";
 import Link from "next/link";
 import { Dispatch, useCart } from "../components/CartFunction";
 import { usePathname } from "next/navigation";
@@ -22,7 +22,6 @@ import { toast, ToastContainer } from "react-toastify";
 const cx = classNames.bind(styles);
 
 export default function Home() {
-  const targetDate = new Date("2024-12-31T00:00:00");
   const [productsPopular, setProductsPopular] = useState([]);
   const [productsFlashSale, setProductsFlashSale] = useState([]);
   const [products_Views, setProduct_Viewss] = useState([]);
@@ -39,18 +38,28 @@ export default function Home() {
           unit_id: unit.unit_id,
           unit_name: unit.unit.unit_name,
           price: unit.price,
-          price_sale: unit.price_sale ? unit.price_sale : unit.price,
+          price_sale_value: unit.price_sale,
+          price_sale: unit.price_sale || unit.price,
           status: unit.status,
         })),
         primary_image: {
-          path: product.primary_image.image_path,
-          alt_text: product.primary_image.alt_text,
-          is_primary: product.primary_image.is_primakey,
+          path: product.primary_image ? product.primary_image.image_path : "",
+          alt_text: product.primary_image ? product.primary_image.alt_text : "",
+          is_primary: product.primary_image
+            ? product.primary_image.is_primakey
+            : false,
         },
       }));
-      setProductsPopular(transformedData.slice(0, 10));
-      console.log("Popular Products:", popular.slice(0, 10));
+
+      // Shuffle the array and take the first 10 items
+      const shuffledPopular = transformedData
+        .sort(() => 0.5 - Math.random())
+        .slice(0, 10);
+
+      setProductsPopular(shuffledPopular);
+      // console.log("Popular Products:", shuffledPopular);
     });
+
     fetchProducts("FlashSale").then((flashsale) => {
       const transformedData = flashsale.map((product) => ({
         id: product.id,
@@ -61,19 +70,29 @@ export default function Home() {
           unit_id: unit.unit_id,
           unit_name: unit.unit.unit_name,
           price: unit.price,
-          price_sale: unit.price_sale ? unit.price_sale : unit.price,
+          price_sale_value: unit.price_sale,
+          price_sale: unit.price_sale || unit.price,
           status: unit.status,
         })),
         primary_image: {
-          path: product.primary_image.image_path,
-          alt_text: product.primary_image.alt_text,
-          is_primary: product.primary_image.is_primakey,
+          path: product.primary_image ? product.primary_image.image_path : "",
+          alt_text: product.primary_image ? product.primary_image.alt_text : "",
+          is_primary: product.primary_image
+            ? product.primary_image.is_primakey
+            : false,
         },
       }));
-      setProductsFlashSale(transformedData.slice(0, 10));
-      console.log("Flash Sale Products:", flashsale.slice(0, 10));
+
+      // Shuffle the array and take the first 10 items
+      const shuffledFlashSale = transformedData
+        .sort(() => 0.5 - Math.random())
+        .slice(0, 10);
+
+      setProductsFlashSale(shuffledFlashSale);
+      // console.log("Flash Sale Products:", shuffledFlashSale);
     });
-    fetchProducts("Product_Views").then((productviews) => {
+
+    fetchProductByView("Product_Views").then((productviews) => {
       const transformedData = productviews.map((product) => ({
         id: product.id,
         name: product.name,
@@ -83,17 +102,26 @@ export default function Home() {
           unit_id: unit.unit_id,
           unit_name: unit.unit.unit_name,
           price: unit.price,
-          price_sale: unit.price_sale ? unit.price_sale : unit.price,
+          price_sale_value: unit.price_sale,
+          price_sale: unit.price_sale || unit.price,
           status: unit.status,
         })),
         primary_image: {
-          path: product.primary_image.image_path,
-          alt_text: product.primary_image.alt_text,
-          is_primary: product.primary_image.is_primakey,
+          path: product.primary_image ? product.primary_image.image_path : "",
+          alt_text: product.primary_image ? product.primary_image.alt_text : "",
+          is_primary: product.primary_image
+            ? product.primary_image.is_primakey
+            : false,
         },
       }));
-      setProduct_Viewss(transformedData.slice(0, 10));
-      console.log("Viewed Products:", productviews.slice(0, 10));
+
+      // Shuffle the array and take the first 10 items
+      const shuffledViews = transformedData
+        .sort(() => 0.5 - Math.random())
+        .slice(0, 10);
+
+      setProduct_Viewss(shuffledViews);
+      // console.log("Viewed Products:", shuffledViews);
     });
   }, []);
 
@@ -218,7 +246,6 @@ export default function Home() {
         <div className={cx("max-w-screen-xl", "mx-auto", "gap")}>
           <div className={cx("flash-sale")}>
             <h4>Flash Sale - Giá Sốc</h4>
-            <Countdown targetDate={targetDate} />
           </div>
           <ProductList products={productsFlashSale} />
         </div>
@@ -238,6 +265,26 @@ export default function Home() {
     </>
   );
 }
+
+// const transformedData = productviews.map((product) => ({
+//   id: product.id,
+//   name: product.name,
+//   description: product.description,
+//   status: product.status,
+//   units: product.product_units.map((unit) => ({
+//     unit_id: unit.unit_id,
+//     unit_name: unit.unit.unit_name,
+//     price: unit.price,
+//     price_sale_value: unit.price_sale,
+//     price_sale: unit.price_sale || unit.price ,
+//     status: unit.status,
+//   })),
+//   primary_image: {
+//     path: product.primary_image.image_path,
+//     alt_text: product.primary_image.alt_text,
+//     is_primary: product.primary_image.is_primakey,
+//   },
+// }));
 
 const ProductList = ({ products }) => {
   const baseUrl = "https://trandainghia.id.vn";
@@ -261,10 +308,9 @@ const ProductList = ({ products }) => {
 
           // Access the first product unit to get price and price_sale
           const productUnit = product.units[0];
-          const priceSale = productUnit ? productUnit.price_sale : null;
+          const priceSale = productUnit ? productUnit.price_sale_value : null;
           const originalPrice = productUnit ? productUnit.price : 0;
-          const unitProduct = productUnit.unit;
-          const unit = unitProduct ? unitProduct.unit_name : "0 có đơn vị";
+          const unit = productUnit ? productUnit.unit_name : "0 có đơn vị";
           return (
             <div
               className={cx(
@@ -278,13 +324,23 @@ const ProductList = ({ products }) => {
               )}
               key={product.id}
             >
-              <div className="w-full h-full">
+              <div className="w-auto h-full">
                 <div className={cx("product-item")}>
-                  <img
-                    src={imageUrl}
-                    alt={product.name || "Product Image"}
-                    className={cx("product-image", "h-auto", "object-cover")}
-                  />
+                  <Link
+                    href={`/chi-tiet-san-pham/${product.id}`}
+                    className={cx("content-product")}
+                  >
+                    <img
+                      src={imageUrl}
+                      alt={product.name || "Product Image"}
+                      className={cx(
+                        "product-image",
+                        "w-auto",
+                        "h-[200px]",
+                        "object-cover"
+                      )}
+                    />
+                  </Link>
                   <Link
                     href={`/chi-tiet-san-pham/${product.id}`}
                     className={cx("content-product")}

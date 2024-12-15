@@ -45,7 +45,7 @@ export default function Payment() {
   let total = useRef(0);
   let listPaymentMethod = useRef([
     { method: "COD", des: "Thanh toán khi nhận hàng" },
-    { method: "BANK", des: "Thanh toán bằng ngân hàng MB" },
+    { method: "BANK", des: "Thanh toán bằng ngân hàng" },
   ]);
 
   useEffect(() => {
@@ -113,6 +113,7 @@ export default function Payment() {
         voucher_id: voucherId,
         token: user.token,
       };
+
       PostOrder(data)
         .then((data) => {
           console.log(data);
@@ -183,6 +184,8 @@ export default function Payment() {
           });
         })
         .catch((err) => {
+          console.log(err);
+
           let message = "Lỗi trong quá trình đặt hàng";
           if (err?.response?.data?.message) {
             message = err?.response?.data?.message;
@@ -227,20 +230,25 @@ export default function Payment() {
       if (byStatus) {
         const by_status = JSON.parse(localStorage.getItem("buy_now"));
         console.log(by_status);
+        let settotal = 0;
 
         return by_status.filter((item) => {
-          console.log(item.units[0].price_sale);
-
-          total.current += item.quantity * item.units[0].price_sale;
+          // console.log(item.units[0].price_sale);
+          console.log("abc");
+          settotal += item.quantity * item.units[0].price_sale;
+          total.current = settotal;
           return item;
         });
-      }
-      return state.cartItems.filter((item) => {
-        if (item.select) console.log(item.units[0].price_sale);
+      } else {
+        console.log("bcd");
 
-        total.current += item.quantity * item.units[0].price_sale;
-        return item.select;
-      });
+        return state.cartItems.filter((item) => {
+          if (item.select) {
+            total.current += item.quantity * item.units[0].price_sale;
+            return item.select;
+          }
+        });
+      }
     });
   }, [state, byStatus]);
   // thành phố
@@ -280,10 +288,16 @@ export default function Payment() {
   }, [selectedDistrict]);
 
   const applyVoucher = async () => {
+    // Kiểm tra nếu mã voucher rỗng
+    if (!voucherCode) {
+      setVoucherError(""); // Reset error when voucher code is empty
+      return; // Dừng hàm nếu mã voucher rỗng
+    }
+
     try {
-      const response = await axios.post(
+      const response = await axios.get(
         `https://trandainghia.id.vn/api/voucher/detail`,
-        { code: voucherCode }
+        { params: { code: voucherCode } }
       );
 
       if (response.data && response.data.data) {
@@ -325,6 +339,13 @@ export default function Payment() {
       console.error("Lỗi khi áp dụng voucher:", error);
       setVoucherError("Không thể áp dụng voucher. Vui lòng thử lại.");
     }
+  };
+
+  const formatPrice = (price) => {
+    if (price === undefined || price === null) {
+      return "0";
+    }
+    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
 
   return (
@@ -705,9 +726,10 @@ export default function Payment() {
                   Áp ngay
                 </button>
               </div>
-              {voucherError && ( // Hiển thị thông báo lỗi nếu có
-                <span className="text-red-500">{voucherError}</span>
-              )}
+              {voucherError &&
+                voucherCode && ( // Hiển thị thông báo lỗi nếu có và mã voucher không rỗng
+                  <span className="text-red-500">{voucherError}</span>
+                )}
               <div className={cx("order_discount")}>
                 <span>Đã giảm: {formatPrice(discountValue)}đ</span>
               </div>

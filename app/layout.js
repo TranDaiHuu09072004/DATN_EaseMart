@@ -16,7 +16,7 @@ import "app/globals.css";
 import { CartFunction } from "@/components/CartFunction";
 import "react-toastify/dist/ReactToastify.css";
 import { YeuThichFunction } from "@/components/YTFunction/sanphamyeuthich";
-
+import { Suspense } from "react";
 const roboto = Roboto({
   weight: ["400", "700"],
   subsets: ["latin"],
@@ -31,7 +31,7 @@ export default function RootLayout({ children }) {
 
   useEffect(() => {
     setLoading(true);
-    const timer = setTimeout(() => setLoading(false), 1500);
+    const timer = setTimeout(() => setLoading(false), 900);
     return () => clearTimeout(timer);
   }, [pathname]);
 
@@ -49,7 +49,7 @@ export default function RootLayout({ children }) {
         <CartFunction>
           <YeuThichFunction>
             {!hideHeaderFooter && <Header />}
-            {children}
+            <Suspense>{children}</Suspense>
             {!hideHeaderFooter && <Footer />}
           </YeuThichFunction>
         </CartFunction>

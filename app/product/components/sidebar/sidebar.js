@@ -25,11 +25,11 @@ const Sidebar = ({
   };
 
   const handleShowBrand = () => {
-    console.log("check", showBrand);
+    // console.log("check", showBrand);
 
     setShowBrand(!showBrand);
   };
-  console.log(listCate);
+  // console.log(listCate);
 
   return (
     <div className={cx("sidebar")}>
@@ -109,8 +109,8 @@ const Sidebar = ({
         </div>
         <button
           onClick={() => {
-            console.log(min);
-            console.log(max);
+            // console.log(min);
+            // console.log(max);
             if (min == 0 || max == 0) {
               setError("Nhập khoản tiền muốn kiếm");
               return;

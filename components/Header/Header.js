@@ -13,15 +13,17 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
 import { useCart } from "../CartFunction";
-
+import { useRouter } from "next/navigation";
+import axios from "axios";
 const cx = classNames.bind(styles);
 
 export default function Header() {
   const { state, dispatch } = useCart();
-  const [searchKeyword, setSearchKeyWord] = useState("");
+  const [searchKeyword, setSearchKeyword] = useState([]);
   const [name, setName] = useState(null);
   const [count, setCount] = useState(0);
-  const [image, setImage] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     let newCount = 0;
@@ -32,29 +34,22 @@ export default function Header() {
   }, [state]);
 
   useEffect(() => {
-    const name = localStorage.getItem("name");
-    const savedImage = localStorage.getItem("image");
+    console.log();
+
+    const user = JSON.parse(localStorage.getItem("user"));
+    const name = user ? user.name : null;
     if (name) {
       let handlename = name.split(" ");
       handlename = handlename[handlename.length - 1];
+
       setName(handlename);
     }
-    if (savedImage) {
-      setImage(savedImage);
-    }
   }, []);
-
-  const handleSearch = (e) => {
-    e.preventDefault();
-    if (searchKeyword.trim()) {
-      const encodedKeyword = encodeURIComponent(searchKeyword.trim());
-      window.location.href = `/product?name=${encodedKeyword}`;
-    }
-  };
 
   const handleLogout = () => {
     localStorage.removeItem("name");
     localStorage.removeItem("user");
+    localStorage.removeItem("registerData");
     toast.success("Đăng Xuất thành công!", {
       position: "top-right",
       autoClose: 3000,
@@ -62,6 +57,88 @@ export default function Header() {
     setTimeout(() => {
       window.location.reload();
     }, 1000);
+  };
+
+  const handleSearch = async (e) => {
+    if (e) {
+      e.preventDefault();
+    }
+    try {
+      const response = await axios.post(
+        "https://trandainghia.id.vn/api/products/search",
+        { keyword: searchKeyword }
+      );
+      console.log("Search", response.data);
+
+      if (response.data.length === 0) {
+        toast.error("Sản phẩm này không tồn tại!");
+      } else {
+        router.replace(`/product?keyword=${searchKeyword}`);
+      }
+
+      setSearchKeyword("");
+    } catch (error) {
+      console.error("Error fetching search results:", error);
+      toast.error("Đã xảy ra lỗi khi tìm kiếm!");
+    }
+  };
+
+  const handleVoiceSearch = () => {
+    // Kiểm tra trình duyệt có hỗ trợ SpeechRecognition hay không
+    const SpeechRecognition =
+      window.SpeechRecognition || window.webkitSpeechRecognition;
+
+    if (!SpeechRecognition) {
+      toast.error("Trình duyệt của bạn không hỗ trợ tìm kiếm bằng giọng nói");
+      return;
+    }
+
+    const recognition = new SpeechRecognition();
+    recognition.lang = "vi-VN"; // Ngôn ngữ tiếng Việt
+    recognition.interimResults = false;
+
+    recognition.onstart = () => {
+      setLoading(true); // Hiển thị trạng thái "Đang lắng nghe..."
+      setTimeout(() => {
+        recognition.stop(); // Dừng nhận diện
+      }, 3000);
+    };
+
+    recognition.onresult = async (event) => {
+      const transcript = event.results[0][0].transcript;
+      setSearchKeyword(transcript); // Gán từ khóa từ giọng nói
+      setLoading(false); // Ẩn trạng thái "Đang lắng nghe..."
+
+      // Gọi API tìm kiếm với từ khóa
+      try {
+        const response = await axios.post(
+          "https://trandainghia.id.vn/api/products/search",
+          { keyword: transcript }
+        );
+
+        if (response.data.length === 0) {
+          toast.error("Sản phẩm này không tồn tại!");
+          setSearchKeyword(""); // Gán thanh input rỗng nếu không tìm thấy sản phẩm
+        } else {
+          router.replace(`/product?keyword=${transcript}`); // Cập nhật để sử dụng transcript
+        }
+      } catch (error) {
+        console.error("Error fetching search results:", error);
+        toast.error("Đã xảy ra lỗi khi tìm kiếm!");
+      }
+    };
+
+    recognition.onerror = (event) => {
+      console.error("Lỗi giọng nói:", event.error);
+      toast.error("Lỗi khi nhận diện giọng nói");
+      setLoading(false);
+    };
+
+    recognition.onend = () => {
+      setLoading(false); // Dừng trạng thái "Đang lắng nghe..."
+    };
+
+    recognition.start(); // Bắt đầu nghe
   };
 
   return (
@@ -80,14 +157,17 @@ export default function Header() {
             >
               <input
                 type="text"
-                onChange={(e) => setSearchKeyWord(e.target.value)}
                 placeholder="Bạn muốn mua gì ..."
+                value={searchKeyword}
+                onChange={(e) => setSearchKeyword(e.target.value)}
               />
-              <button type="submit">
-                <FontAwesomeIcon
-                  className={cx("icon-search")}
-                  icon={faSearch}
-                />
+              {loading && (
+                <p className="text-[#3bb77e] font-bold animate-bounce">
+                  Đang lắng nghe...
+                </p>
+              )}
+              <button type="button" onClick={handleVoiceSearch}>
+                <i className="fa-solid fa-microphone text-[20px]"></i>
               </button>
             </form>
             <div
@@ -107,6 +187,7 @@ export default function Header() {
                   "cart",
                   "flex",
                   "py-3",
+                  "max-lg:pr-7",
                   "gap-2",
                   "sm:flex",
                   "hidden"

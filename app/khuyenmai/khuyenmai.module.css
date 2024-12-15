@@ -8,10 +8,9 @@
 
 /* Breadcrumb styling */
 .breadcrumb {
-  font-size: 14px;
+  font-size: 18px;
   color: #666;
   margin-bottom: 15px;
-  text-align: center;
 }
 
 .breadcrumb a {
@@ -29,7 +28,7 @@
 
 /* Title styling */
 .title {
-  font-size: 36px;
+  font-size: 30px;
   color: #253d4e;
   text-align: center;
   font-weight: bold;
@@ -81,7 +80,7 @@
 }
 
 .promotionList strong {
-  color: #2BA84A;
+  color: #2ba84a;
 }
 
 /* Responsive design for mobile */
@@ -91,8 +90,12 @@
     padding: 10px;
   }
 
+  .breadcrumb {
+    font-size: 12px;
+  }
+
   .title {
-    font-size: 28px; /* Smaller title for mobile */
+    font-size: 20px; /* Smaller title for mobile */
   }
 
   .description,

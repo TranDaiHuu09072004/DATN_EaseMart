@@ -83,7 +83,13 @@ export default function CustomerInfoForm() {
     updateInfoCustomer(formData, token)
       .then(() => {
         toast.success("Cập nhật thành công!");
+        let user = JSON.parse(localStorage.getItem("user"));
+        user.name = userData.name;
+        user.email = userData.email;
+        localStorage.setItem("user", JSON.stringify(user));
+        localStorage.setItem("name", JSON.stringify(user.name));
         setToggleGetInfoUser(!toggleGetInfoUser);
+        location.reload();
       })
       .catch((err) => {
         console.log(err);
@@ -179,14 +185,16 @@ export default function CustomerInfoForm() {
               <h5>
                 Giới tính <span className={cx("red")}>*</span>
               </h5>
-              <input
-                type="text"
+              <select
                 name="gender"
                 value={userData.gender} // Ensure userData is used here
                 onChange={handleChange}
                 className={cx("ip_gender", "focus:outline-[#3bb77e]")}
-                placeholder="Nhập giới tính của bạn"
-              />
+              >
+                <option value="">Chọn giới tính</option>
+                <option value="Nam">Nam</option>
+                <option value="Nữ">Nữ</option>
+              </select>
             </div>
             <button type="submit" className={cx("update")}>
               Cập Nhật
