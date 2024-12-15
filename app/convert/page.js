@@ -183,11 +183,15 @@ const Convert = () => {
             <div className={cx("title-voucher")}>Voucher</div>
             <div className={cx("list-voucher")}>
               {converts.map((convert, index) => (
-                <div className={cx("voucher-item")}>
+                <div
+                  className={cx("voucher-item", {
+                    "opacity-50 cursor-not-allowed": convert.usage_limit === 0,
+                  })}
+                  key={index}
+                >
                   <div className={cx("voucher-item-top")}>
                     <div className={cx("info-left")}>
                       <p>{convert.description}</p>
-
                       <div className="flex justify-between mt-2">
                         <span className="text-[14px] text-white">
                           Số Lượng:
@@ -210,10 +214,15 @@ const Convert = () => {
                   <div className={cx("voucher-item-bottom")}>
                     <h4>{convert.code}</h4>
                     <button
-                      className={cx("button-copy")}
+                      className={cx("button-copy", {
+                        disabled: convert.usage_limit === 0,
+                      })}
                       onClick={() => handleConvert(convert)}
+                      disabled={convert.usage_limit === 0}
                     >
-                      đổi
+                      {convert.usage_limit === 0
+                        ? "Voucher đã hết hạn sử dụng"
+                        : "Đổi"}
                     </button>
                   </div>
                 </div>
