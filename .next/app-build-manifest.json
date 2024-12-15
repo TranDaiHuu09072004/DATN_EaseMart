@@ -12,36 +12,6 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
-    "/product/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/product/page.css",
-      "static/chunks/app/product/page.js"
-    ],
-    "/cart/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/cart/page.css",
-      "static/chunks/app/cart/page.js"
-    ],
-    "/thanh-toan/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/thanh-toan/page.css",
-      "static/chunks/app/thanh-toan/page.js"
-    ],
-    "/convert/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/convert/page.css",
-      "static/chunks/app/convert/page.js"
-    ],
-    "/san-pham-yeu-thich/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/san-pham-yeu-thich/page.css",
-      "static/chunks/app/san-pham-yeu-thich/page.js"
-    ],
     "/_not-found/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
