@@ -69,7 +69,7 @@ const MenuMobile = ({ color = false }) => {
               "h-screen",
               "top-0",
               "right-0",
-              "w-screen",
+              "lg:w-screen",
               "px-10",
               "py-12",
               "z-40"
@@ -87,7 +87,9 @@ const MenuMobile = ({ color = false }) => {
               "right-0",
               "px-10",
               "py-12",
-              "z-50"
+              "z-50",
+              "w-full",
+              "sm:w-1/2"
             )}
           >
             <div className={cx("content")}>
