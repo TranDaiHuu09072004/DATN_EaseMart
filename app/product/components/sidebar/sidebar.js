@@ -31,6 +31,23 @@ const Sidebar = ({
   };
   // console.log(listCate);
 
+  const handleApplyFilter = () => {
+    const minValue = parseFloat(min);
+    const maxValue = parseFloat(max);
+
+    if (minValue === 0 || maxValue === 0) {
+      setError("Nhập khoản tiền muốn kiếm");
+      return;
+    }
+    if (minValue > maxValue) {
+      setError("Nhập từ bé đến lớn");
+      return;
+    }
+
+    filterProduct(minValue, maxValue);
+    setError("");
+  };
+
   return (
     <div className={cx("sidebar")}>
       <div className={cx("box-list-cate")}>
@@ -77,7 +94,7 @@ const Sidebar = ({
                   key={index}
                   href="#"
                   onClick={(e) => {
-                    e.preventDefault;
+                    e.preventDefault();
                     updateBrand({ id: item.id, name: item.name });
                   }}
                 >
@@ -107,24 +124,7 @@ const Sidebar = ({
             }}
           />
         </div>
-        <button
-          onClick={() => {
-            // console.log(min);
-            // console.log(max);
-            if (min == 0 || max == 0) {
-              setError("Nhập khoản tiền muốn kiếm");
-              return;
-            }
-            if (min > max) {
-              setError("Nhập từ bé đến lớn");
-              return;
-            }
-
-            filterProduct(min, max);
-            setError("");
-          }}
-          className={cx("apply-button")}
-        >
+        <button onClick={handleApplyFilter} className={cx("apply-button")}>
           ÁP DỤNG
         </button>
         {error.length > 0 && <span className="text-red-500">{error}</span>}

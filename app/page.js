@@ -84,9 +84,7 @@ export default function Home() {
       }));
 
       // Shuffle the array and take the first 10 items
-      const shuffledFlashSale = transformedData
-        .sort(() => 0.5 - Math.random())
-        .slice(0, 10);
+      const shuffledFlashSale = transformedData.slice(0, 10);
 
       setProductsFlashSale(shuffledFlashSale);
       // console.log("Flash Sale Products:", shuffledFlashSale);
@@ -265,26 +263,6 @@ export default function Home() {
     </>
   );
 }
-
-// const transformedData = productviews.map((product) => ({
-//   id: product.id,
-//   name: product.name,
-//   description: product.description,
-//   status: product.status,
-//   units: product.product_units.map((unit) => ({
-//     unit_id: unit.unit_id,
-//     unit_name: unit.unit.unit_name,
-//     price: unit.price,
-//     price_sale_value: unit.price_sale,
-//     price_sale: unit.price_sale || unit.price ,
-//     status: unit.status,
-//   })),
-//   primary_image: {
-//     path: product.primary_image.image_path,
-//     alt_text: product.primary_image.alt_text,
-//     is_primary: product.primary_image.is_primakey,
-//   },
-// }));
 
 const ProductList = ({ products }) => {
   const baseUrl = "https://trandainghia.id.vn";

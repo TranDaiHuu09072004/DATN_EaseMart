@@ -18,6 +18,13 @@ export default function Wishlist() {
   const [listPage, setListPage] = useState(0);
   const [page, setPage] = useState(0);
 
+  const formatPrice = (price) => {
+    if (price === undefined || price === null) {
+      return "0";
+    }
+    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
+
   useEffect(() => {
     setListPage((preState) => {
       return Math.ceil(stateYt.yeuThichItems.length / 12);
@@ -58,7 +65,7 @@ export default function Wishlist() {
                 return (
                   <div className="item_product flex flex-col w-[256px] h-full gap-4 border-2 border-solid p-5 border-[#eeeeee] shadow-md relative rounded-[7px]">
                     <img
-                      src={`https://trandainghia.id.vn/${item.primary_image.path}`}
+                      src={`https://trandainghia.id.vn/${item?.primary_image?.path}`}
                       alt=""
                       className="h-[151.2px] w-[201.6px] object-cover mt-5"
                     />
@@ -72,7 +79,7 @@ export default function Wishlist() {
                     ></i>
                     <a
                       href={`chi-tiet-san-pham/${item.id}`}
-                      className="text-[22px] text-[#3bb77e] font-semibold"
+                      className="text-[22px] text-[#3bb77e] font-semibold min-h-10"
                     >
                       {item.name}
                     </a>
@@ -81,10 +88,13 @@ export default function Wishlist() {
                     </span>
                     <div className="price flex gap-5">
                       <span className="sale_price text-[20px] max-md:text-[16px] text-[#3bb77e] font-semibold">
-                        {item.units[0].price_sale || item.units[0].price}đ
+                        {formatPrice(
+                          item.units[0].price_sale || item.units[0].price
+                        )}
+                        đ
                       </span>
                       <span className="sale text-[18px] max-md:text-[14px] text-[#cccccc] font-medium line-through">
-                        {item.units[0].price}đ
+                        {formatPrice(item.units[0].price)}đ
                       </span>
                     </div>
                     <button

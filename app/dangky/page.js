@@ -11,7 +11,6 @@ import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useState } from "react";
-import CryptoJS from "crypto-js";
 import Swal from "sweetalert2";
 
 export default function DangKy() {
@@ -23,7 +22,12 @@ export default function DangKy() {
       .required("Vui lòng nhập Email"),
     phone: Yup.string()
       .matches(/^[0-9]{10}$/, "Số điện thoại bắt buộc phải 10 số")
-      .required("Vui lòng nhập mật khẩu"),
+      .required("Vui lòng nhập số điện thoại")
+      .test(
+        "is-numeric",
+        "Số điện thoại chỉ được chứa số",
+        (value) => !isNaN(value)
+      ),
     password: Yup.string()
       .min(8, "Mật khẩu ít nhất từ 8 kí tự")
       .required("Vui lòng nhập mật khẩu"),
@@ -39,11 +43,7 @@ export default function DangKy() {
 
   const onSubmit = async (data) => {
     console.log("Submitting data:", data);
-    // Bỏ qua mã hóa mật khẩu
-    // const salt = "randomSalt123";
-    // const hashedPassword = CryptoJS.SHA256(salt + data.password).toString();
-    // Tạo một đối tượng mới chứa dữ liệu đăng ký, không thay thế mật khẩu
-    const register = { ...data }; // Không mã hóa mật khẩu
+    const register = { ...data };
 
     const responseCheckEmail = await axios.post(
       "https://trandainghia.id.vn/api/check-email",
@@ -55,6 +55,8 @@ export default function DangKy() {
       responseCheckEmail.status === 200 &&
       responseCheckEmail.data.registered === false
     ) {
+      sessionStorage.setItem("registerData", JSON.stringify(register));
+
       try {
         // Gửi yêu cầu OTP
         const otpResponse = await axios.post(
@@ -62,8 +64,6 @@ export default function DangKy() {
           { email: data.email }
         );
         console.log("OTP Response:", otpResponse.data);
-        // Bỏ qua lưu trữ mật khẩu vào localStorage
-        localStorage.setItem("registerData", JSON.stringify(register)); // Không lưu mật khẩu
         // Hiển thị thông báo thành công
         toast.success("Mã OTP đã được gửi tới email của bạn!", {
           position: "top-right",

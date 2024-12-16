@@ -10,7 +10,7 @@ export default function OTP() {
   const inputRefs = useRef([]);
 
   const handleVerify = async () => {
-    const registerData = JSON.parse(localStorage.getItem("registerData"));
+    const registerData = JSON.parse(sessionStorage.getItem("registerData"));
     const email = registerData.email;
     console.log(email);
 

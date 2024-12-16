@@ -70,7 +70,7 @@ export default function Header() {
       );
       console.log("Search", response.data);
 
-      if (response.data.length === 0) {
+      if (response.status !== 200 || response.data.length === 0) {
         toast.error("Sản phẩm này không tồn tại!");
       } else {
         router.replace(`/product?keyword=${searchKeyword}`);

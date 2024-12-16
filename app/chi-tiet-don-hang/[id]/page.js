@@ -27,6 +27,8 @@ const Chitietdonhang = ({ params }) => {
     }
     const { token } = user;
     GetOrderById(id, token).then(async (res) => {
+      console.log(res);
+
       const list_pro = await Promise.all(
         res.order_details.map(async (item) => {
           const product = await fetchProductById(item.product_id);
@@ -38,12 +40,10 @@ const Chitietdonhang = ({ params }) => {
           return item;
         })
       );
+      console.log(list_pro);
 
       // console.log(res.order.shipping_address);
 
-      res.order.shipping_address = res?.order?.shipping_address?.split(" - ");
-      res.customer.address = res?.customer?.address?.split(" - ");
-      res.order_details = list_pro;
       // console.log(res);
       // console.log(res.order.status);
       if (res.order.status === "Đang giao hàng") {
@@ -401,7 +401,7 @@ const Chitietdonhang = ({ params }) => {
         </tbody>
       </table>
       <div className="flex justify-end">
-        {orderDetail?.order?.status === "Giao thành công" && (
+        {orderDetail?.order?.status === "Giao thành công" &&  (
           <button
             onClick={() => setShowModal(true)}
             className="ml- mt-5 border-2 border-[#3bb77e] px-4 py-2 rounded-[5px] text-[#3bb77e] font-bold"
@@ -486,11 +486,7 @@ const Chitietdonhang = ({ params }) => {
               <p className="font-semibold">
                 {orderDetail?.customer?.name} | {orderDetail?.customer?.phone}{" "}
               </p>
-              <p>{orderDetail?.order?.shipping_address[0]}</p>
-              <p>{orderDetail?.order?.shipping_address[1]}</p>
-              <p className="text-green-500">
-                {orderDetail?.order?.shipping_address[2]}
-              </p>
+              <p>{orderDetail?.order?.shipping_address}</p>
             </div>
           </div>
         </div>

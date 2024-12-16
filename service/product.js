@@ -37,14 +37,14 @@ export const getProByBrand = async (id) => {
   return respone.data;
 };
 
-export const fetchProducts = async (category) => {
+export const fetchProducts = async (api) => {
   try {
     const response = await axios.get(`https://trandainghia.id.vn/api/products`);
     const products = response.data;
 
     // Filter products based on the category
     let filteredProducts;
-    switch (category) {
+    switch (api) {
       case "FlashSale":
         filteredProducts = products.filter(
           (product) =>
@@ -97,14 +97,41 @@ export const fetchProductByView = async () => {
 };
 // Hàm lấy sp theo khoản giá
 export const fetchProductsByMinMax = async (data) => {
-  // console.log(data);
+  console.log(data);
+  if (data.brand) {
+    try {
+      const response = await axios.post(
+        `https://trandainghia.id.vn/api/products/brand/filter`,
+        data
+      );
+      console.log(response.data);
+  
+      return response.data;
+    } catch (error) {
+      console.error("Error fetching products:", error);
+    }
+  }
+
+  if (data.category_parent) {
+    try {
+      const response = await axios.post(
+        `https://trandainghia.id.vn/api/products/category-parent/filter`,
+        data
+      );
+      console.log(response.data);
+  
+      return response.data;
+    } catch (error) {
+      console.error("Error fetching products:", error);
+    }
+  }
 
   try {
     const response = await axios.post(
       `https://trandainghia.id.vn/api/products/category/filter`,
       data
     );
-    // console.log(response.data);
+    console.log(response.data);
 
     return response.data;
   } catch (error) {

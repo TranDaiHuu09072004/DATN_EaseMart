@@ -55,7 +55,7 @@ const Product = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [currentProducts, setCurrentProducts] = useState([]);
   const productsPerPage = 15; // Số sản phẩm mỗi trang
-
+  
   useEffect(() => {
     // list cate
     getCate().then((data) => {
@@ -163,20 +163,33 @@ const Product = () => {
   }, [cateSubChoose]);
 
   const handleFilterProduct = (min, max) => {
-    let data = {
-      min: min,
-      max: max,
-      category_parent: cateChoose.id,
-    };
-    if (Object.keys(cateSubChoose).length > 0) {
-      data.categories = cateSubChoose.id;
+    let data;
+    if (Object.keys(cateChoose).length > 0) {
+      data = {
+        min: min,
+        max: max,
+        category_parent: cateChoose.id,
+      };
     }
-    if (Object.keys(brandChoose).length > 0) {
-      data.categories = brandChoose.id;
+    if (Object.keys(cateSubChoose).length > 0) {
+      data = {
+        min: min,
+        max: max,
+        categories: cateSubChoose.id,
+      };
     }
 
+    if (Object.keys(brandChoose).length > 0) {
+      data = {
+        min: min,
+        max: max,
+        brand: brandChoose.id,
+      };
+    }
+    console.log(brandChoose);
+
     fetchProductsByMinMax(data).then((data) => {
-      // console.log(data);
+      console.log(data);
 
       const transformedData = data.data.map((product) => ({
         id: product.id,
@@ -192,26 +205,31 @@ const Product = () => {
           status: unit.status,
         })),
         primary_image: {
-          path: product.primary_image.image_path,
-          alt_text: product.primary_image.alt_text,
-          is_primary: product.primary_image.is_primakey,
+          path: product?.primary_image?.image_path,
+          alt_text: product?.primary_image?.alt_text,
+          is_primary: product?.primary_image?.is_primakey,
         },
       }));
       // console.log(transformedData);
-
+      console.log(transformedData);
+      
       setProduct(transformedData);
     });
   };
 
   const handleChooseSubCate = (id) => {
     setCateSubChoose(id);
+    setBrandChoose({});
+    setCateChoose({});
   };
 
   const handleChooseCate = ({ id, name }) => {
     setCateChoose({ id, name });
+    setBrandChoose({});
     setIsSearching(false); // Đặt lại trạng thái khi chọn cate
     setResultFilterProduct([]); // Xóa kết quả tìm kiếm
-  };
+    setCateSubChoose({});
+    };
 
   const handleChooseBrand = (id) => {
     setBrandChoose(id);
@@ -266,6 +284,8 @@ const Product = () => {
     }
     return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
+
+  console.log(currentProducts);
 
   return (
     <Suspense fallback={<Loading />}>
@@ -421,10 +441,15 @@ const Product = () => {
                             <div className={cx("box-product", "h-full")}>
                               <div className={cx("product")}>
                                 <div className={cx("thumb")}>
-                                  <img
-                                    src={`https://trandainghia.id.vn/${item.primary_image.path}`}
-                                    className="w-auto h-auto xs:h-full"
-                                  />
+                                  <Link
+                                    href={`/chi-tiet-san-pham/${item.id}`}
+                                    className={cx("product-img")}
+                                  >
+                                    <img
+                                      src={`https://trandainghia.id.vn/${item.primary_image.path}`}
+                                      className="w-auto h-auto xs:h-full"
+                                    />
+                                  </Link>
                                 </div>
                                 <Link
                                   href={`/chi-tiet-san-pham/${item.id}`}
@@ -523,9 +548,15 @@ const Product = () => {
                             <div className={cx("box-product", "h-full")}>
                               <div className={cx("product")}>
                                 <div className={cx("thumb", "")}>
-                                  <img
-                                    src={`https://trandainghia.id.vn/${item.primary_image.path}`}
-                                  />
+                                  <Link
+                                    href={`/chi-tiet-san-pham/${item.id}`}
+                                    className={cx("product-img")}
+                                  >
+                                    <img
+                                      src={`https://trandainghia.id.vn/${item?.primary_image?.path}`}
+                                      className="w-auto h-auto xs:h-full"
+                                    />
+                                  </Link>
                                 </div>
                                 <Link
                                   href={`/chi-tiet-san-pham/${item.id}`}

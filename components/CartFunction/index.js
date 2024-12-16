@@ -86,7 +86,7 @@ const cartReducer = (state, action) => {
       saveCartToLocalStorage(userEmail, newCart.cartItems);
       toast.success("Sản phẩm đã được thêm vào giỏ hàng!", {
         position: "top-right",
-        autoClose: 1000,
+        autoClose: 2000,
       });
       return newCart;
     case "UPDATE_MINUS_ITEM_CART":
@@ -185,7 +185,8 @@ export const CartFunction = ({ children }) => {
       dispatch(new Dispatch("ADD_CART_ITEMS_FROM_LOCAL", cartUser));
     }
   }, []);
-
+  console.log(state);
+  
   return (
     <>
       <CartContext.Provider value={{ state, dispatch }}>

@@ -102,7 +102,7 @@ export default function Payment() {
         return {
           product_id: item.id,
           quantity: item.quantity,
-          unit_id: item.units[0].unit_id,
+          unit_id: `${item.units[0].unit_id}`,
         };
       });
       const data = {
@@ -153,11 +153,7 @@ export default function Payment() {
                   clearInterval(intervalId.current);
                   clearTimeout(timeoutId.current); // Dừng `setTimeout` nếu cần
                   setLinkQr(null);
-                  if (byStatus) {
-                    localStorage.removeItem("buy_now");
-                  } else {
-                    localStorage.removeItem(`cart_${user.email}`);
-                  }
+                  
 
                   Swal.fire({
                     icon: "success",
@@ -169,6 +165,11 @@ export default function Payment() {
                   }).then((result) => {
                     if (result.isConfirmed) {
                       // Điều hướng đến trang đăng nhập nếu người dùng chọn "Đăng nhập"
+                      if (byStatus) {
+                        localStorage.removeItem("buy_now");
+                      } else {
+                        localStorage.removeItem(`cart_${user.email}`);
+                      }
                       window.location.href = "/";
                     }
                     // Nếu người dùng nhấn "OK", popup sẽ đóng mà không có thêm hành động nào.
