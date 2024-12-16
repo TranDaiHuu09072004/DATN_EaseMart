@@ -160,6 +160,7 @@ const MenuMobile = ({ color = false }) => {
                 "right-0",
                 "px-10",
                 "py-12",
+                "w-full",
                 "z-50"
               )}
             >

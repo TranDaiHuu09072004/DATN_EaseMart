@@ -89,6 +89,21 @@
       "static/css/app/convert/page.css",
       "static/chunks/app/convert/page.js"
     ],
+    "/quen-mat-khau/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/quen-mat-khau/page.js"
+    ],
+    "/otp/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/otp/page.js"
+    ],
+    "/thay-doi-mat-khau/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/thay-doi-mat-khau/page.js"
+    ],
     "/_not-found/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
