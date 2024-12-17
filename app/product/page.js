@@ -47,7 +47,7 @@ const Product = () => {
   const [brand, setBrand] = useState([]);
   const [brandChoose, setBrandChoose] = useState({});
   const [brandChooseCheck, setBrandChooseCheck] = useState(false);
-  const [resultfilterProduct, setResultFilterProduct] = useState("");
+  const [resultfilterProduct, setResultFilterProduct] = useState([]);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [sortOrder, setSortOrder] = useState("");
   const [isSearching, setIsSearching] = useState(false);
@@ -55,7 +55,7 @@ const Product = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [currentProducts, setCurrentProducts] = useState([]);
   const productsPerPage = 15; // Số sản phẩm mỗi trang
-  
+
   useEffect(() => {
     // list cate
     getCate().then((data) => {
@@ -79,7 +79,15 @@ const Product = () => {
     if (keyword) {
       searchProducts(keyword).then((result) => {
         console.log(result); // Log kết quả API
+
         if (result) {
+          result.forEach((element) => {
+            element.units[0].price_sale_value = element.units[0].price_sale;
+            element.units[0].price_sale =
+              element.units[0].price_sale || element.units[0].price;
+          });
+          console.log(result);
+
           setResultFilterProduct(result);
         }
       });
@@ -92,11 +100,13 @@ const Product = () => {
 
   // list product theo cate
   useEffect(() => {
+    console.log(cateChoose);
+
     if (Object.keys(cateChoose).length == 0) return;
     console.log(cateChoose);
 
     getProByCate(cateChoose.id).then((data) => {
-      // console.log(data);
+      console.log(data);
 
       setBrandChooseCheck(false);
 
@@ -106,6 +116,7 @@ const Product = () => {
           item.units[0].price_sale || item.units[0].price;
         return item;
       });
+      console.log(listProduct);
 
       setProduct(listProduct);
       getCateChild(cateChoose.id).then((data) => {
@@ -119,6 +130,8 @@ const Product = () => {
   }, [cateChoose]);
 
   useEffect(() => {
+    console.log(product);
+
     const indexOfLastProduct = currentPage * productsPerPage;
     const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
     setCurrentProducts(product.slice(indexOfFirstProduct, indexOfLastProduct));
@@ -148,7 +161,9 @@ const Product = () => {
 
   //đổi sản phẩm khi nhấp vào cate con
   useEffect(() => {
+    if (Object.keys(cateSubChoose) == 0) return;
     getProBySubCate(cateSubChoose.id).then((data) => {
+      console.log(Object.keys(cateSubChoose) == 0);
       console.log(data);
 
       const listProduct = data.products.map((item) => {
@@ -196,14 +211,34 @@ const Product = () => {
         name: product.name,
         description: product.description,
         status: product.status,
-        units: product.product_units.map((unit) => ({
-          unit_id: unit.unit_id,
-          unit_name: unit.unit.unit_name,
-          price: unit.price,
-          price_sale_value: unit.price_sale,
-          price_sale: unit.price_sale || unit.price,
-          status: unit.status,
-        })),
+        units:product.product_units.length>1? product.product_units.map((unit, index) => {
+          if (unit.level === "3") {
+            console.log(unit);
+            
+            return {
+              unit_id: unit.unit_id,
+              unit_name: unit.unit.unit_name,
+              price: unit.price,
+              price_sale_value: unit.price_sale,
+              price_sale: unit.price_sale || unit.price,
+              status: unit.status,
+            };
+          }
+        }).filter(item=>{
+          return item !== undefined
+        }):product.product_units.map((unit, index) => {
+          
+            return {
+              unit_id: unit.unit_id,
+              unit_name: unit.unit.unit_name,
+              price: unit.price,
+              price_sale_value: unit.price_sale,
+              price_sale: unit.price_sale || unit.price,
+              status: unit.status,
+            };
+          
+        })
+        ,
         primary_image: {
           path: product?.primary_image?.image_path,
           alt_text: product?.primary_image?.alt_text,
@@ -212,15 +247,16 @@ const Product = () => {
       }));
       // console.log(transformedData);
       console.log(transformedData);
-      
+
       setProduct(transformedData);
+      setResultFilterProduct([]);
     });
   };
 
   const handleChooseSubCate = (id) => {
     setCateSubChoose(id);
     setBrandChoose({});
-    setCateChoose({});
+    setResultFilterProduct([]);
   };
 
   const handleChooseCate = ({ id, name }) => {
@@ -229,12 +265,13 @@ const Product = () => {
     setIsSearching(false); // Đặt lại trạng thái khi chọn cate
     setResultFilterProduct([]); // Xóa kết quả tìm kiếm
     setCateSubChoose({});
-    };
+  };
 
   const handleChooseBrand = (id) => {
     setBrandChoose(id);
     setIsSearching(false); // Đặt lại trạng thái khi chọn brand
-    setResultFilterProduct([]); // Xóa kết quả tìm kiếm
+    setResultFilterProduct([]);
+    // Xóa kết quả tìm kiếm
   };
 
   // console.log(product);
@@ -464,7 +501,7 @@ const Product = () => {
                                     "text-gray-400"
                                   )}
                                 >
-                                  ĐVT: <span>{item.units[0].unit_name}</span>
+                                  ĐVT: <span>{item.units[0]?.unit_name}</span>
                                 </div>
                                 <div className={cx("price")}>
                                   <div>
@@ -571,7 +608,7 @@ const Product = () => {
                                     "text-gray-400"
                                   )}
                                 >
-                                  ĐVT: <span>{item.units[0].unit_name}</span>
+                                  ĐVT: <span>{item.units[0]?.unit_name}</span>
                                 </div>
                                 <div className={cx("price")}>
                                   <div>
@@ -648,33 +685,41 @@ const Product = () => {
                   </div>
                 </Suspense>
                 {/* Pagination */}
-                <div className={cx("pagination")}>
-                  {currentPage > 1 && (
-                    <div onClick={handlePrevPage} className={cx("page-change")}>
-                      <FontAwesomeIcon icon={faChevronLeft} />
-                    </div>
-                  )}
-                  {Array.from(
-                    { length: Math.ceil(product.length / productsPerPage) },
-                    (_, index) => (
+                {resultfilterProduct.length > 0 || (
+                  <div className={cx("pagination")}>
+                    {currentPage > 1 && (
                       <div
-                        key={index + 1}
-                        className={cx("page-number", {
-                          active: currentPage === index + 1,
-                        })}
-                        onClick={() => handlePageChange(index + 1)}
+                        onClick={handlePrevPage}
+                        className={cx("page-change")}
                       >
-                        {index + 1}
+                        <FontAwesomeIcon icon={faChevronLeft} />
                       </div>
-                    )
-                  )}
-                  {currentPage <
-                    Math.ceil(product.length / productsPerPage) && (
-                    <div onClick={handleNextPage} className={cx("page-change")}>
-                      <FontAwesomeIcon icon={faChevronRight} />
-                    </div>
-                  )}
-                </div>
+                    )}
+                    {Array.from(
+                      { length: Math.ceil(product.length / productsPerPage) },
+                      (_, index) => (
+                        <div
+                          key={index + 1}
+                          className={cx("page-number", {
+                            active: currentPage === index + 1,
+                          })}
+                          onClick={() => handlePageChange(index + 1)}
+                        >
+                          {index + 1}
+                        </div>
+                      )
+                    )}
+                    {currentPage <
+                      Math.ceil(product.length / productsPerPage) && (
+                      <div
+                        onClick={handleNextPage}
+                        className={cx("page-change")}
+                      >
+                        <FontAwesomeIcon icon={faChevronRight} />
+                      </div>
+                    )}
+                  </div>
+                )}
               </div>
             </div>
           </div>

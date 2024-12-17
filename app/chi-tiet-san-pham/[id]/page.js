@@ -207,12 +207,12 @@ export default function ProductDetail({ params }) {
                       "price_original line-through ml-12 text-[16px]"
                     )}
                   >
-                    {formatPrice(products.product_units[0].price)}
+                    {formatPrice(products.product_units[0].price)}đ
                   </span>
                   <div>
                     <span className={cx("price_label")}>Giá khuyến mãi</span>
                     <span className={cx("price_discount")}>
-                      {formatPrice(products.product_units[0].price_sale)}
+                      {formatPrice(products.product_units[0].price_sale)}đ
                     </span>
                   </div>
                 </>
@@ -220,7 +220,7 @@ export default function ProductDetail({ params }) {
                 <>
                   <span className={cx("price_label")}>Giá niêm yết</span>
                   <span className={cx("price_discount")}>
-                    {formatPrice(products.product_units[0].price)}
+                    {formatPrice(products.product_units[0].price)} đ
                   </span>
                 </>
               )}

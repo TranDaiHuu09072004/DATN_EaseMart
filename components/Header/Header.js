@@ -281,7 +281,7 @@ export default function Header() {
                       <Link href="/kho-voucher">Kho Voucher</Link>
                     </li>
                     <li className={cx("text-black", "px-3", "py-4")}>
-                      <Link href="/giao-thanh-cong">Giao Thành Công</Link>
+                      <Link href="/giao-thanh-cong">Đơn giao Thành Công</Link>
                     </li>
                     <li
                       className={cx(
