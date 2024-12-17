@@ -17,9 +17,7 @@ const Chitietdonhang = ({ params }) => {
   const { id } = params;
   const [orderDetail, setOrderDetail] = useState({});
   const [checkStatusOrder, setCheckStatusOrder] = useState(false);
-  const [showModal, setShowModal] = useState(false);
-  const [rating, setRating] = useState(0);
-  const [content, setContent] = useState("");
+
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
     if (!user) {
@@ -55,60 +53,6 @@ const Chitietdonhang = ({ params }) => {
 
   // console.log(checkStatusOrder);
   // console.log(orderDetail);
-
-  const handleReviewSubmit = async (product_id) => {
-    const user = JSON.parse(localStorage.getItem("user"));
-    if (!user) {
-      Swal.fire({
-        icon: "error",
-        title: "Lỗi",
-        text: "Vui lòng đăng nhập để đánh giá sản phẩm.",
-      });
-      return;
-    }
-    const token = user.token;
-    console.log(token);
-
-    // Gọi API tạo comment
-    try {
-      const response = await axios.post(
-        "https://trandainghia.id.vn/api/comments",
-        { rating, content, product_id },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      console.log("review:", response.data);
-
-      if (response.status === 200) {
-        Swal.fire({
-          icon: "success",
-          title: "Đánh giá thành công",
-          text: "Cảm ơn bạn đã đánh giá sản phẩm!",
-        });
-        setShowModal(false);
-        setRating(0);
-        setContent("");
-      } else {
-        Swal.fire({
-          icon: "error",
-          title: "Lỗi",
-          text: "Có lỗi xảy ra khi gửi đánh giá. Vui lòng thử lại.",
-        });
-      }
-    } catch (error) {
-      console.error("Error submitting review:", error);
-      Swal.fire({
-        icon: "error",
-        title: "Lỗi",
-        text:
-          error.response?.data?.message ||
-          "Có lỗi xảy ra khi gửi đánh giá. Vui lòng thử lại.",
-      });
-    }
-  };
 
   return Object.keys(orderDetail).length === 0 ? (
     <Loading />
@@ -400,60 +344,6 @@ const Chitietdonhang = ({ params }) => {
           </tr>
         </tbody>
       </table>
-      <div className="flex justify-end">
-        {orderDetail?.order?.status === "Giao thành công" &&  (
-          <button
-            onClick={() => setShowModal(true)}
-            className="ml- mt-5 border-2 border-[#3bb77e] px-4 py-2 rounded-[5px] text-[#3bb77e] font-bold"
-          >
-            Đánh Giá
-          </button>
-        )}
-      </div>
-
-      {showModal && (
-        <div className="modal fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="modal-content w-[500px] h-auto bg-white rounded-lg shadow-lg p-5">
-            <span
-              className="close text-gray-500 hover:text-gray-700 text-[25px] flex justify-end cursor-pointer"
-              onClick={() => setShowModal(false)}
-            >
-              &times;
-            </span>
-            <h2 className="text-lg font-bold mb-4">Đánh giá sản phẩm</h2>
-            <div className="mb-4 flex items-center">
-              <span className="font-semibold text-[16px] text-[#939292]">
-                Chất lượng sản phẩm:{" "}
-              </span>
-              {[1, 2, 3, 4, 5].map((star) => (
-                <span
-                  key={star}
-                  onClick={() => setRating(star)}
-                  className={`cursor-pointer ${
-                    star <= rating ? "text-yellow-500" : "text-gray-400"
-                  } text-[35px] `}
-                >
-                  ★
-                </span>
-              ))}
-            </div>
-            <textarea
-              value={content}
-              onChange={(e) => setContent(e.target.value)}
-              placeholder="Nhập nội dung đánh giá..."
-              className="w-full h-24 border border-gray-300 rounded-md p-2 mb-4"
-            />
-            {orderDetail?.order_details?.map((prod) => (
-              <button
-                onClick={() => handleReviewSubmit(prod.product_id)}
-                className="w-full bg-[#3BB77E] text-white font-bold py-2 rounded-md" // Lấy product_id từ orderDetail.order_details
-              >
-                Đánh Giá
-              </button>
-            ))}
-          </div>
-        </div>
-      )}
 
       <div className={cx("flex", "flex-wrap")}>
         <div className={cx("basis-full")}>
