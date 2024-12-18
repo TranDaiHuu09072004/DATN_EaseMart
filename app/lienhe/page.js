@@ -1,7 +1,21 @@
 "use client";
 import React, { useState } from "react";
 import styles from "./lienhe.module.css"; // Import CSS module
-import Swal from "sweetalert2"; // Import SweetAlert2
+import { ToastContainer, toast } from "react-toastify"; // Import ToastContainer và toast
+import "react-toastify/dist/ReactToastify.css"; // Import CSS cho Toast
+import * as Yup from "yup"; // Import Yup
+
+// Định nghĩa schema xác thực với Yup
+const validationSchema = Yup.object().shape({
+  name: Yup.string().required("Tên không được để trống"),
+  phone: Yup.string()
+    .required("Số điện thoại không được để trống")
+    .matches(/^[0-9]{10}$/, "Số điện thoại bắt buộc phải 10 số"),
+  email: Yup.string()
+    .email("Email không hợp lệ")
+    .required("Email không được để trống"),
+  message: Yup.string().required("Lời nhắn không được để trống"),
+});
 
 export default function LienHe() {
   // State để lưu thông tin form
@@ -22,6 +36,9 @@ export default function LienHe() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      // Xác thực dữ liệu form
+      await validationSchema.validate(formData, { abortEarly: false });
+
       const response = await fetch("https://trandainghia.id.vn/api/contact", {
         method: "POST",
         headers: {
@@ -31,31 +48,22 @@ export default function LienHe() {
       });
 
       if (response.ok) {
-        // Use SweetAlert2 for success message
-        Swal.fire({
-          icon: "success",
-          title: "Gửi thành công!",
-          confirmButtonText: "OK",
-        });
+        // Thông báo thành công bằng Toast
+        toast.success("Gửi thành công!");
         setFormData({ name: "", phone: "", email: "", message: "" });
       } else {
-        // Use SweetAlert2 for error message
-        Swal.fire({
-          icon: "error",
-          title: "Gửi thất bại",
-          text: "Vui lòng thử lại.",
-          confirmButtonText: "OK",
-        });
+        // Thông báo lỗi bằng Toast
+        toast.error("Gửi thất bại. Vui lòng thử lại.");
       }
     } catch (error) {
-      console.error("Lỗi gửi dữ liệu:", error);
-      // Use SweetAlert2 for catch error message
-      Swal.fire({
-        icon: "error",
-        title: "Đã xảy ra lỗi",
-        text: "Vui lòng thử lại.",
-        confirmButtonText: "OK",
-      });
+      if (error instanceof Yup.ValidationError) {
+        // Hiển thị thông báo lỗi nếu xác thực không thành công bằng Toast
+        toast.error(error.errors.join(", "));
+      } else {
+        console.error("Lỗi gửi dữ liệu:", error);
+        // Thông báo lỗi bằng Toast
+        toast.error("Đã xảy ra lỗi. Vui lòng thử lại.");
+      }
     }
   };
 
@@ -139,6 +147,7 @@ export default function LienHe() {
           </div>
         </div>
       </div>
+      <ToastContainer /> {/* Thêm ToastContainer vào JSX */}
     </div>
   );
 }

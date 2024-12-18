@@ -4,9 +4,9 @@ import classNames from "classnames/bind";
 import styles from "./customer.module.css";
 import "react-toastify/dist/ReactToastify.css";
 // import Swal from "sweetalert2";
-import axios from "axios";
 import { toast } from "react-toastify";
 import { getInfoCustomer, updateInfoCustomer } from "../../service/customer";
+import * as Yup from "yup";
 const cx = classNames.bind(styles);
 export default function CustomerInfoForm() {
   const [toggleGetInfoUser, setToggleGetInfoUser] = useState(true);
@@ -20,6 +20,19 @@ export default function CustomerInfoForm() {
     image: null,
   });
   const [image, setImage] = useState(null);
+
+  const validationSchema = Yup.object().shape({
+    name: Yup.string().required("Họ tên không được rỗng"),
+    email: Yup.string()
+      .email("Email không hợp lệ")
+      .required("Email không được rỗng"),
+    phone: Yup.string()
+      .required("Điện thoại không được rỗng")
+      .matches(/^[0-9]{10}$/, "Số điện thoại bắt buộc phải 10 số"),
+    address: Yup.string().required("Địa chỉ không được rỗng"),
+    birth_date: Yup.date().required("Ngày sinh không được rỗng"),
+    gender: Yup.string().required("Giới tính không được rỗng"),
+  });
 
   // Call the function only once when the component mounts
   useEffect(() => {
@@ -62,40 +75,47 @@ export default function CustomerInfoForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const token = JSON.parse(localStorage.getItem("user")).token;
-    // Log dữ liệu trước khi gửi
-    console.log(userData);
-    console.log(token);
 
-    const formData = new FormData();
-    console.log(userData.image);
+    try {
+      await validationSchema.validate(userData);
+      const token = JSON.parse(localStorage.getItem("user")).token;
+      // Log dữ liệu trước khi gửi
+      console.log(userData);
+      console.log(token);
 
-    if (userData.image) {
-      formData.append("image", userData.image);
+      const formData = new FormData();
+      console.log(userData.image);
+
+      if (userData.image) {
+        formData.append("image", userData.image);
+      }
+      formData.append("name", userData.name);
+      formData.append("email", userData.email);
+      formData.append("address", userData.address);
+      formData.append("phone", userData.phone);
+      formData.append("birth_date", userData.birth_date);
+      formData.append("gender", userData.gender);
+
+      updateInfoCustomer(formData, token)
+        .then(() => {
+          toast.success("Cập nhật thành công!");
+          let user = JSON.parse(localStorage.getItem("user"));
+          user.name = userData.name;
+          user.email = userData.email;
+          localStorage.setItem("user", JSON.stringify(user));
+          localStorage.setItem("name", JSON.stringify(user.name));
+          setToggleGetInfoUser(!toggleGetInfoUser);
+          setTimeout(() => location.reload(), 3000);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+
+      // Log phản hồi từ API
+    } catch (error) {
+      toast.error(error.message);
+      return;
     }
-    formData.append("name", userData.name);
-    formData.append("email", userData.email);
-    formData.append("address", userData.address);
-    formData.append("phone", userData.phone);
-    formData.append("birth_date", userData.birth_date);
-    formData.append("gender", userData.gender);
-
-    updateInfoCustomer(formData, token)
-      .then(() => {
-        toast.success("Cập nhật thành công!");
-        let user = JSON.parse(localStorage.getItem("user"));
-        user.name = userData.name;
-        user.email = userData.email;
-        localStorage.setItem("user", JSON.stringify(user));
-        localStorage.setItem("name", JSON.stringify(user.name));
-        setToggleGetInfoUser(!toggleGetInfoUser);
-        location.reload();
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-
-    // Log phản hồi từ API
   };
 
   return (

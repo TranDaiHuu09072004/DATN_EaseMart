@@ -44,9 +44,6 @@ export default function DangNhap() {
   const handleLogin = async (data) => {
     const { email, password } = data;
 
-    const salt = "randomSalt123";
-    const hashedPassword = CryptoJS.SHA256(salt + password).toString();
-
     try {
       const response = await fetch("https://trandainghia.id.vn/api/login", {
         method: "POST",
@@ -97,8 +94,12 @@ export default function DangNhap() {
       }
     } catch (err) {
       console.error("Lỗi khi gọi API:", err);
-      setError("Có lỗi xảy ra. Vui lòng thử lại sau.");
-      Swal.fire("Lỗi", "Có lỗi xảy ra. Vui lòng thử lại sau.", "error");
+      setError("Email hoặc mật khẩu không đúng. Vui lòng thử lại.");
+      Swal.fire(
+        "Lỗi",
+        "Email hoặc mật khẩu không đúng. Vui lòng thử lại.",
+        "error"
+      );
     }
   };
   return (

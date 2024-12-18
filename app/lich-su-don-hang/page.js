@@ -104,7 +104,7 @@ export default function OrderHistory() {
                   <th>Đơn hàng</th>
                   <th>Ngày</th>
                   <th>Tình trạng</th>
-                  <th>Chờ thanh toán</th>
+                  <th>Trạng thái thanh toán</th>
                   <th>Tổng</th>
                   <th>Số tiền cần thanh toán</th>
                   <th>Thao tác khác</th>

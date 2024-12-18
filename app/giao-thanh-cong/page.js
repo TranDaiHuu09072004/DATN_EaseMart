@@ -93,11 +93,11 @@ export default function ForgotPassword() {
 
   return (
     <div className="max-w-screen-xl mx-auto p-4">
-      <div className="bg-white my-5 p-5 w-[1000px] mx-auto max-md:w-full">
+      <div className="bg-white my-5 p-5 w-[842px] mx-auto max-md:w-full">
         <span className="flex justify-end font-bold text-[#3bb77e] border-b-2 border-[#cccccc] mb-2">
-          Giao thành công
+          Đơn giao thành công
         </span>
-        {Array.isArray(product_success) &&
+        {Array.isArray(product_success) && product_success.length > 0 ? (
           product_success.map((product) => {
             return (
               <div
@@ -113,21 +113,19 @@ export default function ForgotPassword() {
                   />
                   <div className="content_product_access flex-col gap-x-4">
                     <h3 className="mt-2">{product.name}</h3>
-                    <h5 className="mt-4 text-[13px]">X1</h5>
+                    <h5 className="mt-4 text-[13px]">(X{product.quantity})</h5>
                   </div>
                 </div>
 
-                {/* {orderDetail?.order?.status === "Giao thành công" && ( */}
                 <button
                   onClick={() => {
                     setShowModal(true);
                     setCurrentProductId(product.id);
                   }}
-                  className="mt-20 border-2 border-[#3bb77e] px-4 py-2 rounded-[5px] text-[#3bb77e] font-bold w-30 h-[40px] justify-end"
+                  className="mt-[50px] border-2 border-[#3bb77e] px-4 py-2 rounded-[5px] text-[#3bb77e] font-bold w-30 h-[40px] justify-end"
                 >
                   Đánh Giá
                 </button>
-                {/* )} */}
 
                 {showModal && (
                   <div className="modal fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-10">
@@ -177,7 +175,19 @@ export default function ForgotPassword() {
                 )}
               </div>
             );
-          })}
+          })
+        ) : (
+          <div className="mx-auto">
+            <img
+              src="/assets/lich_su_don/chua_co_don_hang.png"
+              alt=""
+              className="mx-auto"
+            />
+            <h3 className="text-center mt-3 text-gray-900">
+              Bạn chưa có đơn hàng nào đã mua!
+            </h3>
+          </div>
+        )}
       </div>
     </div>
   );

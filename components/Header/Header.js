@@ -55,7 +55,7 @@ export default function Header() {
       autoClose: 3000,
     });
     setTimeout(() => {
-      window.location.reload();
+      window.location.href = "/";
     }, 1000);
   };
 

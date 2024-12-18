@@ -175,7 +175,7 @@ const Convert = () => {
             Quy đổi điểm hội viên
           </div>
           <div className={cx("title-points")}>
-            <div className={cx("points")}>
+            <div className={cx("points", "mt-3")}>
               Số điểm đang có : <span>{point}đ</span>
             </div>
           </div>

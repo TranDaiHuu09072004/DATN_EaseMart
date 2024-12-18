@@ -25,7 +25,7 @@ export default function Promotion() {
 
         {/* Description */}
         <div className={styles.description}>
-          <p>
+          <p className="mb-3">
             EaseMart - cửa hàng tiện lợi uy tín của bạn, luôn đồng hành cùng bạn
             trong việc tiết kiệm thời gian và chi phí. Để tri ân khách hàng,
             chúng tôi xin gửi đến bạn chương trình khuyến mãi đặc biệt với nhiều
@@ -48,11 +48,11 @@ export default function Promotion() {
               hot nhất hiện nay.
             </li>
             <li>
-              <strong>3. Miễn Phí Giao Hàng Cho Đơn Hàng Từ 300,000 VND</strong>
+              <strong>3. Giao Hàng Cho Đơn Hàng Từ 300,000 VND</strong>
               <br />
               Bạn không cần phải lo lắng về chi phí giao hàng khi mua sắm tại
-              EaseMart. Với đơn hàng từ 300,000 VND, bạn sẽ được miễn phí giao
-              hàng.
+              EaseMart. Với đơn hàng từ 300,000 VND thì đơn hàng của bạn sẽ được
+              giao một cách nhanh chóng
             </li>
             <li>
               <strong>4. Ưu Đãi Đặc Biệt Dành Cho Thành Viên</strong>
