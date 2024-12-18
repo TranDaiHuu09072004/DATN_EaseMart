@@ -93,7 +93,7 @@ export default function ForgotPassword() {
 
   return (
     <div className="max-w-screen-xl mx-auto p-4">
-      <div className="bg-white my-5 p-5 w-[1000px] mx-auto">
+      <div className="bg-white my-5 p-5 w-[1000px] mx-auto max-md:w-full">
         <span className="flex justify-end font-bold text-[#3bb77e] border-b-2 border-[#cccccc] mb-2">
           Giao thành công
         </span>
@@ -130,7 +130,7 @@ export default function ForgotPassword() {
                 {/* )} */}
 
                 {showModal && (
-                  <div className="modal fixed inset-0 flex items-center justify-center bg-gray-400 bg-opacity-30">
+                  <div className="modal fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-10">
                     <div className="modal-content w-[500px] h-auto bg-white rounded-lg shadow-lg p-5">
                       <span
                         className="close text-gray-500 hover:text-gray-700 text-[25px] flex justify-end cursor-pointer"
@@ -165,14 +165,13 @@ export default function ForgotPassword() {
                         placeholder="Nhập nội dung đánh giá..."
                         className="w-full h-24 border border-gray-300 rounded-md p-2 mb-4"
                       />
-                      {/* {orderDetail?.order_details?.map((prod) => ( */}
+
                       <button
                         onClick={() => handleReviewSubmit(currentProductId)}
                         className="h-auto bg-[#3BB77E] text-white font-bold py-2 rounded-md w-full" // Lấy product_id từ orderDetail.order_details
                       >
                         Đánh Giá
                       </button>
-                      {/* ))} */}
                     </div>
                   </div>
                 )}

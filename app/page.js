@@ -174,7 +174,7 @@ export default function Home() {
       console.log("Voucher saved:", response.data);
       toast.success("Voucher đã được lưu thành công!", {
         position: "top-right",
-        autoClose: 1000,
+        autoClose: 1500,
       });
     } catch (error) {
       console.error("Lỗi khi lưu voucher:", error);
@@ -220,7 +220,7 @@ export default function Home() {
                     "text-[20px]"
                   )}
                 >
-                  Giảm {formatPrice(voucher.discount_value)}
+                  Giảm {formatPrice(voucher.discount_value)}đ
                 </div>
               </div>
               <div

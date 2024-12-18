@@ -21,6 +21,9 @@ export default function OrderHistory() {
   };
 
   const formatPrice = (price) => {
+    if (price === undefined || price === null) {
+      return "0";
+    }
     return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
   useEffect(() => {
@@ -77,11 +80,11 @@ export default function OrderHistory() {
   }
 
   return (
-    <div className={cx("container")}>
+    <div className={cx("max-w-screen-xl", "mx-auto ", "p-4")}>
       <h2 className="text-center font-bold text-[25px] text-gray-700 my-5">
         Lịch sử đơn hàng
       </h2>
-      <div className={cx("bg_color", "mb-5")}>
+      <div className={cx("bg_color", "mb-5", "max-md:w-full")}>
         {order_id.length === 0 ? (
           <div className="mx-auto">
             <img
@@ -94,7 +97,7 @@ export default function OrderHistory() {
             </h3>
           </div>
         ) : (
-          <div className={cx("tableContainer")}>
+          <div className={cx("tableContainer", "max-lg:w-full")}>
             <table className={cx("table")}>
               <thead>
                 <tr>
@@ -103,6 +106,7 @@ export default function OrderHistory() {
                   <th>Tình trạng</th>
                   <th>Chờ thanh toán</th>
                   <th>Tổng</th>
+                  <th>Số tiền cần thanh toán</th>
                   <th>Thao tác khác</th>
                 </tr>
               </thead>
@@ -144,6 +148,7 @@ export default function OrderHistory() {
                       </span>
                     </td>
                     <td>{formatPrice(order.total_amount)}đ</td>
+                    <td>{formatPrice(order.payment_amount)}đ</td>
                     <td>
                       <button
                         onClick={() => {

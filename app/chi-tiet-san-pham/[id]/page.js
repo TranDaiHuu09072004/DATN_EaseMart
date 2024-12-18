@@ -22,7 +22,6 @@ export default function ProductDetail({ params }) {
   const { stateYt, dispatchYt } = useYeuThich();
   const { id } = params; // lấy id từ params
   const [products, setProduct] = useState(null);
-  const [product_related, setProduct_Related] = useState(null);
   const [quantity, setQuantity] = useState(1);
   const [selectedImage, setSelectedImage] = useState(
     products?.images.image_path
@@ -78,17 +77,22 @@ export default function ProductDetail({ params }) {
       });
 
       // Fetch comments
-      fetch("https://trandainghia.id.vn/api/comments-list")
+      fetch(`https://trandainghia.id.vn/api/products/${id}/comments`)
         .then((response) => response.json())
         .then((data) => {
-          // Filter comments for the current product
-          const productComments = Object.values(data).filter((comment) =>
-            comment.comments.some((c) => c.product_id === id)
-          );
+          // Set comments based on the new structure
+          const productComments = data.data.map((item) => ({
+            customer: item.customer.name,
+            content: item.comment.content,
+            created_at: item.comment.created_at,
+            rating: item.comment.rating || 0, // Assuming rating is available
+          }));
           setComments(productComments);
         });
     }
   }, [id]);
+
+  console.log(comments);
 
   if (!products)
     return (
@@ -409,40 +413,34 @@ export default function ProductDetail({ params }) {
         </ul>
       </section>
       <h3 className={cx("comment-product", "mt-5")}>Bình luận về sản phẩm</h3>
-      <div className={cx("comment-section")}>
+      <div className={cx("comment-section", "p-5")}>
         {comments.length === 0 ? (
           <p className="py-5">Sản phẩm này chưa có bình luận nào!</p>
         ) : (
-          comments.map((comment, idx) => (
+          comments.map((singleComment, idx) => (
             <div key={idx} className={cx("comment-item")}>
               <div className={cx("comment-content")}>
-                {comment.comments.map((singleComment, idx) => (
-                  <div key={idx} className="border-bottom ">
-                    <div className={cx("user-avatar", "flex", "gap-x-1")}>
-                      <i className="fa-solid fa-circle-user"></i>
-                      <div className="">
-                        <div className="flex-col gap-4">
-                          <p className="text-[14px]">{comment.customer.name}</p>
-                          <div className={cx("star-rating")}>
-                            {[...Array(parseInt(singleComment.rating))].map(
-                              (_, i) => (
-                                <span key={i}>★</span> // Filled star
-                              )
-                            )}
-                          </div>
-                          <p className={cx("comment-time", "text-[#939393]")}>
-                            Thời gian đăng:{" "}
-                            {formatDate(singleComment.created_at)}
-                          </p>
-                        </div>
-                        <h4 className="text-[14px] font-medium text-[#696969] leading-5">
-                          {" "}
-                          {singleComment.content}
-                        </h4>
+                <div className={cx("user-avatar", "flex", "gap-x-1")}>
+                  <i className="fa-solid fa-circle-user"></i>
+                  <div className="">
+                    <div className="flex-col gap-4">
+                      <p className="text-[14px]">{singleComment.customer}</p>
+                      <div className={cx("star-rating")}>
+                        {[...Array(parseInt(singleComment.rating))].map(
+                          (_, i) => (
+                            <span key={i}>★</span> // Filled star
+                          )
+                        )}
                       </div>
+                      <p className={cx("comment-time", "text-[#939393]")}>
+                        Thời gian đăng: {formatDate(singleComment.created_at)}
+                      </p>
                     </div>
+                    <h4 className="text-[14px] font-medium text-[#696969] leading-5">
+                      {singleComment.content}
+                    </h4>
                   </div>
-                ))}
+                </div>
               </div>
             </div>
           ))

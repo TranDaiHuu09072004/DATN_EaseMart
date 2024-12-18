@@ -153,7 +153,6 @@ export default function Payment() {
                   clearInterval(intervalId.current);
                   clearTimeout(timeoutId.current); // Dừng `setTimeout` nếu cần
                   setLinkQr(null);
-                  
 
                   Swal.fire({
                     icon: "success",

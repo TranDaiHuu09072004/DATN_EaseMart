@@ -50,6 +50,12 @@ const Chitietdonhang = ({ params }) => {
       setOrderDetail(res);
     });
   }, []);
+  const formatPrice = (price) => {
+    if (price === undefined || price === null) {
+      return "0";
+    }
+    return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
 
   // console.log(checkStatusOrder);
   // console.log(orderDetail);
@@ -258,7 +264,7 @@ const Chitietdonhang = ({ params }) => {
                     "hightlight"
                   )}
                 >
-                  {prod?.total_price}đ
+                  {formatPrice(prod?.total_price)}đ
                 </td>
               </tr>
             );
@@ -277,7 +283,7 @@ const Chitietdonhang = ({ params }) => {
                 "hightlight"
               )}
             >
-              {+orderDetail?.order?.total_amount}đ
+              {formatPrice(+orderDetail?.order?.total_amount)}đ
             </td>
           </tr>
           <tr>
@@ -293,7 +299,9 @@ const Chitietdonhang = ({ params }) => {
                 "hightlight"
               )}
             >
-              Đã giảm: 0đ
+              {orderDetail?.order?.voucher_code
+                ? orderDetail?.order?.voucher_code
+                : "Bạn chưa áp mã voucher nào!"}
             </td>
           </tr>
           <tr>
@@ -339,7 +347,7 @@ const Chitietdonhang = ({ params }) => {
                 " text-base"
               )}
             >
-              {+orderDetail?.order?.total_amount}đ
+              {formatPrice(+orderDetail?.order?.total_amount)}đ
             </td>
           </tr>
         </tbody>
