@@ -27,7 +27,7 @@ export default function OTP() {
         "https://trandainghia.id.vn/api/password/verify-otp",
         { email, otp_code: otpValue }
       );
-      console.log(response.data);
+
       if (response.status === 200) {
         Swal.fire("Thành Công", "Xác minh mã OTP thành công", "success");
         setTimeout(() => {

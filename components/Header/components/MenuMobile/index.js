@@ -48,7 +48,6 @@ const MenuMobile = ({ color = false }) => {
         "https://trandainghia.id.vn/api/products/search",
         { keyword: searchKeyword }
       );
-      console.log("Search", response.data);
 
       if (response.data.length === 0) {
         toast.error("Sản phẩm này không tồn tại!");

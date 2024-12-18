@@ -180,13 +180,10 @@ export const CartFunction = ({ children }) => {
   useEffect(() => {
     const cartUser = getCartFromLocalStorage(userEmail);
     if (cartUser !== undefined) {
-      console.log("check");
-
       dispatch(new Dispatch("ADD_CART_ITEMS_FROM_LOCAL", cartUser));
     }
   }, []);
-  console.log(state);
-  
+
   return (
     <>
       <CartContext.Provider value={{ state, dispatch }}>

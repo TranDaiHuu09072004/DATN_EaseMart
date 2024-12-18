@@ -57,7 +57,6 @@ export default function Home() {
         .slice(0, 10);
 
       setProductsPopular(shuffledPopular);
-      // console.log("Popular Products:", shuffledPopular);
     });
 
     fetchProducts("FlashSale").then((flashsale) => {
@@ -83,11 +82,9 @@ export default function Home() {
         },
       }));
 
-      // Shuffle the array and take the first 10 items
       const shuffledFlashSale = transformedData.slice(0, 10);
 
       setProductsFlashSale(shuffledFlashSale);
-      // console.log("Flash Sale Products:", shuffledFlashSale);
     });
 
     fetchProductByView("Product_Views").then((productviews) => {
@@ -119,7 +116,6 @@ export default function Home() {
         .slice(0, 10);
 
       setProduct_Viewss(shuffledViews);
-      // console.log("Viewed Products:", shuffledViews);
     });
   }, []);
 
@@ -171,7 +167,6 @@ export default function Home() {
           },
         }
       );
-      console.log("Voucher saved:", response.data);
       toast.success("Voucher đã được lưu thành công!", {
         position: "top-right",
         autoClose: 1500,

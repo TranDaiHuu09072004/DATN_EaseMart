@@ -34,11 +34,9 @@ const HeaderScroll = () => {
     window.addEventListener("resize", () => {
       const width = window.innerWidth;
       if (width > 768) {
-        console.log(`Chiều rộng của browser thay đổi thành: ${width}px`);
         setShowHeaderScroll(true);
       }
       if (width < 768) {
-        console.log(`Chiều rộng của browser thay đổi thành: ${width}px`);
         setShowHeaderScroll(false);
       }
     });

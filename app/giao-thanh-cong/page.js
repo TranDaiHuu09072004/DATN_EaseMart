@@ -27,7 +27,6 @@ export default function ForgotPassword() {
 
       const productsInfo = response.data.data;
       Setproduct_success(productsInfo);
-      console.log(productsInfo);
     } catch (error) {
       console.error("Error fetching delivered products:", error);
     }
@@ -38,7 +37,6 @@ export default function ForgotPassword() {
   }, []);
 
   const handleReviewSubmit = async (product_id) => {
-    console.log("Submitting review for product_id:", product_id);
     const user = JSON.parse(localStorage.getItem("user"));
     if (!user) {
       Swal.fire({
@@ -49,7 +47,6 @@ export default function ForgotPassword() {
       return;
     }
     const token = user.token;
-    console.log(token);
 
     // Gọi API tạo comment
     try {
@@ -62,7 +59,7 @@ export default function ForgotPassword() {
           },
         }
       );
-      console.log("review:", response.data);
+
       if (response.status === 200) {
         Swal.fire({
           icon: "success",

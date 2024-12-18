@@ -13,11 +13,10 @@ export const getCate = async () => {
 };
 
 export const getCateChild = async (idCateParent) => {
-  console.log(idCateParent);
   const respone = await axios.get(
     `https://trandainghia.id.vn/api/categories-by-parent/${idCateParent}`
   );
-  // console.log(respone.data);
+
   return respone.data;
 };
 

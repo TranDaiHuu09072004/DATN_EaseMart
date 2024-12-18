@@ -58,7 +58,6 @@ export default function DangNhap() {
       }
 
       const user = await response.json();
-      console.log(user);
 
       const name = user.customers.name;
       const customerId = user.customers.id;

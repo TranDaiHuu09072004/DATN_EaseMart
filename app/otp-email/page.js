@@ -12,7 +12,6 @@ export default function OTP() {
   const handleVerify = async () => {
     const registerData = JSON.parse(sessionStorage.getItem("registerData"));
     const email = registerData.email;
-    console.log(email);
 
     const otpValue = otp.join("");
 
@@ -28,7 +27,6 @@ export default function OTP() {
       );
 
       if (response.status === 200) {
-        console.log("OTP verified:", response.data);
         try {
           const registerResponse = await axios.post(
             "https://trandainghia.id.vn/api/register",

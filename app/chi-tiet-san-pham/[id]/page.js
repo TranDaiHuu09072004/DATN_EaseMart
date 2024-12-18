@@ -46,7 +46,6 @@ export default function ProductDetail({ params }) {
     if (id) {
       fetchProductById(id).then((data) => {
         setProduct(data);
-        console.log(data);
         setProToCart({
           id: data.product.id,
           name: data.product.name,
@@ -92,8 +91,6 @@ export default function ProductDetail({ params }) {
     }
   }, [id]);
 
-  console.log(comments);
-
   if (!products)
     return (
       <p>
@@ -105,7 +102,6 @@ export default function ProductDetail({ params }) {
     const newQuatity = action === "plus" ? quantity + 1 : quantity - 1;
     setQuantity(newQuatity);
   };
-  // console.log(products);
 
   products.images && products.images.length > 0
     ? `https://trandainghia.id.vn/storage/upload/f436k9xwzo_xa_lach_xoong_baby.jpg`

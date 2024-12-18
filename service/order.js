@@ -3,7 +3,6 @@ import axios from "axios";
 export const PostOrder = async (data) => {
   const token = data.token;
   delete data.token;
-  console.log(data, token);
 
   const respone = await axios.post(
     "https://trandainghia.id.vn/api/order",
@@ -21,7 +20,6 @@ export const PostOrder = async (data) => {
 export const CreateQr = async (data) => {
   const token = data.token;
   delete data.token;
-  console.log(data, token);
 
   const respone = await axios.post(
     `https://trandainghia.id.vn/api/generate-qrs`,
@@ -33,14 +31,11 @@ export const CreateQr = async (data) => {
       },
     }
   );
-  console.log(respone.data);
 
   return respone.data;
 };
 
 export const CheckPayment = async (paymentId) => {
-  console.log(paymentId);
-
   const respone = await axios.get(
     `https://trandainghia.id.vn/api/check-payment-status/${paymentId}`
   );
@@ -48,8 +43,6 @@ export const CheckPayment = async (paymentId) => {
 };
 
 export const GetOrderById = async (paymentId, token) => {
-  console.log(paymentId);
-
   const respone = await axios.get(
     `https://trandainghia.id.vn/api/orders/${paymentId}/details`,
     {
@@ -76,8 +69,6 @@ export const CancelOrderById = async (id, token) => {
 };
 
 export const RestoreOrderById = async (id, token) => {
-  console.log(id);
-
   const respone = await axios.post(
     `https://trandainghia.id.vn/api/orders/${id}/restore`,
     { token: token },

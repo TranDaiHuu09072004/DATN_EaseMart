@@ -42,7 +42,6 @@ const Cart = () => {
 
   useEffect(() => {
     let total = 0;
-    console.log(state.cartItems);
     state.cartItems.forEach((item) => {
       if (item.select) {
         total += item.quantity * item.units[0].price_sale;

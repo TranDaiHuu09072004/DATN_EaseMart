@@ -25,25 +25,16 @@ const Chitietdonhang = ({ params }) => {
     }
     const { token } = user;
     GetOrderById(id, token).then(async (res) => {
-      console.log(res);
-
       const list_pro = await Promise.all(
         res.order_details.map(async (item) => {
           const product = await fetchProductById(item.product_id);
           item.name = product.product.name; // Gắn thêm product_name vào item
-          // console.log("Name:", item.name);
-          // console.log("Data:", product);
 
           item.price = product.product.sale_price; // Gắn thêm product_name vào item
           return item;
         })
       );
-      console.log(list_pro);
 
-      // console.log(res.order.shipping_address);
-
-      // console.log(res);
-      // console.log(res.order.status);
       if (res.order.status === "Đang giao hàng") {
         setCheckStatusOrder(true);
       }
@@ -56,9 +47,6 @@ const Chitietdonhang = ({ params }) => {
     }
     return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
-
-  // console.log(checkStatusOrder);
-  // console.log(orderDetail);
 
   return Object.keys(orderDetail).length === 0 ? (
     <Loading />
@@ -99,8 +87,6 @@ const Chitietdonhang = ({ params }) => {
 
                   CancelOrderById(id, user.token)
                     .then((result) => {
-                      console.log(result);
-
                       if (
                         result.message === "Đơn hàng đã được hủy thành công."
                       ) {
@@ -165,8 +151,6 @@ const Chitietdonhang = ({ params }) => {
 
                   RestoreOrderById(id, user.token)
                     .then((result) => {
-                      console.log(result);
-
                       if (
                         result.message ===
                         "Đơn hàng đã được khôi phục thành công."

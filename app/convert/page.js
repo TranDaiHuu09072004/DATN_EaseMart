@@ -22,7 +22,6 @@ const Convert = () => {
       try {
         const user = JSON.parse(localStorage.getItem("user"));
         const email = user.email;
-        console.log(email);
 
         const response = await axios.post(
           "https://trandainghia.id.vn/api/customers",
@@ -35,8 +34,6 @@ const Convert = () => {
         );
 
         const point = response.data.customers.point;
-        console.log(response.data);
-        console.log(point);
 
         setPoints(point !== null ? point : "0");
       } catch (error) {

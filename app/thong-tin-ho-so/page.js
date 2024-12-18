@@ -36,12 +36,10 @@ export default function CustomerInfoForm() {
 
   // Call the function only once when the component mounts
   useEffect(() => {
-    console.log("check");
     const getUser = localStorage.getItem("user");
     const parsedUser = JSON.parse(getUser);
     const { email, token, name } = parsedUser;
     getInfoCustomer(email, token).then((data) => {
-      console.log(data.customers.image);
       if (data.customers.image) {
         setImage(`https://trandainghia.id.vn/${data.customers.image}`);
       }
@@ -79,13 +77,7 @@ export default function CustomerInfoForm() {
     try {
       await validationSchema.validate(userData);
       const token = JSON.parse(localStorage.getItem("user")).token;
-      // Log dữ liệu trước khi gửi
-      console.log(userData);
-      console.log(token);
-
       const formData = new FormData();
-      console.log(userData.image);
-
       if (userData.image) {
         formData.append("image", userData.image);
       }

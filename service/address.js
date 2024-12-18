@@ -12,14 +12,11 @@ export const getProvince = async (token) => {
       },
     }
   );
-  // console.log(response.data);
 
   return response.data;
 };
 
 export const getDistrict = async (selectedProvince, token) => {
-  console.log(selectedProvince);
-
   const province_id = +selectedProvince;
 
   const response = await axios.post(

@@ -2,14 +2,9 @@ import axios from "axios";
 const url = "https://trandainghia.id.vn/api/products";
 
 export const getProByCate = async (idcate) => {
-  // let id = toString(idcate);
-  // console.log(idcate);
-
-  // console.log(idcate);
   const respone = await axios.get(
     `https://trandainghia.id.vn/api/products-by-parent/${idcate}`
   );
-  // console.log("respone.data", respone.data);
 
   return respone.data;
 };
@@ -27,12 +22,9 @@ export const getProBySubCate = async (category1) => {
 };
 
 export const getProByBrand = async (id) => {
-  console.log(id);
-
   const respone = await axios.get(
     `https://trandainghia.id.vn/api/products-by-brand/${id}`
   );
-  // console.log(respone.data);
 
   return respone.data;
 };
@@ -42,7 +34,6 @@ export const fetchProducts = async (api) => {
     const response = await axios.get(`https://trandainghia.id.vn/api/products`);
     const products = response.data;
 
-    // Filter products based on the category
     let filteredProducts;
     switch (api) {
       case "FlashSale":
@@ -97,15 +88,13 @@ export const fetchProductByView = async () => {
 };
 // Hàm lấy sp theo khoản giá
 export const fetchProductsByMinMax = async (data) => {
-  console.log(data);
   if (data.brand) {
     try {
       const response = await axios.post(
         `https://trandainghia.id.vn/api/products/brand/filter`,
         data
       );
-      console.log(response.data);
-  
+
       return response.data;
     } catch (error) {
       console.error("Error fetching products:", error);
@@ -118,8 +107,7 @@ export const fetchProductsByMinMax = async (data) => {
         `https://trandainghia.id.vn/api/products/category-parent/filter`,
         data
       );
-      console.log(response.data);
-  
+
       return response.data;
     } catch (error) {
       console.error("Error fetching products:", error);
@@ -131,7 +119,6 @@ export const fetchProductsByMinMax = async (data) => {
       `https://trandainghia.id.vn/api/products/category/filter`,
       data
     );
-    console.log(response.data);
 
     return response.data;
   } catch (error) {

@@ -36,8 +36,6 @@ const yeuThichReducer = (state, action) => {
       newYeuThich = { ...state, yeuThichItems: yeuThich };
       return newYeuThich;
     case "ADD_ITEM_YEUTHICH":
-      console.log("check");
-
       if (!userEmail) {
         Swal.fire({
           icon: "error",
@@ -56,8 +54,6 @@ const yeuThichReducer = (state, action) => {
 
       const listIdItem = state?.yeuThichItems.map((item) => item.id);
       if (listIdItem?.includes(action.data.id)) {
-        console.log(listIdItem);
-
         toast.success("Bạn đã yêu thích sản phẩm này từ trước!");
         return newYeuThich;
       }
@@ -66,7 +62,6 @@ const yeuThichReducer = (state, action) => {
         ...state,
         yeuThichItems: [...state.yeuThichItems, action.data],
       };
-      console.log(newYeuThich);
 
       saveYeuThichToLocalStorageItems(userEmail, newYeuThich.yeuThichItems);
       toast.success("Sản phẩm đã được thêm vào danh sách yêu thích!");

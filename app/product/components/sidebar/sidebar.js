@@ -25,11 +25,8 @@ const Sidebar = ({
   };
 
   const handleShowBrand = () => {
-    // console.log("check", showBrand);
-
     setShowBrand(!showBrand);
   };
-  // console.log(listCate);
 
   const handleApplyFilter = () => {
     const minValue = parseFloat(min);

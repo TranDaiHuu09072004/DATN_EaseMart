@@ -10,11 +10,6 @@ export const getInfoCustomer = async (email, token) => {
 };
 
 export const updateInfoCustomer = async (formData, token) => {
-  // formData.image = null;
-  console.log(formData);
-  formData.forEach((value, key) => {
-    console.log(`${key}:`, value);
-  });
   const response = await axios.post(
     "https://trandainghia.id.vn/api/customers/profile",
     formData,

@@ -59,10 +59,7 @@ const Product = () => {
   useEffect(() => {
     // list cate
     getCate().then((data) => {
-      // console.log(data);
       getCateChild(data[0].id).then((cate) => {
-        // console.log(cate);
-
         setCate(data);
         setCateChoose({
           id: data[0].id,
@@ -73,20 +70,15 @@ const Product = () => {
     });
   }, []);
 
-  // console.log(cateChoose);
-
   useEffect(() => {
     if (keyword) {
       searchProducts(keyword).then((result) => {
-        console.log(result); // Log kết quả API
-
         if (result) {
           result.forEach((element) => {
             element.units[0].price_sale_value = element.units[0].price_sale;
             element.units[0].price_sale =
               element.units[0].price_sale || element.units[0].price;
           });
-          console.log(result);
 
           setResultFilterProduct(result);
         }
@@ -100,14 +92,9 @@ const Product = () => {
 
   // list product theo cate
   useEffect(() => {
-    console.log(cateChoose);
-
     if (Object.keys(cateChoose).length == 0) return;
-    console.log(cateChoose);
 
     getProByCate(cateChoose.id).then((data) => {
-      console.log(data);
-
       setBrandChooseCheck(false);
 
       const listProduct = data.products.map((item) => {
@@ -116,12 +103,9 @@ const Product = () => {
           item.units[0].price_sale || item.units[0].price;
         return item;
       });
-      console.log(listProduct);
 
       setProduct(listProduct);
       getCateChild(cateChoose.id).then((data) => {
-        // console.log(data);
-
         if (data.categories.length > 0) {
           setCateSub(data.categories);
         }
@@ -130,8 +114,6 @@ const Product = () => {
   }, [cateChoose]);
 
   useEffect(() => {
-    console.log(product);
-
     const indexOfLastProduct = currentPage * productsPerPage;
     const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
     setCurrentProducts(product.slice(indexOfFirstProduct, indexOfLastProduct));
@@ -163,9 +145,6 @@ const Product = () => {
   useEffect(() => {
     if (Object.keys(cateSubChoose) == 0) return;
     getProBySubCate(cateSubChoose.id).then((data) => {
-      console.log(Object.keys(cateSubChoose) == 0);
-      console.log(data);
-
       const listProduct = data.products.map((item) => {
         item.units[0].price_sale_value = item.units[0].price_sale;
         item.units[0].price_sale =
@@ -201,52 +180,47 @@ const Product = () => {
         brand: brandChoose.id,
       };
     }
-    console.log(brandChoose);
 
     fetchProductsByMinMax(data).then((data) => {
-      console.log(data);
-
       const transformedData = data.data.map((product) => ({
         id: product.id,
         name: product.name,
         description: product.description,
         status: product.status,
-        units:product.product_units.length>1? product.product_units.map((unit, index) => {
-          if (unit.level === "3") {
-            console.log(unit);
-            
-            return {
-              unit_id: unit.unit_id,
-              unit_name: unit.unit.unit_name,
-              price: unit.price,
-              price_sale_value: unit.price_sale,
-              price_sale: unit.price_sale || unit.price,
-              status: unit.status,
-            };
-          }
-        }).filter(item=>{
-          return item !== undefined
-        }):product.product_units.map((unit, index) => {
-          
-            return {
-              unit_id: unit.unit_id,
-              unit_name: unit.unit.unit_name,
-              price: unit.price,
-              price_sale_value: unit.price_sale,
-              price_sale: unit.price_sale || unit.price,
-              status: unit.status,
-            };
-          
-        })
-        ,
+        units:
+          product.product_units.length > 1
+            ? product.product_units
+                .map((unit, index) => {
+                  if (unit.level === "3") {
+                    return {
+                      unit_id: unit.unit_id,
+                      unit_name: unit.unit.unit_name,
+                      price: unit.price,
+                      price_sale_value: unit.price_sale,
+                      price_sale: unit.price_sale || unit.price,
+                      status: unit.status,
+                    };
+                  }
+                })
+                .filter((item) => {
+                  return item !== undefined;
+                })
+            : product.product_units.map((unit, index) => {
+                return {
+                  unit_id: unit.unit_id,
+                  unit_name: unit.unit.unit_name,
+                  price: unit.price,
+                  price_sale_value: unit.price_sale,
+                  price_sale: unit.price_sale || unit.price,
+                  status: unit.status,
+                };
+              }),
         primary_image: {
           path: product?.primary_image?.image_path,
           alt_text: product?.primary_image?.alt_text,
           is_primary: product?.primary_image?.is_primakey,
         },
       }));
-      // console.log(transformedData);
-      console.log(transformedData);
 
       setProduct(transformedData);
       setResultFilterProduct([]);
@@ -273,8 +247,6 @@ const Product = () => {
     setResultFilterProduct([]);
     // Xóa kết quả tìm kiếm
   };
-
-  // console.log(product);
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -321,8 +293,6 @@ const Product = () => {
     }
     return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
-
-  console.log(currentProducts);
 
   return (
     <Suspense fallback={<Loading />}>

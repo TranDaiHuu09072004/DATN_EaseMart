@@ -34,8 +34,6 @@ export default function Header() {
   }, [state]);
 
   useEffect(() => {
-    console.log();
-
     const user = JSON.parse(localStorage.getItem("user"));
     const name = user ? user.name : null;
     if (name) {
@@ -68,7 +66,6 @@ export default function Header() {
         "https://trandainghia.id.vn/api/products/search",
         { keyword: searchKeyword }
       );
-      console.log("Search", response.data);
 
       if (response.status !== 200 || response.data.length === 0) {
         toast.error("Sản phẩm này không tồn tại!");

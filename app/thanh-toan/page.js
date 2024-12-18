@@ -53,7 +53,6 @@ export default function Payment() {
     setUser(user);
 
     getInfoCustomer(user.email, user.customer).then((data) => {
-      console.log(data);
       const firstName = data.customers.name.split(" ")[0];
       const lastName = data.customers.name.split(" ").splice(1, 2).join(" ");
       setFirstName(firstName);
@@ -116,8 +115,6 @@ export default function Payment() {
 
       PostOrder(data)
         .then((data) => {
-          console.log(data);
-
           if (paymentMethod !== "BANK") {
             if (byStatus) {
               localStorage.removeItem("buy_now");
@@ -147,9 +144,7 @@ export default function Payment() {
 
             intervalId.current = setInterval(() => {
               CheckPayment(data.payment_id).then((res) => {
-                console.log(res);
                 if (res.message === "Thanh toán thành công.") {
-                  console.log("CHECK PAYMENT");
                   clearInterval(intervalId.current);
                   clearTimeout(timeoutId.current); // Dừng `setTimeout` nếu cần
                   setLinkQr(null);
@@ -184,8 +179,6 @@ export default function Payment() {
           });
         })
         .catch((err) => {
-          console.log(err);
-
           let message = "Lỗi trong quá trình đặt hàng";
           if (err?.response?.data?.message) {
             message = err?.response?.data?.message;
@@ -212,7 +205,6 @@ export default function Payment() {
 
   useEffect(() => {
     const by_status = JSON.parse(localStorage.getItem("buy_now"));
-    console.log(by_status);
     if (by_status) {
       setByStatus(true);
     }
@@ -223,25 +215,19 @@ export default function Payment() {
       }
     };
   }, [byStatus]);
-  console.log();
 
   useEffect(() => {
     setListPayment(() => {
       if (byStatus) {
         const by_status = JSON.parse(localStorage.getItem("buy_now"));
-        console.log(by_status);
         let settotal = 0;
 
         return by_status.filter((item) => {
-          // console.log(item.units[0].price_sale);
-          console.log("abc");
           settotal += item.quantity * item.units[0].price_sale;
           total.current = settotal;
           return item;
         });
       } else {
-        console.log("bcd");
-
         return state.cartItems.filter((item) => {
           if (item.select) {
             total.current += item.quantity * item.units[0].price_sale;
@@ -255,7 +241,6 @@ export default function Payment() {
   useEffect(() => {
     if (Object.keys(user).length > 0) {
       getProvince(user.token).then((province) => {
-        console.log(province.data);
         setlistProvince(province.data);
       });
     }
@@ -263,12 +248,9 @@ export default function Payment() {
   // quận
   useEffect(() => {
     if (!selectedProvince) return;
-    console.log(selectedProvince);
 
     getDistrict(selectedProvince.id, user.token)
       .then((province) => {
-        console.log(province.data);
-
         setDistrict(province.data);
       })
       .catch((error) => console.log(error));
@@ -280,8 +262,6 @@ export default function Payment() {
 
     getWard(selectedDistrict.id, user.token)
       .then((province) => {
-        console.log(province.data);
-
         setWard(province.data);
       })
       .catch((error) => console.log(error));
@@ -304,17 +284,12 @@ export default function Payment() {
         const { discount_value, minimum_order_value, id, type } =
           response.data.data;
 
-        console.log("Total:", total.current);
-        console.log("Minimum Order Value:", minimum_order_value);
-        console.log("Discount Value:", discount_value);
-
         if (type == 1) {
           if (total.current > minimum_order_value) {
             total.current -= discount_value;
             setDiscountValue(discount_value);
             setVoucherId(id);
             setVoucherError("");
-            console.log("Discount applied:", discount_value);
           } else {
             Swal.fire({
               icon: "error",
@@ -543,7 +518,6 @@ export default function Payment() {
                     required
                     className="max-xl:w-[320px] h-[40px] xl:w-full max-md:w-full "
                     onChange={(e) => {
-                      console.log(e.target.value);
                       if (!JSON.parse(e.target.value)) {
                         return;
                       }

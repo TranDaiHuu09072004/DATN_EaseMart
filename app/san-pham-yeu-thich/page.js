@@ -38,8 +38,6 @@ export default function Wishlist() {
       return allProduct.slice(startIndex, startIndex + 12);
     });
   }, [page, stateYt.yeuThichItems]);
-  console.log(listShowByPage);
-  console.log(stateYt);
 
   return (
     <div>
@@ -132,7 +130,6 @@ export default function Wishlist() {
             {Array(listPage)
               .fill("")
               .map((item, index) => {
-                console.log(page === index);
                 return (
                   <div key={index} className="flex justify-center gap-2">
                     <button

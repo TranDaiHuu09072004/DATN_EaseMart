@@ -42,14 +42,12 @@ export default function DangKy() {
   });
 
   const onSubmit = async (data) => {
-    console.log("Submitting data:", data);
     const register = { ...data };
 
     const responseCheckEmail = await axios.post(
       "https://trandainghia.id.vn/api/check-email",
       { email: data.email }
     );
-    console.log(responseCheckEmail.data);
 
     if (
       responseCheckEmail.status === 200 &&
@@ -63,7 +61,7 @@ export default function DangKy() {
           "https://trandainghia.id.vn/api/send-otp",
           { email: data.email }
         );
-        console.log("OTP Response:", otpResponse.data);
+
         // Hiển thị thông báo thành công
         toast.success("Mã OTP đã được gửi tới email của bạn!", {
           position: "top-right",
