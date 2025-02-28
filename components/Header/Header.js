@@ -63,7 +63,7 @@ export default function Header() {
     }
     try {
       const response = await axios.post(
-        "https://trandainghia.id.vn/api/products/search",
+        "https://trandaihuu.id.vn/api/products/search",
         { keyword: searchKeyword }
       );
 
@@ -109,7 +109,7 @@ export default function Header() {
       // Gọi API tìm kiếm với từ khóa
       try {
         const response = await axios.post(
-          "https://trandainghia.id.vn/api/products/search",
+          "https://trandaihuu.id.vn/api/products/search",
           { keyword: transcript }
         );
 

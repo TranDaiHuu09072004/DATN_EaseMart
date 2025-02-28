@@ -45,7 +45,7 @@ const MenuMobile = ({ color = false }) => {
     }
     try {
       const response = await axios.post(
-        "https://trandainghia.id.vn/api/products/search",
+        "https://trandaihuu.id.vn/api/products/search",
         { keyword: searchKeyword }
       );
 
@@ -91,7 +91,7 @@ const MenuMobile = ({ color = false }) => {
       // Gọi API tìm kiếm với từ khóa
       try {
         const response = await axios.post(
-          "https://trandainghia.id.vn/api/products/search",
+          "https://trandaihuu.id.vn/api/products/search",
           { keyword: transcript }
         );
 
