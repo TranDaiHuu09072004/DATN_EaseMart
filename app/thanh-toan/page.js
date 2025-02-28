@@ -4,7 +4,6 @@ import styles from "./payment.module.css";
 import classNames from "classnames/bind";
 import { useCart } from "@/components/CartFunction";
 import { getDistrict, getProvince, getWard } from "@/service/address";
-import { formatPrice } from "@/uilts/formatPrice";
 import { CheckPayment, CreateQr, PostOrder } from "@/service/order";
 // import { log } from "util";
 // import { FALSE } from "sass";
@@ -276,7 +275,7 @@ export default function Payment() {
 
     try {
       const response = await axios.get(
-        `https://trandainghia.id.vn/api/voucher/detail`,
+        `https://trandaihuu.id.vn/api/voucher/detail`,
         { params: { code: voucherCode } }
       );
 
@@ -671,7 +670,7 @@ export default function Payment() {
                 {listPayment.map((item) => (
                   <div className={cx("product")}>
                     <img
-                      src={`https://trandainghia.id.vn${item.primary_image.path}`}
+                      src={`https://trandaihuu.id.vn${item.primary_image.path}`}
                       alt=""
                       width={80}
                     />
