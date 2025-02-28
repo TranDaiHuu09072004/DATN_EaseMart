@@ -68,7 +68,7 @@ const Sidebar = ({
                     });
                   }}
                 >
-                  <img src={`https://trandainghia.id.vn/${item.image}`} />
+                  {/* <img src={`https://trandainghia.id.vn/${item.image}`} /> */}
                   <Link href={"#"}>{item.categories_parents_name}</Link>
                 </li>
               );
@@ -95,7 +95,7 @@ const Sidebar = ({
                     updateBrand({ id: item.id, name: item.name });
                   }}
                 >
-                  <img src={`https://trandainghia.id.vn/${item.image}`} />
+                  <img src={`https://trandaihuu.id.vn/${item.image}`} />
                 </Link>
               );
             })}

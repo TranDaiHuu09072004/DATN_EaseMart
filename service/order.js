@@ -4,16 +4,12 @@ export const PostOrder = async (data) => {
   const token = data.token;
   delete data.token;
 
-  const respone = await axios.post(
-    "https://trandainghia.id.vn/api/order",
-    data,
-    {
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
-      },
-    }
-  );
+  const respone = await axios.post("https://trandaihuu.id.vn/api/order", data, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+  });
   return respone.data;
 };
 
@@ -22,7 +18,7 @@ export const CreateQr = async (data) => {
   delete data.token;
 
   const respone = await axios.post(
-    `https://trandainghia.id.vn/api/generate-qrs`,
+    `https://trandaihuu.id.vn/api/generate-qrs`,
     { order_code: data.order_code },
     {
       headers: {
@@ -37,14 +33,14 @@ export const CreateQr = async (data) => {
 
 export const CheckPayment = async (paymentId) => {
   const respone = await axios.get(
-    `https://trandainghia.id.vn/api/check-payment-status/${paymentId}`
+    `https://trandaihuu.id.vn/api/check-payment-status/${paymentId}`
   );
   return respone.data;
 };
 
 export const GetOrderById = async (paymentId, token) => {
   const respone = await axios.get(
-    `https://trandainghia.id.vn/api/orders/${paymentId}/details`,
+    `https://trandaihuu.id.vn/api/orders/${paymentId}/details`,
     {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -57,7 +53,7 @@ export const GetOrderById = async (paymentId, token) => {
 
 export const CancelOrderById = async (id, token) => {
   const respone = await axios.delete(
-    `https://trandainghia.id.vn/api/orders/${id}/cancel`,
+    `https://trandaihuu.id.vn/api/orders/${id}/cancel`,
     {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -70,7 +66,7 @@ export const CancelOrderById = async (id, token) => {
 
 export const RestoreOrderById = async (id, token) => {
   const respone = await axios.post(
-    `https://trandainghia.id.vn/api/orders/${id}/restore`,
+    `https://trandaihuu.id.vn/api/orders/${id}/restore`,
     { token: token },
     {
       headers: {

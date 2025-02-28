@@ -201,7 +201,7 @@ const Cart = () => {
                         </label>
                         <div className={cx("thumb", "w-20", "flex-shrink-0")}>
                           <img
-                            src={`https://trandainghia.id.vn/${item?.primary_image?.path}`}
+                            src={`https://trandaihuu.id.vn/${item?.primary_image?.path}`}
                             alt="Sản phẩm"
                             className={cx("product-image", "w-full")}
                           />

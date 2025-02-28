@@ -45,7 +45,7 @@ export default function DangKy() {
     const register = { ...data };
 
     const responseCheckEmail = await axios.post(
-      "https://trandainghia.id.vn/api/check-email",
+      "https://trandaihuu.id.vn/api/check-email",
       { email: data.email }
     );
 
@@ -58,7 +58,7 @@ export default function DangKy() {
       try {
         // Gửi yêu cầu OTP
         const otpResponse = await axios.post(
-          "https://trandainghia.id.vn/api/send-otp",
+          "https://trandaihuu.id.vn/api/send-otp",
           { email: data.email }
         );
 

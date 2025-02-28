@@ -32,7 +32,7 @@ export default function ChangePassword() {
 
     try {
       const response = await axios.post(
-        "https://trandainghia.id.vn/api/password/reset",
+        "https://trandaihuu.id.vn/api/password/reset",
         { email, password }
       );
 

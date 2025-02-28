@@ -17,7 +17,7 @@ export default function ForgotPassword() {
 
     try {
       const response = await axios.get(
-        "https://trandainghia.id.vn/api/products-delivered",
+        "https://trandaihuu.id.vn/api/products-delivered",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -51,7 +51,7 @@ export default function ForgotPassword() {
     // Gọi API tạo comment
     try {
       const response = await axios.post(
-        "https://trandainghia.id.vn/api/comments",
+        "https://trandaihuu.id.vn/api/comments",
         { rating, content, product_id },
         {
           headers: {
@@ -104,7 +104,7 @@ export default function ForgotPassword() {
                 <div className="flex">
                   {" "}
                   <img
-                    src={`https://trandainghia.id.vn${product.images.image_path}`}
+                    src={`https://trandaihuu.id.vn${product.images.image_path}`}
                     alt={product.name}
                     className="w-[100px] h-auto"
                   />

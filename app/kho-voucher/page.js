@@ -44,7 +44,7 @@ const Page = () => {
   const fetchSavedVouchers = async () => {
     try {
       const response = await axios.get(
-        `https://trandainghia.id.vn/api/customers/${customerId}/vouchers`,
+        `https://trandaihuu.id.vn/api/customers/${customerId}/vouchers`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       const vouchersData = Array.isArray(response.data.data)
@@ -59,7 +59,7 @@ const Page = () => {
   const fetchUsedVouchers = async () => {
     try {
       const response = await axios.get(
-        `https://trandainghia.id.vn/api/customers/${customerId}/customer-vouchers`,
+        `https://trandaihuu.id.vn/api/customers/${customerId}/customer-vouchers`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
       const usedVouchersData = Array.isArray(response.data.data)

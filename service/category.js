@@ -3,7 +3,7 @@ import axios from "axios";
 export const getCate = async () => {
   try {
     const response = await axios.get(
-      `https://trandainghia.id.vn/api/categories-parents`
+      `https://trandaihuu.id.vn/api/categories-parents`
     );
     return response.data;
   } catch (error) {
@@ -14,7 +14,7 @@ export const getCate = async () => {
 
 export const getCateChild = async (idCateParent) => {
   const respone = await axios.get(
-    `https://trandainghia.id.vn/api/categories-by-parent/${idCateParent}`
+    `https://trandaihuu.id.vn/api/categories-by-parent/${idCateParent}`
   );
 
   return respone.data;

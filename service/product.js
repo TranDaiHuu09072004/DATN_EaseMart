@@ -1,9 +1,9 @@
 import axios from "axios";
-const url = "https://trandainghia.id.vn/api/products";
+const url = "https://trandaihuu.id.vn/api/products";
 
 export const getProByCate = async (idcate) => {
   const respone = await axios.get(
-    `https://trandainghia.id.vn/api/products-by-parent/${idcate}`
+    `https://trandaihuu.id.vn/api/products-by-parent/${idcate}`
   );
 
   return respone.data;
@@ -15,7 +15,7 @@ export const getProBySubCate = async (category1) => {
   }
 
   const respone = await axios.get(
-    `https://trandainghia.id.vn/api/products-by-categories/${category1}`
+    `https://trandaihuu.id.vn/api/products-by-categories/${category1}`
   );
 
   return respone.data;
@@ -23,7 +23,7 @@ export const getProBySubCate = async (category1) => {
 
 export const getProByBrand = async (id) => {
   const respone = await axios.get(
-    `https://trandainghia.id.vn/api/products-by-brand/${id}`
+    `https://trandaihuu.id.vn/api/products-by-brand/${id}`
   );
 
   return respone.data;
@@ -31,7 +31,7 @@ export const getProByBrand = async (id) => {
 
 export const fetchProducts = async (api) => {
   try {
-    const response = await axios.get(`https://trandainghia.id.vn/api/products`);
+    const response = await axios.get(`https://trandaihuu.id.vn/api/products`);
     const products = response.data;
 
     let filteredProducts;
@@ -66,7 +66,7 @@ export const fetchProducts = async (api) => {
 export const fetchProductById = async (id) => {
   try {
     const response = await axios.get(
-      `https://trandainghia.id.vn/api/product/detail/${id}`
+      `https://trandaihuu.id.vn/api/product/detail/${id}`
     );
     return response.data;
   } catch (error) {
@@ -78,7 +78,7 @@ export const fetchProductById = async (id) => {
 export const fetchProductByView = async () => {
   try {
     const response = await axios.get(
-      "https://trandainghia.id.vn/api/products-top-10-view"
+      "https://trandaihuu.id.vn/api/products-top-10-view"
     );
     return response.data;
   } catch (error) {
@@ -91,7 +91,7 @@ export const fetchProductsByMinMax = async (data) => {
   if (data.brand) {
     try {
       const response = await axios.post(
-        `https://trandainghia.id.vn/api/products/brand/filter`,
+        `https://trandaihuu.id.vn/api/products/brand/filter`,
         data
       );
 
@@ -104,7 +104,7 @@ export const fetchProductsByMinMax = async (data) => {
   if (data.category_parent) {
     try {
       const response = await axios.post(
-        `https://trandainghia.id.vn/api/products/category-parent/filter`,
+        `https://trandaihuu.id.vn/api/products/category-parent/filter`,
         data
       );
 
@@ -116,7 +116,7 @@ export const fetchProductsByMinMax = async (data) => {
 
   try {
     const response = await axios.post(
-      `https://trandainghia.id.vn/api/products/category/filter`,
+      `https://trandaihuu.id.vn/api/products/category/filter`,
       data
     );
 

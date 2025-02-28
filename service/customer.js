@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const getInfoCustomer = async (email, token) => {
   const response = await axios.post(
-    "https://trandainghia.id.vn/api/customers",
+    "https://trandaihuu.id.vn/api/customers",
     { email },
     { headers: { Authorization: `Bearer ${token}` } }
   );
@@ -11,7 +11,7 @@ export const getInfoCustomer = async (email, token) => {
 
 export const updateInfoCustomer = async (formData, token) => {
   const response = await axios.post(
-    "https://trandainghia.id.vn/api/customers/profile",
+    "https://trandaihuu.id.vn/api/customers/profile",
     formData,
     { headers: { Authorization: `Bearer ${token}` } }
   );

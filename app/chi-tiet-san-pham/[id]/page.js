@@ -76,7 +76,7 @@ export default function ProductDetail({ params }) {
       });
 
       // Fetch comments
-      fetch(`https://trandainghia.id.vn/api/products/${id}/comments`)
+      fetch(`https://trandaihuu.id.vn/api/products/${id}/comments`)
         .then((response) => response.json())
         .then((data) => {
           // Set comments based on the new structure
@@ -104,7 +104,7 @@ export default function ProductDetail({ params }) {
   };
 
   products.images && products.images.length > 0
-    ? `https://trandainghia.id.vn/storage/upload/f436k9xwzo_xa_lach_xoong_baby.jpg`
+    ? `https://trandaihuu.id.vn/storage/upload/f436k9xwzo_xa_lach_xoong_baby.jpg`
     : "Ảnh bị lỗi";
 
   // Function to format the date
@@ -164,7 +164,7 @@ export default function ProductDetail({ params }) {
       >
         <div className={cx("product_img_left", "mt-5")}>
           <img
-            src={`https://trandainghia.id.vn${selectedImage}`}
+            src={`https://trandaihuu.id.vn${selectedImage}`}
             alt={products.name}
             className=" w-full h-auto"
           />
@@ -172,7 +172,7 @@ export default function ProductDetail({ params }) {
             {products.images.map((image, index) => (
               <img
                 key={index}
-                src={`https://trandainghia.id.vn${image.image_path}`}
+                src={`https://trandaihuu.id.vn${image.image_path}`}
                 alt={`${products.name} thumbnail ${index + 1}`}
                 className="w-[100px] mt-2"
                 onClick={() => {
@@ -355,7 +355,7 @@ export default function ProductDetail({ params }) {
               <Link href={`/chi-tiet-san-pham/${item.id}`} className={cx("a")}>
                 <img
                   src={
-                    `https://trandainghia.id.vn${item.image_path}` ||
+                    `https://trandaihuu.id.vn${item.image_path}` ||
                     "path/to/default/image.jpg"
                   }
                   alt={item.name}

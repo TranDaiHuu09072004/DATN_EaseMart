@@ -18,7 +18,7 @@ export default function ForgotPassword() {
 
     try {
       const response = await axios.post(
-        "https://trandainghia.id.vn/api/password/forgot",
+        "https://trandaihuu.id.vn/api/password/forgot",
         { email }
       );
 

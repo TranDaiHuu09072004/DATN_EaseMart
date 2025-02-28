@@ -24,7 +24,7 @@ export default function OTP() {
 
     try {
       const response = await axios.post(
-        "https://trandainghia.id.vn/api/password/verify-otp",
+        "https://trandaihuu.id.vn/api/password/verify-otp",
         { email, otp_code: otpValue }
       );
 
@@ -93,7 +93,7 @@ export default function OTP() {
 
     const email = sessionStorage.getItem("email");
     try {
-      await axios.post("https://trandainghia.id.vn/api/password/forgot", {
+      await axios.post("https://trandaihuu.id.vn/api/password/forgot", {
         email,
       });
       Swal.fire(

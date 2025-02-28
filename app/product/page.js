@@ -30,7 +30,6 @@ import {
 } from "@/components/YTFunction/sanphamyeuthich";
 import Loading from "@/components/Loading/Loading";
 import { useRouter } from "next/navigation";
-import { formatPrice } from "@/uilts/formatPrice";
 import { searchProducts } from "@/service/search";
 const cx = classNames.bind(styles);
 
@@ -407,7 +406,7 @@ const Product = () => {
                         >
                           <div className={cx("item-thumbnail")}>
                             <img
-                              src={`https://trandainghia.id.vn/${item.image}`}
+                              src={`https://trandaihuu.id.vn/${item.image}`}
                               alt={item.categories_name}
                               className="w-full object-cover h-full rounded-full"
                             />
@@ -453,7 +452,7 @@ const Product = () => {
                                     className={cx("product-img")}
                                   >
                                     <img
-                                      src={`https://trandainghia.id.vn/${item.primary_image.path}`}
+                                      src={`https://trandaihuu.id.vn/${item.primary_image.path}`}
                                       className="w-auto h-auto xs:h-full"
                                     />
                                   </Link>
@@ -560,7 +559,7 @@ const Product = () => {
                                     className={cx("product-img")}
                                   >
                                     <img
-                                      src={`https://trandainghia.id.vn/${item?.primary_image?.path}`}
+                                      src={`https://trandaihuu.id.vn/${item?.primary_image?.path}`}
                                       className="w-auto h-auto xs:h-full"
                                     />
                                   </Link>

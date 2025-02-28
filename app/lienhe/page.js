@@ -39,7 +39,7 @@ export default function LienHe() {
       // Xác thực dữ liệu form
       await validationSchema.validate(formData, { abortEarly: false });
 
-      const response = await fetch("https://trandainghia.id.vn/api/contact", {
+      const response = await fetch("https://trandaihuu.id.vn/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

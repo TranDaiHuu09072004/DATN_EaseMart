@@ -24,7 +24,7 @@ const Convert = () => {
         const email = user.email;
 
         const response = await axios.post(
-          "https://trandainghia.id.vn/api/customers",
+          "https://trandaihuu.id.vn/api/customers",
           { email },
           {
             headers: {
@@ -46,7 +46,7 @@ const Convert = () => {
   const FetchVoucherConvert = async (data) => {
     try {
       const response = await axios.get(
-        "https://trandainghia.id.vn/api/voucher/points",
+        "https://trandaihuu.id.vn/api/voucher/points",
         data
       );
 
@@ -80,7 +80,7 @@ const Convert = () => {
       const customerId = getUser.customerId;
 
       const response = await axios.post(
-        "https://trandainghia.id.vn/api/customer/voucher",
+        "https://trandaihuu.id.vn/api/customer/voucher",
         {
           customer_id: customerId,
           voucher_id: voucher.id,

@@ -52,7 +52,7 @@ export default function OrderHistory() {
 
     axios
       .get(
-        `https://trandainghia.id.vn/api/customer/${customerId}/order-history`,
+        `https://trandaihuu.id.vn/api/customer/${customerId}/order-history`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

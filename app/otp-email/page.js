@@ -22,14 +22,14 @@ export default function OTP() {
 
     try {
       const response = await axios.post(
-        "https://trandainghia.id.vn/api/verify-otp",
+        "https://trandaihuu.id.vn/api/verify-otp",
         { email, otp: otpValue }
       );
 
       if (response.status === 200) {
         try {
           const registerResponse = await axios.post(
-            "https://trandainghia.id.vn/api/register",
+            "https://trandaihuu.id.vn/api/register",
             registerData
           );
 
@@ -123,7 +123,7 @@ export default function OTP() {
     const registerData = JSON.parse(localStorage.getItem("registerData"));
     const email = registerData.email;
     try {
-      await axios.post("https://trandainghia.id.vn/api/send-otp", {
+      await axios.post("https://trandaihuu.id.vn/api/send-otp", {
         email,
       });
       Swal.fire(

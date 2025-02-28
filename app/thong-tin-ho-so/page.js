@@ -41,7 +41,7 @@ export default function CustomerInfoForm() {
     const { email, token, name } = parsedUser;
     getInfoCustomer(email, token).then((data) => {
       if (data.customers.image) {
-        setImage(`https://trandainghia.id.vn/${data.customers.image}`);
+        setImage(`https://trandaihuu.id.vn/${data.customers.image}`);
       }
       setUserData((prevData) => ({
         ...prevData,

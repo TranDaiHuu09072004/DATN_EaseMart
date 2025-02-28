@@ -63,7 +63,7 @@ export default function Wishlist() {
                 return (
                   <div className="item_product flex flex-col w-[256px] h-full gap-4 border-2 border-solid p-5 border-[#eeeeee] shadow-md relative rounded-[7px]">
                     <img
-                      src={`https://trandainghia.id.vn/${item?.primary_image?.path}`}
+                      src={`https://trandaihuu.id.vn/${item?.primary_image?.path}`}
                       alt=""
                       className="h-[151.2px] w-[201.6px] object-cover mt-5"
                     />

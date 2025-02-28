@@ -18,7 +18,6 @@ import {
 } from "@/components/YTFunction/sanphamyeuthich";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
-
 const cx = classNames.bind(styles);
 
 export default function Home() {
@@ -110,12 +109,7 @@ export default function Home() {
         },
       }));
 
-      // Shuffle the array and take the first 10 items
-      const shuffledViews = transformedData
-        .sort(() => 0.5 - Math.random())
-        .slice(0, 10);
-
-      setProduct_Viewss(shuffledViews);
+      setProduct_Viewss(transformedData);
     });
   }, []);
 
@@ -133,7 +127,7 @@ export default function Home() {
   const FetchVoucher = async (data) => {
     try {
       const response = await axios.get(
-        "https://trandainghia.id.vn/api/voucher/value",
+        "https://trandaihuu.id.vn/api/voucher/value",
         data
       );
 
@@ -155,7 +149,7 @@ export default function Home() {
       const customerId = getUser.customerId;
 
       const response = await axios.post(
-        "https://trandainghia.id.vn/api/customer/voucher",
+        "https://trandaihuu.id.vn/api/customer/voucher",
         {
           customer_id: customerId,
           voucher_id: voucher.id,
@@ -235,7 +229,6 @@ export default function Home() {
           ))}
         </div>
 
-        {/* Flash Sale section */}
         <div className={cx("max-w-screen-xl", "mx-auto", "gap")}>
           <div className={cx("flash-sale")}>
             <h4>Flash Sale - Giá Sốc</h4>
@@ -243,13 +236,11 @@ export default function Home() {
           <ProductList products={productsFlashSale} />
         </div>
 
-        {/* Outstanding Products section */}
         <div className={cx("max-w-screen-xl", "mx-auto", "gap")}>
           <div className={cx("title")}>Sản phẩm nhiều người xem</div>
           <ProductList products={products_Views} />
         </div>
 
-        {/* Popular Products section */}
         <div className={cx("max-w-screen-xl", "mx-auto", "gap")}>
           <div className={cx("title")}>Sản phẩm phổ biến</div>
           <ProductList products={productsPopular} />
@@ -260,7 +251,7 @@ export default function Home() {
 }
 
 const ProductList = ({ products }) => {
-  const baseUrl = "https://trandainghia.id.vn";
+  const baseUrl = "https://trandaihuu.id.vn";
   const { state, dispatch } = useCart();
   const { stateYt, dispatchYt } = useYeuThich();
   const formatPrice = (price) => {
